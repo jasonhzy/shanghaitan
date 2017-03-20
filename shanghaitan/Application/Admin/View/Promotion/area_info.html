@@ -1,0 +1,159 @@
+<include file="Public/min-header" />
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content ">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> 添加优惠专区</h3>
+                </div>
+                <div class="panel-body ">   
+                    <!--表单数据-->
+                    <form method="post" id="handleposition" action="{:U('Admin/Promotion/groupbuyHandle')}">                    
+                        <!--通用信息-->
+                    <div class="tab-content col-md-10">                 	  
+                        <div class="tab-pane active" id="tab_tongyong">                           
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <td class="col-sm-2">专区名称：</td>
+                                    <td class="col-sm-8">
+                                        <input type="text" class="form-control" name="groupbuy_name" id="groupbuy_name" value="{$info.groupbuy_name}" >
+                                        <span id="err_attr_name" style="color:#F00; display:none;"></span>                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-2">专区价格：</td>
+                                    <td class="col-xs-8">
+	                      				<input type="text" class="input-sm" size="6" id="groupbuy_price" name="groupbuy_price" value="{$info.groupbuy_price}">
+                      					<span id="price_html"></span>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>开启状态：</td>
+                                    <td>
+                      					<input type="radio"  name="is_open" value="1" >开启
+                      					<input type="radio"  name="is_open" value="1" >关闭
+                                    </td>
+                                    <td class="col-sm-4"></td>
+                                </tr>   
+                                <tr>
+                                    <td>添加专区商品:</td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="col-xs-2">                                        
+	                                            <a class="btn btn-primary" href="javascript:void(0);" onclick="selectGoods()" ><i class="fa fa-search"></i>添加商品</a>
+                                            </div>                                                            
+                                            <div class="col-xs-2">
+                                                <span id="err_goods" style="color:#F00; display:none;">请添加下单商品</span>
+                                            </div>                                            
+                                        </div>                                    
+                                    </td>
+                                </tr>
+                                  
+                                <tr>
+                                 	<td>商品列表:</td>
+                                    <td> 
+                                       <div class="form-group">
+                                       		<div class="col-xs-10">
+                                       		<table class="table table-bordered">
+                                       			<thead>
+                                       			<tr>
+									                <td class="text-left">商品名称</td>
+									                <td class="text-left">规格</td>         
+									                <td class="text-left">价格</td>								                
+									                <td class="text-left">数量</td>
+									                <td class="text-left">操作</td>
+									            </tr>
+									            </thead>
+									            <tbody>
+									            <foreach name="orderGoods" item="vo">
+									            	<tr>
+									                <td class="text-left">{$vo.goods_name}</td>            
+									                <td class="text-left">{$vo.spec_key_name}</td>
+									                <td class="text-left">{$vo.goods_price}</td>
+									                <td class="text-left">
+									                <input type="hidden" name="spec[]" rel="{$vo.goods_id}" value="{$vo.spec_key}">
+									                <input type="text" class="input-sm" name="old_goods[{$vo.rec_id}]" value="{$vo.goods_num}" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" onpaste="this.value=this.value.replace(/[^\d.]/g,'')"></td>
+									                <td class="text-left"><a href="javascript:void(0)" onclick="javascript:$(this).parent().parent().remove();">删除</a></td>
+									           		</tr>
+									           </foreachelse>
+									           <tr><td colspan="5"><p class="text-warning">专区中还没有商品</p></td></tr>
+									           </foreach>
+									           </tbody>
+                                       		</table>
+                                       	   </div>
+                                       </div>                 
+                                       <div class="form-group">                                       
+                                            <div class="col-xs-10" id="goods_td">
+                                                
+                                            </div>                                                                                                                                                      
+	                                   </div>                                                                      
+                                    </td>
+                                </tr>          
+                                </tbody> 
+                                <tfoot>
+                                	<tr>
+                                	<td><input class="btn btn-default" type="reset" value="重置">
+                                		<input type="hidden" name="act" value="{$act}">
+                                		<input type="hidden" name="groupbuy_id" value="{$info.groupbuy_id}">
+                                	</td>
+                                	<td class="col-sm-4"></td>
+                                	<td class="text-right"><input class="btn btn-primary" type="button" onclick="adsubmit()" value="保存"></td></tr>
+                                </tfoot>                               
+                                </table>
+                        </div>                           
+                    </div>              
+			    	</form><!--表单数据-->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+
+function adsubmit(){
+	if($('#groupbuy_name').val() ==''){
+		layer.msg('团购标题不能为空');return;
+	}
+	if($('#groupbuy_price').val() ==''){
+		layer.msg('团购价格不能为空');return;
+	}
+	if($('#group_num').val() ==''){
+		layer.msg('限购数量不能为空');return;
+	}
+	$('#handleposition').submit();
+}
+
+function selectGoods(){
+    var url = "{:U('Admin/Order/search_goods')}";
+    layer.open({
+        type: 2,
+        title: '选择商品',
+        shadeClose: true,
+        shade: 0.8,
+        area: ['60%', '60%'],
+        content: url, 
+    });
+}
+
+function call_back(table_html)
+{
+	$('#goods_td').empty().html('<table class="table table-bordered">'+table_html+'</table>');
+	//过滤选择重复商品
+	$('input[name*="spec"]').each(function(i,o){
+		if($(o).val()){
+			var name='goods_id['+$(o).attr('rel')+']['+$(o).val()+'][goods_num]';
+			$('input[name="'+name+'"]').parent().parent().remove();
+		}
+	});
+	layer.closeAll('iframe');
+}
+</script>
+</body>
+</html>

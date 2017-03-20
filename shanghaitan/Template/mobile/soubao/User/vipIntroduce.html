@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心-{$tpshop_config['shop_info_store_name']}</title>
+</head>
+<body>
+<!-- 头部-s -->
+<include file="User/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/selfc.css" />
+<!-- 头部-e -->
+<div class="backicon">
+    <a href="JavaScript:history.back(-1);">
+        <i class="icon iconfont">&#xe60b;</i>
+    </a>
+    <span>会员介绍</span>
+</div>
+<div class="row self_centerbody self_infobody">
+    <div class="col-xs-12">
+        <div class="self_centerright slef_inforight slef_info_vipinfo">
+            <div class="sc-bg-div">
+                <p><span></span><b>会员详情</b></p>
+                <div class="sc-bg-div-goodsdata self_vip_des">
+                    <p class="borderbottomca">
+                        <span class="textcolore30004">*</span>当前状态：
+                        <b>普通会员</b>（登录注册即可成为会员）
+                        <div style="text-align: right;">
+								<span>
+									<a href="{:U('Mobile/User/recharge')}" class="textcolore30004 lookcz_jl">查看充值记录</a>
+									<a href="{:U('Mobile/User/vipPay')}" class="redbtn cz_">去充值</a>
+								</span>
+                    </div>
+                    </p>
+                    <p>
+                        <span class="textcolore30004">*</span>你现在享有的特权
+                    </p>
+                    <div class="row self_vip_desrow">
+                        <div class="col-md-4">
+                            <div>
+                                <p><b>品牌专享</b></p>
+                                <p>
+                                    <img src="__STATIC__/images/img/selfcenter/vipinfo/v1.gif" />
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <p><b>客服优先</b></p>
+                                <p>
+                                    <img src="__STATIC__/images/img/selfcenter/vipinfo/v2.gif" />
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <p><b>先试后买</b></p>
+                                <p><img src="__STATIC__/images/img/selfcenter/vipinfo/v3.gif" /></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public/footer" />
+</body>
+</html>

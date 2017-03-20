@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>旅居服务</title>
+</head>
+<body>
+<include file="Public/header"/>
+<link rel="stylesheet" href="__STATIC__/js/js/spinner/jquery.spinner.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/sojourn.css" />
+<style>
+  .sojourn-xq-newsp{
+    padding: 10px 2%;
+    line-height: 1.8em;
+  }
+  .sojourn-xq-newsp p{
+    padding: 1px 10px;px
+  }
+  .sojourn-xq-newsp p img{
+    width: 100%;
+  }
+    .travel img{
+        width:100% !important;
+        height:100% !important;
+    }
+</style>
+<div class="backicon">
+  <a href="JavaScript:history.back(-1);location.reload();">
+    <i class="icon iconfont">&#xe60b;</i>
+  </a>
+  <span>文章详情</span>
+</div>
+<div class="sojournbody">
+  <div class="sojournbody-list2">
+    <div class="sj-list2-top">
+					<span style="font-size:16px;font-weight:bold; ">
+						<i class="icon iconfont">&#xe602;</i>
+							{$arr.title}
+						<i class="icon iconfont">&#xe602;</i>
+					</span>
+    </div>
+      <div class="travel" style="margin:10px 5px;">
+          {$arr.content|htmlspecialchars_decode}
+      </div>
+  </div>
+</div>
+
+<include file="Public/footer"/>
+</body>
+</html>

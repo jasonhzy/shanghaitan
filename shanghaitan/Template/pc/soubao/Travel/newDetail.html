@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>旅居服务</title>
+</head>
+<body>
+<include file="Public/header"/>
+<div class="htmllistbody yl-lsitbody">
+  <div class="currentloaction" style="line-height:60px;">
+    <a href="{:U('Home/index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+    <span>当前位置：</span>
+    <a href="{:U('Home/Travel/travelList')}">旅居服务</a>
+    >
+    <a href="#">{$arr.title}</a>
+  </div>
+  <div class="row yl-lsitbody-content">
+    <div class="col-md-4" style="margin-bottom:50px;">
+      <div class="yl-lsitbody-cl">
+        <h3>你可能感兴趣</h3>
+        <img src="__STATIC__/images/img/yanglao/yanglaolistline.png" />
+        <ul class="dottedulli">
+          <tpshop sql="SELECT * FROM `__PREFIX__article` WHERE cat_id = 44 and article_id != $id  ORDER BY `add_time` DESC limit 6 " key="k" item='v'>
+            <li>
+              <a href="{:U('Home/Travel/newDetail',array('id'=>$v['article_id']))}">
+                <i class="icon iconfont">&#xe62a;</i>
+                {$v[title]}
+              </a>
+              <span style="margin-left:80px;">{$v[add_time]|date="Y-m-d",###}</span>
+            </li>
+          </tpshop>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="yl-lsitbody-r">
+        <div class="yl-lsitbody-rarticle">
+          <h3>{$arr.title}</h3>
+          {$arr.content|htmlspecialchars_decode}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<include file="Public/footer"/>
+</body>
+</html>

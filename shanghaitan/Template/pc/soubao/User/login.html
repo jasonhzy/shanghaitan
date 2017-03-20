@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>{$tpshop_config['shop_info_store_name']}账号登录</title>
+    <style>
+
+        .loginbody{
+            width: 100%;
+            border-top: 1px solid #e30004;
+        }
+
+        .loginbanner{
+            width: 100%;
+            padding: 111px 0;
+            background: url(__STATIC__/images/img/login/loginbanner.png) no-repeat top left ;
+            background-size: 1920px;
+        }
+        .logintable{
+            max-width: 1200px;
+            width: 100%;
+            min-width: 1024px;
+            margin: 0 auto;
+        }
+        .logintable form{
+            text-align: right;
+            height: 532px;
+        }
+        .logintable form>div:first-child>a{
+            color: #e30004;
+            display: inline-block;
+            padding: 5px;
+            float: right;
+        }
+        .logintable form>div:first-child{
+            width: 100%;
+            text-align: right;
+        }
+        .logintable form>div{
+            float: right;
+        }
+        .logintable .dataform{
+            width: 450px;
+            height: 500px;
+            padding: 20px;
+            border: 1px solid #9c9c9c;
+            background: #fff;
+            text-align: center;
+        }
+        .logintable .dataform h2{
+            padding:0 0 6px 0;
+            background: url(__STATIC__/images/img/login/loginline.png) no-repeat bottom;
+        }
+        .logintable .dataform>.logintextorange>span{
+            color: #ff9900;
+        }
+        .logintable .dataform table{
+            text-align: left;
+            width: 73%;
+            margin: 45px auto;
+        }
+        .logintable .dataform table td{
+            padding: 2px;
+        }
+        .logintable .dataform table .tip{
+            padding: 5px 0;
+        }
+        .logintable .dataform table .autologin i{
+            cursor: pointer;
+            color: #a3a3a3;
+        }
+        .logintable .dataform table .logintablebottom{padding: 22px 0;}
+        .logintable .dataform table .logintablebottom input{
+            padding: 6px 25px;
+            border-style: none;
+            color: #fff;
+            background: #fbaa00;
+        }
+        .logintable .dataform table .logintablebottom a{
+            color: #e30004;
+            padding: 0 20px;
+        }
+        .logintable .dataform table .logintablebottom a:hover,.logintable .dataform .dataformbottom span:nth-child(2) a:hover{
+            text-decoration: underline !important;
+        }
+        .logintable .dataform .dataformbottom{
+            width: 100%;
+            text-align: left;
+            padding-top: 15px;
+        }
+        .logintable .dataform .dataformbottom span:first-child{
+            color: #747474;
+        }
+        .logintable .dataform .dataformbottom span:nth-child(2){
+            float: right;
+        }
+        .logintable .dataform .dataformbottom span:nth-child(2) a{
+            color: #E30004;
+        }
+
+    </style>
+</head>
+<body>
+<include file="Public/header"/>
+<div class="loginbody">
+    <div class="currentloaction">
+        <a href="index.html"><i class="icon iconfont">&#x348d;</i></a>
+        <span>当前位置：</span>
+        <a href="head.html">个人中心</a>
+        >
+        <a href="login.html">登录</a>
+    </div>
+    <div class="loginbanner">
+        <div class="logintable">
+
+            <form  method="post" action="">
+                <div><a href="{:U('Home/Index/index')}">返回首页</a></div>
+                <div class="dataform">
+                    <h2>用户登录</h2>
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="tip">账号：</div>
+                                <input type="text" name="username" id="username" class="form-control" placeholder="手机号/邮箱" autocomplete="off"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tip">密码：</div>
+                                <input type="password" name="passqord" id="password" class="form-control" placeholder="请输入密码" autocomplete="off"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="autologin">
+                                <label>
+                                    <input type="hidden" name="referurl" id="referurl" value="{$referurl}">
+                                    <input type="checkbox" class="u-ckb J-auto-rmb"  name="remember">自动登录</label>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="msg msg-err" style="display:none;"> <i></i>
+                            <td class="J-errorMsg" style="color:red;"></td>
+                        </tr>
+                        <tr>
+                            <td class="logintablebottom">
+                                <input type="button" value="登录" id="loginbtn" name="" onclick="checkSubmit();"/>
+                                <a href="{:U('Home/User/forget_pwd')}">忘记密码？</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="dataformbottom">
+                        <span>客服电话：0371-86529093</span>
+								<span>
+									还未注册用户？
+									<a href="{:U('Home/User/reg')}">免费注册<i class="icon iconfont">&#xe6a3;</i></a>
+								</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+ <include file="Public/footer" />
+ </div>
+</body>
+ <script>
+	function checkSubmit()
+	{
+		$('.msg-err').hide();
+		$('.J-errorMsg').empty();
+		var username = $('#username').val();
+		var password = $('#password').val();
+		var referurl = $('#referurl').val();
+
+		if(username == ''){
+            showErrorMsg('用户名不能为空!');
+            return false;
+		}
+
+		if(!checkMobile(username) && !checkEmail(username)){
+			showErrorMsg('账号格式不匹配!');
+			return false;
+		}
+		if(password == ''){
+			showErrorMsg('密码不能为空!');
+			return false;
+		}
+		$.ajax({
+			type : 'post',
+			url : '/index.php?m=Home&c=User&a=do_login&t='+Math.random(),
+			data : {username:username,password:password,referurl:referurl},		
+			dataType : 'json',
+			success : function(res){
+				if(res.status == 1){
+					window.location.href = res.url;
+                    self.location=document.referrer;
+				}else{
+					showErrorMsg(res.msg);
+				}
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				showErrorMsg('网络失败，请刷新页面后重试');
+			}
+		})
+		
+	}
+	
+    function checkMobile(tel) {
+        var reg = /(^1[3|4|5|7|8][0-9]{9}$)/;
+        if (reg.test(tel)) {
+            return true;
+        }else{
+            return false;
+        };
+    }
+    
+    function checkEmail(str){
+        var reg = /^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+        if(reg.test(str)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    function showErrorMsg(msg){
+    	$('.msg-err').show();
+    	$('.J-errorMsg').html(msg);
+    }
+</script>
+</html>

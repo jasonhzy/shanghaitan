@@ -1,0 +1,163 @@
+<meta name="viewport" content="width=device-width,initial-scale=0.5,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="__STATIC__/css/css/iconfont/iconfont.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/headandfoot.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/ddfullscreenslider.css">
+<link href="__STATIC__/css/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="__STATIC__/css/css/index.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/common.css"/>
+<link rel="stylesheet" href="__STATIC__/css/css/style.min.css"/>
+<script src="__STATIC__/js/js/jquery-1.11.3.min.js"></script>
+<script src="__STATIC__/js/js/jquery.js"></script>
+<script src="__STATIC__/css/css/bootstrap/bootstrap.min.js"></script>
+<script src="__STATIC__/js/js/jquery.mousewheel.min.js"></script>
+<script src="__STATIC__/js/js/ddfullscreenslider.js"></script>
+<script src="__STATIC__/js/js/style.js"></script>
+<script type="text/javascript">
+    function checkPwdStrong(pwd) {
+        var element = $("#pwdstrength");
+        var value = $("#pwd").val();
+        if (value.length >= 6) {
+            element.show();
+            var level = pwdLevel(value);
+            switch (level) {
+                case 1:
+                    element.removeClass().addClass("strengthA");
+                    break;
+                case 2:
+                    element.removeClass().addClass("strengthB");
+                    break;
+                case 3:
+                    element.removeClass().addClass("strengthC");
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            element.hide();
+        }
+    }
+    function pwdLevel(value) {
+        var pattern_1 = /^.*([\W_])+.*$/i;
+        var pattern_2 = /^.*([a-zA-Z])+.*$/i;
+        var pattern_3 = /^.*([0-9])+.*$/i;
+        var level = 0;
+        if (value.length > 10) {
+            level++;
+        }
+        if (pattern_1.test(value)) {
+            level++;
+        }
+        if (pattern_2.test(value)) {
+            level++;
+        }
+        if (pattern_3.test(value)) {
+            level++;
+        }
+        if (level > 3) {
+            level = 3;
+        }
+        return level;
+    }
+</script>
+<nav class="navbar navbar-default indexmobile" role="navigation" style="margin-bottom:0;position:fixed;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" >
+                <img class="logo" src="{$tpshop_config['shop_info_store_logo']}"/>
+            </a>
+            <div class="navbar-brand" style="font-size:14px;float:right;">
+                <if condition="$user_id eq 0">
+                    <a href="{:U('Mobile/user/login')}">登录</a>｜<a href="{:U('Mobile/user/reg')}">注册</a>
+                    <else/>
+                    <a href="{:U('Mobile/user/index')}">{$user['nickname']}</a> | <a href="{:U('Mobile/user/logout')}">退出</a>
+                </if>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <!-- <ul class="nav navbar-nav">
+                <li <if condition="$_GET['cid'] eq 5">class="active"</if>>
+                <a href="{:U('Home/Index/index/cid/5')}" >首页</a>
+                </li>
+                <tpshop sql="SELECT * FROM `__PREFIX__navigation` where is_show = 1 ORDER BY `sort` ASC" key="k" item='v'>
+                    <li <if condition="$_GET['cid'] eq $v[id]">class="active"</if>>
+                    <a href="{$v[url]}" >{$v[name]}</a>
+                    </li>
+                </tpshop>
+            </ul>-->
+            <ul class="nav navbar-nav">
+                <li <if condition="$_GET['cid'] eq 5">class="active"</if>><a href="/index.php/Mobile/Index/index/cid/5">首页</a></li>
+                <li <if condition="$_GET['cid'] eq 8">class="active"</if>><a href="/index.php?m=Mobile&c=Goods&a=yangLao&id=853&cid=8">养老平台</a></li>
+                <li <if condition="$_GET['cid'] eq 6">class="active"</if>><a href="/index.php?m=Mobile&c=Goods&a=goodsList&id=849&cid=6">适老化改造</a></li>
+                <li <if condition="$_GET['cid'] eq 4">class="active"</if>><a href="/index.php?m=Mobile&c=Article&a=index&cid=4">家文化传承</a></li>
+                <li <if condition="$_GET['cid'] eq 3">class="active"</if>><a href="/index.php?m=Mobile&c=Life&a=lifeList&cid=3">生活服务</a></li>
+                <li <if condition="$_GET['cid'] eq 2">class="active"</if>><a href="/index.php?m=Mobile&c=Travel&a=travelList&cid=2">旅居服务</a></li>
+                <li <if condition="$_GET['cid'] eq 1">class="active"</if>><a href="/index.php?m=Mobile&c=Mudi&a=mudiList&cid=1">往生服务</a></li>
+                <li <if condition="$_GET['cid'] eq 9">class="active"</if>><a href="/index.php?m=Mobile&c=Goods&a=integralMall&cid=9">积分商城</a></li>
+                <li <if condition="$_GET['cid'] eq 10">class="active"</if>><a href="/index.php?m=Mobile&c=Index&a=aboutUs&cid=10">联系我们</a></li>
+                <li <if condition="$_GET['cid'] eq 11">class="active"</if>><a href="/index.php/Mobile/User/index/cid/11">个人中心</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="searchall" style="padding:0 0;height:40px;margin-top: 60px;">
+    <div class="search_centerdiv" style="width:65%;float:left;">
+        <form name="sourch_form" id="sourch_form" method="post" action="{:U('Mobile/Goods/search')}">
+            <div data-role="form-inner" class="s-form"><i class="s-ico"></i>
+                <input type="text" data-role="input-search" autocomplete="off" class="fl s-input" name="q" id="q" value="<?php echo I('q'); ?>" placeholder="请输入搜索内容"/>
+                <a style="color:#fff;display: inline-block;width:22%;text-align:center;line-height:2.5em;font-size: 16px;" data-role="btn" href="javascript:void(0);" class="" onclick="if($.trim($('#q').val()) != '') $('#sourch_form').submit();" />搜&nbsp;索</a>
+            </div>
+            <!--<div class="s-hotword">
+                <foreach name="tpshop_config.hot_keywords" item="wd" key="k">
+                    <a href="{:U('Home/Goods/search',array('q'=>$wd))}" <if condition="$k eq 0">class="ht"</if>>{$wd}</a>
+                </foreach>
+            </div>-->
+
+        </form>
+    </div>
+    <span style="width:30%;height:35px;line-height:35px;padding:0 10px;"><a href="{:U('Mobile/Cart/cart')}" style="font-size:13px;">
+				<i class="icon iconfont">&#xe60a;</i>
+				购物车
+				<span class="textcolore30004"><span class="count cart_quantity" id="cart_quantity"></span></span>
+				件</a>
+			</span>
+
+</div>
+<script src="__PUBLIC__/js/common.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.main-title').hover(function(){
+            $('.main-slider').show();
+        }, function(){
+            $('.main-slider').hide();
+        });
+
+        $('.nav-list-warpper').hover(function(){
+            $('.main-slider').show();
+        }, function(){
+            $('.main-slider').hide();
+        });
+
+        get_cart_num();
+    });
+    function get_cart_num(){
+
+        $.ajax({
+            type : "GET",
+            url:"/index.php?m=Mobile&c=Cart&a=header_cart_list",//+tab,
+            success: function(re) {
+                if (re>0){
+                    $('#cart_quantity').html(re);
+                }else{
+                    $('#cart_quantity').html('0');
+                }
+            }
+        });
+    }
+
+</script>

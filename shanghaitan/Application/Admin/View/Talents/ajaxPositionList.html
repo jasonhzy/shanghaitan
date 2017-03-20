@@ -1,0 +1,61 @@
+<form method="post" enctype="multipart/form-data" target="_blank" id="form-order">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <td style="width: 1px;" class="text-center">
+                <!--
+                    <input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);">
+                -->    
+                </td>                
+                <td class="text-left">
+                    <a href="javascript:sort('p_name');">职位名称</a>
+                </td>
+                <td class="text-left">
+                    <a href="javascript:sort('department');">职位部门</a>
+                </td>
+                <td class="text-left">
+                    <a href="javascript:sort('p_num');">招聘人数</a>
+                </td>
+                <td class="text-left">
+                    <a href="javascript:sort('end');">截止日期</a>
+                </td>
+                <td class="text-center">
+                    <a href="javascript:sort('addtime');">发布时间</a>
+                </td>
+                <td class="text-right">操作</td>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="positionList" id="list">
+                <tr>
+                    <td class="text-center">
+                       <!-- <input type="checkbox" name="selected[]" value="6">-->
+                        <input type="hidden" name="shipping_code[]" value="flat.flat">
+                    </td>
+                    <td class="text-left">{$list.p_name|getSubstr=0,33}</td>
+                    <td class="text-left">{$list.department}</td>
+                    <td class="text-left">{$list.p_num}</td>
+                    <td class="text-left">{$list.end|date="Y-m-d",###}</td>
+                    <td class="text-center">{$list.addtime|date="Y-m-d H:i",###}</td>
+
+                    <td class="text-right">
+                        <a href="{:U('Admin/Talents/addEditPosition',array('id'=>$list['p_id']))}" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+                        <a href="javascript:void(0);" onclick="del('{$list[p_id]}')" id="button-delete6" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="删除"><i class="fa fa-trash-o"></i></a></td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+</form>
+<div class="row">
+    <div class="col-sm-3 text-left"></div>
+    <div class="col-sm-9 text-right">{$page}</div>
+</div>
+<script>
+    // 点击分页触发的事件
+    $(".pagination  a").click(function(){
+        cur_page = $(this).data('p');
+        ajax_get_table('search-form2',cur_page);
+    });
+</script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>旅居服务</title>
+
+</head>
+<body>
+<!--------头部开始-------------->
+<include file="Public/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/sojourn.css" />
+<!--------头部结束-------------->
+<div class="currentloaction">
+  <a href="{:U('Home/index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+  <span>当前位置：</span>
+  <a href="{:U('Home/Travel/travelList')}">旅居服务</a>
+  >
+  <a href="#">预约成功</a>
+</div>
+<div class="htmllistbody boxshaowccc sojourn-tianxieddbody sdd-ydbody">
+  <div class="shopcartbody-top sojourn-top">
+    <span>预定流程：</span>
+    <div class="floatright row shopcartbody-queren">
+      <div class="col-md-3 shopcartbody-queren-line">
+        <span>1</span>
+        查看行程
+      </div>
+      <div class="col-md-3 shopcartbody-queren-line">
+        <span>2</span>
+        填写订单
+      </div>
+      <div class="col-md-3 shopcartbody-queren-line">
+        <span>3</span>
+        提交订单
+      </div>
+      <div class="col-md-3 shopcartbody-queren-line lineactive">
+        <span>3</span>
+        预约成功
+      </div>
+    </div>
+  </div>
+  <div class="sojourn-tzdd-bg">
+    <p><b class="textcolore30004">预订成功！</b></p>
+    <p><b>尊敬的客人：</b></p>
+    <p class="textindent2">您好，您已预定成功，如有什么问题请于客服联系</p>
+  </div>
+</div>
+<include file="Public/footer" />
+</body>
+</html>

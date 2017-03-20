@@ -1,0 +1,738 @@
+/*智能生活-家政服务 start*/
+.intel-husbandrybody{
+	margin: 20px auto 50px;
+}
+.intel-husbandrybody .husbandrytop{
+	padding: 10px 0;
+	border-bottom: 1px solid #E30004;
+}
+.intel-husbandrybody .husbandrytop span{
+	display: inline-block;
+}
+.intel-husbandrybody .husbandrytop>a>span{
+	padding: 3px;
+	border: 1px solid #d0d0d0;
+	margin-right: 8px;
+}
+.intel-husbandrybody .husbandrytop>a>span>span{
+	background: #d0d0d0;
+	color: #000;
+	padding: 5px 10px;
+}
+.husbandrytopactive{
+	border: 1px solid #E30004 !important;
+}
+.husbandrytopactive>span{
+	background: #E30004 !important;
+	color: #fff !important;
+}
+.intel-husbandrybody .husbandrytop-data>div{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	position: relative;
+}
+.intel-husbandrybody .husbandrytop-data>div .husbandrytop-datamodel{
+	max-width: 355px;			
+	margin: 0 auto;
+}
+.intel-husbandrybody .husbandrytop-data>div .husbandrytop-datamodel:hover{
+	box-shadow: 0 0 10px rgba(227,0,4,0.5);
+}
+.intel-husbandrybody .husbandrytop-data>div .husbandrytop-datamodel img{
+	max-width: 355px;
+	max-height:185px;
+	margin-bottom: 20px;
+}
+.husbandrytop-datamodel{
+	text-align: center;
+}
+.husbandrytop-datamodel p{
+	padding: 0 10%;
+}
+.husbandrytop-datamodel .color999{
+	color: #999;
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.husbandrytop-datamodel .lookxqbtn{
+	padding: 20px 0 50px;
+}
+.intel-husbandrybody .intelli-map{
+	margin-top: 20px;
+	width: 100%;
+	max-height: 500px;
+	overflow: hidden;
+	border: 1px solid #E30004;
+}
+.intel-husbandrybody .intelli-map img{
+	width: 100%;
+}
+/*智能生活-家政服务 end*/
+
+/*智能生活-家政服务--保姆 start*/
+.intell-bonnebodyrow{
+	width: 100%;
+	margin: 0 auto;
+}
+.intell-bonnebodyrow>div{
+	padding: 0;
+	margin-bottom: 50px;
+	position: relative;
+}
+.intell-bonnebodyrow .col1-ul{
+	padding-left: 0;
+}
+.intell-bonnebodyrow .col1-ul li{
+	width: 64px;
+	height: 64px;
+	border-radius: 32px;
+	text-align: center;
+	line-height: 64px;
+	margin: 7px auto;			
+	border: 1px solid #F4F4F4;
+}
+.intell-bonnebodyrow .col1-ul li a{
+	display: block;
+	height: 100%;
+	width: 100%;
+	padding: 0 5px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.col1-ulliactive{
+	background: #E30004;			
+}
+.col1-ulliactive a{
+	color: #fff !important;
+}
+.intell-bonnebodyrow .bonne-center{
+	float: left;
+	width: 100%;
+	padding-bottom: 20px;
+}
+.acc-center{
+	padding-bottom: 20px;
+}
+.intell-bonnebodyrow .bonne-center h3{
+	margin-top: 0;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 50px 0 30px;
+}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow1{
+	width: 100%;
+	margin: 0 auto;
+}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow1>div{
+	text-align: center;
+}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow1>div img{
+	margin-bottom: 30px;
+	height: 36px;
+}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow1>div p{
+	line-height: normal;
+	margin: 0;
+	padding: 0;
+}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow2{
+	padding-left: 0;
+	float: left;
+	width: 100%;
+	margin: 20px 0 50px;
+}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow2 {
+	float: left;			
+	display: inline-block;
+	width: 20%;
+}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow2>div{
+	margin-bottom: 10px;
+}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow2>div  a{
+	display: block;
+	width: 88px;
+	height: 88px;
+	color: #fff;			
+	border-radius: 44px;
+	text-align: center;
+	margin: 0 auto;
+	padding: 27px 0;
+}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow2>div  a p{
+	line-height: normal;
+	font-size: 12px;
+	padding:0 10px;
+	margin: 0;	
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;		
+}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow2>div:first-child a{background: #ff8283;}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow2>div:nth-child(2) a{background: #fdac76;}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow2>div:nth-child(3) a{background: #ffc555;}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow2>div:nth-child(4) a{background: #80dfea;}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow2>div:nth-child(5) a{background: #70e3c6;}
+
+.intell-bonnebodyrow .bonne-center .bonne-centerrow3 .b-crow3model{
+	max-width: 172px;
+	text-align: center;
+	display: block;
+	margin: 20px auto 30px;
+}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow3 .b-crow3model img{
+	margin-bottom: 20px;
+	width: 100%;
+}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow3 .b-crow3model p{
+	font-size: 12px;
+}
+.intell-bonnebodyrow .bonne-center .bonne-centerrow3 .b-crow3model p span{
+	color: #999999;
+}
+.bonneright{	
+	/*margin-left: 20px;*/
+	/*width: 400px;*/
+	width: 100%;
+}
+ .bonneright .right-top b{
+	padding: 10px;
+	display: inline-block;
+	border-bottom: 1px solid #E30004;
+}
+.bonnerightfixed{
+	position: fixed;
+	top: 5px;
+}
+.bonneright table{
+	width: 100%;
+	margin-top: 20px;
+}
+.bonneright table td{
+	padding: 10px 3px;
+	font-size: 12px;
+}
+.bonneright table td select{
+	width: 140px;
+	padding:8px 10px ;
+	-webkit-appearance:none;
+	-moz-appearance: none;
+	appearance:none;
+	background: url(../../images/img/selecticon.png)no-repeat 95% center;
+}
+.bonneright table td .phonewidth{
+	width: 140px;
+}
+.bonneright table td select option[selected]{
+	background: #E30004;
+	color: #fff;
+}
+ .bonneright table td:first-child{
+	width: 78px;
+	text-align: right;
+}
+.bonneright table td:nth-child(2){
+	padding-right: 10px;
+}
+.bonneright table td .rightbtn{
+	display: block;
+	width: 100px;
+	text-align: center;
+	margin: 20px auto;
+}
+/*智能生活-家政服务--保姆 end*/
+
+/*智能生活-家政服务--陪护&&陪诊  start*/
+.acc-center{
+	padding: 20px 5%;
+}
+.accompany-intelcenter2{
+	width: 100%;
+	border-radius: 8px;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 1px;
+}
+.accompany-intelcenter2 table{
+	width: 100%;			
+	border-radius: 8px !important;
+	background: #F0F0F0;
+}
+.accompany-intelcenter2 table td{
+	background: #fff;
+	padding: 5px;
+	text-align: center;
+	border: 1px solid #f0f0f0;
+}
+.accompany-intelcenter2 table thead td{
+	background: #f0f0f0;
+	border: 1px solid #F0F0F0;
+}
+.accompanyimg img{
+	display: block;
+	max-width: 100%;
+	margin:10px auto 20px;
+}
+.accompany-intelcenter3{
+	width: 100%;
+	margin: 0 auto 10px;
+}
+.accompany-intelcenter3>div{
+	padding: 0;
+}
+.accompany-intelcenter3>div:nth-child(2n) a{
+	/*text-align: right;*/
+}
+.accompany-intelcenter3>div a{
+	width: 100%;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;	
+	display: block;
+	padding: 10px 0;
+}
+.accompany-intelcenter3>div a>span{
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	border-radius: 12px;
+	background: #E30004;
+	text-align:center;
+	line-height: 24px;
+	color: #fff;
+	margin-right: 10px;
+	font-size: 12px;
+}
+/*智能生活-家政服务--陪护&&陪诊 end*/
+
+/*智能生活-家政服务--清洁 start*/
+.intel-clean>div a{
+	text-align: left !important;
+}
+.paddingbottom0{
+	padding-bottom: 0 !important;
+}
+.textcolor999{color: #999 !important;}
+/*智能生活-家政服务--清洁 end*/
+
+/*智能生活-交友沙龙 start*/
+.salonbody .gglcontent_top{
+	margin-bottom: 20px;
+}
+.salonmodel{
+	padding: 15px 10px;
+}
+.salonmodel img{
+	margin-bottom: 0 !important;
+	/*max-height: 132px;*/
+	width: 100%;
+}
+.salonmodel .col-md-7{
+	padding-top: 15px;
+	text-align: center;
+}
+.salonmodel .col-md-7 p{
+	padding-left: 0;
+	line-height: 1em;
+}
+.salonmodel .col-md-7 .sayhellobtn{
+	padding:8px 30px;
+	border-radius: 5px;
+	border: 1px solid #d0d0d0;
+	display: inline-block;
+	background: -moz-linear-gradient(top, #fdfdfd 0%, #e0e1e2 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fdfdfd), color-stop(100%,#e0e1e2));
+    background: -webkit-linear-gradient(top, #fdfdfd 0%,#e0e1e2 100%);
+    background: -o-linear-gradient(top, #fdfdfd 0%,#e0e1e2 100%);
+    background: -ms-linear-gradient(top, #fdfdfd 0%,#e0e1e2 100%);
+    background: linear-gradient(to bottom, #fdfdfd 0%,#e0e1e2 100%);
+}
+.salon-bottonrow{
+	width: 100%;
+	margin: 0 auto;
+	margin: 10px 0 20px;
+	padding: 15px;
+	box-sizing: border-box;
+}
+.salon-bottonrow>div{
+	height: 132px;
+}
+.salon-bottonrow .col-md-2 img{
+	max-width: 132px;
+	max-height: 132px;
+	display: block;
+	margin: 3px auto;
+}
+.salon-bottonrow .col-md-7,.salon-bottonrow .col-md-3{
+	padding-top: 20px;
+	font-size: 12px;
+}
+.salon-bottonrow .col-md-3{
+	padding-top: 46px;
+}
+.salon-bottonrow  p span{
+	color: #999;
+}
+.salon-bottonrow  .textoverflow{
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	height: 35px;
+}
+.salon-bottonrow  .commont{
+	padding-top: 20px;
+	margin: 0;
+}		
+.salon-bottonrow  .commont .commontcount:hover{
+	color: #E30004;
+}
+/*智能生活-家有沙龙 end*/
+/*智能生活-养老信息 start*/
+.Providecontent{
+	width: 100%;
+	margin: 15px auto 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #efefef;
+}
+.Providecontent>div{
+	padding: 0;
+	/*height: 303px;*/
+}
+.Providecontent .col-md-4 .redborderimg{
+	border: 4px solid #E30004;
+	margin: 15px 0 0 15px;
+	height: 263px;
+	width: 263px;
+	position: relative;
+}
+.Providecontent .col-md-4 .redborderimg img{
+	max-height: 263px;
+	max-width: 263px;
+	width: 100%;
+	position: absolute;
+	top: -10px;
+	left: -10px;
+}
+.Providecontent .col-md-8{
+	display: table;
+}
+.Providecontent .col-md-8 .tablecellmiddle{
+	display: table-cell;
+	vertical-align: middle;
+}
+.Providecontent .col-md-8 .tablecellmiddle .borderbottom1 b{
+	padding: 20px 0;
+	display: inline-block;
+	border-bottom: 1px solid #efefef;
+}
+.Providecontent .col-md-8 .tablecellmiddle p{
+	margin: 20px 0;
+}
+.Providecontent .col-md-8 .tablecellmiddle .textoverflow6{
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 6;
+	-webkit-box-orient: vertical;
+}
+.Providecontent .col-md-8 .tablecellmiddle p a{
+	padding: 6px 25px;
+	background: #efefef;
+	border: 1px solid #efefef;
+	border-radius: 8px;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transtion:all 0.5s;
+}
+.Providecontent .col-md-8 .tablecellmiddle p a:hover{
+	border: 1px solid #E30004;
+	border-radius: 0;
+}
+/*智能生活-养老信息 end*/
+
+/*智能生活-交友沙龙-打招呼 strart*/
+.intel-sayhellobody{
+	margin-bottom: 50px;
+}
+.intel-sayhelloinfo{
+	width: 100%;
+	margin: 20px auto;
+	padding: 10px;
+}
+.intel-sayhelloinfo>div{
+	padding: 0;
+	max-height: 190px;
+}
+.intel-sayhelloinfo .col-md-2 img{
+	max-height: 190px;
+	max-width: 190px;
+	width: 100%;
+}
+.intel-sayhelloinfo .col-xs-4 img{
+	width: 100%;
+}
+.intel-sayhelloinfo .col-md-10{
+	padding-left: 20px;
+}
+.intel-sayhelloinfo .col-md-10 h3{
+	font-size: 18px;
+	font-weight: bold;
+}
+.intel-sayhelloinfo .col-md-10 p{
+	font-size: 12px;
+}
+.intel-sayhelloinfo .col-xs-8{
+	padding-left: 20px;
+}
+.intel-sayhelloinfo .col-xs-8 h3{
+	font-size: 18px;
+	font-weight: bold;
+	padding-top: 0;
+	margin-top: 0;
+}
+.intel-sayhelloinfo .col-xs-8 p{
+	font-size: 12px;
+	margin: 0;
+}
+
+/*智能生活-交友沙龙-打招呼 end*/
+
+/*智能生活-交友活动 start*/
+.intel-datingactivetable{
+	width: 100%;
+	font-size: 12px;
+	border: 1px solid #D8D8D8;
+}
+.intel-datingactivetable thead td .zistyle{
+	padding:5px 0;
+}
+.intel-datingactivetable thead td .zistyle:nth-child(2){
+	padding-left: 10px;
+}
+.intel-datingactivetable thead td .zistyle:first-child{
+	padding-right: 10px;
+	border-right: 1px solid #D8D8D8;
+}
+.intel-datingactivetable td{
+	border-bottom: 1px solid #D8D8D8;
+}
+.intel-datingactivetable td:first-child{
+	background: #e5edf2;
+	padding: 10px;
+	width: 50px;
+}
+.intel-datingactivetable td:nth-child(2){
+	padding: 10px 20px;
+}
+.intel-datingactivetable tbody td:nth-child(2){
+	vertical-align: top;
+}
+.intel-datingactivetable tbody td .username{
+	padding: 5px 0 5px;
+	border-bottom: 1px solid #D8D8D8;
+}
+.intel-datingactivetable tbody td .userimg{
+	/*width: 138px;
+	height: 106px;*/
+	width: 60px;
+	height: 46px;
+	background: #fff;
+	padding: 3px;
+	margin: 10px auto;
+}
+.intel-datingactivetable tbody td .userimg img{
+	width: 100%;
+}
+.intel-datingactivetable tbody td .borderdatetime{
+	padding: 15px 0;
+	margin-bottom: 20px;
+	border-bottom: 1px dashed #D8D8D8;
+}
+.backlist{
+	padding-top: 10px;
+	text-align: right;
+}
+.datingactive-fatie{
+	margin-top: 35px;
+}
+.fatiebtn{
+	padding: 6px 25px;
+	background: #E30004;
+	color: #fff  !important;
+}
+#fatie-editor{
+	height: 0;
+	overflow: hidden;
+	position: relative;
+	-webkit-transition: all 0.6s;
+	transition: all 0.6s;
+	-moz-transition: all 0.6s;
+	-ms-transition: all 0.6s;
+}
+#fatie-editor #editor{
+	
+}
+#fatie-editor .loginyanz{
+	position: absolute;
+	z-index: 8888;
+	text-align: center;
+	display: table;
+	width: 100%;
+	height: 320px;
+}
+#fatie-editor .loginyanz p{
+	display: table-cell;
+	vertical-align: middle;
+}
+#fatie-editor .loginyanz a{
+	padding: 0 8px;
+	color: #E30004;
+}
+.fatiebottomdiv{
+	margin: 10px auto;
+	max-width: 800px;
+	width: 100%;
+}
+.fatiebottomdiv .fatiebtn{
+	display: inline-block;
+	margin-right: 15px;
+}
+.fatiebottomdiv input{
+	width: 15px;
+	height: 15px;
+	margin-right: 5px;
+}
+/*智能生活-交友活动 end*/
+
+/*智能生活-养老信息-养老院详情 start*/
+.provideelistbody{
+	margin-bottom: 50px;
+}
+.provideelistbody .provideelistcontent{
+	width: 100%;
+	margin: 0 auto 50px;
+}
+.provideelistbody .provideelistcontent>div{
+	padding: 15px;
+}
+.provideelistbody .provideelistcontent .col-md-3 img{
+	max-width: 270px;
+	max-height: 163px;
+	width: 100%;
+	display: block;
+	margin: 0 auto 15px;
+}
+.provideelistbody .provideelistcontent .col-md-3 div{
+	text-align: center;
+}
+.provideelistbody .provideelistcontent .col-md-3 div a>span{
+	padding: 3px 10px;
+	font-size: 12px;
+	border: 1px solid #f9a821;
+}
+.provideelistbody .provideelistcontent .col-md-3 div a>span:first-child{
+	background: #f9a821;
+	color: #fff;			
+	margin-right: -5px;
+}
+.provideelistbody .provideelistcontent .col-md-3 div a>span:first-child i{
+	font-size: 12px;
+}
+.provideelistbody .provideelistcontent .col-md-9 .pcontent-right{
+	margin-left: 5%;
+}
+.provideelistbody .provideelistcontent .col-md-9 .pcontent-right h3{
+	font-size: 16px;
+}
+.prolistcontent-bottom .pl-b5-model{
+	margin-bottom: 30px;
+	padding: 40px;
+}
+.prolistcontent-bottom .pl-b5-model p{
+	word-wrap:break-word;
+	font-size: 12px;
+	line-height: 2em;
+}
+.prolistcontent-bottom .pl-b5-model .medel-top{
+	height: 20px;
+	line-height: 20px;
+	font-size: 18px;
+	margin: 0 auto 15px;
+	width: 218px;
+	text-align: center;
+	background: url(../../images/img/Intelligent/Provide/prolisticon.png) no-repeat center;
+}
+.prolistcontent-bottom .pl-b5-model .jigouimg{
+	padding: 10px;
+	border: 1px solid #000;
+	max-width: 200px;
+	max-height: 146px;
+	width: 100%;
+	display: block;
+	/*margin: 0 30px 15px 0;*/
+	margin: 10px auto;
+}
+.prolistcontent-bottom .col-md-7 .pl-b5-model{
+	padding: 40px 15px;
+}
+/*智能生活-养老信息-养老院详情 end*/
+
+
+/*手机版重写公共样式 start*/
+
+.col1-ul{
+	width: 64px;
+	height: 64px;
+	border-radius: 32px;
+	overflow: hidden;
+	transition: all 1s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	/*background: #fff;*/
+}
+.intell-bonnebodyrow .col1-ul li{
+	margin: 0 auto;
+	background: #fff;
+}
+.intell-bonnebodyrow .col1-ul .col1-ulliactive{
+	background: #E30004;
+}
+.intell-bonnebodym{
+	margin-top: 74px;
+}
+.intell-bonnebodyrowm{
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 10px;
+}
+.col1-ulm{
+	position: fixed;
+	z-index: 888;
+	left: 10px;
+	top: 104px;
+}
+.activename{
+	padding: 5px 0;
+}
+.looknum>span{
+	display: inline-block;
+	width: 40%;
+}
+.looknum>span:nth-child(2){
+	text-align: right;
+}
+/*手机版公共样式 end*/

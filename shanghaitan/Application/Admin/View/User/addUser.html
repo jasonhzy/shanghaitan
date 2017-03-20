@@ -1,0 +1,134 @@
+<include file="Public/min-header"/>
+<link href="__PUBLIC__/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/plugins/daterangepicker/moment.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+<div class="wrapper">
+    <!-- Content Header (Page header) -->
+    <include file="Public/breadcrumb"/>
+    <section class="content">
+        <!-- Main content -->
+        <!--<div class="container-fluid">-->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="pull-right">
+                        <a href="javascript:history.go(-1)"  class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+                    </div>
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-list"></i> 用户信息</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="{:U('Admin/User/saveUser')}" method="post">
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <td>姓名:</td>
+                                    <td><input name="name" class="form-control" style="width:40%;" type="text" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td>昵称:</td>
+                                    <td><input name="nickname" class="form-control" style="width:40%;" type="text" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td>头像:</td>
+                                    <td>
+                                        <input class="form-control" style="width:20%;display:inline;"type="text" id="imagetext" name="head_pic" value="{$info.thumb}">
+                                        <input type="button" onClick="GetUploadify(1,'imagetext','head_pic','')"  value="上传图片"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>身高:</td>
+                                    <td><input name="height" class="form-control" style="width:40%;" type="text" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td>出生日期:</td>
+                                    <td>
+                                        <div >
+                                            <div class="input-prepend input-group">
+                                            <span class="add-on input-group-addon">
+                                                    <i class="glyphicon glyphicon-calendar fa fa-calendar">
+                                                    </i>
+                                            </span>
+                                                <input type="text" class="form-control" id ="birthday" name="birthday"  value="" style="width:40%;">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>简介:</td>
+                                    <td><textarea name="dubai" rows="5" cols="50" ></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td>性别:</td>
+                                    <td id="order-status">
+                                        <input name="sex" type="radio" value="0">保密
+                                        <input name="sex" type="radio" value="1">男
+                                        <input name="sex" type="radio" value="2">女
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>所在地:</td>
+                                    <td><input name="city" class="form-control" style="width:40%;" type="text" value=""></td>
+                                </tr>
+                               <!--<tr>
+                                    <td>手机:</td>
+                                    <td><input name="mobile" class="form-control" style="width:40%;" type="text" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td>邮箱:</td>
+                                    <td><input name="email" class="form-control" style="width:40%;" type="text" value=""></td>
+                                </tr>-->
+                                <tr>
+                                    <td>关注总数:</td>
+                                    <td><input name="g_num" class="form-control" style="width:40%;" type="text" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td>粉丝数:</td>
+                                    <td><input name="fans_num" class="form-control" style="width:40%;" type="text" value=""></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <button type="submit" class="btn btn-info pull-right ">
+                                            <i class="ace-icon fa fa-check bigger-110"></i> 保存
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>    <!-- /.content -->
+    </section>
+</div>
+</body>
+<script>
+    $(function(){
+        var now = "{$now}";
+        $('#birthday').daterangepicker({
+            format:"YYYY-MM-DD",
+            singleDatePicker: true,
+            showDropdowns: true,
+            minDate:'1960-01-01',
+            maxDate:now,
+            startDate:now,
+            locale : {
+                applyLabel : '确定',
+                cancelLabel : '取消',
+                fromLabel : '起始时间',
+                toLabel : '结束时间',
+                customRangeLabel : '自定义',
+                daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+                monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月','七月', '八月', '九月', '十月', '十一月', '十二月' ],
+                firstDay : 1
+            }
+        });
+    })
+</script>
+</html>

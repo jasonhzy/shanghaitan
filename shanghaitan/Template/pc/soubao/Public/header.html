@@ -1,0 +1,106 @@
+<link rel="shortcut icon" href="__STATIC__/images/favicon.ico" />
+<link type="text/css" href="__STATIC__/css/reset.css" rel="stylesheet" />
+<link type="text/css" href="__STATIC__/css/iconfont.css" rel="stylesheet" />
+<link type="text/css" href="__STATIC__/css/style.css" rel="stylesheet" />
+<!--[if lt IE 9]>
+<script>
+  (function() {     if (!
+                  /*@cc_on!@*/
+                  0) return;     var e = "abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');     var i= e.length;     while (i--){
+    document.createElement(e[i])
+  }
+  })()
+</script>
+<![endif]-->
+<div class="header">
+  <div class="web-width">
+    <div class="city fl">
+      <strong class="cityname">上海</strong> <a href="javascript:;" class="tab-city">[切换城市]</a>
+      <div class="citylist">
+        <div class="citytitle">可选城市列表</div>
+        <foreach name="quyu" item="v">
+        <dl>
+          <dt>{$v['name']}</dt>
+          <dd>
+            <tpshop sql="SELECT * FROM `__PREFIX__city` where parent_id = $v[id]" key="k" item='v0'>
+            <a class="chengshi" data="{$v0.id}">{$v0['name']}</a>
+            </tpshop>
+          </dd>
+          <div class="clears"></div>
+        </dl>
+        </foreach>
+      </div>
+    </div><!--city/-->
+    <div class="head-lab fr">
+      <a href="javascript:;">登录</a><span>|</span>
+      <a href="javascript:;">注册</a><span>|</span>
+      <a href="javascript:;">vip中心</a>
+      <a href="javascript:;">帮助</a>
+      <div class="head-xiala xuanzhuan">
+        <i class="iconfont icon-liebiao">&#xe610;</i>
+        <span>
+          <tpshop sql="SELECT * FROM `__PREFIX__article_cat` where parent_id = 0" key="k" item='v'>
+             <a href="javascript:;">{$v.cat_name}</a>
+          </tpshop>
+     </span>
+      </div>
+    </div><!--head-lab/-->
+  </div><!--web-width/-->
+</div><!--header/-->
+<div class="logo-searcg-phone">
+  <div class="web-width">
+    <h1 class="logo fl"><a href="index.html"><img src="{$tpshop_config['shop_info_store_logo']}" alt="上海滩网" /></a></h1>
+    <div class="search fl">
+      <div class="search-top">
+        <div class="search-nav xuanzhuan fl">
+          <h2><strong id="seatext">资讯</strong> <i class="iconfont">&#xe61a;</i></h2>
+          <ul>
+            <li>相亲</li>
+            <li>家博会</li>
+            <li>旅游</li>
+            <li>美食</li>
+            <li>亲子</li>
+          </ul>
+        </div>
+        <div class="search-input fl"><input type="text" placeholder="品牌特卖，正品低价" /></div>
+        <div class="searac-sub fr"><a href="javascript:;"><i class="iconfont">&#xe605;</i></a></div>
+      </div><!--search-top/-->
+      <div class="search-down">
+        <a href="javascript:;" class="bg1">家博会</a>
+        <a href="javascript:;" class="bg2">相亲大会</a>
+        <a href="javascript:;" class="bg3">装修报价</a>
+        <a href="javascript:;" class="bg4">买建材</a>
+        <a href="javascript:;" class="bg5">大健康</a>
+      </div><!--search-down/-->
+    </div><!--search/-->
+    <div class="phones">
+      <span>|</span>
+      <a href="javascript:;">售后服务</a><span>|</span>
+      <div class="phone-tel">
+        售后服务:<em>400-960-9991 <i class="iconfont icon-sanjiao">&#xe600;</i></em>
+        <span>400-960-9991</span>
+      </div>
+      <a href="http://www.6665.com/plugin.php?id=appbyme_app:download" target="_blank" class="icon-tel"><i class="iconfont">&#xe737;</i></a>
+      <a href="javascript:;" class="icon-wx">
+        <i class="iconfont">&#xe603;</i>
+        <strong><img src="__STATIC__/images/weixin.jpg" /><span>打开微信扫一扫</span></strong>
+      </a>
+    </div><!--phones/-->
+  </div><!--web-width/-->
+</div><!--logo-searcg-phone/-->
+<div class="nav">
+  <div class="web-width">
+    <ul>
+      <li class="navcur"><a href="javascript:;">首页</a></li>
+      <foreach name="nav" item="v">
+      <li><a href="javascript:;">{$v.name} <i class="iconfont">&#xe61a;</i></a>
+        <div class="chilNav">
+          <tpshop sql="SELECT * FROM `__PREFIX__navigation` where parent_id = $v[id]"  key="k" item='v0'>
+          <a href="javascript:;">{$v0.name}</a>
+          </tpshop>
+        </div>
+      </li>
+      </foreach>
+    </ul>
+  </div><!--web-width/-->
+</div><!--nav/-->

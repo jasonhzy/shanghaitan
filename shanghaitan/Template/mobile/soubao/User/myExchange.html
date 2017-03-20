@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的订单</title>
+</head>
+<body>
+<!-- 头部-s -->
+<include file="User/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/selfc.css" />
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/layer/layer.js"></script>
+<style>
+  .selfformm>div:first-child img{
+    width: 100%;
+    max-width: 100px;
+    max-height: 100px;
+  }
+  .self_convert>div:last-child{
+    font-size: 13px;
+  }
+  .selfformm .col-xs-3,.selfformm .col-xs-6{
+    margin-bottom: 2px;
+  }
+  .selfformm>div:first-child{
+    height: auto;
+    padding: 5px 0;
+    border-bottom: 0;
+    margin-bottom: 10px;
+  }
+  .col-xs-3,.col-xs-2,.col-xs-1 {
+    padding:0;
+  }
+</style>
+<!-- 头部-e -->
+<div class="self_formright">
+<div class="backicon">
+  <a href="JavaScript:history.back(-1);">
+    <i class="icon iconfont">&#xe60b;</i>
+  </a>
+  <span>我的兑换</span>
+</div>
+<div class="row self_centerbody" style="background: #fff;">
+  <!--菜单-->
+  <div class="col-xs-12" style="padding:0;">
+  <div id="duihuan" class=" self_centerright self_formright selfc_grade">
+    <div class="row self_form_top">
+      <div class="col-xs-3">商品</div>
+      <div class="col-xs-1">数量</div>
+      <div class="col-xs-2">积分</div>
+      <div class="col-xs-3">状态</div>
+      <div class="col-xs-3">时间</div>
+    </div>
+    <div class="self_form_bottom_s">
+      <volist name="lists" id="list">
+      <div class="row self_form_bottom self_convert_table">
+        <volist name="list.goods_list" id="good" key="k">
+        <div class="col-xs-3" >
+          <table>
+            <tr>
+              <td colspan="2">
+                <a href="{:U('Mobile/Goods/goodsInfo',array('id'=>$good['goods_id']))}"> <img src="{$good.goods_id|goods_thum_images=50,50}" style="margin-left:0;"/></a>
+                <br/>{$good.goods_name}
+              </td>
+            </tr>
+          </table>
+        </div>
+          <div class="col-xs-1">
+            <p>
+            {$good.goods_num}
+            </p>
+          </div>
+
+        <div class="col-xs-2">
+          <p><span>{$list.total_amount}</span></p>
+        </div>
+        <div class="col-xs-3">
+          <p>
+            <span><if condition="$list['order_status'] eq 0">未发货</if><if condition="$list['order_status'] eq 1">已发货<br/><a onclick="ajax({$list.order_id})"><button>确认收货</button></a></if>
+              <if condition="$list['order_status'] eq 2">已收货<br/><button  class="comment" data1="{$list.order_sn}"   data6="{$list.order_id}" data2 ="{$good.goods_name}" data5="{$good.goods_id}" data3="{$good.exchange_integral}" data4 ="{$list['total_amount']}">立即评价</button></if><if condition="$list['order_status'] eq 3">已完成</if></span>
+          </p>
+        </div>
+        <div class="col-xs-3">
+          <p>
+            <span>{$list.add_time|date="Y-m-d H:i:s",###}</span>
+          </p>
+        </div>
+        </volist>
+      </div>
+      </volist>
+      <div class="page">
+        {$page}
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+    <div class="row self_centerbody me-hidden" style="margin:0;">
+      <div class="self_order_xqdata">
+        <p class="so-xq-tip" style="margin-left:20px;"><b>评价页面</b></p>
+        <table>
+          <tr>
+            <td>订&nbsp;&nbsp;单&nbsp;号：</td>
+            <td>
+              <span class="textcolore30004" id="order"></span>
+            </td>
+          </tr>
+          <tr>
+            <td>订单状态：</td>
+            <td>
+              <span class="textcolore30004">已收货</span>
+            </td>
+          </tr>
+          <tr>
+            <td>积分总计：</td>
+            <td>
+              <span class="textcolore30004" id="goodallmoney"></span>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>商　　品：</td>
+            <td><span id="goodtitle"> </span></td>
+          </tr>
+          <tr>
+            <td>颜　　色：</td>
+            <td><span id="goodcolor">随机</span></td>
+          </tr>
+          <tr>
+            <td>所需积分：</td>
+            <td><span id="price"> </span></td>
+          </tr>
+        </table>
+        <div class="eval-pj pa-to-20 ov-hi" id=""  style="width:100%;margin-left: 10px;box-sizing: border-box;">
+          <form action="{:U('Mobile/User/add_comment')}" data-test="formtest" method="post">
+            <input type="hidden" name="order_id" value="" id="a">
+            <input type="hidden" name="goods_id" value="" id="b">
+            <div class="fwypj"><p>评价与晒图</p></div>
+            <div class="fl" style="width:100%;">
+              <div class="bd-fuwo pa-to-10">
+                <textarea placeholder="可输入10-200字符" name="content" id="content" cols="50" rows="6" class="messagea"></textarea>
+                <div class="textarea-zishu" style="width:100%;">
+                  <span id="tishizishu" class="textcolore30004 tishizishu">&nbsp;</span>&nbsp;
+                  <span class="zishucurrent">0</span>/<span class="zishuall textcolore30004">150</span>&nbsp;
+                </div>
+              </div>
+              <div class="eval-img ov-hi wi457 he130" id="img_container">
+                <div class="ev-img po-re fl" id="add_img">
+                  <img src="" border="0" data7="" data8="" class="ord"  onClick="uploadimg()">
+                </div>
+
+              </div>
+            </div>
+            <div class="fl pa-le-30">
+              <div class="pro-user-score cu-po">
+                <span >商品与描述相符：</span><br/>
+                            <span>
+                                <span class="starRating-area">
+                                    <img onMouseMove="c(this,event)" src="__STATIC__/images/start/stars0.gif" alt="">
+                                    <input type="hidden" id="goods_rank" name="goods_rank" value="0">
+                                </span>
+                            </span>
+                <button class=" di-in-bl hb-merge" onClick="comment_submit(this)" style="float:right;margin-right:15px;">提交</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</body>
+<script>
+  function c(obj,event){
+    //var obj = $(obj);
+    var objTop = getOffsetTop(obj);//对象x位置
+    var objLeft = getOffsetLeft(obj);//对象y位置
+
+    var mouseX = event.clientX+document.body.scrollLeft;//鼠标x位置
+    var mouseY = event.clientY+document.body.scrollTop;//鼠标y位置
+    //计算点击的相对位置
+    var objX = mouseX-objLeft;
+    var objY = mouseY-objTop;
+    clickObjPosition = objX + "," + objY;
+    if(objX < 13 && objX > 0){
+      $(obj).attr('src','__STATIC__/images/start/stars1.gif');
+      $(obj).next().val(1);
+    }
+    if(objX < 28 && objX > 13){
+      $(obj).attr('src','__STATIC__/images/start/stars2.gif');
+      $(obj).next().val(2);
+    }
+    if(objX < 43 && objX > 28){
+      $(obj).attr('src','__STATIC__/images/start/stars3.gif');
+      $(obj).next().val(3);
+    }
+    if(objX < 58 && objX > 43){
+      $(obj).attr('src','__STATIC__/images/start/stars4.gif');
+      $(obj).next().val(4);
+    }
+    if(objX < 74 && objX > 58){
+      $(obj).attr('src','__STATIC__/images/start/stars5.gif');
+      $(obj).next().val(5);
+    }
+    //alert(clickObjPosition);
+  }
+
+  function getOffsetTop(obj){
+    var tmp = obj.offsetTop;
+    var val = obj.offsetParent;
+    while(val != null){
+      tmp += val.offsetTop;
+      val = val.offsetParent;
+    }
+    return tmp;
+  }
+
+  function getOffsetLeft(obj){
+    var tmp = obj.offsetLeft;
+    var val = obj.offsetParent;
+    while(val != null){
+      tmp += val.offsetLeft;
+      val = val.offsetParent;
+    }
+    return tmp;
+  }
+</script>
+<script>
+  $(function(){
+    $(".messagea").on('keyup',function(){
+      var zishucount = parseInt($(".messagea").val().length);
+      var allzishu =parseInt($(".zishuall").text());
+      $(".zishucurrent").text(zishucount);
+      if(zishucount>allzishu||zishucount==allzishu){
+        $(".tishizishu").text('字数过长！');
+        $(this).val($(this).val().substring(0,150));
+        $(".zishucurrent").text('150');
+      }
+      else if(zishucount<allzishu){
+        $(".tishizishu").text('');
+      }
+    });
+    //点击订单详情传值显示我的订单
+    $(".comment").click(function(){
+      var order_sn = $(this).attr('data1');
+      //alert(order_sn);
+      var goods_name = $(this).attr('data2');
+      var price = $(this).attr('data3');
+      var total_price = $(this).attr('data4');
+      var a =  $(this).attr('data6');
+      var b =  $(this).attr('data5');
+      var dv = 'div_'+a+'_'+b;
+      $(".pa-to-20").attr('id',dv);
+      $("#a").attr('value',a);
+      $("#b").attr('value',b);
+      $(".ord").attr('data7',a);
+      $(".ord").attr('data8',b);
+      $("#order").text(order_sn);
+      $("#goodtitle").text(goods_name);
+      $("#price").text(price);
+      $("#goodallmoney").text(total_price);
+      $('.self_formright').addClass('me-hidden');
+      $('.self_centerbody').removeClass('me-hidden');
+    });
+  })
+  //取消订单
+  function cancel_order(id){
+    if(!confirm("确定取消订单?"))
+      return false;
+    location.href = "/index.php?m=Mobile&c=User&a=cancel_order&id="+id;
+  }
+  var now_access;
+  function uploadimg(){
+    var data7 = $(".ord").attr('data7');
+    var data8 = $(".ord").attr('data8');
+    var div = "#div_"+data7+"_"+data8;
+    now_access = div;
+    //检查是否超过限制数量
+    GetUploadify2(3,'','comment','add_img')
+  }
+  function delimg(file,t){
+    $.get(
+            "/index.php?m=Admin&c=Uploadify&a=delupload",{action:"del", filename:file},function(){}
+    );
+    $(t).remove();
+    $('#img_container').find('#add_img').show();
+  }
+  function add_img(str){
+    var tpl_list = String(str).split(',');
+    for(var i=0;i<tpl_list.length;i++){
+      //判断是否超过3个图片
+      var obj = $(now_access).find('.comment_img');
+      if(obj.length >= 3)
+        return false;
+      var tpl = '<div class="ev-img po-re fl comment_img" onclick="delimg(\'$IMG\',this)"><input type="hidden" name="comment_img[]" value="$IMG"><img src="$IMG" border="0" alt=""></div>';
+      var str_do = tpl.replace(/\$IMG/g,tpl_list[i]);
+      $(now_access).find('#img_container').find('#add_img').before(str_do);
+    }
+  }
+
+  function comment_submit(t) {
+    //表单对象
+    var form = $(t).parent().parent().parent();
+    var goods_rank = parseInt($(form).find('#goods_rank').val());
+    var text = $(form).find("#content").val();
+    //alert(text);
+    if (text.length < 10) {
+      layer.msg('最少输入10个字符', {icon: 1, time: 2000});
+      //location.reload();
+      return false;
+    }
+    if (!goods_rank > 0) {
+      //alert('请为商品评分');
+      layer.msg('请为商品评分', {icon: 1, time: 2000});   //2秒关闭（如果不配置，默认是3秒）
+      return false;
+    }
+
+    var data = $(form).serialize();
+    $.ajax({
+      type: "POST",
+      url: "{:U('Mobile/User/add_excomment')}",
+      data: data,// 你的formid 搜索表单 序列化提交
+      success: function (data) {
+        data = jQuery.parseJSON(data);
+        //console.log(data);
+        if (data.status == 1) {
+          //评论成功
+          //alert('评论成功');
+          layer.msg('评论成功', {
+            icon: 1,
+            time: 2000 //2秒关闭（如果不配置，默认是3秒）
+          }, function () {
+            location.reload();
+          });
+          //$(form).parent().remove();
+        } else {
+          $(form).parent().remove();
+          layer.alert(data.msg, {icon: 2}); //alert(data.msg);
+        }
+      }
+    });
+  }
+  function ajax(a){
+    $.ajax({
+      type:"post",
+      url:"/index.php?m=Mobile&c=User&a=ajaxStatus",
+      data:{id:a},
+      dataType:"json",
+      success:function(re){
+        if(re){
+          alert('该订单确认收货完成');
+          location.reload();
+        }
+      }
+    })
+  }
+</script>
+</html>

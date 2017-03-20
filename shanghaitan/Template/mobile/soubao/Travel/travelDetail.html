@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>旅居服务</title>
+  <style TYPE="text/css">
+    <!--
+    A:link{text-decoration:none}
+    A:visited{text-decoration:none;color: #000;}
+    A:hover {color: #000;text-decoration:underline}
+    -->
+    table td{
+      padding:10px 0 !important;
+    }
+  </style>
+</head>
+<body>
+<include file="Public/header"/>
+<link rel="stylesheet" href="__STATIC__/css/css/sojourn.css" />
+<link rel="stylesheet" href="__STATIC__/js/js/spinner/jquery.spinner.css" />
+<div class="backicon">
+  <a href="JavaScript:history.back(-1);location.reload();">
+    <i class="icon iconfont">&#xe60b;</i>
+  </a>
+  <span>我要预定</span>
+</div>
+<div class="sojournbody">
+  <div class="sojournbody-list2">
+    <div class="sj-list2-top">
+					<span>
+						<i class="icon iconfont">&#xe602;</i>
+						我要预定
+						<i class="icon iconfont">&#xe602;</i>
+					</span>
+    </div>
+    <div class="row sj-list2-bottom">
+      <div class="col-md-5">
+        <div class="sj-list2-bottom-left sj-list2-bottom-right">
+          <p>
+            <b>旅游公司</b>
+								<span class="floatright">
+									报价：
+									<span class="textcolore30004"><span>{$arr.travel_bprice}</span>元/成人</span>
+									<span class="textcolore30004"><span>{$arr.travel_sprice}</span>元/儿童</span>
+								</span>
+          </p>
+          <p>
+            <span>{$arr.travel_name}&nbsp;&nbsp;安全交易</span>
+            <span class="floatright textcolore30004">郑州出发</span>
+          </p><br />
+          <p>提前报名：不限日期</p>
+          <div class="sl2-bl-b">
+            <table>
+              <tr>
+                <td colspan="3" style="min-width:40px;">选择班期：</td>
+                <td colspan="3">
+                  <select name="schedule_name" id="select">
+                    <foreach name="s_arr" item="v">
+                    <option value="{$v.schedule_id}">{$v.schedule_name}</option>
+                    </foreach>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="min-width:40px;">预定数量：</td>
+                <td colspan="2">成人</td><td><input type="text" class="spinner"  id="spinner1" value=""/></td>
+                <td colspan="2">儿童</td><td><input type="text" class="spinner"  id="spinner2" value=""/></td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <a href="#" id="order" class="redbtn" style="padding:6px 10px;">立即预约</a>
+                </td>
+                <td colspan="3">
+                  已有<span class="textcolore30004" id="num"></span>人报名参加
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--旅游路线 start-->
+    <div class="sj-list2-top">
+					<span>
+						<i class="icon iconfont">&#xe602;</i>
+						旅游路线
+						<i class="icon iconfont">&#xe602;</i>
+					</span>
+    </div>
+    <div class="sj-xq-luxian">
+      <img src="__STATIC__/images/img/sojourn/xq/lvmap.png" />
+    </div>
+    <!--旅游路线 end-->
+  </div>
+</div>
+
+<include file="Public/footer"/>
+</body>
+<script src="__STATIC__/js/js/spinner/jquery.spinner.js"></script>
+<script type="text/javascript">
+  $('.spinner').spinner(1);
+  $(function(){
+    var id = $("#select").val();
+    //alert(person);
+    $.ajax({
+      type:"post",
+      data:{id:id},
+      url:"/index.php?m=Mobile&c=Travel&a=ajaxTravel",
+      dataType:"json",
+      success:function(re){
+          if(re==null){
+              $("#num").text(0);
+          }else{
+              $("#num").text(re);
+          }
+      }
+    })
+    $("#order").click(function(){
+        var id = $("#select").val();
+        var person = $("#spinner1.value").val();
+        var child = $("#spinner2.value").val();
+     if(id==null){
+            alert('班期不能为空!');
+            return false;
+        }
+        $.ajax({
+          type:"post",
+          url:"/index.php?m=Mobile&c=Travel&a=orderDetail",
+          data:{person:person,child:child,id:id},
+          dataType:"json",
+          success:function(re) {
+            if (re) {
+              location.href = "/index.php?m=Mobile&c=Travel&a=orderDetail&tid=5";
+            }
+          }
+        })
+    })
+  });
+</script>
+<!--计数器 end-->
+<script src="__STATIC__/js/js/pic_tab.js"></script>
+<script type="text/javascript">
+  jq('#demo1').banqh({
+    box:"#demo1",//总框架
+    pic:"#ban_pic1",//大图框架
+    pnum:"#ban_num1",//小图框架
+    prev_btn:"#prev_btn1",//小图左箭头
+    next_btn:"#next_btn1",//小图右箭头
+    pop_prev:"#prev2",//弹出框左箭头
+    pop_next:"#next2",//弹出框右箭头
+    prev:"#prev1",//大图左箭头
+    next:"#next1",//大图右箭头
+    pop_div:"#demo2",//弹出框框架
+    pop_pic:"#ban_pic2",//弹出框图片框架
+    pop_xx:".pop_up_xx",//关闭弹出框按钮
+    mhc:".mhc",//朦灰层
+    autoplay:true,//是否自动播放
+    interTime:5000,//图片自动切换间隔
+    delayTime:400,//切换一张图片时间
+    pop_delayTime:400,//弹出框切换一张图片时间
+    order:0,//当前显示的图片（从0开始）
+    picdire:true,//大图滚动方向（true为水平方向滚动）
+    mindire:true,//小图滚动方向（true为水平方向滚动）
+    min_picnum:8,//小图显示数量
+    pop_up:true//大图是否有弹出框
+  })
+</script>
+</html>

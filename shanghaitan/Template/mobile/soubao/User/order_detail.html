@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>订单详情</title>
+</head>
+<body>
+<!-- 头部-s -->
+<include file="User/header" />
+<link href="__STATIC__/css/common.css" rel="stylesheet" type="text/css" />
+<!-- 头部-e -->
+<div class="backicon">
+  <a href="JavaScript:history.back(-1);">
+    <i class="icon iconfont">&#xe60b;</i>
+  </a>
+  <span>订单详情</span>
+</div>
+<div class="wrap" style="width:100%;margin:0;">
+  <!-- order details star -->
+  <div class="main order_details">
+    
+    <!-- order base info start -->
+    <div class="order_tip">
+      <div class="order_tip_tit clearfix">
+        <h3> 订单号：
+          <span class="num">{$order_info.order_sn}</span>
+        </h3>
+         
+      </div>
+      <div class="order_tip_info">
+        <div class="info_box">
+          <div class="info_L"> 订单状态： </div>
+          <div class="info_R">
+            <span class="df">{$order_info.order_status_desc}</span>
+          </div>
+        </div>
+        <div class="info_box">
+          <div class="info_L"> 应付金额： </div>
+          <div class="info_R">
+            <span class="num">￥{$order_info.order_amount}</span>
+            <span class="way_tips" style="display:inline-block;">{$order_info.pay_name}</span>            
+          </div>
+        </div>
+        <div class="info_box">
+          <div class="info_L"> 收货地址： </div>
+          <div class="info_R">{$order_info.consignee} {$order_info.mobile} {$region_list[$order_info['province']]['name']}，{$region_list[$order_info['city']]['name']}，
+                                {$region_list[$order_info['district']]['name']}，{$order_info.address} </div>
+        </div>
+      </div>
+    </div>
+    <div class="order_info">
+      <div class="ui_tab">
+        <ul class="ui_tab_nav">
+          <li class="opeating" id="opeating_1" style="display:block;">          
+            <if condition="$order_info.cancel_btn eq 1"><button class="btn_pay" onClick="cancel_order({$order_info.order_id})">取消订单</button></if>
+            <if condition="$order_info.pay_btn eq 1"><button class="btn_pay"  onclick="location.href='{:U('/Home/Cart/cart4',array('order_id'=>$order_info[order_id]))}'">立即支付</button></if>                
+            <if condition="$order_info.receive_btn eq 1"><button class="btn_pay"  onClick=" if(confirm('你确定收到货了吗?')) location.href='{:U('Home/User/order_confirm',array('id'=>$order_info['order_id']))}'">收货确认</button></if>    
+          </li>
+        </ul>
+        <div class="ui_tab_content">
+            <h3>商品信息</h3>
+            <div class="details_list">
+              <div class="details_list_tit clearfix">
+                <ul style="padding:0;">
+                  <li class="col_w40" style="width:30%;">商品名称</li>
+                  <li class="col_w15" style="width:20%;">规格</li>
+                  <li class="col_w15" style="width:30%;">价格 / 数量</li>
+                  <li class="col_w15" style="width:20%;">合计/元</li>
+                </ul>
+              </div>
+              <div class="details_list_cont">
+              
+              <volist name="order_info.goods_list" id="good">
+                <div class="item_details">
+                  <ol class="clearfix" style="padding:0;">
+                    <li class="col_w40" style="width:30%;">
+                      <div class="item_container clearfix">
+                          <a href="{:U('Mobile/Goods/goodsDetail',array('id'=>$good['goods_id']))}" class="item_img" >
+	                          <img src="{$good.goods_id|goods_thum_images=78,78}"/><br/>
+                            <a href="{:U('Mobile/Goods/goodsDetail',array('id'=>$good['goods_id']))}" class="order_name" >{$good.goods_name}</a>
+                          </a>
+                       <!-- <span   style="height:60px;line-height:60px;" >
+                          <a href="{:U('Mobile/Goods/goodsDetail',array('id'=>$good['goods_id']))}" class="order_name" >{$good.goods_name}</a> </span>-->
+                      </div>
+                    </li>
+                    <li class="col_w15" style="width:20%;line-height:60px;">{$good.spec_key_name}</li>
+                    <li class="col_w15 num" style="width:30%;line-height:60px;">{$good.member_goods_price} *{$good.goods_num}</li>
+                    <li class="col_w15 num" style="width:20%;line-height:60px;">{$good['member_goods_price'] * $good['goods_num']}</li>
+                  </ol>
+                </div>
+               </volist>				                                 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ui tab end --> 
+    </div>
+  </div>
+  <!-- order details end --> 
+  
+</div>
+<div style="clear: both;"></div>
+<script>
+    //取消订单
+    function cancel_order(id){
+        if(!confirm("确定取消订单?"))
+            return false;
+        location.href = "/index.php?m=Mobile&c=User&a=cancel_order&id="+id;
+    }
+</script>
+</body>
+</html>

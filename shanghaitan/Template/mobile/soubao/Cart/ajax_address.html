@@ -1,0 +1,36 @@
+<foreach name="address_list" item="v"  key="k">
+
+        <if condition="$v[is_default] eq 1"> <!--默认选中的地址-->
+             <div class="order-address-list address_current">
+                    <table width="100%" cellspacing="0" cellpadding="0" border="1" class="address">
+                          <tbody>
+                              <tr>
+                                <td  class="address_id"><input type="radio" onclick="swidth_address(this);" name="address_id" value="{$v[address_id]}" checked="checked" /></td>
+                                <td  width="15%" class="consignee"><b>收货人:<br/>{$v[consignee]}</b></td>
+                                <td   width="25%" class="address2"><span>地址:{$regionList[$v[province]]} {$regionList[$v[city]]} {$v[address]}</span></td>
+                                <td  width="20%"class="mobile"><span>电话：<br/>{$v[mobile]}</span></td>
+                                <td ><span width="10%">默认地址</span></td>
+                                <!--<td ><span><a onclick="add_edit_address({$v[address_id]});">修改</a></span></td>-->
+                                <td><a onclick="del_address({$v[address_id]});">删除</a></td>
+                              </tr>                         
+                          </tbody>
+                      </table>    
+                </div>                
+        <else />
+               <div class="order-address-list">
+                    <table width="100%" cellspacing="0" cellpadding="0" border="1" class="address">
+                      <tbody>
+                          <tr>
+	                            <td  class="address_id"><input type="radio" onclick="swidth_address(this);" name="address_id" value="{$v[address_id]}" /></td>
+                                <td  width="15%" class="consignee"><b>收货人:{$v[consignee]}</b></td>
+                                <td  width="25%" class="address2"><span>地址:{$regionList[$v[province]]} {$regionList[$v[city]]} {$v[address]}</span></td>
+                                <td  width="20%" class="mobile"><span>电话：{$v[mobile]}</span></td>
+                                <!--<td  ><span><a onclick="add_edit_address({$v[address_id]});">修改</a></span></td>-->
+                                <td><a onclick="del_address({$v[address_id]});">删除</a></td>
+                          </tr>                         
+                       </tbody>
+                     </table>    
+                </div>    
+        </if>
+        
+</foreach>

@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>生活服务</title>
+  <style TYPE="text/css">
+    <!--
+    A:link{text-decoration:none}
+    A:visited{text-decoration:none;color: #000;}
+    A:hover {color: #000;text-decoration:underline}
+    -->
+  </style>
+</head>
+<body>
+<include file="Public/header"/>
+<link rel="stylesheet" href="__STATIC__/css/css/intell.css" />
+<div class="backicon">
+  <a href="JavaScript:history.back(-1);">
+    <i class="icon iconfont">&#xe60b;</i>
+  </a>
+  <span>活动详情</span>
+</div>
+<div class="intel-sayhellobody intel-datingactivebody" style="padding: 0 10px;margin-top: 50px;">
+  <table class="intel-datingactivetable">
+    <thead>
+    <tr>
+      <td colspan="2">
+        <b  class="activename">活动名称:　{$arr.activity_name}</b><br/>
+        <div class="looknum">
+          <span class="zistyle">
+              查看:<span class="textcolore30004">{$arr.activity_looknum}</span>
+          </span>
+          <span class="zistyle">
+              回复<span class="textcolore30004">{$num}</span>
+          </span>
+        </div>
+      </td>
+    </tr>
+    </thead>
+    <tbody>
+    <!--当前用户区块 start-->
+    <tr>
+      <td>
+        <p class="username"><b>{$user_arr.nickname}</b></p>
+        <a <if condition="$user_arr['user_id'] neq $user_id"> href="{:U('Mobile/Life/userDetail',array('id'=>$v0['user_id']))}" <else/>href="{:U('Mobile/User/index')}"</if>>
+          <div class="userimg">
+            <img src="{$user_arr.head_pic}" />
+          </div>
+        </a>
+      </td>
+      <td>
+        <div class="borderdatetime">
+          发表于
+          <span>{$arr.activity_addtime|date="Y-m-d H:i:s",###}</span>
+        </div>
+        <p>
+          {$arr.content}
+        </p>
+      </td>
+    </tr>
+    <!--当前用户区块 end-->
+    <!--评论用户 start-->
+    <foreach name="c_arr" item="v">
+    <tr>
+      <tpshop sql="SELECT * FROM `__PREFIX__users` WHERE `user_id` = $v[user_id] "  key="k" item='v0'>
+      <td>
+        <p class="username"><b>{$v0.nickname}</b></p>
+        <a <if condition="$v0['user_id'] neq $user_id">href="{:U('Mobile/Life/userDetail',array('id'=>$v0['user_id']))}"<else/>href="{:U('Mobile/User/index')}"</if>>
+          <div class="userimg">
+            <img src="{$v0.head_pic}" />
+          </div>
+        </a>
+      </td>
+      </tpshop>
+      <td>
+        <div class="borderdatetime">
+          评论于
+          <span>{$v.add_time|date="Y-m-d H:i:s",###}</span>
+        </div>
+        <p>
+          {$v.content}
+        </p>
+      </td>
+    </tr>
+    </foreach>
+    <!--评论用户 end-->
+    </tbody>
+  </table>
+  <div class="backlist">
+    <a href="{:U('Mobile/Life/lifelist/id/3')}" class="redbtn">返回列表</a>
+  </div>
+  <div class="page">
+  {$page}
+  </div>
+
+  <div class="borderc9c9c9 textareaborder">
+    <textarea class="messagea"  name="content" id="message"  value="" placeholder="登陆后方可发表评论,不能含有语言工具"></textarea>
+    <div class="textarea-zishu">
+      <span id="tishizishu" class="textcolore30004 tishizishu">&nbsp;</span>&nbsp;
+      <span class="zishucurrent">0</span>
+      /
+      <span class="zishuall textcolore30004">150</span>
+      &nbsp;
+      <input type="hidden" name="activity_id" id="act_id" value="{$arr['activity_id']}"/>
+      <input  type="button"  value="评论"  id="comment"/>
+    </div>
+  </div>
+  </div>
+<include file="Public/footer"/>
+</body>
+<script>
+  $(function(){
+    //获取文本框中的字数多余的截取
+    $(".messagea").on('keyup',function(){
+      var zishucount = parseInt($(".messagea").val().length);
+      var allzishu =parseInt($(".zishuall").text());
+      $(".zishucurrent").text(zishucount);
+      if(zishucount>allzishu||zishucount==allzishu){
+        $(".tishizishu").text('字数过长！');
+        $(this).val($(this).val().substring(0,150));
+        $(".zishucurrent").text('150');
+      }
+      else if(zishucount<allzishu){
+        $(".tishizishu").text('');
+      }
+    });
+
+    //点击评论按钮
+    $("#comment").click(function(){
+      var mes = $('#message').val();
+      var id = $('#act_id').val();
+      if(mes == ''){
+        alert('评论内容不能为空');
+      }else{
+        if(!{$user_id}){
+          alert('你还没有登录，请登录');
+          location.href="/index.php?m=Mobile&c=User&a=login";
+        }else{
+          $.ajax({
+            type:"post",
+            url:"/index.php?m=Mobile&c=Life&a=addComment",
+            data:{content:mes,activity_id:id},
+            dataType:"json",
+            success:function(re){
+              if(re){
+                alert('评论成功');
+                location.href="/index.php?m=Mobile&c=Life&a=activityDetail&id="+{$arr.activity_id};
+              }
+            }
+          })
+        }
+      }
+
+    });
+
+  });
+</script>
+</html>

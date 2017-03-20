@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width,initial-scale=0.5,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>{$tpshop_config['shop_info_store_name']}</title>
+</head>
+<style>
+    .indexmobile{
+        width: 100%;
+        position: fixed;
+        z-index: 9999;
+    }
+    .login{
+        border: 1px solid #f00;
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        border-radius: 50%;
+        position: absolute;
+        right: 15px;
+        margin-top: 15px;
+    }
+    .b6 .b4list{
+        max-width: 60px !important;
+        padding: 0 10px;
+    }
+    .b6 .b4listdx img{
+        max-width: 30px !important;
+    }
+</style>
+<body>
+<include file="Public/header"/>
+<section id="sucaihuo" class="dd_fullscreenslider">
+        <div class="slidewrapper">
+            <div class="slide">
+                <div class="banner_content" style="margin:0 auto;">
+                    <div class="banner1left" style="display: inline-block;">
+                        <img src="__STATIC__/images/img/index/yinhaitang.png" />
+                        <img src="__STATIC__/images/img/index/yianhaitang.1_01.png" />
+                        <img src="__STATIC__/images/img/index/erweima.jpg" style="float:left;"/>
+                        <img src="__STATIC__/images/img/index/XTZJ.jpg" style="width:60px;float:left;margin-left:25px;"/>
+                    </div>
+                    <!--<div class="bannerright">
+                        <img src="__STATIC__/images/img/index/man.png" />
+                    </div>-->
+                </div>
+                <img src="__STATIC__/images/img/index/indexbanner1.jpg" style="height:100%;"/>
+            </div>
+        <div class="slide">
+            <div class="banner_content banner2_content">
+                <div><img src="__STATIC__/images/img/index/pingtai.png" /></div>
+                <div><img src="__STATIC__/images/img/index/pingtai.1.png" /></div>
+                <ul>
+                    <li>
+                        <a href="{:U('Mobile/Goods/yangLao/id/853/cid/8')}">
+                            <div class="waiborder">
+                                <div>
+                                    <img src="__STATIC__/images/img/index/banner2-icon.png" />
+                                </div>
+                            </div>
+                        </a>
+                        <div>
+                            <h4>智能监护</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{:U('Mobile/Goods/yangLao/id/853/cid/8')}">
+                            <div class="waiborder">
+                                <div>
+                                    <img src="__STATIC__/images/img/index/banner2-icon2.png" />
+                                </div>
+                            </div>
+                        </a>
+                        <div>
+                            <h4>健康管理</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{:U('Mobile/Goods/yangLao/id/853/cid/8')}">
+                            <div class="waiborder">
+                                <div>
+                                    <img src="__STATIC__/images/img/index/banner2-icon3.png" />
+                                </div>
+                            </div>
+                        </a>
+                        <div>
+                            <h4>云呼叫中心</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{:U('Mobile/Travel/travelList/cid/2')}">
+                            <div class="waiborder">
+                                <div>
+                                    <img src="__STATIC__/images/img/index/banner2-icon4.png" />
+                                </div>
+                            </div>
+                        </a>
+                        <div>
+                            <h4>旅居服务</h4>
+                        </div>
+                    </li>
+                  <!--  <li>
+                        <a href="{:U('Home/Goods/yangLao/id/853/cid/8')}">
+                            <div class="waiborder">
+                                <div>
+                                    <img src="__STATIC__/images/img/index/banner2-icon5.png" />
+                                </div>
+                            </div>
+                        </a>
+                        <div>
+                            <h4>营养膳食</h4>
+                            <a href="#n">长期照护</a>
+                            <a href="#n">日间照料</a>
+                        </div>
+                    </li>-->
+                </ul>
+            </div>
+            <img src="__STATIC__/images/img/index/banner2.jpg" style="height:100%;"/>
+        </div>
+        <div class="slide">
+            <div class="banner_content banner3_content">
+                <div><img src="__STATIC__/images/img/index/gaizao.png" /></div>
+                <ul>
+                    <li>
+                        <a href="{:U('Mobile/Goods/goodsList/id/850/cid/6')}">
+                            <div>
+                                <img src="__STATIC__/images/img/index/banner3-icon1.png" />
+                                <div>
+                                    <span>适老产品</span>
+                                    <span>卧室改造</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:U('Mobile/Goods/goodsList/id/851/cid/6')}">
+                            <div>
+                                <img src="__STATIC__/images/img/index/banner3-icon2.png" />
+                                <div>
+                                    <span>适老产品</span>
+                                    <span>浴室改造</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:U('Mobile/Goods/goodsList/id/852/cid/6')}">
+                            <div>
+                                <img src="__STATIC__/images/img/index/banner3-icon3.png" />
+                                <div>
+                                    <span>适老产品</span>
+                                    <span>电动移位机</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <img src="__STATIC__/images/img/index/banner3.jpg" style="height:100%;"/>
+        </div>
+        <div class="slide" style="position: relative;">
+            <div class="banner_content banner4_content">
+                <img src="__STATIC__/images/img/index/wenhua.png" />
+                <p>
+                    一部回忆录，是老人留下身影<br />
+                    与精神财富的最佳选择，是晚<br />
+                    辈铭记老人与孝敬老人的特殊<br />
+                    方式......
+                </p>
+                <div class="b4left">
+                    <div><img src="__STATIC__/images/img/index/banner4-iconline.png" /></div>
+                    <div class="b4list b4list1">
+                        <div><img src="__STATIC__/images/img/index/banner4iconred.gif"/></div>
+						<a href="{:U('Mobile/Article/index/cid/4')}">
+                        <div class="b4listdx b4list1dx">
+                            <div class=""></div>
+                            <img src="__STATIC__/images/img/index/jia.png" />
+                        </div>
+						</a>
+                    </div>
+                    <div><img src="__STATIC__/images/img/index/banner4-iconline.png" /></div>
+                    <div class="b4list b4list2">
+                        <br />
+                        <div><img src="__STATIC__/images/img/index/banner4iconred.gif"/></div>
+						<a href="{:U('Mobile/Article/index/cid/4')}">
+                        <div class="b4listdx b4list2dx">
+                            <div class=""></div>
+                            <img src="__STATIC__/images/img/index/qi.png" />
+                        </div>
+						</a>
+                    </div>
+                    <div><img src="__STATIC__/images/img/index/banner4-iconline.png" /></div>
+                    <div class="b4list b4list3">
+                        <div><img src="__STATIC__/images/img/index/banner4iconred.gif"/></div>
+						<a href="{:U('Mobile/Article/index/cid/4')}">
+                        <div class="b4listdx b4list3dx">
+                            <div></div>
+                            <img src="__STATIC__/images/img/index/xiang.png" />
+                        </div>
+						</a>
+                    </div>
+                    <div><img src="__STATIC__/images/img/index/banner4-iconline.png" /></div>
+                </div>
+            </div>
+            <img src="__STATIC__/images/img/index/banner4.jpg" style="height:100%;"/>
+        </div>
+        <div class="slide">
+            <div class="banner_content banner5_content">
+                <div><img  src="__STATIC__/images/img/index/shenghuo.png"/></div>
+                <ul>
+                    <li>
+                        <a href="{:U('Mobile/Life/lifeList/cid/3')}">
+                            <div  class="b5listborder">
+                                <div>
+                                    <img src="__STATIC__/images/img/index/banner5list1.png"/>
+                                </div>
+                            </div>
+                            <div>
+                                <h3>家政服务</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:U('Mobile/Life/lifeList/id/3/cid/3')}">
+                            <div  class="b5listborder">
+                                <div>
+                                    <img src="__STATIC__/images/img/index/banner5list2.png"/>
+                                </div>
+                            </div>
+                            <div>
+                                <h3>交友沙龙</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:U('Mobile/Life/lifeList/id/4/cid/3')}">
+                            <div class="b5listborder">
+                                <div>
+                                    <img src="__STATIC__/images/img/index/banner5list3.png"/>
+                                </div>
+                            </div>
+                            <div>
+                                <h3>健康引导</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:U('Mobile/Life/lifeList/id/4/cid/3')}">
+                            <div class="b5listborder">
+                                <div>
+                                    <img src="__STATIC__/images/img/index/banner5list4.png"/>
+                                </div>
+                            </div>
+                            <div>
+                                <h3>养老信息</h3>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <img src="__STATIC__/images/img/index/banner5.jpg" style="height:100%;"/>
+        </div>
+        <div class="slide" style="position: relative;">
+            <div class="banner_content banner4_content b6">
+                <img src="__STATIC__/images/img/index/lvju.png" />
+                <p>
+									旅居养老，是度假养老<br />
+                                    和观光疗养的结合，让<br />
+                                    长者结伴走天下，享受<br />
+                                    特色养生、医疗保健、<br />
+                                    旅游观光……
+                </p>
+                <div class="b4left">
+                    <div><img src="__STATIC__/images/img/index/banner4-iconline.png" /></div>
+                    <div class="b4list b6list1">
+                         <div><img src="__STATIC__/images/img/index/banner4iconred.gif"/></div>
+                        <a href="{:U('Mobile/Travel/travelList/cid/2')}"><div class="b4listdx b6list1dx">
+                            <div class=""></div>
+                          <!--<img src="__STATIC__/images/img/index/cun.png" />-->
+                        </div>
+                        </a>
+                    </div>
+
+                    <div><img src="__STATIC__/images/img/index/banner4-iconline.png" /></div>
+
+                    <div class="b4list b6list2">
+                        <br />
+                        <div><img src="__STATIC__/images/img/index/banner4iconred.gif"/></div>
+                        <a href="{:U('Mobile/Travel/travelList/id/3/cid/2')}">
+                        <div class="b4listdx b6list2dx">
+                            <div></div>
+                            <img src="__STATIC__/images/img/index/xia.png" />
+                        </div>
+                        </a>
+                    </div>
+
+                    <div><img src="__STATIC__/images/img/index/banner4-iconline.png" /></div>
+
+                    <div class="b4list b6list3">
+                        <div><img src="__STATIC__/images/img/index/banner4iconred.gif"/></div>
+                        <a href="{:U('Mobile/Travel/travelList/id/4/cid/2')}">
+                        <div class="b4listdx b6list3dx">
+                            <div></div>
+                            <img src="__STATIC__/images/img/index/qiu.png" />
+                        </div>
+                        </a>
+                    </div>
+
+                    <div><img src="__STATIC__/images/img/index/banner4-iconline.png" /></div>
+
+                    <div class="b4list b6list4">
+                        <br />
+                        <div><img src="__STATIC__/images/img/index/banner4iconred.gif"/></div>
+                        <a href="{:U('Mobile/Travel/travelList/id/5/cid/2')}">
+                        <div class="b4listdx b6list4dx">
+                            <div></div>
+                            <img src="__STATIC__/images/img/index/dong.png" />
+                        </div>
+                        </a>
+                    </div>
+                    <div><img src="__STATIC__/images/img/index/banner4-iconline.png" /></div>
+                </div>
+            </div>
+            <img src="__STATIC__/images/img/index/banner6.jpg" style="height:100%;"/>
+            <div class="banner6foot">
+                <div>
+                    <span class="b6textleft">©2016 银海棠 京ICP备13032113 京公网安备11010802013311</span>
+                </div>
+            </div>
+        </div>
+        </div>
+</section>
+<!--<div style="position: fixed;bottom:15px;right: 15px;z-index: 99999;"><audio controls="controls" width="0" height="0" id="bgMusic">
+    <source src="{$arr.src}" type="audio/mp3" />
+    <embed width="0" height="0" src="" autostart="true"/>
+</audio></div>-->
+    <script>
+    var fss;
+    var index=0;
+    $(function() {
+        fss = new ddfullscreenslider({
+            sliderid: 'sucaihuo',
+            onslide: function($slide, index) {
+                index = index;
+                $('.slide').eq(index).addClass('slideleft');
+                $('.slide').eq(index).siblings().removeClass('slideleft');
+            }
+        });
+        var audio = document.getElementById("bgMusic");
+        audio.play();
+    });
+</script>
+</body>
+</html>

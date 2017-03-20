@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的留言</title>
+
+</head>
+
+<body>
+<!-- 头部-s -->
+<include file="User/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/selfc.css" />
+<!-- 头部-e -->
+<div class="backicon">
+  <a href="JavaScript:history.back(-1);">
+    <i class="icon iconfont">&#xe60b;</i>
+  </a>
+  <span>社交留言</span>
+</div>
+<div class="row  self_centerbody">
+  <div class="col-xs-12">
+    <div  class=" self_centerright self_formright self_msg_list">
+      <div class="row self_form_top slef_my_message_top">
+        <b>留言信息</b>
+      </div>
+      <div class="self_form_bottom_s">
+        <foreach name="arr" item="v">
+        <div class="borderbottomca self_scoity_msg">
+          <table>
+            <tr>
+              <tpshop sql="SELECT * FROM `__PREFIX__users` WHERE `user_id` = $v[user_id] "  key="k" item='v0'>
+              <td>
+                <img src="{$v0.head_pic}" style="width:65px;height:65px;"/>
+              </td>
+              <td>
+                <div><b>{$v0[nickname]}</b></div>
+                <div>性别：<span><if condition="$v0[sex] eq 1">男</if><if condition="$v0[sex] eq 2">女</if></span></div>
+                <div>爱好：<b>{$v0[enjoy]}</b></div>
+              </td>
+              </tpshop>
+              <td>
+                <div>
+                  <a href="{:U('Home/Life/userDetail',array('id'=>$v['user_id']))}"><span class="lookxq_scoity">回复</span></a>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <div>内容：{$v['content']}</div>
+          <div class="textcolor999" style="margin-right:10px !important;">
+            <span >{$v['time']|date="Y-m-d H:i:s",###}</span>
+          </div>
+        </div>
+        </foreach>
+        <div class="page">
+        {$page}
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>

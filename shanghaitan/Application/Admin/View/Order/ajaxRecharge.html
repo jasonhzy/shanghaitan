@@ -1,0 +1,25 @@
+<table class="slef_info_czjilutable" id="tab" style="display: none;">
+    <thead>
+    <tr>
+        <td><b>日期</b></td>
+        <td><b>充值钱数</b></td>
+        <td><b>充值方式</b></td>
+        <td><b>充值状态</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="rechargeList" item="v">
+        <tr>
+            <td>{$v.ctime|date='Y-m-d H:i:s',###}</td>
+            <td>{$v.account}元</td>
+            <td>{$v.account}</td>
+            <td><if condition="$v['pay_status'] eq 0">待支付<else/>已支付</if></td>
+        </tr>
+    </foreach>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">共有<span class="textcolore30004">{$count}</span>条记录&nbsp;&nbsp;{$page}</td>
+    </tr>
+    </tfoot>
+</table>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的留言</title>
+
+</head>
+
+<body>
+<!-- 头部-s -->
+<include file="Public/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/selfc.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/iconfont/iconfont.css" />
+<!-- 头部-e -->
+<div class="row htmllistbody self_centerbody">
+  <div class="currentloaction">
+    <a href="{：U('Home/Index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+    <span>当前位置：</span>
+    <a href="{：U('Home/User/index')}">个人中心</a>
+    >
+    <a href="#">社交留言</a>
+  </div>
+  <include file="User/menu" />
+  <!--菜单-->
+  <div class="col-md-9">
+    <div class="self_centerright self_formright selfc_grade">
+      <p class="self_formrightp1">
+        <b>社交留言</b>
+      </p>
+    </div>
+    <div  class=" self_centerright self_formright self_msg_list">
+      <div class="row self_form_top slef_my_message_top">
+        <b>留言信息</b>
+      </div>
+      <div class="self_form_bottom_s">
+        <foreach name="arr" item="v">
+        <div class="borderbottomca self_scoity_msg">
+          <table>
+            <tr>
+              <tpshop sql="SELECT * FROM `__PREFIX__users` WHERE `user_id` = $v[user_id] "  key="k" item='v0'>
+              <td>
+                <img src="{$v[head_pic]}"/>
+              </td>
+              <td>
+                <div><b>{$v0[nickname]}</b></div>
+                <div>性别：<span><if condition="$v0[sex] eq 1">男</if><if condition="$v0[sex] eq 2">女</if></span></div>
+                <div>爱好：<b>{$v0[enjoy]}</b></div>
+                <div>内容：{$v['content']}</div>
+              </td>
+              </tpshop>
+              <td>
+                <div class="textcolor999">
+                  <span>{$v['time']|date="Y-m-d H:i:s",###}</span>
+                </div>
+                <div>
+                  <a href="{:U('Home/Life/userDetail',array('id'=>$v['user_id']))}"><span class="lookxq_scoity">回复</span></a>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        </foreach>
+        <div class="page">
+        {$page}
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+<include file="Public/footer" />
+</body>
+</html>

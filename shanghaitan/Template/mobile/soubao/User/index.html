@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>个人中心-{$tpshop_config['shop_info_store_name']}</title>
+    <style TYPE="text/css">
+        <!--
+        A:link{text-decoration:none}
+        A:visited{text-decoration:none;}
+        A:hover {text-decoration:underline}
+        -->
+    </style>
+</head>
+<body    style=" background: #FFFFff !important;">
+<!-- 头部-s -->
+<include file="Public/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/selfc.css" />
+<style>
+    .usercenter .col-xs-12{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .usercenter .col-xs-12 .userhead{
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        overflow: hidden;
+        margin: 15px auto;
+    }
+    .usercenter .col-xs-12 .userinfo{
+        /*margin: 0 auto;*/
+        text-align: center;
+    }
+    .usercenter .col-xs-12 .userhead img{
+        width: 60px;
+        height:60px;
+    }
+    .usercenterlist{
+        border-bottom: 1px solid #F4F4F4;
+        padding: 0;
+        width: 100% !important;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    .usercenterlist a{
+        width: 100%;
+        padding: 8px 10px;
+        display: block;
+    }
+    .usercenterlist a span i{
+        font-size: 14px;
+    }
+    .ucenter p span{
+        padding: 3px 10px !important;
+        font-size: 14px;
+        background-color: #E30004;
+        color: #fff;
+        border-radius: 4px;
+    }
+</style>
+<!-- 头部-e -->
+<div class="row self_centerbody usercenter" style="background: #fff;width: 100%;margin: 50px auto 20px;padding-top: 10px;">
+  <!--菜单-->
+    <div class="row col-xs-12" style="padding-bottom: 10px;border-bottom: 1px solid #F4F4F4;">
+        <div class="col-xs-5">
+            <div class="userhead">
+                <img src="{$user.head_pic}"/>
+            </div>
+            <div class="userinfo">
+                <div>{$user.nickname}&nbsp;<if condition="$user['total_amount'] lt 10000"><i class="icon iconfont">&#xe629;</i>　<else/><i class="icon iconfont jin">&#xe629;</i>&nbsp;</if></div>
+                <a href="{:U('Mobile/User/logout')}" class="textcolore30004 tuichu">[退出]</a>
+            </div>
+        </div>
+        <div class="col-xs-7" style="padding: 0;padding-top: 25px;">
+            <div style="margin-bottom: 10px;">
+                <span><b>账户余额：</b>{$user[user_money]}元</span>
+                <a href="{:U('Mobile/User/vipPay')}" class="textcolore30004">[去充值]</a>
+            </div>
+            <div>
+                <span><b>我的积分：</b>{$user[pay_points]}</span>
+                <a href="#t" class="textcolore30004 sc_gradebtn">积分介绍</a><br/>
+                <span>（自获得之日至次年12月31日有效）</span>
+            </div>
+        </div>
+    </div>
+    <div class="self_centerright self_center_grade_ me-hidden">
+        <p><b>个人中心</b></p>
+        <div class="sc-bg-div">
+            <p><span></span><b>积分问题</b></p>
+            <div class="sc-bg-div-goodsdata self_center_grade">
+                <p><b>1、怎么获得积分问题：</b></p>
+                <p class="textindent2">
+                    1.在线支付的订单将获得订单积分奖励：积分将在用户完成支付获得。可获得积分=定金金额（即1元=1积分）定金金额
+                    指实际付款金额。不包含优惠卷金额。每位用户每天最多获得2000积分。<br/>
+                    　　2.注册送积分：注册成功以后送10积分。
+                </p>
+                <p><b>2、积分有效期说明</b></p>
+                <p class="textindent2">
+                    积分获得后有效期1年。我们将定期对你上年度获得后未使用的积分进行定期处理，过期未使用的积分自动扣除。
+                    例如：2015年12月31日将扣除2015年1月1日所获得的积分。
+                </p>
+                <p><b>3、积分可用来做什么</b></p>
+                <p class="textindent2">
+                    可在积分商城兑换各种礼品
+                </p>
+                <p><b>4、积分兑换了很多天还没收到怎么办</b></p>
+                <p class="textindent2">
+                    礼品从积分兑换起，3个工作日（周末不算）内处理发货通常会在3个工作日左右到达
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 usercenterlist">
+        <a href="{:U('Mobile/User/myOrder')}">
+            <span>我的订单</span>
+            <span class="floatright">
+						<i class="icon iconfont">&#xe626;</i>
+					</span>
+        </a>
+    </div>
+    <div class="col-xs-12 usercenterlist">
+        <a href="{:U('Mobile/User/myExchange')}">
+            <span>我的兑换</span>
+            <span class="floatright">
+						<i class="icon iconfont">&#xe608;</i>
+					</span>
+        </a>
+    </div>
+    <div class="col-xs-12 usercenterlist">
+        <a href="{:U('Mobile/User/info')}">
+            <span>我的资料</span>
+            <span class="floatright">
+						<i class="icon iconfont">&#xe611;</i>
+					</span>
+        </a>
+    </div>
+    <div class="col-xs-12 usercenterlist">
+        <a href="{:U('Mobile/User/vipIntroduce')}">
+            <span>会员介绍</span>
+            <span class="floatright">
+						<i class="icon iconfont">&#xe60f;</i>
+					</span>
+        </a>
+    </div>
+    <div class="col-xs-12 usercenterlist">
+        <a href="{:U('Mobile/User/myAppointment')}">
+            <span>我的预约</span>
+            <span class="floatright">
+						<i class="icon iconfont">&#xe61b;</i>
+					</span>
+        </a>
+    </div>
+    <div class="col-xs-12 usercenterlist">
+        <a href="{:U('Mobile/User/myHealth')}">
+            <span>我的健康</span>
+            <span class="floatright">
+						<i class="icon iconfont">&#xe732;</i>
+					</span>
+        </a>
+    </div>
+    <div class="col-xs-12 usercenterlist">
+        <a href="{:U('Mobile/User/myMessage')}">
+            <span>我的留言</span>
+            <span class="floatright">
+						<i class="icon iconfont">&#xe61a;</i>
+					</span>
+        </a>
+    </div>
+    <div class="col-xs-12 usercenterlist">
+        <a href="{:U('Mobile/User/message')}">
+            <span>社交留言</span>
+            <span class="floatright">
+						<i class="icon iconfont">&#xe62c;</i>
+					</span>
+        </a>
+    </div>
+    <div class="col-xs-12 usercenterlist">
+        <a href="{:U('Mobile/User/myActivity')}">
+            <span>我的活动</span>
+            <span class="floatright">
+						<i class="icon iconfont">&#xe625;</i>
+					</span>
+        </a>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $(function(){
+        $('.sc_gradebtn').click(function(){
+            if($('.self_center_grade_').hasClass('me-hidden')){
+                $('.self_center_grade_').removeClass('me-hidden');
+            }else{
+                $('.self_center_grade_').addClass('me-hidden');
+            }
+
+        });
+    })
+</script>
+</html>

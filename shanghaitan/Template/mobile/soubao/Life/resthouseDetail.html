@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>生活服务</title>
+  <style TYPE="text/css">
+    <!--
+    A:link{text-decoration:none}
+    A:visited{text-decoration:none;color: #000;}
+    A:hover {color: #000;text-decoration:underline}
+    -->
+  </style>
+</head>
+<body>
+<include file="Public/header"/>
+<link rel="stylesheet" href="__STATIC__/css/css/intell.css" />
+<div class="backicon" style="margin-top:0 !important;">
+  <a href="JavaScript:history.back(-1);">
+    <i class="icon iconfont">&#xe60b;</i>
+  </a>
+  <span>查看详情</span>
+</div>
+<div class=" htmllistbody provideelistbody">
+  <div class="row boxshaowccc provideelistcontent">
+    <div class="col-md-3">
+      <img src="{$r_arr.original_img}"/>
+    </div>
+    <div class="col-md-9">
+      <div class="pcontent-right">
+        <h3><b>{$r_arr.resthouse_name}</b></h3>
+        <p>
+          <b>地址：</b>{$r_arr.resthouse_address}
+        </p>
+        <p>
+          <b>床 位：</b>{$r_arr.resthouse_bed}张
+        </p>
+        <p>
+          <b>收 费：</b>{$r_arr.resthouse_price}
+        </p>
+        <p>
+          <b>电 话：</b>{$r_arr.resthouse_phone}
+        </p>
+        <p class="textcolore30004">
+          联系我时，请说是在银海棠养老服务平台上看到的，谢谢
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row prolistcontent-bottom">
+    <div class="col-md-5">
+      <div class="boxshaowccc pl-b5-model">
+        <div class="medel-top">基本信息</div>
+        <p>所在地区：{$r_arr.resthouse_zone}</p>
+        <p>机构类型：{$r_arr.resthouse_type}</p>
+        <p>机构性质：{$r_arr.resthouse_quality}</p>
+        <p>成立时间：{$r_arr.resthouse_create}</p>
+        <p>占地面积：{$r_arr.resthouse_area}平米</p>
+        <p>床位：{$r_arr.resthouse_bed}</p>
+        <p>收住对象：{$r_arr.resthouse_service}</p>
+        <p>收费区间：{$r_arr.resthouse_price}</p>
+        <p>特色服务：{$r_arr.resthouse_special} </p>
+      </div>
+      <div class="boxshaowccc pl-b5-model">
+        <div class="medel-top">联系我们</div>
+        <p>联  系  人：{$r_arr.resthouse_leader}</p>
+        <p>地        址：{$r_arr.resthouse_address}</p>
+        <p>网 址：{$r_arr.resthouse_net}</p>
+        <p>邮        箱：{$r_arr.resthouse_email}</p>
+        <p>交        通：{$r_arr.resthouse_traffic}</p>
+      </div>
+    </div>
+    <div class="col-md-7" >
+      <div class="boxshaowccc pl-b5-model">
+        <div class="medel-top">机构介绍</div>
+        {$r_arr.resthouse_content|htmlspecialchars_decode}
+      </div>
+    </div>
+  </div>
+</div>
+<include file="Public/footer"/>
+</body>
+
+</html>

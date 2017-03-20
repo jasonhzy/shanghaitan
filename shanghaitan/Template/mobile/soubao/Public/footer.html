@@ -1,0 +1,73 @@
+<div class="loginfoot" style="padding:0;height:auto;margin-bottom: 10px;">
+    <div class="loginfoot-content">
+<!--        <div class="lf-left">
+            <p>敬请关注</p>
+    &lt;!&ndash;        <ul>
+                <tpshop sql="select * from `__PREFIX__article_cat` where cat_id in(1,2,7)" key="k" item='v'>
+                    <tpshop sql="select * from `__PREFIX__article` where cat_id = $v[cat_id]" key="k2" item='v2'>
+                <li><a href="">{$v2.title}</a></li>
+                    </tpshop>
+                </tpshop>
+            </ul>&ndash;&gt;
+            <li><a href="">服务中心</a></li>
+            <li><a href="">常见问题</a></li>
+            <li><a href="">在线客服</a></li>
+            <li><a href="">服务中心</a></li>
+            <li><a href="">常见问题</a></li>
+            <li><a href="">在线客服</a></li>
+            <p>
+                <if condition="$user_id eq 0">
+                    <a href="{:U('Home/user/login')}">登录</a>｜<a href="{:U('Home/user/reg')}">注册</a>
+                    <else/>
+                    <a href="{:U('Home/user/index')}">{$user['nickname']}</a> | <a href="{:U('Home/user/logout')}">退出</a>
+                </if>
+            </p>
+        </div>-->
+        <div class="loginfoot-bottom">
+            ©2016 {$tpshop_config['shop_info_store_name']} {$tpshop_config['shop_info_record_no']}
+        </div>
+    </div>
+    <div class="qqcall">
+			<span>
+				<i class="icon iconfont">&#xe649;</i>
+				在线客服
+			</span>
+        <div class="qqcallc">
+        <div class="qqcallc_">
+            <i class="icon iconfont">&#xe676;</i>银海棠客服
+        </div>
+        <div class="qqcallc_">
+            客服1：<br/>
+            <a href="tencent://message/?uin=10624700&Site"><img src="__STATIC__/images/img/qqcall.png" /></a>
+        </div>
+        <div class="qqcallc_">
+            客服2：<br/>
+            <a href="tencent://message/?uin=30498184 &Site"><img src="__STATIC__/images/img/qqcall.png" /></a>
+        </div>
+        <img src="__STATIC__/images/img/qqcallline.png" />
+        <div class="textcolore30004 text-center">
+            <i class="icon iconfont">&#xe603;</i>
+            咨询电话
+        </div>
+        <div class="text-center">
+            18638266546<br/><br/>0371-86529093
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+
+        //点击在线客服
+        var boolqq = false;
+        $('.qqcall>span').click(function(){
+            if(!boolqq){
+                $('.qqcall').animate({'right':'3px'},'fast');
+                boolqq = true;
+            }else if(boolqq){
+                $('.qqcall').animate({'right':'-180px'},'fast');
+                boolqq = false;
+            }
+
+        });
+    })
+</script>

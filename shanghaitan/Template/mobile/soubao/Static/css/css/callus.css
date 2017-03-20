@@ -1,0 +1,94 @@
+/*联系我们 start*/
+.callus .row{
+	margin: 20px auto;
+	width: 100%;
+}
+.callus .callus_list1{
+	padding: 10px;
+	background: #E30004;
+}
+.callus .callus_list1 .col-md-5{
+	padding: 0;
+	text-align: left;
+}
+.callus .callus_list1 .col-md-5 img{
+	max-width: 412px;
+	width: 100% !important;
+}
+.callus .callus_list1 .col-md-7{
+	color: #fff;	
+}
+.callus .callus_list1 .col-md-7 h1,.callus .callus_list1 .col-md-7 h2{
+	margin: 0;
+}
+.callus .callus_list1 .col-md-7 h1{
+	margin-top: 20px;
+}
+.callus .callus_list1 .col-md-7 h2{
+	padding-bottom: 5px;
+	display: inline-block;
+	margin: 0;
+	border-bottom: 2px solid #fff;
+}
+.callus .callus_list1 .col-md-7 p{
+	font-size: 14px;
+	line-height: 2em;
+	padding-top: 15px;
+}
+.callusliat{
+	padding-top: 20px;
+}
+.callusliat2 .cl2_s{
+	width: 74.8%;
+	margin: 0 auto;
+}
+.callusliat2 .cl2_s img{
+	display: block;
+	margin: 0 auto;
+}
+.callusliat2 .cl2_s p{
+	padding: 10px 0;
+	color: #aeaeae;
+	text-align: center;
+}
+.callusliat2 .cl2_x .cl2_x_list{
+	padding: 20px;
+	background: #E30004;
+	color: #fff;
+}
+.callusliat2 .cl2_x .cl2_x_list table{width: 100%;font-size: 13px;}
+
+
+.callusliat3 .col-md-12 table{
+	width: 100%;
+}
+.callusliat3 .col-md-12 table td{
+	/*padding-bottom:15px;*/
+}
+.callusliat3 .col-md-12 table td>div{
+	font-size: 12px !important;
+	padding: 3px 0 5px;
+	color: #E30004;
+}
+.callusliat3 .col-md-12 table td:first-child{
+	width: 100%;
+}
+.callusliat3 .col-md-12 table td:nth-child(2){
+	color: #E30004;
+	padding-left: 10px;
+}
+.callusliat3 .col-md-12 .inputstyle{
+	padding: 8px 15px;
+	width: 100%;
+	border: 1px solid #C9C9C9;
+	outline: none;
+}
+.callusliat3 .col-md-12 .calluslist3btn{
+	border-style: none;
+	padding: 8px 50px;
+	border-radius: 5px;
+	background: #aeaeae;
+	margin: 0 auto;
+	display: block;
+}
+/*联系我们 end*/

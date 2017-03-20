@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>旅居服务</title>
+  <style TYPE="text/css">
+    <!--
+    A:link{text-decoration:none}
+    A:visited{text-decoration:none;color: #000;}
+    A:hover {color: #000;text-decoration:underline}
+    -->
+  </style>
+</head>
+<body>
+<include file="Public/min-header" />
+<link rel="stylesheet" href="__STATIC__/css/css/sojourn.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/liMarquee.css">
+<link rel="stylesheet" href="__STATIC__/css/css/gradeshop.css" />
+<style>
+  .sojourn_news .row>div{
+    margin: 10px auto;
+  }
+  .sojournhot .col-md-6{
+    padding: 2px 10px;
+  }
+  .sojournhotrightimg>img{
+    width: 100%;
+  }
+</style>
+<div class="gradebanner">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <foreach name="list" item="v" key="k">
+        <li data-target="#carousel-example-generic" data-slide-to="{$k}" <if condition="$k eq 0">class="active"></if></li>
+      </foreach>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-inner" role="listbox">
+        <foreach name="list" item="v" key="k">
+          <div <if condition="$k eq 0"> class="item active" <else/>class="item"</if>>
+          <img src="{$v.p_url}" alt="">
+      </div>
+      </foreach>
+    </div>
+  </div>
+</div>
+<div class="sojournbody">
+  <div class="gglcontent">
+    <div class="gglcontent_top">
+      <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+    <div class="gglselecttype dropdown ">
+      <div id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="menutext">四季热点</span>
+        <span class="caret"></span>
+      </div>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <foreach name="cat_arr" item="v">
+        <li <if condition="$_GET['id'] eq $v['id']"> class="gradeliactive"  </if>><a href="{:U('Mobile/Travel/travelList/cid/2',array('id'=>$v['id']))}">{$v['name']}</a></li>
+        </foreach>
+      </ul>
+    </div>
+    </div>
+    <div class="gooddatalist container-fluid">
+      <div id="gglitem1" class="dowebok sojournhotbanner">
+        <foreach name="travel_arr" item="v">
+        <a href="{:U('Mobile/Travel/travelDetail/cid/2',array('id'=>$v['travel_id']))}" target="_blank" >
+          <div class="sojourn-title">{$v['travel_name']}</div>
+          <img src="{$v['original_img']}" alt=""/>
+          <div class="sojourn-bottom">
+            <p>{$v['travel_name']}</p>
+            <span class="textcolore30004">￥{$v['travel_bprice']}</span>
+            <span class="redbtn floatright">立即预约</span>
+          </div>
+        </a>
+        </foreach>
+      </div>
+    </div>
+  </div>
+  <div class="gglcontent">
+    <div class="gglcontent_top">
+      <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+      <span>热点地区</span>
+    </div>
+    <div class="row sojournhot">
+    <!--  <div class="col-md-6">
+        <tpshop sql="SELECT * FROM `__PREFIX__travel` WHERE `is_hot` = 1  ORDER BY `travel_id` DESC limit 1 " key="k" item='v'>
+        <a href="sojourn-xq.html">
+          <div class="{:U('Home/Travel/travelDetail/cid/2',array('id'=>$v['travel_id']))}">
+            <img src="{$v[original_img]}" height="400px;" width="350px;"/>
+            <p><b>{$v[travel_name]}</b></p>
+          </div>
+        </a>
+        </tpshop>
+      </div>-->
+        <foreach name="hot_arr" item="v">
+        <div class="col-md-6">
+          <a href="{:U('Mobile/Travel/travelDetail/cid/2',array('id'=>$v['travel_id']))}" class="sojournhotrightimg">
+            <div class="sr-img-tip">
+              <div class="sr-img-tip-title">
+                <p>{$v.travel_name}</p>
+              </div>
+              <div class="textcolore30004">￥{$v.travel_bprice}</div>
+              <div class="btnlijiyuyue">
+                <span class="redbtn">立即预约</span>
+              </div>
+            </div>
+            <img src="{$v.original_img}" />
+          </a>
+        </div>
+        </foreach>
+    </div>
+  </div>
+  <div class="gglcontent">
+    <div class="gglcontent_top">
+      <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+      <span>新闻中心</span>
+    </div>
+    <div class="sojourn_news">
+      <foreach name="arr" item="v">
+      <a href="{:U('Mobile/Travel/newDetail/cid/2',array('id'=>$v['article_id']))}">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="news_leftimg">
+              <img class="sojourn-newsimg-icon" src="__STATIC__/images/img/sojourn/index/sojourn.png" />
+              <img class="sojourn-newsimg" src="{$v.thumb}" />
+            </div>
+          </div>
+          <div class="col-md-9">
+            <p class="sj-title"><b>{$v.title}</b></p>
+            <p class="sj-textline4">
+              {$v.description}
+            </p>
+            <p class="sj-comment">
+
+									<span class="floatright">
+										{$v.add_time|date="Y-m-d H:i:s",###}
+									</span>
+            </p>
+          </div>
+        </div>
+      </a>
+      </foreach>
+    </div>
+    <div class="page" style="text-align: right;">{$page}</div>
+  </div>
+</div>
+<include file="Public/footer" />
+</body>
+<script src="__STATIC__/js/js/jquery.liMarquee.js"></script><!--滚动特效引入的js-->
+<script>
+  $(function(){
+    $('.dowebok').liMarquee();//滚动特效
+  })
+</script>
+</html>

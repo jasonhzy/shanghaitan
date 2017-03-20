@@ -1,0 +1,592 @@
+/*个人中心 start*/
+body{
+	background: #cdd0dd;
+}
+.self_centerbody{
+	background: #fff;
+}
+.self_centerbody>.col-md-3{
+	padding: 0;
+}
+.self_centerleft{
+	background: #F4F4F4;
+	padding-bottom: 10px;
+	/*border: 1px solid #000;*/
+}
+.self_centerleft .self_centerl-top{
+	width: 100%;
+	margin: 0 auto 20px;
+	padding: 15px;
+}
+.self_centerleft .self_centerl-top>div{
+	padding: 0;
+}
+.self_centerleft .self_centerl-top .col-md-5 img{
+	max-width: 100px;
+	max-height: 100px;
+	width: 100%;
+}
+.self_centerleft .self_centerl-top .col-md-7{
+	padding-left: 10px;
+}
+.self_centerl-ul{
+}
+.self_centerl-ul ul{
+	padding: 0;
+	width: 100%;
+	margin-left: 15px;
+}
+.self_centerl-ul ul li{
+	padding: 15px 0;			
+	text-align: center;
+}
+.self_centerl-ul ul li i{
+	padding-right: 12px;
+}
+.self_centerl-ul_li_active {
+	background: #fff;
+	color: #fbaa00 !important;
+}
+.self_centerl-ul_li_active i,.self_centerl-ul_li_active  a{
+	color: #fbaa00;
+}
+.col-md-9{
+	padding-right: 0;
+}
+.self_centerright{
+	width: 100%;
+	/*height: 600px;*/
+	padding: 3px 10px;
+}
+.self_centerright p{
+	margin:0 0 20px 0;
+}
+ .self_centerright .self_centerr-ul{
+	border: 1px solid #D8D8D8;
+	background: #F4F4F4;
+	padding: 6px 10px;			
+	width: 100%;
+}
+ .self_centerright .self_centerr-ul li{
+ 	padding:15px 10px;
+ 	border-bottom: 1px dashed #DADADA;
+ 	text-align: left;
+ }
+ .self_centerright .self_centerr-ul li span{
+ 	padding: 0 6px;
+ }
+ .jin{
+ 	color: #fbaa00;
+ }
+.sc-bg-div{
+ 	border-top:0;
+ 	background: #F4F4F4;
+ }
+.sc-bg-div>p{
+ 	padding: 6px 0;
+ 	background: #F4F4F4;
+ 	position: relative;
+ 	height: 30px;
+ 	margin-bottom: 0;
+ }
+.sc-bg-div>p>b{
+ 	margin-left: 20px;
+ }
+.sc-bg-div>p>span{
+ 	position: absolute;
+ 	bottom: -12px;
+ 	display: inline-block;
+ 	width: 0;
+ 	height: 0;
+ 	border-top: 12px solid #d5d5d5;
+	border-left: 12px solid transparent; 
+ }
+.sc-bg-div .sc-bg-div-goodsdata{
+ 	border: 1px solid #cacaca;	 	
+ 	background: #fff;
+}
+.sc-bg-div .sc-bg-div-goodsdata .row{
+	width: 90%;
+	margin: 20px auto;
+}
+.sc-bg-div-goodsdata .sc-bg-div-goodsdata-img{
+ 	border: 1px solid #D9D9D9;
+ 	padding: 10px 20px;
+}
+.sc-bg-div-goodsdata .sc-bg-div-goodsdata-img p{
+	margin: 2px 0;
+}
+.sc-bg-div-goodsdata .sc-bg-div-goodsdata-img img{
+	margin: 15px auto 20px;
+	display: block;
+	max-height: 150px;
+	max-width: 150px;
+}
+
+  /*公共部分 以下*/
+.s-common-bg-div>p{
+ 	padding: 15px 0;
+ 	background: #F4F4F4;
+ 	position: relative;
+ 	height: 50px;
+ 	margin-bottom: 0;
+ 	margin-left: -12px;
+ }
+.s-common-bg-div>p>b{
+ 	margin-left: 20px;
+ }
+.s-common-bg-div>p>span{
+ 	position: absolute;
+ 	bottom: -12px;
+ 	display: inline-block;
+ 	width: 0;
+ 	height: 0;
+ 	border-top: 12px solid #d5d5d5;
+	border-left: 12px solid transparent; 
+ }
+.colortextcbcbcb{
+	color: #cbcbcb;
+}
+.self_center_grade{
+	padding: 15px 20px;
+}
+.self_center_grade p{
+	margin-bottom: 10px;
+}
+/*个人中心 end*/
+
+/*个人中心-我的订单 start*/
+.self_formright{
+	height: auto;
+}
+.self_formright .self_formrightp1{
+	height: 50px;
+}
+.self_form_search{
+    height: 40px;
+	/*width: 455px;*/
+	width: 100%;
+	display: inline-block;
+	border: 1px solid #E30004;
+	overflow: hidden;
+	background: #E30004;
+}
+.self_form_search input{
+	height: 40px;
+	/*width: 357px;*/
+	width: 80%;
+	padding: 0 10px;
+	border-style: none;
+	box-sizing: border-box;	
+	float: left;	
+}
+.self_form_search a{
+	/*padding:0 30px;*/
+	color: #fff;
+	display: inline-block;
+	width: 20%;
+	float: left;
+	text-align: center;
+	line-height: 40px;
+}
+.self_formright .row{
+	width: 100%;
+	margin: 0 auto;
+	padding: 10px 0;
+}
+.self_formright .self_form_top{					
+	background: #f4f4f4;	
+	border: 1px solid #f4f4f4;		
+}
+.self_formright .self_form_top>div{
+	text-align: center;
+}
+.self_form_bottom_s{
+	border: 1px solid #cacaca;	
+	border-top: 0;
+}
+.self_form_bottom{		
+	border-bottom: 1px dashed #cacaca;			
+}
+.self_form_bottom>div{	
+	min-height: 80px;
+	display: table;
+	text-align: center;
+}
+.self_form_bottom>div>b,.self_form_bottom>div>p,.self_form_bottom>div>table{
+	display: table-cell;
+	vertical-align: middle;
+}
+.self_form_bottom>div .xq_a_border{
+	padding: 4px 10px;
+	border: 1px solid #dfdfdf;
+	display: block;
+	margin-bottom: 10px;
+}
+.self_form_bottom>div .xq_a_border:hover{
+	border: 1px solid #E30004;
+}
+.self_form_bottom>div i{
+	font-size: 20px;
+	cursor: pointer;
+}
+.self_form_bottom .col-md-3 img{
+	max-height: 90px;
+	max-width: 90px;
+	margin-right: 15px;
+}		
+
+.self_order_xq .self_order_xqdata p{
+	background: #F4F4F4;
+	padding: 10px 15px;
+	margin-bottom: 0;
+}
+.self_order_xqdata table{
+	width: 100%;
+	border: 1px solid #cacaca;
+	border-top: 0;		
+}
+.self_order_xqdata table td{
+	padding: 8px 0;
+}
+.self_order_xqdata table td:first-child{
+	width: 90px;
+	font-weight: bold;
+	text-align: right;
+}
+.s-form-comment{
+	margin-top: 15px;
+}
+.s-form-comment i{
+	color: #CACACA;
+	margin-right: 10px;
+}
+.s-form-comment .textareaborder{
+	margin-top:10px;
+}
+.self_formpop{
+	/*margin-top: -59px;
+	margin-left: -130px;*/
+	margin-top: -59px;
+	margin-left: -100px;
+	width: 200px;
+}
+.self_formpop p{
+	text-align: center;
+	margin-bottom: 15px;
+}
+.self_formpop p span{
+	/*color: #FFF;
+    border-radius: 6px;
+    padding: 6px 23px;
+    background: #E30004;*/
+}
+.self_form_{
+	color: #FFF;
+    border-radius: 6px;
+    padding: 3px 13px;
+    background: #E30004;
+    font-size: 13px;
+}
+/*个人中心-我的订单 end*/
+
+/*个人中心-我的兑换 start*/
+.self_convert{
+	height: 60px;
+	padding: 0 !important;
+}
+.self_convert>div{
+	height: 60px !important;
+	min-height: 60px;
+	padding: 0;
+}
+.jilucount{
+	text-align: right;
+	padding:10px 8%;
+}
+.self_convert_table table td img{
+	margin-left: 20px;
+}
+/*个人中心-我的兑换 end*/
+
+/*个人中心-我的资料 start*/
+.slef_infodata{
+	width: 100%;
+	float: right;
+	margin: 0 auto 50px;
+	border: 1px solid #f00;
+}		
+.s_info_input_style{
+	border: 1px solid #CACACA;
+	border-radius: 6px;
+	padding: 2px 5px;
+	font-size: 12px;
+}
+.s_info_upload_img{
+	cursor: pointer;
+	border: 1px solid #CACACA;
+	width: 100px;
+	height: 100px;
+	margin-top: 10px;
+	line-height: 100px;
+	text-align: center;
+	color: #CACACA;
+}
+.s_info_upload_img i{
+	font-size: 25px;
+}
+
+.self_info_table{
+	width: 100%;
+}
+.self_info_table td{
+	padding: 11px 5px;
+}
+.self_info_table td:first-child{
+	width: 88px;
+	/*text-align: right;*/
+}
+.self_info_table .textareaborder{
+	margin:0;
+}
+.self_info_table td .redbtn{
+	margin: 15px 0;
+	padding: 6px 50px;
+	border-style: none;
+}
+.self_info_table td input[type="checkbox"]{
+	width: 15px;
+	height: 15px;
+}
+.s_info_input_style textarea{
+	padding: 10px !important;
+	min-height: 40px !important;
+}
+/*个人中心-我的资料-上传头像 start*/
+.self_centerl-top #avatar{
+		width: 100px;
+		height:100px;
+	}
+	.self_fangke{
+		width: 50px;
+		height: 50px;
+		border-radius: 25px;
+		overflow: hidden;		
+	}
+	.self_fangke img{
+		width: 100%;
+	}
+	.con4 .btn{
+		     width: 100px;
+		     height: 100px;
+		     line-height:80px;
+		     text-align: center;
+		     display: block;
+		     font-size: 14px;
+		     border-radius: 5px;
+		     display: block;
+		}
+		.upload{
+		     position: relative;
+		}
+		.upload_pic{
+		     display: block;
+		     width: 100px;
+		     height: 100px;
+		     position: absolute;
+		     left: 0;
+		     top: 0;
+		     opacity: 0;
+		     border-radius: 5px;
+		}
+		#cvs{
+			border-radius: 45px;
+			display: block;
+			margin: 0 auto;
+			z-index: 9555;
+		}
+/*个人中心-我的资料-上传头像 end*/
+/*个人中心-我的资料 end*/
+/*个人中心-会员介绍 start*/
+.self_vip_des p{
+	padding: 15px;
+}
+.self_vip_desrow{
+	width: 90%;
+}
+.self_vip_desrow>div{
+}
+.self_vip_desrow>div>div{
+	padding: 20px;
+	background: #f1f1f1 !important;
+}
+.self_vip_desrow>div>div p {
+	font-size: 16px;
+	text-align: center;
+}
+.self_vip_des{
+	padding: 0;
+}
+.slef_info_czjilu .borderc9c9c9{
+	padding: 10px;
+	margin-bottom: 20px;
+}
+.slef_info_czjilu p{
+	margin: 0;
+	padding: 5px;
+}
+.self_vip_des table{
+	width: 100%;
+}
+.self_vip_des table td{
+	padding: 10px 5px;
+}
+.self_vip_des table td:first-child{
+	width: 120px;
+	text-align: right;
+}
+.self_vip_des table td input[type="radio"]{
+	width: 15px;
+	height: 15px;
+	float: left;
+}
+.slef_info_czjilutable td{
+	text-align: center !important;
+	border: 1px solid #CACACA;
+}
+/*个人中心-会员介绍 end*/
+
+/*个人中心-我的预约 start*/
+.self_bespoketable table td img{
+	max-height: 80px;
+	max-width: 80px;
+}
+/*个人中心-我的预约 end*/
+
+/*个人中心-我的健康 start*/
+.self_health>div{
+	padding: 5px 10px;
+}
+.sh-btn{
+	width: 120px;
+	text-align: center;
+	margin: 8px 80px;
+	display: block;
+}
+/*个人中心-我的健康 end*/
+
+/*个人中心-我的留言 start*/
+.slef_my_message_top b{
+	padding-left: 20px;
+}
+.self_message_table{
+	width: 100%;
+	margin-bottom: 20px;
+}
+.self_message_table td{
+	/*padding: 10px ;*/
+	padding: 5px 0;
+}
+.self_message_table td:first-child{
+	width: 60px;
+	text-align: right;
+	padding-left: 5px;
+}
+.self_message_table td textarea{
+	width: 80%;
+	min-height: 100px;
+}
+.s_message_list{
+	padding: 12px;
+}
+.s_message_list .floatright{
+	color: #747474;
+}
+/*个人中心-我的留言 end*/
+/*个人中心-社会留言 start*/
+.self_scoity_msg table td img{
+	width: 100px;
+	height: 100px;
+	margin-right: 20px;
+}
+.self_scoity_msg .col-md-3 {
+	text-align: center;
+}
+.self_scoity_msg .lookxq_scoity{
+	padding: 4px 10px;
+	display: inline-block;
+	border: 1px solid #CACACA;
+	margin:15px auto 5px;
+	cursor: pointer;
+}
+.self_scoity_msg table{
+	width: 100%;
+}
+.self_scoity_msg table td{
+	padding: 10px;
+}
+.self_scoity_msg table td:first-child{
+	width: 120px;
+}
+.self_scoity_msg table td:nth-child(3){
+	width: 150px;
+	text-align: center;
+}
+/*个人中心-社会留言end*/
+
+
+/*个人中心-我的活动 start*/
+.self_fatie_{
+	padding: 10px 0;
+	border: 1px solid #CACACA;
+}
+.self_fatie{
+	padding: 10px;
+	border-bottom: 1px dashed #CACACA;
+}
+/*个人中心-我的活动 end*/
+
+/*我的订单详情样式 self_form start*/
+.selfformm{
+	height: auto;
+	margin-bottom: 15px !important;
+	border: 1px solid #f4f4f4;
+}
+.selfformm .col-xs-3,.selfformm .col-xs-6{
+	margin-bottom: 15px;
+}
+.selfformm .col-xs-3{
+	padding: 0 0 0 5px;
+}
+.selfformm>div{
+	height: 100px;
+	position: relative;
+}
+.selfformm>div:first-child{
+	height: auto;
+	padding: 5px 0;
+	border-bottom: 1px solid #F4F4F4;
+	margin-bottom: 10px;
+}
+.selfformm>div img{
+	width: 100%;
+	max-width: 100px;
+	max-height: 100px;
+}
+.selfformm>div:last-child{
+	padding-right: 0;
+	padding-left: 5px;
+}
+.delete_icon{
+	position: absolute;
+	bottom: 2px;
+	right: 2px;
+}
+.formbottom{
+	padding: 5px 0;
+	border-top: 1px solid #F4F4F4;
+	text-align: right;
+	height: auto !important;
+}
+/*我的订单详情样式 end*/
+

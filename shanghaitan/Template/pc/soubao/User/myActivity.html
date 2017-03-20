@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的活动</title>
+</head>
+<body>
+<!-- 头部-s -->
+<include file="Public/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/selfc.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/iconfont/iconfont.css" />
+<link rel="stylesheet" href="__STATIC__/js/js/kindeditor-4.1.7/themes/default/default.css" />
+<script charset="utf-8" src="__STATIC__/js/js/kindeditor-4.1.7/kindeditor-min.js"></script>
+<script charset="utf-8" src="__STATIC__/js/js/kindeditor-4.1.7/lang/zh_CN.js"></script>
+<script>
+  var editor;
+  KindEditor.ready(function(K) {
+    editor = K.create('textarea[name="content"]', {
+      allowFileManager : true
+    });
+  });
+</script>
+<!-- 头部-e -->
+<div class="row htmllistbody self_centerbody self_infobody">
+  <div class="currentloaction">
+    <a href="{：U('Home/Index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+    <span>当前位置：</span>
+    <a href="{：U('Home/User/index')}">个人中心</a>
+    >
+    <a href="#">我的活动</a>
+  </div>
+  <include file="User/menu" />
+  <!--菜单-->
+  <div class="col-md-9">
+    <div class="self_centerright slef_inforight slef_info_vipinfo">
+      <p><b>我的活动</b></p>
+      <div class="self_fatie_">
+        <foreach name="arr" item="v">
+        <a href="{:U('Home/Life/activityDetail',array('id'=>$v['activity_id']))}" target="_blank">
+          <div class="self_fatie">
+            <div class="sf-list">
+              <span class="textcolore30004">{$v.activity_name}</span>
+									<span class="floatright">
+										<span>{$v.activity_commentnum}评论</span>&nbsp;&nbsp;
+										<span>{$v.activity_addtime|date="Y-m-d H:i",###}</span>
+									</span>
+            </div>
+          </div>
+        </a>
+        </foreach>
+      </div>
+
+      <div class="sc-bg-div">
+        <p><span></span><b>发布活动</b></p>
+        <div class="sc-bg-div-goodsdata self_vip_des">
+          <p class="borderbottomca">
+            <span class="textcolore30004">*</span>活动名称：
+            <input type="text" name="activity_name" value="" class="s_info_input_style" placeholder="请输入活动名称"/><span class="textcolore30004 huodongnameyz"></span>
+            <br/><br/>
+            <span class="textcolore30004">*</span>活动描述：
+            <textarea name="activity_description" placeholder="不得超过50个字" cols="30" rows="5" class="s_info_input_style"></textarea><span class="textcolore30004 descrip"></span>
+            <br/>
+            <span class="textcolore30004">*</span><span>活动内容：</span>
+            <textarea name="content" id="con" style="width:100%;height:400px;visibility:hidden;"></textarea>
+          </p>
+          <p>
+            <a href="" class="redbtn floatright fabu">发布</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<include file="Public/footer" />
+</body>
+  <script>
+  $(function(){
+    $('.fabu').click(function(){
+      var name = $('input[name="activity_name"]').val();
+      var des = $('textarea[name="activity_description"]').val();
+      var con = editor.html();
+      if(name==""){
+        $('.huodongnameyz').text('\t名称不能为空！');
+        return false;
+      }
+      if(des==""){
+        $('.descrip').text('\t活动描述不能为空！');
+        return false;
+      }
+      if(des.length > 50){
+        $('.descrip').text('\t活动描述内容过长！');
+        return false;
+      }
+       if(con==""){
+        alert('活动内容不能为空');
+        return false;
+      }
+      $.ajax({
+        type:"post",
+        url:"/index.php?m=Home&c=User&a=ajaxActivity",
+        data:{activity_name:name,activity_description:des,content:con},
+        dataType:"json",
+        success:function(re){
+            if(re){
+              alert("发布成功");
+            }
+        }
+      })
+    });
+  })
+</script>
+
+</html>

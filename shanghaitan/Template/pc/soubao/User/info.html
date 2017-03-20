@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>个人信息</title>
+</head>
+<body>
+<!-- 头部-s -->
+<include file="Public/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/selfc.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/iconfont/iconfont.css" />
+<script src="__PUBLIC__/js/common.js" charset="utf-8" type="text/javascript"></script>
+<!-- 头部-e -->
+<div class="row htmllistbody self_centerbody self_infobody">
+    <div class="currentloaction">
+        <a href="{：U('Home/Index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+        <span>当前位置：</span>
+        <a href="{：U('Home/User/index')}">个人中心</a>
+        >
+        <a href="#">我的资料</a>
+    </div>
+  <include file="User/menu" /> 
+  <!--菜单-->
+
+    <div class="col-md-9">
+        <div class="self_centerright slef_inforight">
+            <p><b>个人资料</b></p>
+            <div class="sc-bg-div">
+                <p><span></span><b>基本资料</b></p>
+                <div class="sc-bg-div-goodsdata slef_infodata">
+                    <form action="" method="post" id="personal_info_form" >
+                        <table class="self_info_table">
+                            <tr class="borderbottomca">
+                                <td><span class="textcolore30004">*</span>用户账号：</td>
+                                <td><input type="text" placeholder="请输入手机号" value="{$user.mobile}" name="mobile" class="s_info_input_style" /></td>
+                            </tr>
+                            <tr>
+                                <td><span class="textcolore30004">*</span>昵称：</td>
+                                <td>
+                                    <input type="text" placeholder="请输入昵称" value="{$user.nickname}" name="nickname" class="s_info_input_style" />
+                                    <span style="color:red;font-family: bold;" class="me-hidden">请为自己设置一个昵称，长度不要超过六位！</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>头像：</td>
+                                <td>
+
+                                <input type="text"  name="head_pic" id="head_pic" value="{$user.head_pic}" class="s_info_input_style"/>
+                                    <input type="button" value="上传图片"  onclick="GetUploadify(1,'head_pic','user','');"/>
+                                   <!-- <if condition="$user['head_pic'] neq null">
+                                        &nbsp;&nbsp;
+                                        <a target="_blank" href="{$travelInfo.original_img}" id="original_img2">
+                                            <img width="25" height="25" src="/Public/images/image_icon.jpg">
+                                        </a>
+                                    </if>-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>性别：</td>
+                                <td>
+                                    <select name="sex" class="s_info_input_style" value="2" >
+                                        <option value="1" <if condition="$user['sex'] eq 1">selected="selected"</if> >男</option>
+                                        <option value="2" <if condition="$user['sex'] eq 2">selected="selected"</if> >女</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>生日：</td>
+                                <td>
+                                    <input type="text" name="birthday" id="birthday" value="{$user.birthday}" class="s_info_input_style"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>爱好：</td>
+                                <td>
+                                    <div class="s_info_input_style textareaborder">
+                                        <textarea class="messagea"  name="enjoy" id="enjoy" value="">{$user.enjoy}</textarea>
+                                        <div class="textarea-zishu">
+                                            <span class="textcolore30004 tishizishu">&nbsp;</span>&nbsp;
+                                            <span class="zishucurrent">0</span>
+                                            /
+                                            <span class="zishuall textcolore30004">50</span>
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>地址：</td>
+                                <td>
+                                    <div class="s_info_input_style textareaborder">
+                                        <textarea class="messagea"  name="address" id="message" >{$user.address}</textarea>
+                                        <div class="textarea-zishu">
+                                            <span class="textcolore30004 tishizishu">&nbsp;</span>&nbsp;
+                                            <span class="zishucurrent">0</span>
+                                            /
+                                            <span class="zishuall textcolore30004">50</span>
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="checkbox" name="status" value="{$user.sex}" <if condition=" $user['status'] eq 0">checked</if> />&nbsp;&nbsp;个人信息是否展示
+                                    <div>
+                                        <input type="button" value="保存" onClick="$('#personal_info_form').submit();" class="redbtn" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public/footer" />
+</body>
+<link type="text/css" rel="stylesheet" href="/Public/plugins/daterangepicker/daterangepicker-bs3.css">
+<script type="text/javascript" src="/Public/plugins/daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="/Public/plugins/daterangepicker/daterangepicker.js"></script>
+<style>
+.daterangepicker{ display:none;}
+</style>
+<script>
+$(document).ready(function() {
+	// 生日时间
+	$('#birthday').daterangepicker({
+		singleDatePicker: true,
+		showDropdowns: true,
+		minDate:'1900-01-01',
+		maxDate:moment(),
+		startDate:moment(),
+        format : 'YYYY-MM-DD', //控件中from和to 显示的日期格式		
+	    locale : {
+            applyLabel : '确定',
+            cancelLabel : '取消',
+            fromLabel : '起始时间',
+            toLabel : '结束时间',
+            customRangeLabel : '自定义',
+            daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+            monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月',
+                '七月', '八月', '九月', '十月', '十一月', '十二月' ],
+            firstDay : 1
+        }
+	});
+    $("input[name='nickname']").blur(function(){
+        var nickname = $(this).val();
+        if(nickname.length>6){
+            $(this).siblings('span').removeClass('me-hidden');
+        }else{
+            $(this).siblings('span').addClass('me-hidden');
+        }
+    })
+});
+
+    function delimg(file,t){
+        $.get(
+                "/index.php?m=Admin&c=Uploadify&a=delupload",{action:"del", filename:file},function(){}
+        );
+        $('#head_pic').val('');
+        $('#preview').attr('src','');
+        $(t).remove();
+    }
+    function add_img(str){
+		 
+        var head_pic = $('#head_pic').val();
+        $('#head_pic').val(str);
+        $('#preview').attr('src',str);
+        $('img[class="headpic"]').attr('src',str);
+
+        if(!head_pic){
+            $('#img_box').append('<button id="delimg" type="button" onclick="delimg('+"'"+str+"'"+',this)">删除图片</button>');
+        }else{
+            $('#delimg').attr('onclick','delimg('+"'"+str+"'"+',this)');
+        }
+
+    }
+</script>
+</html>

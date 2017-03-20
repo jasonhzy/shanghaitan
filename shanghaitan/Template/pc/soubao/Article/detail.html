@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>家文化传承</title>
+
+</head>
+<body>
+<!--------头部开始-------------->
+<include file="Public/header" />
+<!--------头部结束-------------->
+<div class="hc_bookxqbody">
+    <div class="currentloaction">
+        <a href="{:U('Home/Index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+        <span>当前位置：</span>
+        <a href="{:U('Home/Article/index')}">家文化传承</a>
+        >
+        <a href="{:U('Home/Article/index')}">{$cat_name}</a>
+        >
+        <a href="#">{$article['title']}</a>
+    </div>
+    <div class="row">
+        <div class="col-md-3 hcb_left">
+            <h3>你可能感兴趣</h3>
+            <tpshop sql='SELECT * FROM `__PREFIX__article` where cat_id = 37  ORDER BY `article_id` DESC limit 3 ' key="k" item='v'>
+            <div>
+                <a href='{:U("Home/Article/detail/id/$v[article_id]")}'>
+                    <div class="booklist">
+                        <img src="{$v[thumb]}" />
+                        <div>{$v[title]}</div>
+                    </div>
+                </a>
+            </div>
+            </tpshop>
+        </div>
+        <div class="col-md-9 hcb_right">
+            <div>
+                {$article.content|htmlspecialchars_decode}
+                <p class="textcolore30004">
+                    声明：如有版权、个人隐私和其它问题，请与我们联系，我们将在第一时间为您处理解决。
+                    部分作品可能涉及到版权、作品内容和个人隐私等内容，无法展示，如您想咨询更多问题或作品
+                    ，欢迎您来我们公司参观咨询！更多内容，请扫码关注：
+                </p>
+                    <div class="textcenter stybtn">
+
+                        <div>
+                            <img src="__STATIC__/images/img/home_culture/jiawenhua_erweima.jpg" />
+                        </div>
+								<span>
+									<a  class="redbtn" href='{:U("Home/Article/detail/id/$pre")}'>上一篇</a>
+									<a  class="redbtn" href='{:U("Home/Article/detail/id/$next")}'>下一篇</a>
+								</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<include file="Public/footer" />
+</body>
+</html>

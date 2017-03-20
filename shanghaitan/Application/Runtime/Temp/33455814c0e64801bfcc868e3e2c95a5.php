@@ -1,0 +1,3 @@
+<?php
+//000031104000a:6:{i:0;a:4:{s:2:"id";s:2:"17";s:4:"name";s:6:"沈阳";s:9:"parent_id";s:1:"3";s:5:"level";N;}i:1;a:4:{s:2:"id";s:2:"18";s:4:"name";s:6:"大连";s:9:"parent_id";s:1:"3";s:5:"level";N;}i:2;a:4:{s:2:"id";s:2:"19";s:4:"name";s:9:"哈尔滨";s:9:"parent_id";s:1:"3";s:5:"level";N;}i:3;a:4:{s:2:"id";s:2:"20";s:4:"name";s:6:"长春";s:9:"parent_id";s:1:"3";s:5:"level";N;}i:4;a:4:{s:2:"id";s:2:"21";s:4:"name";s:12:"齐齐哈尔";s:9:"parent_id";s:1:"3";s:5:"level";N;}i:5;a:4:{s:2:"id";s:2:"22";s:4:"name";s:6:"延边";s:9:"parent_id";s:1:"3";s:5:"level";N;}}
+?>

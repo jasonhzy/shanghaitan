@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的订单</title>
+</head>
+<body>
+<!-- 头部-s -->
+<include file="Public/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/selfc.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/iconfont/iconfont.css" />
+<!-- 头部-e -->
+<div class="row htmllistbody self_centerbody self_infobody">
+  <div class="currentloaction">
+    <a href="{：U('Home/Index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+    <span>当前位置：</span>
+    <a href="{：U('Home/User/index')}">个人中心</a>
+    >
+    <a href="#">我的健康</a>
+  </div>
+  <include file="User/menu" />
+  <!--菜单-->
+  <div class="col-md-9">
+    <div class="self_centerright slef_inforight slef_info_vipinfo">
+      <p><b>我的健康</b></p>
+      <div class="sc-bg-div">
+        <p><span></span><b>我的健康状况</b></p>
+        <div class="sc-bg-div-goodsdata self_vip_des self_health">
+          <p class="borderbottomca">
+            <span class="textcolore30004">*</span>填写今日身体状况
+          </p>
+          <form method="post"  id="form">
+          <div>
+            <span class="textcolore30004">*</span>身高：
+            <input type="text" placeholder="{$h_arr.height}" name="height" class="s_info_input_style" />
+            <span>&nbsp;&nbsp;cm</span>
+          </div>
+          <div>
+            <span class="textcolore30004">*</span>体重：
+            <input type="text" placeholder="{$h_arr.weight}" name="weight" class="s_info_input_style" />
+            <span>&nbsp;&nbsp;kg</span>
+          </div>
+          <div>
+            <span class="textcolore30004">*</span>血压：
+            <input type="text" placeholder="{$h_arr.blood}" name="blood" class="s_info_input_style"/>
+            <span>&nbsp;&nbsp;mmHg</span>
+          </div>
+          <div>
+            <span class="textcolore30004">*</span>血脂：
+            <input type="text" placeholder="{$h_arr.bloodfat}" name="bloodfat" class="s_info_input_style" />
+            <span>&nbsp;&nbsp;mmol/L</span>
+          </div>
+          <div>
+            <span class="textcolore30004">*</span>血糖：
+            <input type="text" placeholder="{$h_arr.bloodsugar}" name="bloodsugar" class="s_info_input_style" />
+            <span>&nbsp;&nbsp;mmol/L</span>
+          </div>
+          <div>
+            <input type="button" class="redbtn sh-btn" value="提交">
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<include file="Public/footer" />
+<span class="confirmdiv liuyanqueren me-hidden">
+			&nbsp;&nbsp;
+			<span class="tip">信息欠缺~</span>
+		</span>
+</body>
+<script>
+  $(function(){
+    $('.sh-btn').click(function(){
+      var shengao = $.trim($('input[name="height"]').val());
+      var tizhong = $.trim($('input[name="weight"]').val());
+      var xueya = $.trim($('input[name="blood"]').val());
+      var xuezhi = $.trim($('input[name="bloodfat"]').val());
+      var xuetang = $.trim($('input[name="bloodsugar"]').val());
+      if(shengao==""||tizhong==""||xueya==""||xuezhi==""||xuetang==""){
+        $('.liuyanqueren').removeClass('me-hidden');
+        setTimeout('$(".liuyanqueren").addClass("me-hidden")',1000);
+      }
+      else {
+        $.ajax({
+            type:"post",
+            url:"/index.php?m=Home&c=User&a=chart",
+            data:$("#form").serialize(),
+            dataType:"json",
+            success:function(re){
+                if(re){
+                    alert("提交成功");
+                    location.reload();
+                }else{
+                    alert("提交失败");
+                }
+            }
+        })
+      }
+    });
+  })
+</script>
+</html>

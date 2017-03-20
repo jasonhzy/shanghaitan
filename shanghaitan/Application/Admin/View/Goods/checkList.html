@@ -1,0 +1,82 @@
+<include file="Public/min-header" />
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <nav class="navbar navbar-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"> 会员审核</h3>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="list-table" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th>公司名称</th>
+                                        <th>营业执照</th>
+                                        <th>法人代表</th>
+                                        <th>电话号码</th>
+                                        <th>所在地</th>
+                                        <th>审核状态</th>
+                                        <!--<th>相册</th>-->
+                                        <!-- <th>操作</th> -->
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <volist name="goodsInfo" id="vo" key="k" empty="暂无未审核用户">
+                                        <tr role="row">
+                                            <td>{$vo.goods_name}</td>
+                                            <td><if condition="$vo.yingye eq ''">暂无<else/><img src="{$vo.yingye}" width="80px"></if></td>
+                                            <td>{$vo.faren}</td>
+                                            <td>{$vo.mobile}</td>
+                                            <td>{$vo.city}</td>
+                                            <td data-id="{$vo.user_id}">
+                                                <!-- <img class="static" width="20" height="20" src="__PUBLIC__/images/<if condition='$vo[checked] eq 1'>cancel.png</if>"/> -->
+                                                <if condition='$vo[is_check] eq 0'><a href="javascript:void(0)" class="static">等待审核</a></if>
+                                                <if condition='$vo[is_check] eq 1'><span  class="static">已审核</span></if>
+                                            </td>
+                                            <!--<td><a class="btn btn-info" href="{:U('Admin/Cation/imagepath',array('user_id'=>$vo['user_id']))}">查看相册</a></td>-->
+                                            <!-- <td>
+                                             <a class="btn btn-info" href="{:U('Admin/Ad/adList',array('pid'=>$vo['position_id']))}">查看广告</a>
+                                             <a class="btn btn-primary" href="{:U('Admin/Ad/position',array('act'=>'edit','position_id'=>$vo['position_id']))}"><i class="fa fa-pencil"></i></a>
+                                             <a class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                           </td> -->
+                                        </tr>
+                                    </volist>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 text-left"></div>
+                            <div class="col-sm-6 text-right">{$page}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>
+<script>
+    $(".static").click(function(){
+        var con = confirm("确定通过审核吗?");
+        var  obj = $(this);
+        var user_id = obj.parent("td").attr("data-id");
+        if(con == true){
+            $.get("{:U('Admin/Goods/ajaxCheck')}",{user_id:user_id},function(data){
+                if(data == "1"){
+                    location.reload();
+                }
+            })
+        }
+    })
+</script>

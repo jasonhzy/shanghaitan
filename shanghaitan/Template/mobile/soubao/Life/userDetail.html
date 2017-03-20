@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>生活服务</title>
+</head>
+<body>
+<include file="Public/header"/>
+<link rel="stylesheet" href="__STATIC__/css/css/intell.css" />
+<div class="htmllistbody intel-sayhellobody" style="margin-top: 50px;">
+  <div class="row boxshaowccc intel-sayhelloinfo">
+    <div class="col-xs-4">
+      <img src="{$user_arr.head_pic}" />
+    </div>
+    <div class="col-xs-8">
+      <h3>{$user_arr.nickname}</h3>
+      <p><span>性别：</span><b><if condition="$sex eq 0">保密</if><if condition="$sex eq 1">男</if><if condition="$sex eq 2">女</if></b></p>
+      <p><span>爱好：</span><b>{$user_arr.enjoy}</b></p>
+      <p><span>生日：</span><b>{$user_arr.birthday}</b></p>
+      <p><span>地址：</span><b>{$user_arr.address}</b></p>
+    </div>
+  </div>
+  <div class="borderc9c9c9 textareaborder">
+    <form method="post" action="" id="form">
+    <textarea class="messagea"  name="message_content" id="message"  placeholder="登陆后方可留言,不能含有语言工具"></textarea>
+    <div class="textarea-zishu">
+      <span id="tishizishu" class="textcolore30004 tishizishu">&nbsp;</span>&nbsp;
+      <span class="zishucurrent">0</span>
+      /
+      <span class="zishuall textcolore30004">150</span>
+      &nbsp;
+      <input type="hidden" name="user_id" value="{$user_id}"/>
+      <input  type="button"  value="留言"  id="liuyan"/>
+    </div>
+    </form>
+  </div>
+</div>
+<include file="Public/footer"/>
+</body>
+<script>
+  $(function(){
+    //获取文本框中的字数多余的截取
+    $(".messagea").on('keyup',function(){
+      var zishucount = parseInt($(".messagea").val().length);
+      var allzishu =parseInt($(".zishuall").text());
+      $(".zishucurrent").text(zishucount);
+      if(zishucount>allzishu||zishucount==allzishu){
+        $(".tishizishu").text('字数过长！');
+        $(this).val($(this).val().substring(0,150));
+        $(".zishucurrent").text('150');
+      }
+      else if(zishucount<allzishu){
+        $(".tishizishu").text('');
+      }
+    });
+    //点击留言按钮
+
+    $("#liuyan").click(function(){
+      var mes = $('#message').val();
+      var id = "{$user_arr.user_id}";
+      //alert(id);
+           if(mes == ''){
+             alert('留言内容不能为空');
+           }else{
+             if(!{$user_id}){
+               alert('你还没有登录，请登录');
+               location.href="/index.php?m=Mobile&c=User&a=login";
+             }else{
+               $.ajax({
+                 type:"post",
+                 url:"/index.php?m=Mobile&c=Life&a=addMessage&id="+id,
+                 data:$('#form').serialize(),
+                 datatype:"json",
+                 success:function(re){
+                   if(re){
+                     alert('留言成功');
+                     location.href="/index.php?m=Mobile&c=Life&a=userDetail";
+                   }
+                 }
+               })
+             }
+           }
+    });
+  })
+</script>
+</html>

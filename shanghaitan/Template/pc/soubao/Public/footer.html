@@ -1,0 +1,35 @@
+<div class="footer">
+    <div class="web-width">
+        <tpshop sql="select * from `__PREFIX__article_cat` where parent_id = 0" key="k" item='v'>
+        <ul>
+            <li class="ftNav-title">{$v.cat_name}</li>
+            <tpshop sql="select * from `__PREFIX__article` where cat_id = $v[cat_id]" key="k" item='v0'>
+            <li><a href="javascript:;">{$v0.title}</a></li>
+            </tpshop>
+        </ul>
+        </tpshop>
+        <div class="ftcontent">
+            <h3>全国服务热线</h3>
+            <div class="ft-tel">{$tpshop_config['shop_info_phone']}</div>
+            <div class="ft-kf"><a href="tencent://message/?uin=10624700&Site"><i class="iconfont">&#xe637;</i> <span>在线客服</span></a></div>
+        </div><!--ftcontent/-->
+        <div class="clears"></div>
+    </div><!--web-width/-->
+</div><!--footer/-->
+<div class="copy">
+    <p>CopyRight &copy; {$tpshop_config['shop_info_record_no']} </p>
+    <p>本网站常年法律顾问： 北京盈科（上海）律师事务所 张景三 律师</p>
+    <p>企联网提供带宽支持</p>
+</div>
+<div class="safe">
+    <tpshop sql="select * from `__PREFIX__friend_link` where link_logo != ''" key="k" item='v'>
+    <a href="javascript:;"><img class="lazy" data-original="{$v.link_logo}" src="" alt="{$v.link_name}" /></a>
+    </tpshop>
+</div>
+<div class="links">
+    <div class="web-width">
+        <tpshop sql="select * from `__PREFIX__friend_link` where link_logo = ''" key="k" item='v'>
+        友情链接：<a href="javascript:;">{$v.link_name}</a>
+        </tpshop>
+    </div><!--web-width/-->
+</div><!--links/-->

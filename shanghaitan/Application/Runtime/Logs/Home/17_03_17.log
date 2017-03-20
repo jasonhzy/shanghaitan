@@ -1,0 +1,117 @@
+[ 2017-03-17T11:51:27+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant user_id - assumed 'user_id' F:\shanghaitan\Application\Home\Controller\BaseController.class.php 第 22 行.
+NOTIC: [8] Use of undefined constant user_id - assumed 'user_id' F:\shanghaitan\Application\Home\Logic\CartLogic.class.php 第 210 行.
+NOTIC: [8] Use of undefined constant user_id - assumed 'user_id' F:\shanghaitan\Application\Home\Logic\CartLogic.class.php 第 218 行.
+NOTIC: [8] Use of undefined constant user_id - assumed 'user_id' F:\shanghaitan\Application\Home\Logic\CartLogic.class.php 第 223 行.
+NOTIC: [8] Undefined index: cartList F:\shanghaitan\Application\Home\Controller\BaseController.class.php 第 37 行.
+NOTIC: [8] Undefined variable: arr F:\shanghaitan\Application\Common\Common\common.php 第 1029 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\shanghaitan\Application\Common\Common\common.php 第 1029 行.
+NOTIC: [8] Undefined variable: tree F:\shanghaitan\Application\Common\Common\common.php 第 1035 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\shanghaitan\Application\Common\Common\common.php 第 1035 行.
+INFO: [ view_begin ] --START--
+INFO: Run Home\Behaviors\testBehavior [ RunTime:0.001000s ]
+INFO: [ view_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+NOTIC: [8] Undefined index: level F:\shanghaitan\ThinkPHP\Library\Think\Template\TagLib\Tpshop.class.php 第 155 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant p_url - assumed 'p_url' F:\shanghaitan\Application\Runtime\Cache\Home\a2442d3622a250aaf9dc9eef841af2dc.php 第 115 行.
+NOTIC: [8] Use of undefined constant p_url - assumed 'p_url' F:\shanghaitan\Application\Runtime\Cache\Home\a2442d3622a250aaf9dc9eef841af2dc.php 第 115 行.
+NOTIC: [8] Use of undefined constant cat_name - assumed 'cat_name' F:\shanghaitan\Application\Runtime\Cache\Home\a2442d3622a250aaf9dc9eef841af2dc.php 第 159 行.
+NOTIC: [8] Use of undefined constant cat_name - assumed 'cat_name' F:\shanghaitan\Application\Runtime\Cache\Home\a2442d3622a250aaf9dc9eef841af2dc.php 第 159 行.
+NOTIC: [8] Use of undefined constant cat_name - assumed 'cat_name' F:\shanghaitan\Application\Runtime\Cache\Home\a2442d3622a250aaf9dc9eef841af2dc.php 第 159 行.
+NOTIC: [8] Use of undefined constant cat_name - assumed 'cat_name' F:\shanghaitan\Application\Runtime\Cache\Home\a2442d3622a250aaf9dc9eef841af2dc.php 第 159 行.
+NOTIC: [8] Use of undefined constant cat_name - assumed 'cat_name' F:\shanghaitan\Application\Runtime\Cache\Home\a2442d3622a250aaf9dc9eef841af2dc.php 第 159 行.
+NOTIC: [8] Use of undefined constant cat_name - assumed 'cat_name' F:\shanghaitan\Application\Runtime\Cache\Home\a2442d3622a250aaf9dc9eef841af2dc.php 第 169 行.
+NOTIC: [8] Use of undefined constant cat_name - assumed 'cat_name' F:\shanghaitan\Application\Runtime\Cache\Home\a2442d3622a250aaf9dc9eef841af2dc.php 第 169 行.
+NOTIC: [8] Use of undefined constant cat_name - assumed 'cat_name' F:\shanghaitan\Application\Runtime\Cache\Home\a2442d3622a250aaf9dc9eef841af2dc.php 第 220 行.
+NOTIC: [8] Use of undefined constant cat_name - assumed 'cat_name' F:\shanghaitan\Application\Runtime\Cache\Home\a2442d3622a250aaf9dc9eef841af2dc.php 第 220 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.187000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.187000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.005000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-03-17T11:51:30+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+
+[ 2017-03-17T13:15:03+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+
+[ 2017-03-17T13:29:41+08:00 ] 127.0.0.1 /index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+
+[ 2017-03-17T15:22:52+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+
+[ 2017-03-17T15:34:59+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+
+[ 2017-03-17T15:36:10+08:00 ] 127.0.0.1 /index.php/Home/Goods/goodsInfo/id/145
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant user_id - assumed 'user_id' F:\shanghaitan\Application\Home\Controller\BaseController.class.php 第 22 行.
+NOTIC: [8] Use of undefined constant user_id - assumed 'user_id' F:\shanghaitan\Application\Home\Logic\CartLogic.class.php 第 210 行.
+NOTIC: [8] Use of undefined constant user_id - assumed 'user_id' F:\shanghaitan\Application\Home\Logic\CartLogic.class.php 第 218 行.
+NOTIC: [8] Use of undefined constant user_id - assumed 'user_id' F:\shanghaitan\Application\Home\Logic\CartLogic.class.php 第 223 行.
+NOTIC: [8] Undefined index: cartList F:\shanghaitan\Application\Home\Controller\BaseController.class.php 第 37 行.
+NOTIC: [8] Undefined variable: arr F:\shanghaitan\Application\Common\Common\common.php 第 1029 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\shanghaitan\Application\Common\Common\common.php 第 1029 行.
+NOTIC: [8] Undefined variable: tree F:\shanghaitan\Application\Common\Common\common.php 第 1035 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\shanghaitan\Application\Common\Common\common.php 第 1035 行.
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'shanghaitan.tp_spec_goods_price' doesn't exist
+
+[ 2017-03-17T15:40:10+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+

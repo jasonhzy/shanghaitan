@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style TYPE="text/css">
+        <!--
+        A:link{text-decoration:none}
+        A:visited{text-decoration:none;color: #000;}
+        A:hover {color: #000;text-decoration:underline}
+        -->
+    </style>
+</head>
+<body>
+<include file="Public/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/callus.css" />
+<div class="gradebanner" style="margin-top:74px; ">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="__STATIC__/images/img/callus/callusbanner.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="gradegoodlist  callus">
+    <div class="gglcontent">
+        <div class="gglcontent_top">
+            <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+            <span>公司介绍</span>
+        </div>
+        <a>
+            <div class="callus_list1 row">
+                <div class="col-md-5">
+                    <img src="__STATIC__/images/img/callus/calluslist1.jpg" />
+                </div>
+                <div class="col-md-7" style="padding-right:15px;">
+                    <h1>关注银海棠	</h1>
+                    <h2>&nbsp;SPLENDOR&nbsp;</h2>
+                    <p class="textindent2">
+                        河南省银海棠养老服务有限公司是一家专门致力于居家型的智能化养老服务企业，主要业务有居家适老化改造、口述史、互动养老和家政服务等项目。公司本着顾客至上，服务第一的宗旨，为广大老年朋友们提供精神需求和物质帮助，让想在家养老的老年朋友没有后顾之忧，让在外的子女们放心。
+                        <br/>　　公司始终以长者满意为中心，坚持为老服务高标准严要求，坚持维护长者利益和尊严，严格遵守公司的三大纪律八项注意，高标准严要求为广大老年朋友服务。
+                        <br/>　　 让长者有尊严的生活，优雅的老去……
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="gglcontent">
+        <div class="gglcontent_top">
+            <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+            <span>招募信息</span>
+        </div>
+        <div class="callusliat callusliat2">
+            <div class="cl2_s row">
+                <div class="cl2_s_1ist col-md-4">
+                    <img src="__STATIC__/images/img/callus/calluslist2_1.jpg" />
+                    <p>吸纳人才</p>
+                    <div class="textindent2">
+                        如果你积极主动，对生活充满活工作充满正能量-你正是我们需要的；如果你思维活跃乐于创新-我们热烈欢迎你的加入。
+                    </div>
+                </div>
+                <div class="cl2_s_1ist col-md-4">
+                    <img src="__STATIC__/images/img/callus/calluslist2_2.jpg" />
+                    <p>培养人才</p>
+                    <div class="textindent2">
+                        “学习创新”是公司倡导的核心价值观。我们相信员工素质提高是企业素质提高的保证。
+                    </div>
+                </div>
+                <div class="cl2_s_1ist col-md-4">
+                    <img src="__STATIC__/images/img/callus/calluslist2_3.jpg" />
+                    <p>企业价值观</p>
+                    <div class="textindent2">
+                        我们倡导“企业员工成长的双成长”模式在努力实现公司目标的同时，也帮助员工自我实现为每位员工提供公平的机会.
+                    </div>
+                </div>
+            </div>
+            <div class="cl2_x row">
+                <foreach name="arr" item="v">
+                <div class="col-md-4">
+                    <div class="cl2_x_list">
+                        <table>
+                            <tr>
+                                <td colspan="2">招聘职位：{$v.p_name}</td>
+                            </tr>
+                            <tr>
+                                <td>学　　历：{$v.education} </td>
+                                <td>招聘人数：{$v.p_num}人   </td>
+                            </tr>
+                            <tr>
+                             <td colspan="2">工作地点：{$v.workplace}</td>
+                            </tr>
+                            <tr>
+                                <td>招聘部门：{$v.department} </td>
+                                <td > 截止日期：{$v.end|date="Y-m-d",###}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                </foreach>
+            </div>
+        </div>
+    </div>
+    <div class="gglcontent">
+        <div class="gglcontent_top">
+            <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+            <span>加入我们</span>
+        </div>
+        <div class="callusliat callusliat3 row">
+            <div class="col-md-12">
+                <form action="" method="post" id="form">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="text" name="t_name" placeholder="请输入你的姓名" class="inputstyle"/>
+                                <div>&nbsp;</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="phone" placeholder="请输入你的电话" class="inputstyle"/>
+                                <div>&nbsp;</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="email" placeholder="请输入你的邮箱" class="inputstyle"/>
+                                <div>&nbsp;</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea name="content" placeholder="你要应聘的职位及薪资要求" class="inputstyle"></textarea>
+                                <div>&nbsp;</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="button"  id="tijiao" value="提交" class="calluslist3btn"/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="gglcontent">
+        <div class="gglcontent_top">
+            <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+            <span>联系我们</span>
+        </div>
+        <div class="callusliat callusliat3 rows">
+            <p>地　址：河南省郑州市农业路与天明路怡丰新都汇8号楼1<br/>　　　　单元1423A</p>
+            <p>电　话：0371-86529093<br/>　　　　18638266546<br/>　　　　18537179109</p>
+            <p>邮　箱：18638266546@163.com</p>
+            <p>网　址：www.yhaitang.com</p>
+        </div>
+    </div>
+</div>
+<include file="Public/footer" />
+</body>
+<script>
+    $(function(){
+        $("input[name='t_name'],input[name='phone'],input[name='email'],textarea[name='content']").focus(function(){
+            $(this).removeClass('borderred');
+            $(this).next('div').html('&nbsp;');
+        });
+        $("input[name='t_name']").blur(function(){
+            var name = $.trim($(this).val());
+            var span = $(this).next('div');
+            if(name==""){
+                $(this).addClass('borderred');
+                span.text('请输入姓名');
+            }
+        });
+        $("input[name='phone']").blur(function(){
+            var phone = $.trim($(this).val());
+            var span = $(this).next('div');
+            var regphone =  /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+            if(phone==""){
+                $(this).addClass('borderred');
+                span.text('请输入电话');
+            }
+            else if(!regphone.test(phone)){
+                $(this).addClass('borderred');
+                span.text('电话号码输入有误');
+            }
+        });
+        $("input[name='email']").blur(function(){
+            var email = $.trim($(this).val());
+            var span = $(this).next('div');
+            var regemail =  /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+            if(email==""){
+                $(this).addClass('borderred');
+                span.text('请输入邮箱');
+            }
+            else if(!regemail.test(email)){
+                $(this).addClass('borderred');
+                span.text('邮箱格式输入有误');
+            }
+        });
+        $("textarea[name='content']").blur(function(){
+            var express = $.trim($(this).val());
+            var span = $(this).next('div');
+            if(express==""){
+                $(this).addClass('borderred');
+                span.text('请输入要应聘的职务及薪资要求');
+            }
+        });
+        $('#tijiao').click(function(){
+            var name = $.trim($("input[name='t_name']").val());
+            var phone = $.trim($("input[name='phone']").val());
+            var email = $.trim($("input[name='email']").val());
+            var express = $.trim($("textarea[name='content']").val());
+            if(name==""||phone==""||email==""||express==""){
+                alert('请将信息填写完整！');
+                return false;
+            }
+            $.ajax({
+                type:"post",
+                url:"/index.php?m=Mobile&c=Index&a=ajaxTal",
+                data:$("#form").serialize(),
+                dataType:"json",
+                success:function(re){
+                    if(re){
+                        alert("提交成功");
+                        location.href ="/index.php?m=Mobile&c=Index&a=aboutUs";
+                    }
+                }
+            })
+        });
+
+    })
+</script>
+</html>

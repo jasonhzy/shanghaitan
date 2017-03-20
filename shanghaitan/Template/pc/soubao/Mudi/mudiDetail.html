@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>往生服务</title>
+
+</head>
+<body>
+<!--------头部开始-------------->
+<include file="Public/header" />
+<!--------头部结束-------------->
+<div class="ws-ly-dtbody htmllistbody">
+  <div class="currentloaction">
+    <a href="index.html"><i class="icon iconfont">&#x348d;</i></a>
+    <span>当前位置：</span>
+    <a href="head.html">往生服务</a>
+    >
+    <a href="#">{$news.title}</a>
+  </div>
+  <div class="row ws-ly-dtbody-row">
+    <div class="col-md-4 ws-ly-dtbody-left">
+      <div class="ws-ly-dtbody-left-b">
+        <div class="gglcontent_top ws-ly-dtbody-left-bt">
+          <img src="__STATIC__/images/img/wangshengfuwu/lingyuanicon.gif" />
+          <span>最新动态</span>
+        </div>
+        <ul>
+          <tpshop sql="SELECT * FROM `__PREFIX__mudi_news` WHERE `news_id` != $news_id ORDER BY `addtime` DESC limit 6 "  key="k" item='v'>
+          <li>
+            <a href="#cartcount" target="_blank">
+              <i class="icon iconfont">&#xe62a;</i>
+              {$v.title}
+              <span class="floatright">{$v.addtime|date="Y-m-d",###}</span>
+            </a>
+          </li>
+          </tpshop>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-8 ws-ly-dtbody-right">
+      <div class="ws-ly-dtbody-rcontent" style="margin-bottom: 20px;">
+        {$news.content|htmlspecialchars_decode}
+      </div>
+    </div>
+  </div>
+
+</div>
+<include file="Public/footer" />
+</body>
+</html>

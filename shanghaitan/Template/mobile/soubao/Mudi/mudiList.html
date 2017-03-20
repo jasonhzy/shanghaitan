@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>往生服务</title>
+  <style TYPE="text/css">
+    <!--
+    A:link{text-decoration:none}
+    A:visited{text-decoration:none;color: #000;}
+    A:hover {color: #000;text-decoration:underline}
+    -->
+  </style>
+</head>
+<body>
+<include file="Public/min-header" />
+<link rel="stylesheet" href="__STATIC__/css/css/liMarquee.css">
+<link rel="stylesheet" href="__STATIC__/css/css/gradeshop.css" />
+<div class="gradebanner wangshengbanner">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <foreach name="list" item="v" key="k">
+        <li data-target="#carousel-example-generic" data-slide-to="{$k}" <if condition="$k eq 0">class="active"></if></li>
+      </foreach>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-inner" role="listbox">
+        <foreach name="list" item="v" key="k">
+          <div <if condition="$k eq 0"> class="item active" <else/>class="item"</if>>
+        <img src="{$v.p_url}" alt="">
+      </div>
+      </foreach>
+    </div>
+  </div>
+</div>
+<div class="gradegoodlist">
+  <div class="gglcontent">
+    <div class="gglcontent_top">
+      <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+      <span>墓地展示</span>
+    </div>
+    <div class="gooddatalist container-fluid">
+      <div id="gglitem1" class="wangsheng-lunbo dowebok">
+        <foreach name="mudiList" item="v">
+        <a href="{:U('Mobile/Mudi/mudiInfo/cid/1',array('id'=>$v['mudi_id']))}" target="_blank" >
+          <img src="{$v.img}" alt=""/>
+          <div class="ws_a_div">
+            <span>{$v.name}</span>
+            <span>￥<span>{$v.price}</span>起</span>
+          </div>
+        </a>
+        </foreach>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="gglcontent">
+    <div class="gglcontent_top">
+      <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+      <span>陵园动态</span>
+    </div>
+    <div class="lycontent row">
+      <div class="col-xs-12 boxshaowccc" style="width: 100%;">
+        <ul class="lyright ">
+          <foreach name="news" item="v">
+          <li>
+            <a href="{:U('Mobile/Mudi/mudiDetail/cid/1',array('id'=>$v['news_id']))}" target="_blank">
+              <i class="icon iconfont">&#xe62a;</i>
+              {$v.title}
+              <span class="floatright">{$v.addtime|date='Y-m-d',###}</span>
+            </a>
+          </li>
+          </foreach>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<include file="Public/footer" />
+</body>
+<script src="__STATIC__/js/js/jquery.liMarquee.js"></script>
+<script>
+  $(function(){
+    $('.dowebok').liMarquee();
+  })
+</script>
+</html>

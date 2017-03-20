@@ -1,0 +1,161 @@
+.searchall{
+			width: 100%;
+			max-width: 1200px;
+			padding: 20px 0;
+			margin: 15px auto;
+		}
+		.searchall>span:first-child{
+			float: left;
+			line-height: 45px;
+			font-size: 18px;
+		}
+		.searchall>span:last-child{
+			padding: 0 20px;
+			background: #d0d0d0;
+			float: right;
+			line-height: 45px;
+		}
+		.searchall>span:last-child>i{
+			color: #9c9a9a;
+		}
+		.search_centerdiv input[type="text"]{
+			width: 78%;
+			height:35px;
+			float: left;
+			border: 0;
+			background: #fff;
+			outline: none;
+			padding:0 10px;
+			box-sizing: border-box;
+		}
+		.search_centerdiv input[type="button"]{
+			width: 22%;
+			border-style: none;
+			height: 35px;
+			background: #E30004;
+			float: left;
+			color: #fff;
+		}
+		.gradebanner{
+			width: 100%;
+		}
+		.carousel-indicators li {
+		    display: inline-block;
+		    width: 10px;
+		    height: 10px;
+		    margin: 0px 10px;
+		    text-indent: -999px;
+		    cursor: pointer;
+		    background-color: rgba(255,255,255,255);
+		    border: 1px solid #E30004;
+		    border-radius: 10px;
+		}
+		.carousel-indicators .active {
+		    width: 10px;
+		    height: 10px;
+		    margin: 0 10px;
+		    background-color: #E30004;
+		}
+		.gradegoodlist{
+			width: 100%;
+			padding: 20px 0;
+		}
+		.gglcontent{
+			width: 90%;
+			max-width: 1200px;		
+			margin: 0 auto 20px;
+		}
+		.gglcontent_top{
+			font-size: 16px;
+			font-weight: bold;
+			padding: 10px 10px;
+			border-bottom: 1px solid #E30004;
+		}
+		.gglcontent_top img{
+			width: 16px;
+		}
+		.gradegoodlist .gglcontent .gglcontent_top span{
+			/*padding-left: 17px;*/
+		}
+		.gglselecttype{
+			padding: 10px 0;
+		}
+		.gglselecttype ul{
+			margin-bottom: 0;
+			padding-left: 0 !important;
+		}
+		.gglselecttype li{
+			display: inline-block;
+			padding: 10px 50px;		
+			cursor: pointer;				
+		}
+		.gradeliactive{
+			background: #E30004;
+			color: #fff;
+		}		
+		/*以上是公共部分*/
+		
+		
+		
+		.gradegoodlist .gglcontent .gooddatalist {
+			max-width: 1200px;
+			width: 100%;
+		}
+		.gradegoodlist .gglcontent .gooddatalist>.row>.col-md-3{
+			padding-top: 15px;
+			text-align: center;
+		}
+		.gradegoodlist .gglcontent .gooddatalist>.row>.col-md-3>.gglc{
+			max-width: 280px;
+			width: 100%;
+			padding: 15px 10px 10px;
+			display: block;
+			display: inline-block;
+			box-sizing: border-box;
+			border: 1px solid #c9c9c9;
+			line-height: 2em;
+			margin: 0 auto;
+			text-align: left;
+		}
+		.gradegoodlist .gglcontent .gooddatalist>.row>.col-md-3>.gglc .gglimg{
+			height: 150px;
+			padding: 10px 0 20px 0;
+			background: #fff;
+			text-align: center;
+			cursor: pointer;
+		}
+		.gradegoodlist .gglcontent .gooddatalist .row>.col-md-3>.gglc .gglimg img{
+			height: 100%;
+		}
+		.gradegoodlist .gglcontent .gooddatalist .row>.col-md-3>.gglc .gglcbigtext{
+			font-size: 16px;
+		}
+		.gradegoodlist .gglcontent .gooddatalist .row>.col-md-3>.gglc .ggltextlinethrough{
+			font-size: small;
+			text-decoration:line-through;
+			color: #747474;
+		}
+		.gradegoodlist .gglcontent .gooddatalist .row>.col-md-3>.gglc .jifenhuanhoubtn>span{
+			color: #747474;
+			font-size: 18px;
+		}
+		.gradegoodlist .gglcontent .gooddatalist .row>.col-md-3>.gglc .jifenhuanhoubtn>span>span{
+			font-size: 20px;
+			color: #E30004;
+		}
+		.gradegoodlist .gglcontent .gooddatalist .row>.col-md-3>.gglc .jifenhuanhoubtn a{
+			color: #FFF;
+			border-radius: 6px;
+			padding: 3px 23px;
+			float: right;
+			background: #E30004;
+		}
+		.pageactive{ 
+			color: #fff; background: #E30004; text-decoration: none; 
+		} 
+		.pageactive:hover{ 
+			color: #fff; text-decoration: none !important; 
+		} 
+		.pageactive:visited{ 
+			color: #fff; text-decoration: none !important; 
+		}

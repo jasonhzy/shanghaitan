@@ -1,0 +1,173 @@
+/*我的购物车 start*/
+.shopcartbody{margin-bottom: 50px;}
+
+.cartlisttitle{
+	padding: 10px 0;
+	background: #f4f4f4;
+}
+.cartgoodslist{
+	border: 1px solid #C9C9C9;
+}
+.cartgoodslist .row{
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+.cartgoodslist  .cartlist{
+	padding: 10px 0;
+	border-bottom: 1px dashed #C9C9C9;
+}
+.cartgoodslist  .cartlist>div{
+	height: 120px;
+	line-height: 120px;
+	text-align: center;
+}
+.cartgoodslist  .cartlist>div b{
+	line-height: normal;
+	display: inline-block;
+}
+.cartgoodslist  .cartlist img{
+	width: 100px;
+	height: 100px;
+	margin:0 10px;
+}
+.cartgoodslist  .cartlist .jishuqicart{
+	width: 94px;
+	display: block;
+	float: none;
+	margin: 45px auto;			
+	line-height: 1.5em;
+}
+.cartgoodslist  .cartlist .spinner_cart{
+	margin: 45px auto;
+	display: block;
+	text-align: center;
+	width: 100px;
+}
+.cartgoodslist  .cartlist a{
+	color: #fbaa00;
+}
+.jiesuanbtn{
+	text-align: right;
+	padding-right: 10%;
+}
+.jiesuanbtn a{
+	margin: 20px 10px;
+	display: inline-block;
+}
+.jiesuanbtn .continuebtn{
+	background: #f4f4f4;
+	color: #000;
+}
+/*我的购物车 end*/
+
+/*我的订单 start*/
+.orderformbody{
+	margin-bottom: 50px;
+}
+.orderformbody .orderform_data{
+	padding: 10px;
+	box-shadow: 0 0 10px #C9C9C9;
+	margin-top: 50px;
+}
+.orderformbody .orderform_data .orderform_datalist{
+	margin-bottom: 15px;
+}
+.orderformbody .orderform_data .orderform_datalist p{
+	padding: 10px 20px;/**/
+	background: #e2e3e5;
+	line-height: normal;
+}
+.orderformbody .orderform_data .orderform_datalist .row{
+	width: 100%;
+	margin: 0 auto;
+}
+.orderformbody .orderform_data .orderform_datalist .row>div{			
+	line-height: 2.5em;
+	padding: 5px  5px;
+}
+.orderform_datalist_title,.orderform_datalist_title>div{
+	padding: 0 !important;
+}
+.orderform_datalist_title>div,.orderform_dataform>div{
+	text-align: center;
+}
+.orderformbody .orderform_data .orderform_datalist .o_datalist .col-md-2{
+	text-align: right;
+	padding-right: 20px;
+}
+.orderformbody .orderform_data .orderform_datalist .o_datalist .col-md-10 textarea{
+	max-width: 900px;
+}
+.orderformbody .orderform_data .orderform_datalist .textsm{
+	padding: 10px 20px;
+}
+.orderformbody .orderform_data .orderform_datalist .zhifustyle{
+	margin-bottom: 15px;
+}
+.orderformbody .orderform_data .orderform_datalist .zhifustyle .col-md-2{
+	padding-left: 20px;
+}
+.orderformbody .orderform_data .orderform_datalist .zhifustyle .col-md-2 input[type='radio']{
+	width: 15px;
+	height: 15px;
+	float: left;
+	margin: 10px 5px 0 0;
+}
+.orderformbody .orderform_data .orderform_datalist .zhifustyle .col-md-2 span{
+	float: left;
+}
+.orderformbody .orderform_data .orderform_datalist .feiyong{
+	
+}
+.orderformbody .orderform_data .orderform_datalist .feiyong>p{
+	background: none;
+}
+.orderformbody .orderform_data .orderform_datalist .feiyong>div:first-child{
+	border-bottom:1px dashed #C9C9C9;
+	padding:10px 0 15px;
+}
+.orderformbody .orderform_data .orderform_datalist .feiyong>div:first-child p{
+	background: none;
+	padding:2px 20px;
+	margin: 0;
+}
+.tijiaobtn{
+	display: block;
+	width: 130px;
+	text-align: center;
+	margin: 0 auto;
+}
+/*我的订单 end*/
+
+
+/*shopcartmobile中的新加样式 start*/
+.cartgoodslistm{
+	width: 100%;
+	padding: 5px 10px;
+}
+.cartgoodslistm .cartgoodslistm-t{
+	padding: 5px 0;
+	border-bottom: 1px solid #F4F4F4;
+}
+.cartmoblelist{
+	padding: 5px 10px;
+	height: 105px;
+	width: 100% !important;
+	margin: 0 auto;
+	border-bottom: 1px solid #F4F4F4;
+}
+.cartmoblelist>div{
+	padding: 0;
+	height: 104px;
+}
+.cartmoblelist .col-xs-3 img{
+	max-width: 80px;
+	width: 100%;
+	max-height: 95px;
+}
+.cartmoblelist .floatright{
+	margin-top: 50px;
+	text-align: right;
+}
+/*shopcartmobile end*/

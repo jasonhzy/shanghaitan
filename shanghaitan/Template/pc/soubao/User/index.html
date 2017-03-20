@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>个人中心-{$tpshop_config['shop_info_store_name']}</title>
+</head>
+
+<!-- 头部-s -->
+<include file="Public/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/selfc.css" />
+<!-- 头部-e -->
+<div class="row htmllistbody self_centerbody">
+    <div class="currentloaction">
+        <a href="{：U('Home/Index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+        <span>当前位置：</span>
+        <a href="{：U('Home/User/index')}">个人中心</a>
+        >
+        <a href="#">基本信息</a>
+    </div>
+
+  <!--菜单-->
+  <include file="User/menu" />
+  <!--菜单-->
+    <div class="col-md-9">
+        <div class="self_centerright sc_basexx">
+            <p><b>基本信息</b></p>
+            <ul class="self_centerr-ul">
+                <li>
+                    <span><i class="icon iconfont">&#xe629;</i></span>
+                    <span>普通会员</span>
+                    <span>消费累计满10000元即可成为</span>
+                    <span><i class="icon iconfont jin">&#xe629;</i></span>
+                    <span>金卡会员</span>
+                </li>
+                <li>
+                    <span><b>账户余额：</b>{$user[user_money]}元</span>
+                    <a href="{:U('Home/User/vipPay')}" class="redbtn">去充值</a>
+                </li>
+                <li>
+                    <span><b>我的积分：</b>{$user[pay_points]}</span>
+							<span>
+								<a href="{:U('Home/Goods/integralMall')}" class="redbtn">积分兑换</a>
+							</span>
+                    <span>（自获得之日至次年12月31日有效）</span>
+                    <a href="#t" class="textcolore30004 sc_gradebtn">积分介绍</a>
+                </li>
+            </ul>
+            <div class="sc-bg-div">
+                <p><span></span><b>猜你喜欢</b></p>
+                <div class="sc-bg-div-goodsdata">
+                    <div class="row">
+                        <tpshop sql="select * from __PREFIX__goods WHERE `is_on_sale` = 1 order by goods_id desc limit 3"  item="v" key="k" >
+                        <div class="col-md-4">
+                            <a href="{:U('Home/Goods/goodsDetail',array('id'=>$v[goods_id]))}">
+                                <div class="sc-bg-div-goodsdata-img">
+                                    <img src="{$v[original_img]}" />
+                                    <p>
+                                        {$v[goods_name]}
+                                    </p>
+                                    <p class="textcolore30004">
+                                        ￥<span>{$v[shop_price]}</span>元
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                        </tpshop>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="self_centerright self_center_grade_ me-hidden">
+            <p><b>个人中心</b></p>
+            <div class="sc-bg-div">
+                <p><span></span><b>积分问题</b></p>
+                <div class="sc-bg-div-goodsdata self_center_grade">
+                    <p><b>1、怎么获得积分问题：</b></p>
+                    <p class="textindent2">
+                        1.在线支付的订单将获得订单积分奖励：积分将在用户完成支付获得。可获得积分=定金金额（即1元=1积分）定金金额
+                        指实际付款金额。不包含优惠卷金额。每位用户每天最多获得2000积分。<br/>
+                        　　2.注册送积分：注册成功以后送10积分。
+                    </p>
+                    <p><b>2、积分有效期说明</b></p>
+                    <p class="textindent2">
+                        积分获得后有效期1年。我们将定期对你上年度获得后未使用的积分进行定期处理，过期未使用的积分自动扣除。
+                        例如：2015年12月31日将扣除2015年1月1日所获得的积分。
+                    </p>
+                    <p><b>3、积分可用来做什么</b></p>
+                    <p class="textindent2">
+                        可在积分商城兑换各种礼品
+                    </p>
+                    <p><b>4、积分兑换了很多天还没收到怎么办</b></p>
+                    <p class="textindent2">
+                        礼品从积分兑换起，3个工作日（周末不算）内处理发货通常会在3个工作日左右到达
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<include file="Public/footer" />
+</body>
+<script>
+    $(function(){
+        $('.sc_gradebtn').click(function(){
+            $('.sc_basexx').addClass('me-hidden');
+            $('.self_center_grade_').removeClass('me-hidden');
+        });
+    })
+</script>
+</html>

@@ -1,0 +1,68 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+  <include file="Public/breadcrumb"/>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-list"></i> 前台轮播图片</h3>
+        </div>
+        <div class="panel-body">    
+		<div class="navbar navbar-default">
+            <div class="row navbar-form">
+                <button type="submit" onclick="location.href='{:U('Admin/Module/addEditNav')}'"  class="btn btn-primary pull-right"><i class="fa fa-plus"></i>新增图片</button>
+            </div>
+          </div>
+                        
+          <div id="ajax_return"> 
+                 
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th class="sorting text-left">图片路径</th>
+                                <th class="sorting text-left">链接地址</th>
+                                <th class="sorting text-center">所属城市</th>
+                                <th class="sorting text-center">是否显示</th>
+                                <th class="sorting text-center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="navigationList" id="list">
+                                <tr>
+                                    <td class="text-left">{$list.p_url}</td>
+                                    <td class="text-left">{$list.url}</td>
+                                    <td class="text-center">
+                                        <tpshop sql="SELECT * FROM `__PREFIX__city` where id = $list[cityid]" key="k" item='v'>
+                                            {$v.name}
+                                        </tpshop>
+                                    </td>
+                                    <td class="text-center">
+                                        <img width="20" height="20" src="__PUBLIC__/images/<if condition='$list[is_show] eq 1'>yes.png<else />cancel.png</if>" onclick="changeTableVal('lunbo','id','{$list.id}','is_show',this)"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{:U('Admin/Module/addEditNav',array('id'=>$list['id']))}" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+                                        <a href="javascript:del_fun('{:U('Module/delNav',array('id'=>$list['id']))}');" id="button-delete6" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="删除"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                    </div>
+                <div class="row">
+                    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">{$page}</div>
+                </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row --> 
+  </section>
+  <!-- /.content --> 
+</div>
+<!-- /.content-wrapper -->
+</body>
+</html>

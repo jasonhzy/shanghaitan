@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>生活服务</title>
+  <style>
+    <!--
+    A:link{text-decoration:none}
+    A:visited{text-decoration:none;color: #000;}
+    A:hover {color: #000;text-decoration:underline}
+    -->
+    .dropdown-menu li{
+      padding: 0 !important;
+    }
+    .dropdown-menu li a{
+      display: block;
+      width: 100%;
+      padding: 10px;
+    }
+    .salonmodel>div:nth-child(2){
+      text-align: left;
+    }
+    .page ul {
+      margin-left: 150px;
+    }
+  </style>
+</head>
+<body>
+<include file="Public/min-header" />
+<link rel="stylesheet" href="__STATIC__/css/css/gradeshop.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/intell.css" />
+<div class="gradebanner">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <foreach name="list" item="v" key="k">
+        <li data-target="#carousel-example-generic" data-slide-to="{$k}" <if condition="$k eq 0">class="active"></if></li>
+      </foreach>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-inner" role="listbox">
+        <foreach name="list" item="v" key="k">
+          <div <if condition="$k eq 0"> class="item active" <else/>class="item"</if>>
+         <img src="{$v.p_url}" alt="">
+      </div>
+      </foreach>
+    </div>
+  </div>
+</div>
+<div class="htmllistbody intel-husbandrybody salonbody Providebody">
+  <div class="husbandrytop">
+    <foreach name="cat_arr" item="v">
+    <a href="{:U('Mobile/Life/lifeList/cid/3',array('id'=>$v['id']))}">
+					<span <if condition="$_GET['id'] eq $v['id']"> class="husbandrytopactive "</if>>
+                      <span>{$v['name']}</span>
+					</span>
+    </a>
+    </foreach>
+  </div>
+  <if condition="$_GET['id'] eq 2">
+  <div class="row husbandrytop-data">
+    <foreach name="life_arr" item="v">
+    <div class="col-md-4">
+
+        <div class="boxshaowccc husbandrytop-datamodel">
+          <img src="{$v['original_img']}" />
+          <p><b>{$v['life_name']}</b></p>
+          <p class="color999">
+            {$v['life_remark']}
+          </p>
+          <p class="textcolore30004">{$v['life_price']}</p>
+          <p class="lookxqbtn">
+            <a href="{:U('Mobile/Life/jzDetail/cid/3',array('id'=>$v['life_id']))}" class="redbtn">查看详情</a>
+          </p>
+        </div>
+
+    </div>
+    </foreach>
+  </div>
+  <div class="gglcontent_top">
+    <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+    <span>服务范围</span>
+  </div>
+  <div class="intelli-map">
+    <img src="__STATIC__/images/img/Intelligent/jiazhengmap.png" />
+  </div>
+  </if>
+  <if condition="$_GET['id'] eq 3">
+    <div class="row husbandrytop-data">
+      <foreach name="life_arr" item="v">
+      <div class="col-xs-12">
+          <div class="row boxshaowccc husbandrytop-datamodel salonmodel">
+            <div class="col-xs-5">
+              <img src="{$v['head_pic']}"/>
+            </div>
+            <div class="col-xs-7">
+              <div><b>{$v['nickname']}</b></div>
+              <div>性别：<if condition="$v['sex'] eq 0">保密</if><if condition="$v['sex'] eq 1">男</if><if condition="$v['sex'] eq 2">女</if></div>
+              <div>爱好：{$v['enjoy']}</div>
+              <a href="{:U('Mobile/Life/userDetail/cid/3',array('id'=>$v['user_id']))}" class="textcolore30004 sayhellobtn">[打招呼]</a>
+            </div>
+          </div>
+      </div>
+      </foreach>
+    </div>
+    <div class="page">
+        {$page}
+    </div>
+    <div class="gglcontent_top">
+      <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+      <span>交友沙龙</span>
+    </div>
+    <foreach name="act_arr" item="v">
+      <div class="row boxshaowccc salon-bottonrow">
+        <div class="col-md-7">
+         <a  href="{:U('Mobile/Life/activityDetail/cid/3',array('id'=>$v['activity_id']))}"  id="act" data1="{$v[activity_looknum]}" data2="{$v['activity_id']}"> <p><b>{$v.activity_name}</b></p>
+          <p class="textoverflow">
+            <span>{$v.activity_description}</span>
+          </p></a>
+          <p class="commont">
+            <span>{$v.nickname}</span>
+            <span class="floatright">
+								<span class="commontcount">{$num|default='0'}个评论</span>&nbsp;&nbsp;
+								<span>{$v.activity_addtime|date="Y-m-d H:i",###}</span>&nbsp;&nbsp;
+							</span>
+          </p>
+        </div>
+      </div>
+    </foreach>
+    <div class="page">
+      {$page}
+    </div>
+  </if>
+  <if condition="$_GET['id'] eq 4">
+    <foreach name="life_arr" item="v">
+    <div class="row Providecontent">
+      <div class="col-md-4">
+        <div class="redborderimg">
+          <img src="{$v['original_img']}" height="300px;"/>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="tablecellmiddle">
+          <p class="borderbottom1"><b>{$v['resthouse_name']}</b></p>
+          <p class="textoverflow6">
+            {$v['resthouse_description']}
+          </p>
+          <p><a href="{:U('Mobile/Life/resthouseDetail/cid/3',array('id'=>$v['resthouse_id']))}">查看详情</a></p>
+        </div>
+      </div>
+    </div>
+    </foreach>
+    <div class="page">
+      {$page}
+    </div>
+    </if>
+</div>
+<include file="Public/footer" />
+</body>
+<script>
+  //获取点击数
+  $(function(){
+    $("#act").click(function(){
+      var num = $(this).attr('data1');
+      var id = $(this).attr('data2');
+      $.ajax({
+          type:"post",
+          data:{'activity_looknum':num,'activity_id':id},
+          url:"/index.php?m=Mobile&c=Life&a=updateActivity",
+        datatype:"json",
+        success:function(re){
+          if(re){
+            location.href="/index.php?m=Mobile&c=Life&a=activityDetail&id="+id;
+          }
+        }
+      })
+    });
+  });
+
+</script>
+</html>

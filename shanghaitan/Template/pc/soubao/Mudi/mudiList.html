@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>往生服务</title>
+
+</head>
+<body>
+<include file="Public/min-header" />
+<link rel="stylesheet" href="__STATIC__/css/css/liMarquee.css">
+<div class="gradebanner wangshengbanner">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <foreach name="list" item="v" key="k">
+        <li data-target="#carousel-example-generic" data-slide-to="{$k}" <if condition="$k eq 0">class="active"></if></li>
+      </foreach>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-inner" role="listbox">
+        <foreach name="list" item="v" key="k">
+          <div <if condition="$k eq 0"> class="item active" <else/>class="item"</if>>
+          <a  href="{$v.url}"><img src="{$v.p_url}" alt=""></a>
+      </div>
+      </foreach>
+    </div>
+  </div>
+</div>
+<div class="gradegoodlist">
+  <div class="gglcontent">
+    <div class="gglcontent_top">
+      <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+      <span>墓地展示</span>
+    </div>
+    <div class="gooddatalist container-fluid">
+      <div id="gglitem1" class="wangsheng-lunbo dowebok">
+        <foreach name="mudiList" item="v">
+        <a href="{:U('Home/Mudi/mudiInfo/cid/1',array('id'=>$v['mudi_id']))}" target="_blank" >
+          <img src="{$v.img}" alt=""/>
+          <div class="ws_a_div">
+            <span>{$v.name}</span>
+            <span>￥<span>{$v.price}</span>起</span>
+          </div>
+        </a>
+        </foreach>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="gglcontent">
+    <div class="gglcontent_top">
+      <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+      <span>陵园动态</span>
+    </div>
+    <div class="lycontent row">
+      <div class="col-md-4">
+        <tpshop sql="SELECT * FROM `__PREFIX__mudi_news`  ORDER BY `addtime` DESC limit 1 " key="k" item='v'>
+        <div class="lyleft" style="margin-top:20px;">
+          <a href="{:U('Home/Mudi/mudiDetail/cid/1',array('id'=>$v['news_id']))}" target="_blank" >
+            <img src="{$v[img]}" alt=""/>
+            <div class="ws_a_div">
+              <span>{$v[title]}</span>
+            </div>
+          </a>
+        </div>
+        </tpshop>
+      </div>
+      <div class="col-md-8 boxshaowccc" style="margin-top:20px;">
+        <ul class="lyright ">
+          <foreach name="news" item="v">
+          <li>
+            <a href="{:U('Home/Mudi/mudiDetail/cid/1',array('id'=>$v['news_id']))}" target="_blank">
+              <i class="icon iconfont">&#xe62a;</i>
+              {$v.title}
+              <span class="floatright">{$v.addtime|date='Y-m-d',###}</span>
+            </a>
+          </li>
+          </foreach>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<include file="Public/footer" />
+</body>
+<script src="__STATIC__/js/js/jquery.liMarquee.js"></script>
+<script>
+  $(function(){
+    $('.dowebok').liMarquee();
+  })
+</script>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心-{$tpshop_config['shop_info_store_name']}</title>
+</head>
+<body>
+<!-- 头部-s -->
+<include file="Public/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/selfc.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/iconfont/iconfont.css" />
+<link rel="stylesheet" href="__STATIC__/css/jh.css">
+<!-- 头部-e -->
+<div class="row htmllistbody self_centerbody self_infobody">
+    <div class="currentloaction">
+        <a href="{：U('Home/Index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+        <span>当前位置：</span>
+        <a href="{：U('Home/User/index')}">个人中心</a>
+        >
+        <a href="#">会员介绍</a>
+    </div>
+    <!--菜单-->
+    <include file="User/menu" />
+    <!--菜单-->
+    <div class="col-md-9">
+        <div class="self_centerright slef_inforight slef_info_chongzhi">
+            <p><b>我要充值</b></p>
+            <div class="sc-bg-div slef_info_cz">
+                <p><span></span><b>充值信息</b></p>
+                <div class="sc-bg-div-goodsdata self_vip_des">
+                    <form action="" method="post" id="form">
+                    <table class="slef_info_cz_t1">
+                        <tr>
+                            <td>你的充值账号：</td>
+                            <td>
+                                <input type="text"  name="zhanghao1" class="s_info_input_style" value="" placeholder="请填写你的手机号"/>
+                                <span class="textcolore30004"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>重复充值账号：</td>
+                            <td>
+                                <input type="text"   name="zhanghao2" class="s_info_input_style" value=""/>
+                                <span class="textcolore30004 renum"></span>
+                            </td>
+                        </tr>
+                  <!--      <tr>
+                            <td>账号密码：</td>
+                            <td>
+                                <input type="password" placeholder="" class="s_info_input_style" value="" name=""/>
+                                <span class="textcolore30004 vip_passwd"></span>
+                            </td>
+                        </tr>-->
+                        <tr>
+                            <td>充值金额：</td>
+                            <td>
+                                <input type="text" placeholder="" class="s_info_input_style" value="" name="account"/>
+                                <span>（元）</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>支付方式：</td>
+                            <td>
+                                <div class="order-payment-area">
+                                <div class="po-re dsfzf-ee">
+                                    <ul>
+                                        <foreach name="paymentList" item="v"  key="k">
+                                            <li>
+                                                <div class="payment-area">
+                                                    <input type="radio"  value="pay_code={$v['code']}" class="radio vam" name="pay_radio" <if condition="$k eq 'alipay'">checked="checked"</if>>
+                                                    <label >
+                                                        <img src="/plugins/{$v['type']}/{$v['code']}/{$v['icon']}" width="120" height="40" onClick="change_pay(this);" />
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        </foreach>
+                                    </ul>
+                                </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <a href="#tt" class="redbtn chongzhibtn">充值</a>
+                            </td>
+                        </tr>
+                    </table>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+	<!--	<span class="confirmdiv liuyanqueren cz-result me-hidden">
+			<i class="icon iconfont">&#xe7a4;</i>&nbsp;&nbsp;
+			<span class="chongzhitip">充值成功</span>
+		</span>-->
+<include file="Public/footer" />
+</body>
+<script>
+    //点击充值按钮
+    $('.chongzhibtn').click(function(){
+        var zhanghao1 = $('input[name="zhanghao1"]').val();
+        var zhanghao2 = $('input[name="zhanghao2"]').val();
+        var account = $('input[name="account"]').val();
+      /*  if(zhanghao1==zhanghao2){
+            $(".cz-result").removeClass('me-hidden');
+            setTimeout('$(".cz-result").addClass("me-hidden")',1000);
+        }*/
+        if(zhanghao1==''){
+            $('.renum').text('账号不能为空');
+            return false;
+        }else if(zhanghao1!=zhanghao2){
+            $('.renum').text('两个账号号不一致');
+            return false;
+        }else if(account==''){
+             $('.renum').text('充值金额不能为空');
+             return false;
+         }else{
+            $("#form").submit();
+         }
+
+    });
+</script>
+</html>

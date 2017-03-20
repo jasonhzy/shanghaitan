@@ -1,0 +1,140 @@
+<meta name="viewport" content="width=device-width,initial-scale=0.5,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="__STATIC__/css/css/iconfont/iconfont.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/headandfoot.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/ddfullscreenslider.css">
+<link href="__STATIC__/css/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="__STATIC__/css/css/index.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/common.css"/>
+<link rel="stylesheet" href="__STATIC__/css/css/style.min.css"/>
+<script src="__STATIC__/js/js/jquery-1.11.3.min.js"></script>
+<script src="__STATIC__/css/css/bootstrap/bootstrap.min.js"></script>
+<script src="__STATIC__/js/js/jquery.mousewheel.min.js"></script>
+<script src="__STATIC__/js/js/ddfullscreenslider.js"></script>
+<script src="__STATIC__/js/js/style.js"></script>
+<script src="__STATIC__/js/js/jquery.js"></script>
+<script type="text/javascript">
+  function checkPwdStrong(pwd) {
+    var element = $("#pwdstrength");
+    var value = $("#pwd").val();
+    if (value.length >= 6) {
+      element.show();
+      var level = pwdLevel(value);
+      switch (level) {
+        case 1:
+          element.removeClass().addClass("strengthA");
+          break;
+        case 2:
+          element.removeClass().addClass("strengthB");
+          break;
+        case 3:
+          element.removeClass().addClass("strengthC");
+          break;
+        default:
+          break;
+      }
+    } else {
+      element.hide();
+    }
+  }
+  function pwdLevel(value) {
+    var pattern_1 = /^.*([\W_])+.*$/i;
+    var pattern_2 = /^.*([a-zA-Z])+.*$/i;
+    var pattern_3 = /^.*([0-9])+.*$/i;
+    var level = 0;
+    if (value.length > 10) {
+      level++;
+    }
+    if (pattern_1.test(value)) {
+      level++;
+    }
+    if (pattern_2.test(value)) {
+      level++;
+    }
+    if (pattern_3.test(value)) {
+      level++;
+    }
+    if (level > 3) {
+      level = 3;
+    }
+    return level;
+  }
+</script>
+<nav class="navbar navbar-default indexmobile" role="navigation" style="margin-bottom:0px;position:fixed;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" >
+        <img class="logo" src="{$tpshop_config['shop_info_store_logo']}"/>
+      </a>
+        <div class="navbar-brand" style="font-size:14px;float:right;">
+          <if condition="$user_id eq 0">
+            <a href="{:U('Mobile/user/login')}">登录</a>｜<a href="{:U('Mobile/user/reg')}">注册</a>
+            <else/>
+            <a href="{:U('Mobile/user/index')}">{$user['nickname']}</a> | <a href="{:U('Mobile/user/logout')}">退出</a>
+          </if>
+        </div>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <!--  <ul class="nav navbar-nav">
+        <li <if condition="$_GET['cid'] eq 5">class="active"</if>>
+          <a href="{:U('Home/Index/index/cid/5')}" >首页</a>
+        </li>
+        <tpshop sql="SELECT * FROM `__PREFIX__navigation` where is_show = 1 ORDER BY `sort` ASC" key="k" item='v'>
+          <li <if condition="$_GET['cid'] eq $v[id]">class="active"</if>>
+            <a href="{$v[url]}" >{$v[name]}</a>
+          </li>
+        </tpshop>
+      </ul>-->
+      <ul class="nav navbar-nav">
+        <li <if condition="$_GET['cid'] eq 5">class="active"</if> ><a href="/index.php/Mobile/Index/index/cid/5">首页</a></li>
+        <li ><a href="/index.php?m=Mobile&c=Goods&a=yangLao&id=853&cid=8">养老平台</a></li>
+        <li><a href="/index.php?m=Mobile&c=Goods&a=goodsList&id=849&cid=6">适老化改造</a></li>
+        <li <if condition="$_GET['cid'] eq 4">class="active"</if> ><a href="/index.php?m=Mobile&c=Article&a=index&cid=4">家文化传承</a></li>
+        <li><a href="/index.php?m=Mobile&c=Life&a=lifeList&cid=3">生活服务</a></li>
+        <li><a href="/index.php?m=Mobile&c=Travel&a=travelList&cid=2">旅居服务</a></li>
+        <li><a href="/index.php?m=Mobile&c=Mudi&a=mudiList&cid=1">往生服务</a></li>
+        <li><a href="/index.php?m=Mobile&c=Goods&a=integralMall&cid=9">积分商城</a></li>
+        <li <if condition="$_GET['cid'] eq $v[id]">class="active"</if> ><a href="/index.php?m=Mobile&c=Index&a=aboutUs&cid=10">联系我们</a></li>
+        <li <if condition="$_GET['cid'] eq 11">class="active"</if> ><a href="/index.php/Mobile/User/index/cid/11">个人中心</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<script>
+$(function(){
+			$(".head .col-md-10 ul li a").click(function(){
+				$(this).addClass('head_activea');
+				$(this).parent().siblings().children('a').removeClass('head_activea');
+			});
+		})
+</script>
+<script>
+    window.onload = function () {
+        var is360 = _mime("type", "application/vnd.chromium.remoting-viewer");
+
+        if (isChrome() && is360) {
+            alert("检测到是360浏览器，由于首页图片过多，建议使用其他的浏览器查看正常效果或是将其全屏看图功能关闭(工具->选项->实验室->全屏看图设置->网页包含多张大图时候弹出全屏看图提示条<勾选取消>)");
+            $(".slide360").remove();
+        }
+    }
+    //检测是否是谷歌内核(可排除360及谷歌以外的浏览器)
+    function isChrome(){
+        var ua = navigator.userAgent.toLowerCase();
+        return ua.indexOf("chrome") > 1;
+    }
+    //测试mime
+    function _mime(option, value) {
+        var mimeTypes = navigator.mimeTypes;
+        for (var mt in mimeTypes) {
+            if (mimeTypes[mt][option] == value) {
+                return true;
+            }
+        }
+        return false;
+    }
+</script>

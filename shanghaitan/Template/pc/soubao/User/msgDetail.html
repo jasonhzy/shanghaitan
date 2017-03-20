@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的留言</title>
+
+</head>
+
+<body>
+<!-- 头部-s -->
+<include file="Public/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/selfc.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/iconfont/iconfont.css" />
+<!-- 头部-e -->
+<div class="row htmllistbody self_centerbody">
+  <div class="currentloaction">
+    <a href="{：U('Home/Index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+    <span>当前位置：</span>
+    <a href="{：U('Home/User/index')}">个人中心</a>
+    >
+    <a href="#">社交留言</a>
+  </div>
+  <include file="User/menu" />
+  <!--菜单-->
+  <div class="col-md-9">
+    <div class="self_centerright self_formright selfc_grade">
+      <p class="self_formrightp1">
+        <b>我的留言</b>
+      </p>
+      <div class="row self_form_top slef_my_message_top">
+        <b>我的留言</b>
+      </div>
+      <div class="self_form_bottom_s">
+        <table class="self_message_table">
+          <tr>
+            <td><b>留言类型：</b></td>
+            <td>
+              <span><if condition="$arr['type'] eq 1">普通</if><if condition="$arr['type'] eq 2">投诉</if><if condition="$arr['type'] eq 3">询问</if><if condition="$arr['type'] eq 4">售后</if></span>
+            </td>
+          </tr>
+          <tr>
+            <td>主题：</td>
+            <td>
+              <span>{$arr.title}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>留言内容：</td>
+            <td>
+									<span>
+									{$arr.content}
+									</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <br />
+    <div class="self_centerright self_formright selfc_grade">
+      <div class="row self_form_top slef_my_message_top">
+        <b>回复内容</b>
+      </div>
+      <div class="self_form_bottom_s">
+        <table class="self_message_table">
+          <tr>
+            <td><b>管理员：</b></td>
+            <td>
+              <span>管理员</span>
+            </td>
+          </tr>
+          <tr>
+            <td>回复内容：</td>
+            <tpshop sql="SELECT * FROM __PREFIX__message WHERE parent_id = $arr[message_id] " key="k" item='v0'>
+            <td>
+              <span>{$v0.content}</span>
+            </td>
+            </tpshop>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<include file="Public/footer" />
+</body>
+</html>

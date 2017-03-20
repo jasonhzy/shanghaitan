@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>生活服务</title>
+</head>
+<body>
+<include file="Public/header"/>
+<link rel="stylesheet" href="__STATIC__/css/css/sojourn.css" />
+<div class="currentloaction" style="line-height:60px;">
+  <a href="{:U('Home/index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+  <span>当前位置：</span>
+  <a href="{:U('Home/Travel/travelList')}">旅居服务</a>
+  >
+  <a href="#">{$t_arr.travel_name}</a>
+  >
+  <a href="#">确认订单</a>
+</div>
+<div class="htmllistbody boxshaowccc sojourn-tianxieddbody">
+  <div class="shopcartbody-top sojourn-top">
+    <span>预定流程：</span>
+    <div class="floatright row shopcartbody-queren">
+      <div class="col-md-3 shopcartbody-queren-line">
+        <span>1</span>
+        查看行程
+      </div>
+      <div class="col-md-3 shopcartbody-queren-line">
+        <span>2</span>
+        填写订单
+      </div>
+      <div class="col-md-3 shopcartbody-queren-line lineactive">
+        <span>3</span>
+        确认订单
+      </div>
+      <div class="col-md-3 shopcartbody-queren-line">
+        <span>3</span>
+        预约成功
+      </div>
+    </div>
+  </div>
+  <div class="sojourn-tzdd-bg">
+    <p><b>确认订单信息</b></p><br/>
+    <p><b>尊敬的客人：</b></p>
+    <p class="textindent2">您好，您的订单申请已提交，订单号：{$order_arr.order_sn}</p>
+    <p class="textindent2 stjborderwhite">由于产品数量有限，建议您尽快完成线上支付。</p>
+    <p><b>出行人数：</b>成人<span>1</span>人&nbsp;&nbsp;儿童<span>1</span>人</p>
+    <p>（￥<span>{$re.bprice}</span>*<span>{$order_arr.personnum}</span>）成人=￥<span>{$re.b_total}</span></p>
+    <p>（￥<span>{$re.sprice}</span>*<span>{$order_arr.childnum}</span>）成人=￥<span>{$re.s_total}</span></p>
+    <p>
+      <b>订单金额：</b><span class="textcolore30004">￥{$order_arr.total_price}</span>
+    </p>
+  </div>
+  <!--订单详细信息 start-->
+  <div class="sojourn-tzdd-bg">
+    <b>订单详细信息</b>
+  </div>
+  <table class="sojourn-tzdd-tableddxq">
+    <tr>
+      <td>产品名称：<span>{$t_arr.travel_name}</span></td>
+      <td>出发日期：<span>{$t_arr.start_time}</span></td>
+    </tr>
+    <tr>
+      <td>旅游编号：<span>{$t_arr.number}</span></td>
+      <td>行程天数：<span>{$t_arr.days}</span>日</td>
+    </tr>
+    <tr>
+      <td>产品类型：<span>{$t_arr.type}</span></td>
+    </tr>
+  </table>
+  <!--订单详细信息 end-->
+  <!--联系方式及付款方式 start-->
+  <div class="sojourn-tzdd-bg so-tjtable">
+    <b>联系方式及付款方式</b>
+    <table>
+      <tr>
+        <td>联系人：<span>{$order_arr.name}</span></td>
+        <td>性别：<span><if condition="$order_arr['sex'] eq 1">男</if><if condition="$order_arr['sex'] eq 2">女</if></span></td>
+      </tr>
+      <tr>
+        <td>手机号：<span>{$order_arr.phone}</span></td>
+        <td>邮箱：<span>{$order_arr.email}</span></td>
+      </tr>
+    </table>
+    <p>
+      <b>为方便您及时保存订单信息：</b>
+    </p>
+    <p>
+      <input type="radio" name="mes" value="1" checked="checked"/>&nbsp;通过手机短息发送给我&nbsp;&nbsp;
+      <input type="radio" name="mes" value="2"/>&nbsp;请通过Email邮箱发送给我
+    </p>
+    <p>
+      <b>为及时电话回复您，可以在：</b>
+    </p>
+    <p>
+      <input type="radio" name="content" value="1"/>&nbsp;工作时间联系我(9：00-18：00)&nbsp;&nbsp;
+      <input type="radio" name="content" value="2"/>&nbsp;休息时间联系我(18：00-21：00) &nbsp;&nbsp;
+      <input type="radio" name="content" value="3" checked="checked"/>&nbsp;随时都可以联系我 &nbsp;&nbsp;
+    </p>
+    <br />
+    <p class="stj-qdbtn">
+      <a  class="redbtn" id="sure">确定预约</a>
+    </p>
+  </div>
+  <!--联系方式及付款方式 end-->
+</div>
+<include file="Public/footer"/>
+</body>
+<script>
+  $(function(){
+    $("#sure").click(function(){
+      var mes = $("input[name='mes']").val();
+      var content = $("input[name='content']").val();
+      var id = "{$order_arr.order_id}";
+      alert(id);
+      $.ajax({
+        type:"post",
+        url:"/index.php?m=Mobile&c=Travel&a=sure&id="+id,
+        data:{mes:mes,content:content},
+        dataType:"json",
+        success:function(re){
+          if(re){
+            location.href = "/index.php?m=Mobile&c=Travel&a=success";
+          }
+        }
+      })
+    })
+  })
+</script>
+</html>

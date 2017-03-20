@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-language" content="utf-8" />
+    <title>积分商城</title>
+</head>
+<body>
+<include file="Public/min-header" />
+<div class="gradebanner">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <foreach name="list" item="v" key="k">
+                <li data-target="#carousel-example-generic" data-slide-to="{$k}" <if condition="$k eq 0">class="active"></if></li>
+            </foreach>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner" role="listbox">
+                <foreach name="list" item="v" key="k">
+                    <div <if condition="$k eq 0"> class="item active" <else/>class="item"</if>>
+                    <a  href="{$v.url}"><img src="{$v.p_url}" alt=""></a>
+            </div>
+            </foreach>
+        </div>
+    </div>
+</div>
+<div class="gradegoodlist">
+    <div class="gglcontent">
+        <div class="gglcontent_top">
+            <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+            <span>全部商品</span>
+        </div>
+        <div class="gglselecttype">
+            <ul>
+                <volist name="goods_category" id="gc">
+                <li <if condition="$_GET['id'] eq $gc['id']"> class="gradeliactive" data-href="#gglitem1" </if>>
+                    <a href="{:U('Home/Goods/integralMall/cid/9',array('id'=>$gc['id']))}">{$gc['name']}</a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+        <div class="gooddatalist container-fluid">
+            <div id="gglitem1" class="row">
+                <volist name="goods_list" id="goods">
+                <div class="col-md-3">
+                    <div class="gglc">
+                        <div class="gglimg">
+                            <a  href="{:U('Home/Goods/goodsInfo/cid/9',array('id'=>$goods['goods_id']))}">
+                                <img src="{$goods['goods_id']|goods_thum_images=200,200}">
+                            </a>
+                        </div>
+                        <div class="gglcbigtext"><a target="_blank" href="{:U('Home/Goods/goodsInfo',array('id'=>$goods['goods_id']))}">{$goods['goods_name']}</a></div>
+                        <div class="ggltextlinethrough">&nbsp;&nbsp;&nbsp;参考价：{$goods['market_price']}元&nbsp;&nbsp;&nbsp;</div>
+                        <div class="jifenhuanhoubtn">
+                            <span><span>{$goods['exchange_integral']}</span>积分</span>
+                            <a target="_blank" href="{:U('Home/Goods/goodsInfo',array('id'=>$goods['goods_id']))}">立即换购</a>
+                        </div>
+                    </div>
+                </div>
+                </volist>
+            </div>
+            <div id="gglitem2" class="me-hidden row"></div>
+            <div id="gglitem3" class="me-hidden row"></div>
+        </div>
+    </div>
+    <div class="gglcontent">
+        <div class="gglcontent_top">
+            <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+            <span>热门兑换</span>
+        </div>
+        <div class="gooddatalist container-fluid">
+            <div class="row">
+                <volist name="goods_hot" id="goods">
+                     <div class="col-md-3">
+                        <div class="gglc">
+                            <div class="gglimg">
+                                <a target="_blank" href="{:U('Home/Goods/goodsInfo/cid/9',array('id'=>$goods['goods_id']))}">
+                                    <img src="{$goods['goods_id']|goods_thum_images=200,200}">
+                                </a>
+                            </div>
+                            <div class="gglcbigtext"><a target="_blank" href="{:U('Home/Goods/goodsInfo/cid/9',array('id'=>$goods['goods_id']))}">{$goods['goods_name']}</a></div>
+                            <div class="ggltextlinethrough">&nbsp;&nbsp;&nbsp;参考价：{$goods['market_price']}元&nbsp;&nbsp;&nbsp;</div>
+                            <div class="jifenhuanhoubtn">
+                                <span><span>{$goods['exchange_integral']}</span>积分</span>
+                                <a target="_blank" href="{:U('Home/Goods/goodsInfo/cid/9',array('id'=>$goods['goods_id']))}">立即换购</a>
+                            </div>
+                        </div>
+                    </div>
+                </volist>
+           </div>
+        </div>
+    </div>
+    <div class="page">
+        {$page}
+    </div>
+</div>
+<include file="Public/footer" />
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+/*注册 start*/
+.registerbody{
+	width: 100%;
+	border-top: 1px solid #E30004;
+}
+.registercontent{
+	width: 100%;
+	max-width: 1200px;		
+	margin: 0 auto 41px;
+	padding-bottom: 50px;
+}
+.registercontent .rctop{
+	text-align: center;
+	padding: 23px 0;
+}
+.registercontent .rctop span:nth-child(2){
+	font-size: 18px;
+}
+.regusterline{
+	display: inline-block;
+	width: 10%;
+	height: 2px;
+	background: #eeeeee;
+	margin:0 10px 5px 10px ;
+}
+.rcbody{
+}
+.rcbodyleft,.rcbodyright{
+	display: inline-block;
+}
+.rcbodyleft{
+	width: 100%;
+}
+.rcbodyleft table{
+	width: 100%;
+	font-size: 13px !important;
+	margin: 0 auto;
+}
+.rcbodyleft table td{	
+	padding: 10px 10px;
+}
+.rcbodyleft table td{}
+.rcbodyleft table td:first-child{
+	text-align: center;
+}
+.rcbodyleft table td:nth-child(2){
+	padding-right:15px ;
+}
+.rcbodyleft table td span{
+	color: #f00;
+}
+.rcbodyleft table tr:nth-child(2) td{
+	padding-bottom: 0;
+}
+.rcbodyleft table tr:nth-child(3) td{
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.rcbodyleft table tr:nth-child(4) td{
+	padding-top: 0;
+}
+.rcbodyleft table tr:nth-child(5) td{
+	/*padding-bottom: 0;*/
+}
+.rcbodyleft table tr:nth-child(6) td{
+	padding-top: 0;
+}
+.rcbodyleft table tr:nth-child(6) td .agree{
+	margin: 15px auto;
+}
+.rcbodyleft table tr:nth-child(6) td span{
+	line-height: 2em;
+}
+.rcbodyleft table tr:nth-child(6) td div a:hover{
+	color: #E30004;
+	text-decoration: underline !important;
+}
+#pwdstrength{
+    display: none
+}
+#pwdstrength b {
+    height: 13px;
+    margin-top: 5px;
+    overflow: hidden;
+    width: 104px;
+    display: inline-block
+}
+.strengthA b {
+    background: url(../img/register/pwdstrength.gif) no-repeat scroll 0 0;
+}
+.strengthB b {
+    background:url(../img/register/pwdstrength.gif) no-repeat scroll 0 -13px;
+}
+.strengthC b {
+    background: url(../img/register/pwdstrength.gif) no-repeat scroll 0 -26px;
+}
+.ruodaoqiang{
+	height: 25px;
+}
+.hqyzm input[type="button"]{
+	border-style: none;
+	border-radius: 6px;
+	background: #E30004;
+	padding: 7px 0;
+	color: #fff;
+	width: 47%;
+	float: left;
+	margin-left: 5px;
+	font-size: 12px !important;
+}
+.hqyzm input[type="text"]{
+	width: 47%;
+	float: left;
+}
+.btnred{
+	border-style: none;
+	width: 100px;
+	padding: 8px 0;
+	border-radius: 6px;
+	background: #E30004;
+	color: #fff;
+	display: block;
+	margin-right: 10px;
+	float: left;
+}
+.zhucebtn{
+	width: 250px;
+	margin: 0 auto;
+}
+.zhucebtn input{
+	margin-left: 25px;
+	margin-right: 10px;
+}
+.zhucebtn a{
+	padding-top: 10px;
+	display: inline-block;
+}
+.rcbodyright{
+	float: right;
+	width: 40%;
+	text-align: center;
+	line-height: 2em;
+}
+.rcbodyright p{
+	padding-bottom:10px;
+}
+.rcbodyright p a{
+	color: #E30004;
+}
+.rcbodyright>a:hover{
+	color: #fff;
+}
+/*注册 end*/
+/*忘记密码 start*/
+.forgetpasswd-top{
+	padding: 100px 0 !important;
+}
+.form table{
+	/*width: 603px;*/
+	width: 95%;
+	margin: 0 auto;
+}
+.form table td{
+	padding: 10px 0;
+}
+.form table td:first-child{
+	text-align: right;
+	width: 70px;
+}
+.form table td:nth-child(2){
+	/*width: 264px;*/
+}
+.form table td:nth-child(3){
+	text-align: center;
+}
+.form table td:nth-child(3) input{
+	border-style: none;
+	
+	padding: 4px 10px;
+	border-radius: 5px;
+	color: #fff;
+	background: #9c9c9c;
+}
+.form table td:first-child span{
+	color: #f00;
+}
+.setpasswd-yzm{
+	width: 98%;
+}
+#getyzm{
+	width: 105px;
+}
+#phone_queren,#setmima_queren{
+	width: 100%;
+}
+
+.form2 table td:nth-child(3){
+	color: #E30004;
+}
+.form2 table tr:first-child td{padding-bottom: 0 ;}
+.form2 table tr:nth-child(2) td{padding: 0;}
+.form2 table tr:nth-child(3) td{padding-top: 0;}
+.changesuccess{
+	width: 373px;
+	margin: 0 auto;
+}
+.changesuccess .col-md-2 .bhimg{
+	margin-top: 20px;
+	width: 45px;
+	padding: 2px;
+	height: 0;
+	margin-right: 10px;
+	overflow: hidden;
+}
+.changesuccess .col-md-2 .bhimg img{
+	width: 100%;
+}
+.changesuccess .col-md-10{
+	padding: 0;
+}
+.changesuccess .col-md-10 h3{
+	font-size: 20px;
+}
+.changesuccess .col-md-10 p a{
+	color: #E30004;
+	padding: 2px 5px;
+}
+/*忘记密码ｅｎｄ*/

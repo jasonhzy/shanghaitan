@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>往生服务</title>
+
+</head>
+<body>
+<!--------头部开始-------------->
+<include file="Public/header" />
+<!--------头部结束-------------->
+<div class="wangsheng-md-body">
+  <div class="currentloaction">
+    <a href="{:U('Home/Index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+    <span>当前位置：</span>
+    <a href="{:U('Home/Mudi/mudiList')}">往生服务</a>
+    >
+    <a href="#">{$mudi.name}</a>
+  </div>
+  <div class="boxshaowccc wangsheng-md-btop row" style="padding:10px ;">
+    <div class="wangsheng-md-btopl col-md-5" >
+      <img src="{$mudi.img}" alt="430*360"/>
+    </div>
+    <div class="wangsheng-md-btopr col-md-7">
+      <h3>{$mudi.name}</h3>
+      <p><span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</span>{$mudi.address}</p>
+      <p><span>交&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通：</span>{$mudi.traffic}</p>
+      <p class="texthang6">
+        <span>简&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;介：</span>
+        {$mudi.introduce}
+      </p>
+      <div class="row wangsheng-md-btopr-3x">
+        <div class="col-md-1"><span>位置：</span></div>
+        <div class="col-md-3">
+          <ul class="wangsheng-md-btopr-x">
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+          </ul>
+        </div>
+        <div class="col-md-1"><span>风水：</span></div>
+        <div class="col-md-7">
+          <ul class="wangsheng-md-btopr-x">
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+          </ul>
+        </div>
+        <div class="col-md-1"><span>价格：</span></div>
+      </div>
+      <div class="wangsheng-md-btopr-yuyue">
+        <span class="textcolore30004">￥{$mudi.price}起</span>
+        <a href="#d" class="redbtn" id="yuyue">立即预约</a>
+      </div>
+    </div>
+  </div>
+  <div class="row wangsheng-md-bbottom">
+    <div class="col-md-3">
+      <div class="gglcontent_top wangsheng-md-bbottom-t">
+        <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+        <span>更多墓地</span>
+      </div>
+      <tpshop sql="SELECT * FROM `__PREFIX__mudi` WHERE mudi_id != $mudi_id  ORDER BY `mudi_id` DESC limit 3 " key="k" item='v'>
+      <a href="{:U('Home/Mudi/mudiInfo',array('id'=>$v['mudi_id']))}" style="float: left;">
+        <div class="wangsheng-md-bbottom-model boxshaowccc">
+          <img  src="{$v[img]}"/>
+          <p>{$v[name]}</p>
+          <div style="border: 1px solid #0f0;">
+            <span class="textcolore30004">￥{$v[price]}起</span>
+            <a class="redbtn">立即预约</a>
+          </div>
+        </div>
+      </a>
+        </tpshop>
+    </div>
+    <div class="col-md-9">
+      <div class="wangsheng-md-bbottom-r">
+        <div class="wangsheng-md-bbottom-rt">
+          陵园周边
+        </div>
+        <div class="wangsheng-md-bbottom-rb boxshaowccc">
+          <div class = "wangshenglist">
+          {$mudi.content|htmlspecialchars_decode}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<include file="Public/footer" />
+</body>
+<script>
+  $(function(){
+    $("#yuyue").click(function(){
+      if(!{$user_id}){
+        location.href="/index.php?m=Home&c=User&a=login";
+      }else {
+        var id = {$mudi_id};
+        //alert(id);
+        $.ajax({
+          type: "post",
+          url: "/index.php?m=Home&c=Mudi&a=ajaxMudi",
+          data: {mudi_id: id},
+          dataType: "json",
+          success: function (re) {
+            if (re) {
+              alert("预约成功");
+            }
+          }
+        })
+      }
+    })
+  })
+</script>
+</html>

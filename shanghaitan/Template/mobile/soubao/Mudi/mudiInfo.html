@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=0.5,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <title></title>
+  <link rel="stylesheet" href="__STATIC__/css/css/iconfont/iconfont.css" />
+  <link href="__STATIC__/css/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="__STATIC__/css/css/common.css"/>
+  <link rel="stylesheet" href="__STATIC__/css/css/headandfoot.css" />
+  <link rel="stylesheet" href="__STATIC__/css/css/style.css"/>
+  <script src="__STATIC__/js/js/jquery-1.11.3.min.js"></script>
+  <script src="__STATIC__/css/css/bootstrap/bootstrap.min.js"></script>
+  <title>往生服务</title>
+  <style TYPE="text/css">
+    <!--
+    A:link{text-decoration:none}
+    A:visited{text-decoration:none;color: #000;}
+    A:hover {color: #000;text-decoration:underline}
+    -->
+    .col-xs-4{
+      padding-left: 0 !important;
+    }
+  </style>
+</head>
+<body>
+<div class="backicon">
+  <a href="JavaScript:history.back(-1);">
+    <i class="icon iconfont">&#xe60b;</i>
+  </a>
+  <span>墓地介绍</span>
+</div>
+<div class="wangsheng-md-body" style="min-width:0;">
+  <div class="wangsheng-md-btop row" style="padding:10px ;">
+    <div class="wangsheng-md-btopl col-md-5" >
+      <img src="{$mudi.img}"/>
+    </div>
+    <div class="wangsheng-md-btopr col-md-7">
+      <h3>{$mudi.name}</h3>
+      <p><span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</span>{$mudi.address}</p>
+      <p><span>交&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通：</span>{$mudi.traffic}</p>
+      <p class="texthang6">
+        <span>简&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;介：</span>
+        {$mudi.introduce}
+      </p>
+      <div class="row wangsheng-md-btopr-3x">
+        <div class="col-xs-4"><span>位　　置：</span></div>
+        <div class="col-xs-8">
+          <ul class="wangsheng-md-btopr-x">
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+          </ul>
+        </div>
+        <div class="col-xs-4"><span>风　　水：</span></div>
+        <div class="col-xs-8">
+          <ul class="wangsheng-md-btopr-x">
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+            <li><i class="icon iconfont">&#xe6d8;</i></li>
+          </ul>
+        </div>
+        <div class="col-xs-4"><span>价　　格：</span></div>
+        <div class="col-xs-8" style="margin-bottom:10px;">
+        <div class="wangsheng-md-btopr-yuyue">
+          <span class="textcolore30004">￥{$mudi.price}起</span>
+        </div>
+        </div>
+        <span style="float:right;"><a  class="redbtn" id="yuyue">立即预约</a></span>
+      </div>
+    </div>
+  </div>
+  <div class="row wangsheng-md-bbottom">
+    <div class="col-xs-12">
+      <div class="wangsheng-md-bbottom-r">
+        <div class="wangsheng-md-bbottom-rb boxshaowccc">
+          <div class = "wangshenglist">
+          {$mudi.content|htmlspecialchars_decode}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<include file="Public/footer" />
+</body>
+<script>
+  $(function(){
+    $("#yuyue").click(function(){
+      if(!{$user_id}){
+        location.href="/index.php?m=Mobile&c=User&a=login";
+      }else {
+        var id = "{$mudi_id}";
+        //alert(id);
+        $.ajax({
+          type: "post",
+          url: "/index.php?m=Mobile&c=Mudi&a=ajaxMudi",
+          data: {mudi_id: id},
+          dataType: "json",
+          success: function (re) {
+            if (re) {
+              alert("预约成功");
+            }
+          }
+        })
+      }
+    })
+  })
+</script>
+</html>

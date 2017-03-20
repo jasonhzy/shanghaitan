@@ -1,0 +1,97 @@
+/*家族文化start*/
+.home_cluture .cilture_book{
+	padding-left: 0;
+	width: 100%;
+	margin: 20px auto;
+}
+.hc_data2 a{
+	display: inline-block;
+}
+.hc_item{
+	width: 100%;
+	border: 1px solid #c9c9c9;
+	margin: 20px auto;
+	padding: 20px 0;
+}
+.hc_item .col-md-3{text-align: center;}
+.hc_item .col-md-3 img{
+	max-height: 198px;
+}
+.hc_item .col-md-9{
+	
+}		
+.hc_item .col-md-9 h3{
+	font-size: 24px;
+	font-weight: bold;
+}
+.hc_data3 .hc_item h3{
+	text-align: center;
+}
+.hc_data3 .hc3_item a .row{
+	width: 100%;
+	margin: 0 auto;
+}
+.hc_data3 .hc3_item .row .col-md-1 div,.hc_data3 .hc3_item .row .col-md-2{
+	width: 80px;
+	height: 80px;
+	margin: 0 auto;
+	line-height: 80px;
+	text-align: center;
+	font-size: 14px;
+	background: #d0d0d0;
+	border-radius: 40px;
+}
+.hc_data3 .hc3_item .row .col-md-1 p{
+	text-align: center;
+}
+.hc_data3 .hc3_item ul{
+	width:90%;
+	margin: 0 auto;
+	padding-left: 0;
+}
+.hc_data3 .hc3_item ul li{
+	width: 10%;
+	float: left;
+	padding: 10px 0;
+}
+.hc_data3 .hc3_item ul li div{
+	width: 80px;
+	height: 80px;
+	margin: 0 auto;
+	line-height: 80px;
+	text-align: center;
+	font-size: 14px;
+	background: #d0d0d0;
+	border-radius: 40px;
+}
+.hc_data3 .hc3_item ul li p{
+	text-align: center;
+}
+.hc_data3 .hc3_item>a>div{
+	float: left;
+	margin: 15px 0 0 7%;
+}
+.hc_data3 .hc3_item>a:hover{color: #000 !important;}
+.dowebok a:hover { text-decoration: underline;}
+.dowebok li{border: 1px solid #000;float: left;}
+.dowebok { max-width: 1200px; margin: 20px auto;min-height: 313px;font-size: 14px;}
+.dowebok a {
+	 margin: 0 13px; 
+	 color: #333; 
+	 text-decoration: none;
+	 border: 1px solid #C9C9C9;
+	 display: inline-block;
+	 width: 280px;
+	 text-align: center;
+}
+.dowebok a:hover { text-decoration: none;border: 1px solid #E30004;}
+.dowebok a img{
+	margin: 20px auto;
+	display: block;
+	max-height: 215px;
+}
+.dowebok a .home_culture_adiv{
+	padding: 20px 0;
+	background: #eceaec;
+}
+/*家族文化end*/

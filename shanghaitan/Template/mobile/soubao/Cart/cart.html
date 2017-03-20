@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html id="ng-app">
+<head lang="zh">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>购物车结算</title>
+</head>
+<body>
+<!-- 头部顶栏 start [[-->
+<include file="Public/header"/>
+<link rel="stylesheet" href="__STATIC__/css/css/shopcart.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/selfc.css" />
+<link rel="stylesheet" href="__STATIC__/js/js/spinner/jquery.spinner.css" />
+<!-- 头部顶栏 end ]]-->
+<div class="shopcartbody" style="margin-top: 74px;">
+	<div class="cartgoodslistm">
+		<div class="cartgoodslistm-t">我的购物车</div>
+	<form name="cart_form" id="cart_form">
+		<div  id="ajax_return">
+
+		</div>
+	</form>
+	</div>
+</div>
+<!-- footer start [[-->
+<include file="Public/footer"/>
+<!-- footer end ]]-->
+</body>
+
+<script>
+	$(document).ready(function(){
+		ajax_cart_list(); // ajax 请求获取购物车列表
+	});
+	function ajax_cart_list(){
+
+		$.ajax({
+			type : "POST",
+			url:"{:U('Mobile/Cart/ajaxCartList')}",//+tab,
+			data : $('#cart_form').serialize(),// 你的formid
+			success: function(data){
+				$("#ajax_return").empty().append(data);
+			}
+		});
+	}
+	// ajax 删除购物车的商品
+	function ajax_del_cart(ids)
+	{
+		$.ajax({
+			type : "POST",
+			url:"{:U('Mobile/Cart/ajaxDelCart')}",//+tab,
+			data:{ids:ids}, //
+			dataType:'json',
+			success: function(data){
+				if(data.status == 1){
+					alert(data.msg);
+					ajax_cart_list(); // ajax 请求获取购物车列表
+
+				}
+			}
+		});
+	}
+</script>
+</html>

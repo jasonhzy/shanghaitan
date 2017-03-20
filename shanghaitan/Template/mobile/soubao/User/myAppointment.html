@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的预约</title>
+  <style>
+    .self_bespoke_list{
+      border-bottom: 1px solid #f4f4f4;
+      border-bottom: 2px solid #E30004;
+      padding-left: 0;
+      margin-bottom: 0;
+      overflow: hidden;
+    }
+    .self_bespoke_list li{
+      text-align: left;
+      margin-left: 10px;
+      margin-bottom: -1px;
+      display: inline-block;
+      border: 1px solid #f4f4f4;
+      cursor: pointer;
+      padding: 8px 20px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      background: #f4f4f4;
+    }
+    .self_bespoke_liactive{
+      background: #E30004 !important;
+      color: #fff;
+      border-bottom: 0 !important;
+    }
+    .yuyue{
+      padding-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+<!-- 头部-s -->
+<include file="User/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/selfc.css" />
+<style>
+  .col-xs-5, .col-xs-2, .col-xs-6{
+    padding-left: 5px;
+    padding-left: 5px;
+  }
+</style>
+<!-- 头部-e -->
+<div class="backicon">
+  <a href="JavaScript:history.back(-1);">
+    <i class="icon iconfont">&#xe60b;</i>
+  </a>
+  <span>我的预约</span>
+</div>
+<div class="row  self_centerbody">
+  <div class="col-xs-12">
+    <div id="duihuan" class=" self_centerright self_formright">
+      <ul class="self_bespoke_list">
+        <li class="self_bespoke_liactive" data-href="yuyue1">旅游预约</li>
+        <li data-href="yuyue2">生活预约</li>
+        <li data-href="yuyue3">往生预约</li>
+      </ul>
+      <div class="yuyue">
+        <div class="yuyue1">
+          <div class="row self_form_top">
+            <div class="col-xs-5"><b>订单编号</b></div>
+            <!--<div class="col-xs-2"><b>预定项目</b></div>-->
+           <!-- <div class="col-xs-3"><b>预约时间</b></div>-->
+            <div class="col-xs-2"><b>金额</b></div>
+            <div class="col-xs-5"><b>出发时间</b></div>
+          </div>
+          <div class="self_form_bottom_s">
+            <foreach  name="t_arr" item="v">
+            <div class="row self_form_bottom self_convert_table self_bespoketable">
+              <div class="col-xs-5" style="width:auto;">
+                <p>
+                <span>{$v.order_sn}</span>
+                </p>
+              </div>
+              <!--<div class="col-xs-2">
+                <table>
+                  <tr>
+                    <td>
+                      <img src="{$v.original_img}" />
+                    </td>
+                    <td>
+                      <b class="so-data-title">
+                        <div>
+                          {$v.travel_name}
+                        </div>
+                      </b>
+                    </td>
+                  </tr>
+                </table>
+              </div>-->
+             <!-- <div class="col-xs-3">
+                <p>
+                  <span>{$v.order_time|date="Y-m-d H:i",###}</span>
+                </p>
+              </div>-->
+              <div class="col-xs-2" style="width:auto;">
+                <p>
+                  <span>{$v.total_price}元</span>
+                </p>
+              </div>
+              <div class="col-xs-5" style="width:auto;">
+                <p>
+                  <span>{$v.start_time|date="Y-m-d",###}</span>
+                </p>
+              </div>
+            </div>
+            </foreach>
+            <div class="page">
+              {$pages}
+            </div>
+          </div>
+        </div>
+        <div class="yuyue2 me-hidden">
+          <div class="row self_form_top">
+            <div class="col-xs-6">订单编号</div>
+           <!-- <div class="col-xs-3">服务类型</div>
+            <div class="col-xs-3">服务价格</div>-->
+            <div class="col-xs-6">预约时间</div>
+          </div>
+          <div class="self_form_bottom_s">
+            <foreach name="l_arr" item="v">
+            <div class="row self_form_bottom self_convert_table self_bespoketable">
+              <div class="col-xs-6" style="width:auto;"><p>
+                <span>{$v.order_sn}</span>
+              </p></div>
+         <!--     <div class="col-xs-3">
+                <p>
+                  <span>{$v.life_name}</span>
+                </p>
+              </div>
+              <div class="col-xs-3">
+                <p>
+                  <span>{$v.life_price}/时</span>
+                </p>
+              </div>-->
+              <div class="col-xs-6" style="width:auto;">
+                <p>
+                  <span>{$v.order_time|date="Y-m-d,H:i:s",###}</span>
+                </p>
+              </div>
+            </div>
+            </foreach>
+            <div class="page">
+              {$page}
+            </div>
+          </div>
+        </div>
+        <div class="yuyue3 me-hidden">
+          <div class="row self_form_top">
+            <div class="col-xs-6">预约订单</div>
+           <!-- <div class="col-xs-3">墓地名称</div>-->
+            <!--<div class="col-xs-3">预约价格</div>-->
+            <div class="col-xs-6">预约时间</div>
+          </div>
+          <div class="self_form_bottom_s">
+            <foreach name="w_arr" item="v">
+              <div class="row self_form_bottom self_convert_table self_bespoketable">
+                <div class="col-xs-6" style="width:auto;"><p>
+                  <span>{$v.order_sn}</span>
+                </p></div>
+            <!--    <div class="col-xs-3">
+                  <p>
+                    <span>{$v.mudi_name}</span>
+                  </p>
+                </div>
+                <div class="col-xs-3">
+                  <p>
+                    <span>{$v.mudi_price}</span>
+                  </p>
+                </div>-->
+                <div class="col-xs-6" style="width:auto;">
+                  <p>
+                    <span>{$v.order_time|date="Y-m-d H:i:s",###}</span>
+                  </p>
+                </div>
+              </div>
+            </foreach>
+              <div class="page">
+                {$page2}
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+  $(function(){
+    //点击我的兑换
+    $(".selfc_gradebtn").click(function(){
+      $(".selfc_grade").addClass('me-hidden');
+      $("#duihuan").removeClass('me-hidden');
+    });
+    //点击切换预约
+    $(".self_bespoke_list li").click(function(){
+      var yuyue = $(this).index();
+      $(this).addClass('self_bespoke_liactive');
+      $(this).siblings().removeClass('self_bespoke_liactive');
+      $(".yuyue>div").eq(yuyue).removeClass('me-hidden');
+
+      $(".yuyue>div").eq(yuyue).siblings().addClass('me-hidden');
+    });
+  })
+</script>
+</html>

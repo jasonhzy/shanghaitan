@@ -1,0 +1,85 @@
+
+
+<div class="col-md-3">
+  <div class="self_centerleft">
+    <div class="row self_centerl-top">
+      <div class="col-md-5">
+        <img src="{$user.head_pic}" width="100px" height="100px" />
+      </div>
+      <div class="col-md-7">
+        <p>
+          <span>{$user.nickname}</span>&nbsp;&nbsp;
+          <a href="{:U('Home/User/logout')}" class="textcolore30004">[退出]</a>
+        </p>
+        <if condition="$user['total_amount'] lt 10000">
+        <p>
+          <i class="icon iconfont">&#xe629;</i>&nbsp;&nbsp;
+          普通会员
+        </p>
+        <p>
+          你还不是金卡会员哦
+        </p>
+        <else/>
+          <p>
+            <i class="icon iconfont jin">&#xe629;</i>&nbsp;&nbsp;
+           <b>金卡会员</b>
+          </p>
+        </if>
+      </div>
+    </div>
+    <div class="self_centerl-ul">
+      <ul>
+        <li <if condition="strtolower(ACTION_NAME)  eq 'index'"> class="self_centerl-ul_li_active"</if> >
+          <a href="{:U('Home/User/index')}">
+            <i class="icon iconfont">&#xe613;</i>个人中心
+          </a>
+        </li>
+        <li <if condition="strtolower(ACTION_NAME)  eq 'myorder'"> class="self_centerl-ul_li_active"</if>>
+          <a href="{:U('Home/User/myOrder')}">
+            <i class="icon iconfont">&#xe626;</i>我的订单
+          </a>
+        </li>
+        <li <if condition="strtolower(ACTION_NAME)  eq 'myexchange'"> class="self_centerl-ul_li_active"</if>>
+          <a href="{:U('Home/User/myExchange')}">
+            <i class="icon iconfont">&#xe608;</i>我的兑换
+          </a>
+        </li>
+        <li <if condition="strtolower(ACTION_NAME)  eq 'info'"> class="self_centerl-ul_li_active"</if>>
+          <a href="{:U('Home/User/info')}">
+            <i class="icon iconfont">&#xe611;</i>我的资料
+          </a>
+        </li>
+        <li <if condition="strtolower(ACTION_NAME)  eq 'vipintroduce' || strtolower(ACTION_NAME)  eq 'vippay'|| strtolower(ACTION_NAME)  eq 'recharge'"> class="self_centerl-ul_li_active"</if>>
+          <a href="{:U('Home/User/vipIntroduce')}">
+            <i class="icon iconfont">&#xe60f;</i>会员介绍
+          </a>
+        </li>
+        <li <if condition="strtolower(ACTION_NAME)  eq 'myappointment'"> class="self_centerl-ul_li_active"</if>>
+          <a href="{:U('Home/User/myAppointment')}">
+            <i class="icon iconfont">&#xe61b;</i>我的预约
+          </a>
+        </li>
+        <li <if condition="strtolower(ACTION_NAME)  eq 'myhealth'"> class="self_centerl-ul_li_active"</if>>
+          <a href="{:U('Home/User/myHealth')}">
+            <i class="icon iconfont">&#xe732;</i>我的健康
+          </a>
+        </li>
+        <li <if condition="strtolower(ACTION_NAME)  eq 'mymessage'||strtolower(ACTION_NAME)  eq 'msgdetail'"> class="self_centerl-ul_li_active"</if>>
+          <a href="{:U('Home/User/myMessage')}">
+            <i class="icon iconfont">&#xe61a;</i>我的留言
+          </a>
+        </li>
+        <li <if condition="strtolower(ACTION_NAME)  eq 'message'"> class="self_centerl-ul_li_active"</if>>
+          <a href="{:U('Home/User/message')}">
+            <i class="icon iconfont">&#xe62c;</i>社交留言
+          </a>
+        </li>
+        <li <if condition="strtolower(ACTION_NAME)  eq 'myactivity'"> class="self_centerl-ul_li_active"</if>>
+          <a href="{:U('Home/User/myActivity')}">
+            <i class="icon iconfont">&#xe62c;</i>我的活动
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

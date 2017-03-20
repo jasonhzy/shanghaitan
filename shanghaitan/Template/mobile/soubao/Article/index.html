@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>家文化传承</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <style TYPE="text/css">
+        <!--
+        A:link{text-decoration:none}
+        A:visited{text-decoration:none;color: #000;}
+        A:hover {color: #000;text-decoration:underline}
+        -->
+    </style>
+</head>
+<style>
+    .gglcontent_top span{
+        padding-left: 0 !important;
+    }
+
+
+    .gooddatalist>.row{
+        text-align: center;
+    }
+    .gooddatalist>.row>div>div{
+        text-align: left;
+    }
+    .hc_data2 h3,.hc_data3 h3{
+        font-size: 19px !important;
+    }
+</style>
+</head>
+<body>
+<include file="Public/header"/>
+<link rel="stylesheet" href="__STATIC__/css/css/liMarquee.css">
+<link rel="stylesheet" href="__STATIC__/css/css/homeculture.css"/>
+<div class="gradebanner" style="margin-top:74px; ">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <foreach name="list" item="v" key="k">
+                <li data-target="#carousel-example-generic" data-slide-to="{$k}" <if condition="$k eq 0">class="active"></if></li>
+            </foreach>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner" role="listbox">
+                <foreach name="list" item="v" key="k">
+                    <div <if condition="$k eq 0"> class="item active" <else/>class="item"</if>>
+                    <img src="{$v.p_url}" alt="">
+            </div>
+            </foreach>
+        </div>
+    </div>
+</div>
+<div class="gradegoodlist home_cluture">
+    <div class="gglcontent">
+        <div class="gglcontent_top">
+            <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+            <span>经典案例</span>
+        </div>
+        <div class="cilture_book dowebok">
+            <tpshop sql="SELECT * FROM `__PREFIX__article` where cat_id = 37 " key="k" item='v'>
+            <a href='{:U("Mobile/Article/detail/id/$v[article_id]")}' target="_blank">
+                <img src="{$v[thumb]}"/>
+                <div>{$v[title]}</div>
+            </a>
+            </tpshop>
+        </div>
+    </div>
+    <div class="gglcontent">
+        <div class="gglcontent_top">
+            <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+        <div class="gglselecttype dropdown home_cluturedata1" >
+            <div id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="menutext">为什么写传记与回忆录</span>
+                <span class="caret"></span>
+            </div>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <tpshop sql="SELECT * FROM `__PREFIX__article` where cat_id = 39 ORDER BY `article_id` ASC" key="k" item='v'>
+                <li <if condition="$k eq 0">class="gradeliactive" </if>data-href="#hc_item1">{$v['title']}</li>
+                    </tpshop>
+            </ul>
+        </div>
+        </div>
+        <div class="gglselecttype home_cluturedata2">
+            <div class="hc_data2">
+            <tpshop sql="SELECT * FROM `__PREFIX__article` where cat_id = 39 ORDER BY `article_id` ASC" key="k" item='v'>
+                <if condition="$k neq 0">
+            <div id="div2" class="me-hidden">
+                <a href='{:U("Mobile/Article/detail/id/$v[article_id]")}'  target="_blank" class="hc_item row">
+                    <div class="col-md-3">
+                        <img src="{$v[thumb]}" />
+                    </div>
+                    <div class="col-md-9">
+                        <dl>
+                            {$v[description]}
+                        </dl>
+                    </div>
+                </a>
+            </div>
+                <else/>
+            <div id="div1">
+            <a href='{:U("Mobile/Article/detail/id/$v[article_id]")}' target="_blank" class="hc_item row">
+                <div class="col-md-3">
+                    <img src="{$v[thumb]}" />
+                </div>
+                <div class="col-md-9">
+                    <dl>
+                        {$v[description]}
+                    </dl>
+                </div>
+            </a>
+        </div>
+        </if>
+        </tpshop>
+        </div>
+    </div>
+    </div>
+    <div class="gglcontent">
+        <div class="gglcontent_top">
+            <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+        <div class="gglselecttype dropdown home_cluturedata2">
+            <div id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="menutext">传记与回忆录是怎样完成的</span>
+                <span class="caret"></span>
+            </div>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <tpshop sql="SELECT * FROM `__PREFIX__article` where cat_id = 40 ORDER BY `article_id` ASC" key="k" item='v'>
+                <li <if condition="$k eq 0">class="gradeliactive" </if>data-href="#hc3_item1">{$v['title']}</li>
+                </tpshop>
+            </ul>
+        </div>
+        </div>
+        <tpshop sql="SELECT * FROM `__PREFIX__article` where cat_id = 40 ORDER BY `article_id` ASC" key="k" item='v'>
+            <if condition="$k neq 0">
+        <div class="me-hidden" id="div4">
+            <div  class="hc_item hc3_item row">
+                <a href='{:U("Mobile/Article/detail/id/$v[article_id]")}' target="_blank">
+                    <ul>
+                        <li>
+                            <div align="center">{$v[description]}</div>
+                        </li>
+                    </ul>
+                </a>
+            </div>
+        </div>
+           <else/>
+                <div id="div3">
+                    <div  class="hc_item hc3_item row">
+                        <a href='{:U("Mobile/Article/detail/id/$v[article_id]")}' target="_blank">
+                            <ul>
+                                <li>
+                                    <div align="center">{$v[description]}</div>
+                                </li>
+                            </ul>
+                        </a>
+                    </div>
+                </div>
+            </if>
+        </tpshop>
+    </div>
+        </div>
+</div>
+<include file="Public/footer"/>
+</body>
+<script src="__STATIC__/js/js/jquery.liMarquee.js"></script>
+<script>
+    $(function(){
+
+        $(".home_cluturedata1 ul li").click(function(){
+            $(this).addClass('gradeliactive');
+            $(this).siblings().removeClass('gradeliactive');
+            if($('#div2').hasClass('me-hidden')) {
+                $('#div1').addClass('me-hidden');
+                $('#div2').removeClass('me-hidden');
+            }else{
+                $('#div1').removeClass('me-hidden');
+                $('#div2').addClass('me-hidden');
+            }
+        });
+        $(".home_cluturedata2 ul li").click(function(){
+            $(this).addClass('gradeliactive');
+            $(this).siblings().removeClass('gradeliactive');
+            if($('#div4').hasClass('me-hidden')) {
+                $('#div3').addClass('me-hidden');
+                $('#div4').removeClass('me-hidden');
+            }else{
+                $('#div3').removeClass('me-hidden');
+                $('#div4').addClass('me-hidden');
+            }
+        });
+        $('.dowebok').liMarquee();
+    })
+</script>
+</html>

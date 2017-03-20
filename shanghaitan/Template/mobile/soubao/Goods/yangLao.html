@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>养老平台</title>
+  <style TYPE="text/css">
+    <!--
+    A:link{text-decoration:none}
+    A:visited{text-decoration:none;color: #000;}
+    A:hover {color: #000;text-decoration:underline}
+    -->
+    .yanglaoptcontent-2t>div{
+      padding: 0;
+    }
+    .yanglaoptcontent-2t>div:nth-child(2){
+      padding-left: 10px;
+    }
+    .yanglaoptcontent-2t .col-xs-3 img{
+      width: 100%;
+    }
+    .yanglaoptcontent-2m>div{
+      /*padding-bottom: 25px;*/
+      border-top: 1px solid #f4f4f4;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+<include file="Public/min-header" />
+<link rel="stylesheet" href="__STATIC__/css/css/liMarquee.css">
+<link rel="stylesheet" href="__STATIC__/css/css/gradeshop.css" />
+<div class="gradebanner">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <foreach name="list" item="v" key="k">
+        <li data-target="#carousel-example-generic" data-slide-to="{$k}" <if condition="$k eq 0">class="active"></if></li>
+      </foreach>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <foreach name="list" item="v" key="k">
+        <div <if condition="$k eq 0"> class="item active" <else/>class="item"</if>>
+        <img src="{$v.p_url}" alt="">
+        </div>
+      </foreach>
+    </div>
+  </div>
+</div>
+<div class="gradegoodlist yanglaoptcontent">
+  <div class="gglcontent">
+    <div class="gglcontent_top">
+      <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+      <div class="gglselecttype dropdown ">
+        <div id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="menutext">智能产品</span>
+          <span class="caret"></span>
+        </div>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <volist name="goods_category" id="gc">
+          <li <if condition="$_GET['id'] eq $gc['id']"> class="gradeliactive" data-href="#gglitem1" </if>>
+          <a href="{:U('Mobile/Goods/yangLao/cid/8',array('id'=>$gc['id']))}">{$gc['name']}</a>
+          </li>
+        </volist>
+      </ul>
+    </div>
+    </div>
+    <div class="gooddatalist container-fluid">
+      <div id="gglitem1" class="yanglao-lunbo  dowebok">
+        <foreach name="goods_list" item="goods">
+        <a href="{:U('Mobile/Goods/goodsDetail/cid/8',array('id'=>$goods['goods_id']))}" target="_blank">
+          <img src="{$goods['original_img']}" alt=""/>
+          <div class="yanglao_adiv">{$goods['goods_name']}</div>
+        </a>
+        </foreach>
+      </div>
+    </div>
+  </div>
+  <div class="gglcontent">
+    <div class="gglcontent_top">
+      <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+      <span>营养膳食</span>
+    </div>
+    <div class="row yanglaoptcontent-2 yanglaoptcontent-2m">
+      <div class="col-md-6">
+        <div class="yanglaoptcontent-2left"></div>
+          <tpshop sql="SELECT * FROM `__PREFIX__article` WHERE cat_id = 41  ORDER BY `add_time` DESC limit 1 " key="k" item='v'>
+          <div class="row yanglaoptcontent-2t">
+            <div class="col-xs-3">
+              <a href="{:U('Mobile/Goods/detail/cid/8',array('id'=>$v['article_id']))}"><img src="{$v[thumb]}"  alt="111*120"/></a>
+            </div>
+            <div class="col-xs-9">
+              <b>{$v[title]}</b>
+              <p>
+                {$v[description]}
+              </p>
+              <a href="{:U('Mobile/Goods/detail/cid/8',array('id'=>$v['article_id']))}"><span class="floatright">[详情信息]</span></a>
+            </div>
+          </div>
+          </tpshop>
+          <ul class="yanglaoli-list">
+            <tpshop sql="SELECT * FROM `__PREFIX__article` WHERE cat_id = 41  ORDER BY `add_time` ASC limit 2,5 " key="k" item='v'>
+            <li>
+              <a href="{:U('Mobile/Goods/detail/cid/8',array('id'=>$v['article_id']))}" target="_blank">
+                <i class="icon iconfont">&#xe62a;</i>
+                {$v[title]}
+                <span class="floatright">更多</span>
+              </a>
+            </li>
+              </tpshop>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="yanglaoptcontent-2left">
+          <tpshop sql="SELECT * FROM `__PREFIX__article` WHERE cat_id = 41  ORDER BY `add_time` DESC limit 7,1 " key="k" item='v'>
+          <div class="row yanglaoptcontent-2t">
+            <div class="col-xs-3">
+              <a href="{:U('Mobile/Goods/detail/cid/8',array('id'=>$v['article_id']))}"><img src="{$v[thumb]}"  alt="111*120"/></a>
+            </div>
+            <div class="col-xs-9">
+              <b>{$v[title]}</b>
+              <p>
+                {$v[description]}
+              </p>
+              <a href="{:U('Mobile/Goods/detail/cid/8',array('id'=>$v['article_id']))}"><span class="floatright">[详情信息]</span></a>
+            </div>
+          </div>
+            </tpshop>
+          <ul class="yanglaoli-list">
+            <tpshop sql="SELECT * FROM `__PREFIX__article` WHERE cat_id = 41  ORDER BY `add_time` DESC limit 8,5 " key="k" item='v'>
+            <li>
+              <a href="{:U('Mobile/Goods/detail/cid/8',array('id'=>$v['article_id']))}" target="_blank">
+                <i class="icon iconfont">&#xe62a;</i>
+                {$v[title]}
+                <span class="floatright">更多</span>
+              </a>
+            </li>
+            </tpshop>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<include file="Public/footer" />
+</body>
+<script src="__STATIC__/js/js/jquery.liMarquee.js"></script><!--滚动特效引入的js-->
+<script>
+  $(function(){
+    $('.dowebok').liMarquee();
+  });
+</script>
+</html>

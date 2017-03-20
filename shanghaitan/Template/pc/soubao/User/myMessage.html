@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的留言</title>
+
+</head>
+
+<body>
+<!-- 头部-s -->
+<include file="Public/header" />
+<link rel="stylesheet" href="__STATIC__/css/css/selfc.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/iconfont/iconfont.css" />
+<!-- 头部-e -->
+<div class="row htmllistbody self_centerbody">
+  <div class="currentloaction">
+    <a href="{：U('Home/Index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+    <span>当前位置：</span>
+    <a href="{：U('Home/User/index')}">个人中心</a>
+    >
+    <a href="#">我的留言</a>
+  </div>
+  <include file="User/menu" />
+  <!--菜单-->
+  <div class="col-md-9">
+    <div class="self_centerright self_formright selfc_grade">
+      <p class="self_formrightp1">
+        <b>我的留言</b>
+      </p>
+      <div class="row self_form_top slef_my_message_top">
+        <b>我的留言</b>
+      </div>
+      <div class="self_form_bottom_s">
+        <form method="post" id="form">
+        <table class="self_message_table">
+          <tr>
+            <td><b>留言类型：</b></td>
+            <td>
+              <input type="radio" checked="checked" value="1" name="type" />
+              &nbsp;留言&nbsp;
+              <input type="radio" value="2" name="type" />
+              &nbsp;投诉&nbsp;
+              <input type="radio" value="3" name="type" />
+              &nbsp;询问&nbsp;
+              <input type="radio" value="4" name="type" />
+              &nbsp;售后&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td>主题：</td>
+            <td>
+              <input type="text" name="title"  class="s_info_input_style" />
+              <span class="textcolore30004 zhutiyz">&nbsp;</span>
+            </td>
+          </tr>
+          <tr>
+            <td>留言内容：</td>
+            <td>
+              <textarea  name="content" class="s_info_input_style"></textarea>
+              <span class="textcolore30004 neirongyz">&nbsp;</span>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <a id="" class="redbtn s-messagebtn">提交留言</a>
+            </td>
+          </tr>
+        </table>
+        </form>
+      </div>
+    </div>
+    <br />
+
+    <div  class=" self_centerright self_formright">
+      <div class="row self_form_top slef_my_message_top">
+        <b>留言记录</b>
+      </div>
+      <div class="self_form_bottom_s">
+        <foreach name="arr" item="v">
+       <a href="{:U('Home/User/msgDetail',array('id'=>$v['message_id']))}"> <div class="borderbottomca s_message_list">
+          留言类型：<span><if condition="$v['type'] eq 1">留言</if><if condition="$v['type'] eq 2">投诉</if><if condition="$v['type'] eq 3">询问</if><if condition="$v['type'] eq 4">售后</if></span>&nbsp;&nbsp;&nbsp;
+          <span>{$v['title']}</span>
+							<span class="floatright">
+								<span>{$v['time']|date="Y-m-d H:i:s",###}</span>
+							</span>
+        </div></a>
+        </foreach>
+        <div class="page">
+          {$page}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<include file="Public/footer" />
+</body>
+<script>
+  $(function(){
+    //点击留言按钮
+    $(".s-messagebtn").click(function(){
+      var tip = $('input[name="title"]').val();
+      var content = $("textarea[name='content']").val();
+      if(tip==""){
+        $('.zhutiyz').text('主题不能为空！');
+        return false;
+      }
+      if(content==""){
+        $('.neirongyz').text('内容不能为空！');
+        return false;
+      }
+      $.ajax({
+        type:"post",
+        url:"/index.php?m=Home&c=User&a=ajaxMessage",
+        data:$("#form").serialize(),
+        dataType:"json",
+        success:function(re){
+            alert('留言成功');
+          location.href ="/index.php?m=Home&c=User&a=myMessage";
+        }
+      })
+    });
+
+  })
+</script>
+</html>

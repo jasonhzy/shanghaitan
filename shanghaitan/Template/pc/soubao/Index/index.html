@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="Author" contect="http://www.6665.com">
+    <title>{$tpshop_config['shop_info_store_name']}</title>
+
+</head>
+
+<body id="content">
+<include file="Public/header"/>
+<div id="ban">
+    <ul id="slides">
+        <foreach name="lunbo" item="v">
+        <li style='background:url("{$v[p_url]}") no-repeat center top;'><a href="javascript:;"></a></li>
+        </foreach>
+    </ul>
+</div>
+<!--定位导航-->
+<div id="menu">
+    <ul>
+        <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0" key="k" item='v'>
+        <li><a href="#item1"><em></em>{$v.cat_name}</a></li>
+        </tpshop>
+    </ul>
+</div>
+<section id="item1" class="item">
+    <div class="web-width">
+        <div class="active-top">
+            <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0 limit 1" key="k" item='v'>
+            <h3>{$v.cat_name}</h3>
+            </tpshop>
+            <ul class="tab">
+                <foreach name="ad" item="v">
+                    <li>{$v.ad_name} <i class="iconfont posj">&#xe608;</i></li>
+                </foreach>
+            </ul>
+            <a href="javascript:;" class="mores">更多活动&gt;</a>
+        </div><!--active-top/-->
+        <div class="active-down">
+            <div class="active-down-left-jbh fl">
+                <div class="active-down-left-img" style=" background:url(__STATIC__/images/img1-1.jpg) center top no-repeat;">
+                    <div class="adl-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上海滩家博会是一个引领产消、直面终端的家居、家装、建材一站式采购平台。<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;汇聚家庭装修采购所需要的家装、家具、橱柜、全屋定制等品质产品！</div>
+                    <div class="activesub"><a href="javascript:;" target="_blank">转盘100%赢好礼 <em><i class="iconfont">&#xe604;</i></em></a></div>
+                    <div class="activesub"><a href="javascript:;" target="_blank">抢1400个免单优惠 <em><i class="iconfont">&#xe604;</i></em></a></div>
+                    <div class="suopiao"><a href="javascript:;"><img src="__STATIC__/images/suopiao.png" width="207" height="53" /></a></div>
+                </div>
+            </div><!--active-down-left-jbh/-->
+            <div class="active-down-right-jbh fl">
+                <foreach name="ad" item="v">
+                <div class="tablist">
+                    <div class="active-down-right-img"><a href="{$v.ad_link}" target="_blank"><img src="{$v.ad_code}" width="943" /></a></div>
+                </div><!--tablist/-->
+                </foreach>
+            </div><!--active-down-left-jbh/-->
+            <div class="clears"></div>
+        </div><!--active-down/-->
+    </div><!--web-width/-->
+</section>
+<section id="item2" class="item">
+    <div class="web-width">
+        <div class="active-top bor">
+            <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0 limit 1,1" key="k" item='v'>
+            <h3>{$v.cat_name}</h3>
+            </tpshop>
+            <ul class="tab tab2">
+                <foreach name="cat2" item="v">
+                <li><if condition="$v[cat_name] eq '手机专享'"><i class="iconfont tab-phone">&#xe6ce;</i></if>{$v.cat_name}<img src="__STATIC__/images/sanjiao.png" class="posj2"/></li>
+                </foreach>
+            </ul>
+            <a href="javascript:;" class="mores">更多详情&gt;</a>
+        </div><!--active-top/-->
+        <div class="active-down">
+            <div class="active-down-left fl" style="height:665px;">
+                <div class="active-list">
+                    <foreach name="cat3" item="v">
+                    <h3><span>{$v.cat_name}</span></h3>
+
+                        <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v[cat_id]" key="k" item='v0'>
+                          <if condition="$v0[cat_name]">
+                         <div class="active-lab1"><span>{$v0.cat_name}</span></div>
+                            <ul>
+                                <tpshop sql="SELECT * FROM `__PREFIX__activity` where cat_id = $v0[cat_id]" key="k" item='v1'>
+                                    <li <if condition="$k%2 eq 0">style="display:inline;"</if>>  <if condition="$k%2 eq 0"><a href="javascript:;" class="fl">{$v1.title}</a><else/><a href="javascript:;" class="fr">{$v1.title}</a></if></li>
+                                </tpshop>
+                            </ul>
+                          </if>
+                        </tpshop>
+                            <ul>
+                                <tpshop sql="SELECT * FROM `__PREFIX__activity` where cat_id = $v[cat_id]" key="k" item='v2'>
+                                    <li <if condition="($k%2 eq 0) ">style="display:inline;"</if> ><if condition="$k%2 eq 0"><a href="javascript:;" class="fl">{$v2.title}</a><else/><a href="javascript:;" class="fr">{$v2.title}</a></if></li>
+                                </tpshop>
+                            </ul>
+                    </foreach>
+                </div>
+            </div>
+            <div class="active-down-right fl" style="height:650px;">
+                <foreach name="cat2" item="v">
+                <div class="tablist">
+                    <div class="tablist-left fl">
+                        <tpshop sql="SELECT * FROM `__PREFIX__activity` where cat_id = $v[cat_id] and is_open = 1 limit 1" key="k" item='v0'>
+                        <dl class="box1">
+                            <dt><a href="javascript:;"><img src="{$v0.thumb}" alt="图片" /></a></dt>
+                            <dd class="boxtitle1"><span>{$v0.title}</span><em>|</em><a href="javascript:;">{$v0.description}</a> </dd>
+                        </dl>
+                        </tpshop>
+                        <tpshop sql="SELECT * FROM `__PREFIX__activity` where cat_id = $v[cat_id] and is_open = 1 limit 1,1" key="k" item='v0'>
+                        <dl class="box2">
+                            <dt><a href="javascript:;"><img src="{$v0.thumb}" alt="图片" /></a></dt>
+                            <dd class="boxtitle1"><span>{$v0.title} </span><em>|</em><a href="javascript:;">{$v0.description}</a></dd>
+                        </dl>
+                        </tpshop>
+                        <tpshop sql="SELECT * FROM `__PREFIX__activity` where cat_id = $v[cat_id] and is_open = 1 limit 2,3" key="k" item='v0'>
+                        <dl class="box2">
+                            <dt><a href="javascript:;"><img src="{$v0.thumb}" alt="图片" /></a></dt>
+                            <dd class="boxtitle2"><a href="javascript:;">{$v0.title}</a></dd>
+                            <div class="boxtext">{$v0.description}</div>
+                            <div class="boxmore"><a href="javascript:;">了解更多&gt;&gt;</a></div>
+                        </dl>
+                        </tpshop>
+                        <div class="clears"></div>
+                    </div><!--tablist-left/-->
+                    <div class="tablist-right fr">
+                        <tpshop sql="SELECT * FROM `__PREFIX__activity` where cat_id = $v[cat_id] and is_open = 1 limit 5,1" key="k" item='v0'>
+                        <div class="tablist-rightimg"><a href="javascript:;"><img src="{$v0.thumb}" alt="图片" /></a></div>
+                        </tpshop>
+                    </div><!--tablist-right-->
+                    <div class="clears"></div>
+                </div><!--tablist/-->
+                </foreach>
+            </div><!--active-down-left/-->
+            <div class="clears"></div>
+        </div><!--active-down/-->
+    </div><!--web-width/-->
+</section>
+
+<section id="item3" class="item">
+    <div class="web-width">
+        <div class="active-top bor">
+            <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0 limit 2,1" key="k" item='v'>
+            <h3>{$v.cat_name}</h3>
+            </tpshop>
+            <ul class="tab tab2 tab3">
+                <foreach name="cat4" item="v">
+                    <li><if condition="$v[cat_name] eq '手机专享'"><i class="iconfont tab-phone">&#xe6ce;</i></if>{$v.cat_name}<img src="__STATIC__/images/sanjiao.png" class="posj2"/></li>
+                </foreach>
+            </ul>
+            <a href="javascript:;" class="mores">更多详情&gt;</a>
+        </div><!--active-top/-->
+        <div class="active-down">
+            <div class="active-down-left fl" style="height:455px">
+                <div class="active-list">
+                    <foreach name="cat5" item="v">
+                    <h3><span>{$v.cat_name}</span></h3>
+                    <ul>
+                        <tpshop sql="SELECT * FROM `__PREFIX__activity` where cat_id = $v[cat_id]" key="k" item='v2'>
+                            <li <if condition="($k%2 eq 0) ">style="display:inline;"</if> ><if condition="$k%2 eq 0"><a href="javascript:;" class="fl">{$v2.title}</a><else/><a href="javascript:;" class="fr">{$v2.title}</a></if></li>
+                        </tpshop>
+                    </ul>
+                    </foreach>
+                </div><!--active-list/-->
+            </div><!--active-down-left/-->
+            <div class="active-down-right-qingyuan fl" style="height:455px">
+                <div class="tablist">
+                    <div class="qingyuanlist">
+                    <foreach name="users" item="v">
+                        <dl>
+                            <dt><a href="javascript:;"><img src="{$v.head_pic}" /></a></dt>
+                            <dd>
+                                <h3>{$v.name}</h3>
+                                <div class="qingtext">{$v.age}岁，{$v.city}, {$v.height}CM</div>
+                                <div class="dubai"><strong>内心独白：</strong>{$v.dubai}</div>
+                                <a href="javascript:;" class="qinglink"><i class="iconfont">&#xe62c;</i></a>
+                            </dd>
+                        </dl>
+                    </foreach>
+                        <div class="clears"></div>
+                    </div>
+                </div><!--tablist/-->
+                <div class="tablist">
+                    <div class="qingyuanlist">
+                        <foreach name="users" item="v">
+                            <dl>
+                                <dt><a href="javascript:;"><img src="{$v.head_pic}" /></a></dt>
+                                <dd>
+                                    <h3>{$v.name}</h3>
+                                    <div class="qingtext">{$v.age}岁，{$v.city}, {$v.height}CM</div>
+                                    <div class="dubai"><strong>内心独白：</strong>{$v.dubai}</div>
+                                    <a href="javascript:;" class="qinglink"><i class="iconfont">&#xe62c;</i></a>
+                                </dd>
+                            </dl>
+                        </foreach>
+                        <div class="clears"></div>
+                    </div>
+                </div><!--tablist/-->
+            </div><!--active-down-right/-->
+            <div class="clears"></div>
+        </div><!--active-down/-->
+    </div><!--web-width/-->
+</section>
+<include file="Public/footer"/>
+<script type="text/javascript" src="__STATIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__STATIC__/js/style.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery.jslides.js"></script><!--焦点轮换-->
+<!-- 定位导航 -->
+<script type="text/javascript" src="__STATIC__/js/stickUp.js"></script>
+<!--图片预加载-->
+<script src="__STATIC__/js/jquery.lazyload.js"></script>
+<script type="text/javascript" charset="utf-8">
+    $(function() {
+        $("img.lazy").lazyload({effect: "fadeIn"});
+        $(".tab li").eq(0).addClass('labcur');
+        $(".tab2 li").eq(0).addClass('labcur');
+        $(".tab3 li").eq(0).addClass('labcur');
+    });
+</script>
+<script>
+    $(function(){
+        $('.chengshi').click(function(){
+            var cityid = $(this).attr('data');
+            alert(cityid);
+        })
+    });
+</script>
+</body>
+</html>

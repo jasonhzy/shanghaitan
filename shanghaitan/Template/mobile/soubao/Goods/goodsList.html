@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>适老化改造</title>
+  <style TYPE="text/css">
+    <!--
+    A:link{text-decoration:none}
+    A:visited{text-decoration:none;color: #000;}
+    A:hover {color: #000;text-decoration:underline}
+    -->
+  </style>
+</head>
+<body>
+<include file="Public/min-header" />
+<script src="__PUBLIC__/js/pc_common.js"></script>
+<script src="__PUBLIC__/js/layer/layer.js"></script>
+<link rel="stylesheet" href="__STATIC__/js/js/spinner/jquery.spinner.css" />
+<link rel="stylesheet" href="__STATIC__/css/css/gradeshop.css" />
+<div class="gradebanner">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <foreach name="list" item="v" key="k">
+      <li data-target="#carousel-example-generic" data-slide-to="{$k}" <if condition="$k eq 0">class="active"></if></li>
+      </foreach>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-inner" role="listbox">
+        <foreach name="list" item="v" key="k">
+          <div <if condition="$k eq 0"> class="item active" <else/>class="item"</if>>
+         <img src="{$v.p_url}" alt="">
+      </div>
+      </foreach>
+    </div>
+  </div>
+</div>
+<div class="gradegoodlist">
+  <div class="gglcontent">
+    <div class="gglcontent_top">
+      <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+      <div class="gglselecttype dropdown ">
+        <div id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="menutext">适老化产品</span>
+          <span class="caret"></span>
+        </div>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <volist name="goods_category" id="gc">
+          <li <if condition="$_GET['id'] eq $gc['id']"> class="gradeliactive" data-href="#gglitem1" </if>>
+          <a href="{:U('Mobile/Goods/goodsList/cid/6',array('id'=>$gc['id']))}">{$gc['name']}</a>
+          </li>
+        </volist>
+      </ul>
+    </div>
+    </div>
+    <div class="gooddatalist container-fluid">
+      <div id="gglitem1" class="row">
+        <volist name="goods_list" id="goods" key="k">
+          <div class="col-md-3" >
+            <div class="gglc">
+              <div class="gglimg">
+                <a  href="{:U('Mobile/Goods/goodsDetail/cid/6',array('id'=>$goods['goods_id']))}">
+                  <img src="{$goods['goods_id']|goods_thum_images=200,200}">
+                </a>
+              </div>
+              <div class="gglcbigtext"><a target="_blank" href="{:U('Mobile/Goods/goodsDetail',array('id'=>$goods['goods_id']))}">{$goods['goods_name']}</a></div>
+              <div class="jifenhuanhoubtn btn-shilaohua">
+               <span> <span>￥{$goods['shop_price']}</span></span>
+              <div class="yudingcount">
+                  <span>预定数量：</span>
+                  <input type="text" class="spinner"  name="shu" value=""/>
+                  <span>&nbsp;&nbsp;个</span>
+                </div>
+                <div class="btnshilaohua div"  >
+                  <a id="addCart_f"  class="buy" data1="{$goods['goods_id']}">立即购买</a>
+                  <a id="btnAddCart"  class="join" data2="{$goods['goods_id']}" >加入购物车</a>
+                </div>
+            </div>
+          </div>
+            </div>
+        </volist>
+      </div>
+      <div id="gglitem2" class="me-hidden row"></div>
+      <div id="gglitem3" class="me-hidden row"></div>
+    </div>
+    <div class="page">
+      {$page}
+    </div>
+  </div>
+</div>
+
+<include file="Public/footer" />
+</body>
+<script src="__STATIC__/js/js/spinner/jquery.spinner.js"></script>
+<script>
+  $('.spinner').spinner(1);
+  $(function(){
+    $(".buy").click(function(){
+      var goods_id = $(this).attr('data1');
+     var num =  $(this).parent().prev('.yudingcount').children('.spinner').children('.spinner.value').val();
+      //var num = $(".spinner.value").val();
+        AjaxMobileCart(goods_id,num, 1);
+
+    })
+    $(".join").click(function(){
+      var goods_id = $(this).attr('data2');
+      var num =  $(this).parent().prev('.yudingcount').children('.spinner').children('.spinner.value').val();
+      //alert("11");
+        AjaxMobileCart(goods_id,num, 0);
+
+    })
+      $(".dropdown-menu").click(function(){
+          $(this).addClass('open');
+      });
+
+  })
+
+</script>
+</html>

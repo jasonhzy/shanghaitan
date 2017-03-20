@@ -1,0 +1,63 @@
+<div class="row orderform_datalist">
+     <div class="col-xs-5" >商品</div>
+     <div class="col-xs-4">单价</div>
+     <div class="col-xs-3">操作</div>
+ </div>
+<br/>
+ <foreach name="cartList" item="v" key="k" >
+     <div class="row cartlist">
+         <div class="col-xs-3">
+             <a  href="{:U('Mobile/Goods/goodsInfo',array('id'=>$v[goods_id]))}"><img src="{$v.goods_id|goods_thum_images=80,95}" /></a>
+         </div>
+         <div class="col-xs-2">
+             <a href="{:U('Mobile/Goods/goodsDetail',array('id'=>$v[goods_id]))}" ><b style="color:black;">{$v.goods_name}</b></a>
+             <br/><span>{$v.spec_key_name}</span>
+         </div>
+         <div class="col-xs-4 price">￥<span>{$v.goods_price}</span>元<br/><br/>
+             <table class="jishuqi jishuqicart">
+                 <tr>
+                     <td class="jian" data1="{$v.id}">-</td>
+                     <td class="countc" >{$v.goods_num}<input type="hidden" value="{$v.goods_num}" name="goods_num[{$v.id}]"  /></td>
+                     <td class="addc" data2="{$v.id}">+</td>
+                 </tr>
+             </table>
+         </div>
+         <div class="col-xs-3 total">￥<span>{$v.goods_fee}</span>元<br/><br/>
+             <div ><a href="javascript:void(0);" onclick="if(confirm('确定要删除吗?')) ajax_del_cart({$v.id});">删除</a></div></div>
+     </div>
+ </foreach>
+ <div class="jiesuanbtn">
+     <a href="javascript:history.go(-1);" class="redbtn continuebtn">继续购物</a>
+     <a  href="{:U('Mobile/Cart/cart2')}" class="redbtn">去结算</a>
+ </div>
+ <script>
+     $(function(){
+         //商品计数器点击增加或减少使得金额进行相应的变化
+         //点击减号的时候
+         $(".jishuqicart .jian").click(function(){
+             var data1 = $(this).attr('data1');
+             var countcart = parseInt($(this).parent().children('.countc').text());
+             if(countcart>1){
+                 countcart--;
+                /* var danjia = parseInt($(this).parent().parent().parent().parent().prev('div').children('span').text());
+                 var jine = danjia*countcart;
+                 $(this).parent().parent().parent().parent().next('div').children('span').text(jine);*/
+
+                 $("input[name='goods_num["+data1+"]']").val(countcart);
+                 ajax_cart_list();
+             }
+         });
+         //点击加号
+         $(".jishuqicart .addc").click(function(){
+             var data2 = $(this).attr('data2');
+             var countcart = parseInt($(this).parent().children('.countc').text());
+             countcart++;
+            /* var danjia = parseInt($(this).parent().parent().parent().parent().prev('div').children('span').text());
+             var jine = danjia*countcart;
+             $(this).parent().parent().parent().parent().next('div').children('span').text(jine);*/
+             $("input[name='goods_num["+data2+"]']").val(countcart);
+             ajax_cart_list();
+         });
+     })
+ </script>
+

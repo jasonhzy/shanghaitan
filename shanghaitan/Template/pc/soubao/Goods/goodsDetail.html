@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{$goods.goods_name}-银海棠</title>
+  <style>
+    .shilaohuaimage img{
+      max-width:100%;
+      display:inline-block;
+    }
+    #s_listtitle{
+      text-overflow: -o-ellipsis-lastline;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      max-width:100%;
+      font-size:20px;
+    }
+    .gxqc9-img>a>img {
+      max-width:100% !important;
+      width:auto !important;
+      display:block;
+      margin:5px auto !important;
+    }
+  </style>
+</head>
+<body>
+<include file="Public/header"/>
+<script type="text/javascript" src="__STATIC__/js/jquery.jqzoom.js"></script>
+<script src="__PUBLIC__/js/pc_common.js"></script>
+<script src="__PUBLIC__/js/layer/layer.js"></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/detail.css">
+<link rel="stylesheet" href="__STATIC__/js/js/spinner/jquery.spinner.css" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/jquery.jqzoom.css">
+<div class="jfhgbody" >
+    <div class="currentloaction">
+        <a href="{:U('Home/Index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+        <span>当前位置：</span>
+      <foreach name="navigate_goods" key="k" item="v">
+        <a href="{:U('Home/Goods/goodsList',array('id'=>$k))}">{$v}</a>&nbsp;<i>></i>&nbsp;
+      </foreach>
+     {$goods.goods_name}
+    </div>
+    <div class="goodxq container-fluid">
+        <div class="gxq-top row">
+          <div class=" product-photo col-md-4" id="photoBody" style="padding:0;border-right:0 !important;">
+            <!-- 商品大图介绍 start [[-->
+            <div class=" product-img jqzoom" style="display:block;padding:0;width:100%;">
+              <img id="zoomimg" src="{$goods.goods_id|goods_thum_images=390,330}">
+            </div>
+            <!-- 商品大图介绍 end ]]-->
+            <!-- 商品小图介绍 start [[-->
+            <div class="product-small-img fn-clear" style="padding:0;width:100%;"> <a href="javascript:;" class="next-left next-btn fl disabled"></a>
+              <div class="pic-hide-box fl">
+                <ul class="small-pic" style="left:0;">
+                  <foreach name="goods_images_list" item="v" key="k" >
+                    <li style="float:left;" class="small-pic-li <if condition="$k eq 0">active</if>" >
+                    <a href="javascript:;"><img src="{$v|get_sub_images=$v[goods_id],65,65}" data-img="{$v|get_sub_images=$v[goods_id],390,330}" > <i></i></a>
+                    </li>
+                  </foreach>
+                </ul>
+              </div>
+              <a href="javascript:;" class="next-right next-btn fl"></a> </div>
+            <!-- 商品小图介绍 end ]]-->
+          </div>
+            <div class="col-md-8" style="border-left:1px solid #d8d8d8">
+              <div>
+                <h3 id="s_listtitle">{$goods.goods_name}　　<span style="font-size:16px;">{$goods.goods_remark}</span></h3>
+                <p class="gradecountred"><span><span>￥<span id="s_listmoney">{$goods['shop_price']}</span></span>元</span></p>
+              </div>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">颜色：<select  id="sele" name="attr_value">
+                    <tpshop sql="SELECT*FROM `__PREFIX__goods_attr` WHERE goods_id = $goods[goods_id] " key="k" item='v'>
+                      <option value="{$v[goods_attr_id]}" >{$v[attr_value]}</option>
+                    </tpshop></select></div>
+                  <div class="col-md-5">
+                    <div class="product-number-select"><span style="float:left;">预定数量：</span><input type="text" class="spinner "  id="spinner" value="" /></div>
+                  </div>
+                  <div class="col-md-7">
+                    库存<span>{$goods['store_count']}</span>件
+                  </div>
+                  <div class="col-md-12">
+                    <div class="shilaohuabtn">
+                      <a href="" class="redbtn"   id="buy">立即购买</a>
+                      <a href="" class="redbtn boxshaowbtn" id="join">加入购物车</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container-fluid texticon">
+                <div class="row">
+                  <div class="col-md-4">
+                    <i class="icon iconfont">&#xe647;</i><span>正品保证</span>
+                  </div>
+                  <div class="col-md-4">
+                    <i class="icon iconfont">&#xe785;</i><span>权益保障</span>
+                  </div>
+                  <div class="col-md-4">
+                    <i class="icon iconfont">&#xe600;</i><span>免费配送</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="gxq-content row">
+            <div class="col-md-3">
+              <div class="gxqc-border">
+                <h4>你可能感兴趣</h4>
+                <ul>
+                  <foreach name="look_see" item="look">
+                  <li class="border-model">
+                    <div class="boxshaow">
+                      <div class="bxs-img">
+                        <a href="{:U('Home/Goods/goodsInfo',array('id'=>$look[goods_id]))}"  target="_blank">
+                          <img src="{$look['original_img']}" /></a>
+                      </div>
+                      <p>{$look.goods_name}</p>
+                      <p class="gradecountred"><span><span>{$look['shop_price']}</span>元</span></p>
+                    </div>
+                  </li>
+                    </foreach>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="gxqc9-border">
+                <div class="gxqc9-top gxqc9-toptype">
+                  <ul>
+                    <li  class="gxqc9-topli" data-href="#g9itm1">产品详情</li>
+                    <li  id="div" data-href="#g9itm2">累计评论<span>{$goods.comment_count}</span></li>
+                  </ul>
+                </div>
+                <div>
+                  <div id="g9itm1" class="gxqc9-img ">
+                    <div class="type_top">
+                      <img src="__STATIC__/images/img/index/banner4iconred.gif" />
+                      <span>使用教程</span>
+                    </div>
+                    <a href="#r">
+                      <img src="{$goods['original_img']}" width="350" height="300"/>
+                    </a>
+                    <p>教程链接：<a href="{$goods['goods_link']}">{$goods['goods_link']}</a></p>
+                    <div class="shilaohuaimage">{$goods.goods_content|htmlspecialchars_decode}</div>
+                  </div>
+                  <div id="g9itm2" class="gxqc9-img gxqc9-img2 me-hidden">
+                    <div class="gxqc9-img-top">
+                      <div class="gxqc9-img-tops">
+                        <div class="gxqc9-img-topsz">
+                          <p>与描述相符</p>
+                          <p ><span class="textcolore30004">{$ave}&nbsp;分</span></p>
+                        </div>
+                        <div class="gxqc9-img-topsy">
+                          <div class="tiao">
+                            <ul class="qs">
+                              <li>1</li>
+                              <li>2</li>
+                              <li>3</li>
+                              <li>4</li>
+                              <li>5</li>
+                            </ul>
+                            <ul class="taioky">
+                              <li>非常不满</li>
+                              <li>不满意</li>
+                              <li>一般</li>
+                              <li>满意</li>
+                              <li>非常满意</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <br/>
+                      <div class="gxqc9-img-topx">
+                        <input type="radio" name="all" checked="checked" value="all"/>全部
+                        <input type="radio" name="all" value="readd"/>追加
+                        <input type="radio" name="all"  value="img"/>图片
+                      </div>
+                    </div>
+                    <div id="div1">
+                    <div class="gxqc9-img-bottom container-fluid">
+                      <foreach name="c_arr" item="v">
+                        <div class="row">
+
+                          <div class="col-md-10">
+                            <table class="gxqc9_tablediv">
+                              <tpshop sql="SELECT * FROM `__PREFIX__users` WHERE `user_id` = $v[user_id]  "  key="k" item='v0'>
+                                 <tr><td rowspan="5" style="vertical-align: top"> <div class="gxqc9_div"> <img src="{$v0.head_pic}" width="100px" height="100px"/></div></td>
+                              <td><h4><b>{$v0.nickname}</b></h4></td></tr>
+                              </tpshop>
+                              <tr>
+                                <td>初次评价：</td>
+                                <td>{$v.content}</td>
+                              </tr>
+                              <if condition="$v['recontent'] neq ''">
+                              <tr>
+                                <td >收货<span>{$v.spacing}</span>天后追加：</td>
+                                <td>{$v.recontent}</td>
+                              </tr>
+                              </if>
+                              <if condition="$v['img'] neq ''">
+                              <tr>
+                                <td colspan="2">
+                                  <foreach name="v['img']" item="v2" >
+                                    <a href="{$v2}" target="_blank"><img src="{$v2}" width="60" height="60"/></a>&nbsp;&nbsp;
+                                    </foreach>
+                                </td>
+                              </tr>
+                              </if>
+                            </table><br/>
+                          </div>
+                          <if condition="$v['rtime'] eq 0">
+                          <div class="col-md-2" width="60px">{$v.add_time|date="Y-m-d H:i:s",###}</div>
+                          <else/>
+                            <div class="col-md-2" width="60px">{$v.rtime|date="Y-m-d H:i:s",###}</div>
+                            </if>
+                          <div class="col-md-12"> <tpshop sql="SELECT * FROM `__PREFIX__comment` WHERE `parent_id` = $v[comment_id]  "  key="k" item='v3'>
+                            <b>&nbsp;&nbsp;管理员回复：</b>&nbsp;&nbsp;{$v3.content}</b>&nbsp;&nbsp;<span class="floatright">{$v3.add_time|date="Y-m-d H:i:s",###}</span>
+                          </tpshop></div>
+                        </div>
+                      </foreach>
+                      </div>
+                      <div class="page">
+                          {$page1}
+                      </div>
+                    </div>
+                    <div class="me-hidden" id="div2">
+                      <div class="gxqc9-img-bottom container-fluid">
+                        <foreach name="b_arr" item="v">
+                          <div class="row">
+
+                            <div class="col-md-10">
+                              <table class="gxqc9_tablediv">
+                                <tpshop sql="SELECT * FROM `__PREFIX__users` WHERE `user_id` = $v[user_id]  "  key="k" item='v0'>
+                                  <tr><td rowspan="4" style="vertical-align: top"> <div class="gxqc9_div"> <img src="{$v0.head_pic}" width="100px" height="100px"/></div></td>
+                                    <td><h4><b>{$v0.nickname}</b></h4></td></tr>
+                                </tpshop>
+                                <tr>
+                                  <td>初次评价：</td>
+                                  <td>{$v.content}</td>
+                                </tr>
+                                <if condition="$v['recontent'] neq ''">
+                                  <tr>
+                                    <td >收货<span>{$v.spacing}</span>天后追加：</td>
+                                    <td>{$v.recontent}</td>
+                                  </tr>
+                                </if>
+                                <if condition="$v['img'] neq ''">
+                                  <tr>
+                                    <td colspan="2">
+                                      <img src="{$v.img}" />
+                                    </td>
+                                  </tr>
+                                </if>
+                              </table>
+                            </div>
+                            <if condition="$v['rtime'] eq 0">
+                              <div class="col-md-2" width="60px">{$v.add_time|date="Y-m-d H:i:s",###}</div>
+                              <else/>
+                              <div class="col-md-2" width="60px">{$v.rtime|date="Y-m-d H:i:s",###}</div>
+                            </if>
+                            <div class="col-md-12"> <tpshop sql="SELECT * FROM `__PREFIX__comment` WHERE `parent_id` = $v[comment_id]  "  key="k" item='v3'>
+                              <b>&nbsp;&nbsp;管理员回复：</b>&nbsp;&nbsp;{$v3.content}</b>&nbsp;&nbsp;<span class="floatright">{$v3.add_time|date="Y-m-d H:i:s",###}</span>
+                            </tpshop></div>
+                          </div>
+                        </foreach>
+                      </div>
+                      <div class="page">
+                        {$page2}
+                      </div>
+                    </div>
+                    <div class="me-hidden" id="div3">
+                      <div class="gxqc9-img-bottom container-fluid">
+                        <foreach name="a_arr" item="v">
+                          <div class="row">
+
+                            <div class="col-md-10">
+                              <table class="gxqc9_tablediv">
+                                <tpshop sql="SELECT * FROM `__PREFIX__users` WHERE `user_id` = $v[user_id]  "  key="k" item='v0'>
+                                  <tr><td rowspan="4" style="vertical-align: top"> <div class="gxqc9_div"> <img src="{$v0.head_pic}" width="100px" height="100px"/></div></td>
+                                    <td><h4><b>{$v0.nickname}</b></h4></td></tr>
+                                </tpshop>
+                                <tr>
+                                  <td>初次评价：</td>
+                                  <td>{$v.content}</td>
+                                </tr>
+                                <if condition="$v['recontent'] neq ''">
+                                  <tr>
+                                    <td >收货<span>{$v.spacing}</span>天后追加：</td>
+                                    <td>{$v.recontent}</td>
+                                  </tr>
+                                </if>
+                                <if condition="$v['img'] neq ''">
+                                  <tr>
+                                    <td colspan="2">
+                                      <foreach name="v['img']" item="v2" >
+                                        <a href="{$v2}" target="_blank"><img src="{$v2}" width="60" height="60"/></a>&nbsp;&nbsp;
+                                      </foreach>
+                                    </td>
+                                  </tr>
+                                </if>
+                              </table>
+                            </div>
+                            <if condition="$v['rtime'] eq 0">
+                              <div class="col-md-2" width="60px">{$v.add_time|date="Y-m-d H:i:s",###}</div>
+                              <else/>
+                              <div class="col-md-2" width="60px">{$v.rtime|date="Y-m-d H:i:s",###}</div>
+                            </if>
+                            <div class="col-md-12"> <tpshop sql="SELECT * FROM `__PREFIX__comment` WHERE `parent_id` = $v[comment_id]  "  key="k" item='v3'>
+                              <b>&nbsp;&nbsp;管理员回复：</b>&nbsp;&nbsp;{$v3.content}</b>&nbsp;&nbsp;<span class="floatright">{$v3.add_time|date="Y-m-d H:i:s",###}</span>
+                            </tpshop></div>
+                          </div>
+                        </foreach>
+                      </div>
+                      <div class="page">
+                        {$page3}
+                      </div>
+                    </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public/footer"/>
+</body>
+<script src="__STATIC__/js/js/spinner/jquery.spinner.js"></script>
+<script>
+  $('.spinner').spinner(1);
+  $(function(){
+    var store_count = {$goods['store_count']} // 商品起始库存
+    $("#join").click(function(){
+      var num = $(".spinner.value").val();
+      var color = $("#sele").val();
+      if(color==null){
+          color=0;
+      }
+      if(num>store_count){
+       alert('库存不足');
+        return false;
+       }
+      AjaxAddCart({$goods.goods_id},num,0,color);
+    })
+    $("#buy").click(function(){
+      var num = $(".spinner.value").val();
+      var color = $("#sele").val();
+        if(color==null){
+            color=0;
+        }
+      if(num>store_count){
+        alert('库存不足');
+        return false;
+      }
+      AjaxAddCart({$goods.goods_id},num,1,color);
+    })
+  })
+</script>
+<script>
+  $('.small-pic-li').each(function(i,o){
+    var lilength = $('.small-pic-li').length;
+    $(o).hover(function(){
+      $(o).siblings().removeClass('active');
+      $(o).addClass('active');
+      $('#zoomimg').attr('src',$(o).find('img').attr('data-img'));
+      $('#zoomimg').attr('jqimg',$(o).find('img').attr('data-big'));
+
+      $('.next-btn').removeClass('disabled');
+      if(i==0){
+        $('.next-left').addClass('disabled');
+      }
+      if(i+1==lilength){
+        $('.next-right').addClass('disabled');
+      }
+    });
+  })
+
+  //前一张缩略图
+  $('.next-left').click(function(){
+    var newselect = $('.small-pic>.active').prev();
+    $('.small-pic>.active').removeClass('active');
+    $(newselect).addClass('active');
+    $('#zoomimg').attr('src',$(newselect).find('img').attr('data-img'));
+    $('#zoomimg').attr('jqimg',$(newselect).find('img').attr('data-big'));
+    var index = $('.small-pic>li').index(newselect);
+    if(index==0){
+      $('.next-left').addClass('disabled');
+    }
+    $('.next-right').removeClass('disabled');
+  })
+
+  //后前一张缩略图
+  $('.next-right').click(function(){
+    var newselect = $('.small-pic>.active').next();
+    $('.small-pic>.active').removeClass('active');
+    $(newselect).addClass('active');
+    $('#zoomimg').attr('src',$(newselect).find('img').attr('data-img'));
+    $('#zoomimg').attr('jqimg',$(newselect).find('img').attr('data-big'));
+    var index = $('.small-pic>li').index(newselect);
+    if(index+1 == $('.small-pic>li').length){
+      $('.next-right').addClass('disabled');
+    }
+    $('.next-left').removeClass('disabled');
+  })
+</script>
+<script>
+  $(function(){
+    $(".gxqc9-toptype ul li").click(function(){
+      var id = $(this).attr('data-href');
+      $(this).addClass('gxqc9-topli');
+      $(this).siblings().removeClass('gxqc9-topli');
+      $(id).removeClass('me-hidden');
+      $(id).siblings().addClass('me-hidden');
+    });
+  })
+</script>
+<script>
+  $(function(){
+    $("input[type='radio']").click(function(){
+      var val = $(this).val();
+        if(val=="all"){
+          $("#div1").removeClass('me-hidden');
+          $("#div2").addClass('me-hidden');
+          $("#div3").addClass('me-hidden');
+        }
+        else if(val=="readd"){
+          $("#div2").removeClass('me-hidden');
+          $("#div1").addClass('me-hidden');
+          $("#div3").addClass('me-hidden');
+        }
+        else if(val=="img"){
+          $("#div3").removeClass('me-hidden');
+          $("#div1").addClass('me-hidden');
+          $("#div2").addClass('me-hidden');
+        }
+      });
+  })
+</script>
+</html>

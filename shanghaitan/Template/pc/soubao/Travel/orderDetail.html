@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>旅居服务</title>
+</head>
+<body>
+<include file="Public/header"/>
+<link rel="stylesheet" href="__STATIC__/css/css/sojourn.css" />
+<div class="currentloaction" style="line-height:60px;">
+  <a href="{:U('Home/index/index')}"><i class="icon iconfont">&#x348d;</i></a>
+  <span>当前位置：</span>
+  <a href="{:U('Home/Travel/travelList')}">旅居服务</a>
+  >
+  <a href="#">{$t_arr.travel_name}</a>
+  >
+  <a href="#">填写订单</a>
+</div>
+<div class="htmllistbody boxshaowccc sojourn-tianxieddbody">
+  <div class="shopcartbody-top sojourn-top">
+    <span>预定流程：</span>
+    <div class="floatright row shopcartbody-queren">
+      <div class="col-md-3 shopcartbody-queren-line">
+        <span>1</span>
+        查看行程
+      </div>
+      <div class="col-md-3 shopcartbody-queren-line lineactive">
+        <span>2</span>
+        填写订单
+      </div>
+      <div class="col-md-3 shopcartbody-queren-line">
+        <span>3</span>
+        提交订单
+      </div>
+      <div class="col-md-3 shopcartbody-queren-line">
+        <span>3</span>
+        预约成功
+      </div>
+    </div>
+  </div>
+  <div class="sojourn-tzdd-bg">
+    <p><b>出行人数：</b>成人<span>{$re.person}</span>人&nbsp;&nbsp;儿童<span>{$re.child}</span>人</p>
+    <p>（￥<span>{$re.bprice}</span>*<span>{$re.person}</span>）成人=￥<span>{$re.b_total}</span></p>
+    <p>（￥<span>{$re.sprice}</span>*<span>{$re.child}</span>）成人=￥<span>{$re.s_total}</span></p>
+    <p>
+      <b>订单总额：</b><span class="textcolore30004">￥{$re.total_price}</span>
+    </p>
+  </div>
+  <!--订单详细信息 start-->
+  <div class="sojourn-tzdd-bg">
+    <b>订单详细信息</b>
+  </div>
+  <table class="sojourn-tzdd-tableddxq">
+    <tr>
+      <td>产品名称：<span>{$t_arr.travel_name}</span></td>
+      <td>出发日期：<span>{$t_arr.start_time}</span></td>
+    </tr>
+    <tr>
+      <td>旅游编号：<span>{$t_arr.number}</span></td>
+      <td>行程天数：<span>{$t_arr.days}</span>日</td>
+    </tr>
+    <tr>
+      <td>产品类型：<span>{$t_arr.type}</span></td>
+    </tr>
+  </table>
+  <!--订单详细信息 end-->
+  <!--填写联系人资料 start-->
+  <div class="sojourn-tzdd-bg">
+    <b>填写联系人资料</b>
+    &nbsp;&nbsp;&nbsp;
+    <span class="textcolore30004">*</span>为必填项（请准确填写手机号码，以便我们与您联系）
+  </div>
+  <form method="post" id="form" action="">
+  <table class="sojourn-tzdd-tableddxq stt_lxr">
+    <tr>
+      <td><span class="textcolore30004">*</span>联系人：</td>
+      <td><input type="text" name="name" value="" id="name"/></td>
+    </tr>
+    <tr>
+      <td>性别：</td>
+      <td>
+        <input type="radio" name="stt_radiosex" checked="checked" value="1" />&nbsp;男&nbsp;&nbsp;
+        <input type="radio" name="stt_radiosex" value="2" />&nbsp;女&nbsp;&nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td><span class="textcolore30004">*</span>手机号：</td>
+      <td>
+        <input type="text" name="phone" id="phone" value="" />&nbsp;&nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td>电子邮箱：</td>
+      <td><input type="text" name="email"  value=""  id="email"/></td>
+    </tr>
+  </table>
+  <!--填写联系人资料 end-->
+  <!--预售产品退改签规定 start-->
+  <div class="sojourn-tzdd-bg">
+    <b>预售产品退改签规定</b>
+  </div>
+  <div class="borderc9c9c9 stt-ys">
+    <b>凯撒旅游预售产品退改签规定</b>
+    <p class="textindent2">
+      鉴于旅游者在 2016年10月19日 预订旅行社澳大利亚新西兰南北岛14日印象之旅
+      （包含凯恩斯）行程，双方经友好协商就预售产品产品退、改相关事宜达成一致意见，
+      并签订本
+      协议。
+    </p>
+    <p class="textindent2">
+      双方一致确认，由于旅行社为推出此次旅游产品，已与履行辅助人（
+      包括航空公司、船方、酒店及旅游景点等）签订了相关合同并按合同约
+      定支付了相应费用且该等费用根据合同约定不可以要求退还，如旅游者
+      取消订单将给旅行社造成严重损失；因此，双方一致同意，如旅游者在
+      预订旅游产品后取消订单的，旅行社有权按照以下标准扣除取消费用：
+    </p>
+    <p class="textindent2"> 欧、美、澳、非地区</p>
+    <p>（1）凡报名每个产品折扣价格档，报名后至资料截止日前60日（不含）取消，即收取订单总费用的10%；</p>
+    <p>（2）距资料截止日前60日至30日，收取订单总费用的20%；</p>
+    <p>（3）距资料截止日前30日至15日，收取订单总费用的30％；</p>
+    <p>（4）资料截止日前14日至7日，收取订单总费用的60％；</p>
+    <p>（5）资料截止日前6日至1日，收取订单总费用的90％；</p>
+  </div>
+  <p>
+    <input type="checkbox" name="stt-checkbox" id="agree" checked/>&nbsp;
+    我已知晓并“同意”《<a href="#yy">预售产品退改签规定</a>》
+  </p>
+    <a class="redbtn stt-qdbtn" id="button">确定</a>
+  <!--预售产品退改签规定 end-->
+  </form>
+</div>
+<include file="Public/footer"/>
+</body>
+<script>
+    $(function(){
+      $("#button").click(function(){
+      var name = $('#name').val();
+      var phone = $('#phone').val();
+        var email = $('#email').val();
+      var agree = $("#agree").attr('checked');
+      if (name == '') {
+        alert('联系人不能为空!');
+        return false;
+      }
+      if (phone == '') {
+        alert('手机号不能为空!');
+        return false;
+      }
+      if (!checkMobile(phone)) {
+        alert('账号格式不对!');
+        return false;
+      }
+      if (agree == '') {
+        alert('没有勾选同意');
+        return false;
+      }
+        $.ajax({
+          type:"post",
+          url:"/index.php?m=Home&c=Travel&a=subOrder",
+          data:$("#form").serialize(),
+          dataType:"json",
+          success:function(re){
+            if(re){
+              location.href = "/index.php?m=Home&c=Travel&a=subOrder&id="+re;
+            }
+          }
+        })
+
+      })
+  });
+    function checkMobile(tel) {
+      var reg = /(^1[3|4|5|7|8][0-9]{9}$)/;
+      if (reg.test(tel)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+</script>
+</html>

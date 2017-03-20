@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>往生服务</title>
+  <style TYPE="text/css">
+    <!--
+    A:link{text-decoration:none}
+    A:visited{text-decoration:none;color: #000;}
+    A:hover {color: #000;text-decoration:underline}
+    -->
+  </style>
+</head>
+<body>
+<!--------头部开始-------------->
+<include file="Public/header" />
+<!--------头部结束-------------->
+<div class="backicon" style="margin-top:50px;">
+  <a href="JavaScript:history.back(-1);">
+    <i class="icon iconfont">&#xe60b;</i>
+  </a>
+  <span>陵园动态</span>
+</div>
+<div class="ws-ly-dtbody">
+  <div class="row ws-ly-dtbody-row">
+    <div class="col-md-4 ws-ly-dtbody-left" style="padding: 0 10px;">
+      <div class="ws-ly-dtbody-left-b">
+        <div class="gglcontent_top ws-ly-dtbody-left-bt">
+          <img src="__STATIC__/images/img/wangshengfuwu/lingyuanicon.gif" />
+          <span>最新动态</span>
+        </div>
+        <ul>
+          <tpshop sql="SELECT * FROM `__PREFIX__mudi_news` WHERE `news_id` != $news_id ORDER BY `addtime` DESC limit 6 "  key="k" item='v'>
+          <li>
+            <a href="{:U('Mobile/Mudi/mudiDetail',array('id'=>$v['news_id']))}" target="_blank">
+              <i class="icon iconfont">&#xe62a;</i>
+              {$v.title}
+              <span class="floatright">{$v.addtime|date="Y-m-d",###}</span>
+            </a>
+          </li>
+          </tpshop>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-12 ws-ly-dtbody-right" style="margin-top: 10px;padding: 0 10px;">
+      <div class="ws-ly-dtbody-rcontent" style="margin: 0 auto;">
+        {$news.content|htmlspecialchars_decode}
+      </div>
+    </div>
+  </div>
+
+</div>
+<include file="Public/footer" />
+</body>
+</html>
