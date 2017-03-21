@@ -6,22 +6,6 @@ use Think\Verify;
 
 class UserController extends BaseController {
 
-    public function _initialize() {      
-        parent::_initialize();
-        $nologin = array(
-        		'login','pop_login','do_login','logout','verify','set_pwd','finished',
-        		'verifyHandle','reg','send_sms_reg_code','identity','check_forget_code',
-        		'forget_pwd','check_captcha','check_username','send_forget_code',
-        );
-        if(!$this->user_id && !in_array(ACTION_NAME,$nologin)){
-             header("location:".U('Home/User/login'));
-             exit;
-        }
-        //用户中心面包屑导航
-        $navigate_user = navigate_user();
-        $this->assign('navigate_user',$navigate_user);        
-    }
-
     /*
      * 用户中心首页
      */
@@ -870,62 +854,18 @@ class UserController extends BaseController {
     }
 
     public function forget_pwd(){
-    	if($this->user_id > 0){
-    		header("Location: ".U('Home/User/Index'));
-    	}
-    	if(IS_POST){
-    		$logic = new UsersLogic();
-    		$username = I('post.username');
-    		$code = I('post.code');
-    		$new_password = I('post.new_password');
-    		$confirm_password = I('post.confirm_password');
-    		$pass = false;
-    	
-    		//检查是否手机找回
-    		if(check_mobile($username)){
-    			if(!$user = get_user_info($username,2))
-    				$this->error('账号不存在');
-    			$check_code = $logic->sms_code_verify($username,$code,$this->session_id);
-    			if($check_code['status'] != 1)
-    				$this->error($check_code['msg']);
-    			$pass = true;
-    		}
-    		//检查是否邮箱
-    		if(check_email($username)){
-    			if(!$user = get_user_info($username,1))
-    				$this->error('账号不存在');
-    			$check = session('forget_code');
-    			if(empty($check))
-    				$this->error('非法操作');
-    			if(!$username || !$code || $check['email'] != $username || $check['code'] != $code)
-    				$this->error('邮箱验证码不匹配');
-    			$pass = true;
-    		}
-    		if($user['user_id'] > 0 && $pass)
-    			$data = $logic->password($user['user_id'],'',$new_password,$confirm_password,false); // 获取用户信息
-    		if($data['status'] != 1)
-    			$this->error($data['msg'] ? $data['msg'] :  '操作失败');
-    		$this->success($data['msg'],U('Home/User/login'));
-    		exit;
-    	}
         $this->display();
     }
     
     public function set_pwd(){
-    	if($this->user_id > 0){
-    		header("Location: ".U('Home/User/Index'));
-    	}
     	if(IS_POST){
     		$password = I('post.password');
     		$password2 = I('post.repassword');
     		if($password2 != $password){
     			$this->error('两次密码不一致',U('Home/User/forget_pwd'));
     		}
-            $check = $_SESSION;
-            //var_dump($check);exit;
-            $user = get_user_info($check['mobile'],2);
+            $user = session('user');
             $arr = M('users')->where(array('user_id'=>$user['user_id']))->find();
-            //var_dump($arr);exit;
             if( encrypt($password) == $arr['password']){
                 $re= 0;
                 $this->ajaxReturn(json_encode($re));
@@ -936,12 +876,14 @@ class UserController extends BaseController {
             }
 
     	}
+    	$username = session('username');
+    	$this->assign('username',$username);
+    	$this->display();
     }
     
     public function finished(){
-    	if($this->user_id > 0){
-    		header("Location: ".U('Home/User/Index'));
-    	}
+        $username = session('username');
+        $this->assign('username',$username);
     	$this->display();
     }
     
@@ -975,18 +917,34 @@ class UserController extends BaseController {
     		exit(json_encode(1));
     	}
     }
-    
+
+    /**
+     * 核对账号信息
+     */
     public function check_username(){
     	$username = I('post.username');
     	if(!empty($username)){
     		$count = M('users')->where("email='$username' or mobile='$username'")->count();
-            session('mobile',$username);
+            //session('mobile',$username);
     		exit(json_encode(intval($count)));
     	}else{
     		exit(json_encode(0));
     	}  	
     }
-    
+    /**
+     *
+     */
+    public function repwd(){
+        $username = I('get.zhanghao');
+        if(!empty($username)){
+            $user = M('users')->where("email='$username' or mobile='$username'")->find();
+            session('username',$username);
+            session('user',$user);
+        }
+        $this->assign('username',$username);
+        $this->assign('mobile',$user['mobile']);
+        $this->display();
+    }
     public function identity(){
     	if($this->user_id > 0){
     		header("Location: ".U('Home/User/Index'));

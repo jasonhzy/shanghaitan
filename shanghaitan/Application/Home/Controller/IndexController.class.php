@@ -4,9 +4,7 @@ use Think\Page;
 use Think\Verify;
 class IndexController extends BaseController {
     public function index(){
-        clear_cart(); // 清空购物车垃圾数据       
-        $quyu = M('area')->select();
-
+        clear_cart(); // 清空购物车垃圾数据
        /* $arr = M("music")->select();
         $i_arr = array();
         foreach($arr as $k=>$v){
@@ -33,7 +31,6 @@ class IndexController extends BaseController {
         $this->assign('users',$users);
         $this->assign('nav',$nav);
         $this->assign('lunbo',$lunbo);
-        $this->assign('quyu',$quyu);
         $this->display();
     }
  

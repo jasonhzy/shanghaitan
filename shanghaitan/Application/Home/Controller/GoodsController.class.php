@@ -4,7 +4,26 @@ use Think\AjaxPage;
 use Think\Page;
 use Think\Verify;
 class GoodsController extends BaseController {
-    public function index(){      
+    /**
+     * 家居装修首页
+     */
+    public function index(){
+        $this->display();
+    }
+    /**
+     * 装修公司列表
+     */
+    public function companyList(){
+        $gongsi = M('goods')->where(array('is_check'=>1))->order('reg_time desc')->select();
+        $this->assign('gongsi',$gongsi);
+        $this->display();
+    }
+    /**
+     * 效果图
+     */
+    public function effect(){
+        $gongsi = M('goods')->where(array('is_check'=>1))->order('reg_time desc')->select();
+        $this->assign('gongsi',$gongsi);
         $this->display();
     }
    /**

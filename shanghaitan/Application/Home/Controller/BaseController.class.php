@@ -33,7 +33,8 @@ class BaseController extends Controller {
         $cart_result = $this->cartLogic->cartList($this->user, $this->session_id,0,1);
         if(empty($cart_result['total_price']))
             $cart_result['total_price'] = Array( 'total_fee' =>0, 'cut_fee' =>0, 'num' => 0, 'atotal_fee' =>0, 'acut_fee' =>0, 'anum' => 0);
-        
+        $cat = M('activity_cat')->where(array('parent_id'=>2,'show_in_nav'=>0))->order('cat_id asc')->select();
+        $this->assign('cat',$cat);
         $this->assign('cartList', $cart_result['cartList']); // 购物车的商品
         $this->assign('cart_total_price', $cart_result['total_price']); // 总计        
         $this->public_assign(); 
