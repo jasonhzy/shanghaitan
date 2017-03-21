@@ -46,7 +46,7 @@
 					 'applyList'=>'报名列表',
 					 'activity'=>'编辑活动',
                      'addEditCategory'=>'添加修改分类',
-                     'designList'=>'设计列表',
+                     'designList'=>'申请列表',
                      'addEditGoods'=>'添加修改商户',
                      'goodsTypeList'=>'商品类型',
                      'addEditGoodsType'=>'编辑商品类型',
