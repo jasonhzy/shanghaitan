@@ -22,8 +22,13 @@
 <div id="menu">
     <ul>
         <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0" key="k" item='v'>
-        <li><a href="#item1"><em></em>{$v.cat_name}</a></li>
+        <li><a <if condition="$v.cat_id eq 1">href="#item1"<elseif condition="$v.cat_id eq 2"/>href="#item2"<else/>href="#item3"</if>><em></em>{$v.cat_name}</a></li>
         </tpshop>
+      <!--  <ul>
+            <li><a href="#item1" class="current"><em></em>热门活动</a></li>
+            <li><a href="#item2"><em></em>家居装修</a></li>
+            <li><a href="#item3"><em></em>恋爱婚姻</a></li>
+        </ul>-->
     </ul>
 </div>
 <section id="item1" class="item">
@@ -63,7 +68,7 @@
     <div class="web-width">
         <div class="active-top bor">
             <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0 limit 1,1" key="k" item='v'>
-            <h3>{$v.cat_name}</h3>
+            <h3><a href="{:U('Home/Goods/index')}">{$v.cat_name}</a></h3>
             </tpshop>
             <ul class="tab tab2">
                 <foreach name="cat2" item="v">
@@ -140,7 +145,7 @@
     <div class="web-width">
         <div class="active-top bor">
             <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0 limit 2,1" key="k" item='v'>
-            <h3>{$v.cat_name}</h3>
+            <h3><a href="">{$v.cat_name}</a></h3>
             </tpshop>
             <ul class="tab tab2 tab3">
                 <foreach name="cat4" item="v">
