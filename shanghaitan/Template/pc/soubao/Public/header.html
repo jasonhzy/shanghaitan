@@ -18,7 +18,7 @@
       <strong class="cityname">上海</strong> <a href="javascript:;" class="tab-city">[切换城市]</a>
       <div class="citylist">
         <div class="citytitle">可选城市列表</div>
-        <foreach name="quyu" item="v">
+        <tpshop sql="SELECT * FROM `__PREFIX__area`"  key="k" item='v'>
         <dl>
           <dt>{$v['name']}</dt>
           <dd>
@@ -28,7 +28,7 @@
           </dd>
           <div class="clears"></div>
         </dl>
-        </foreach>
+        </tpshop>
       </div>
     </div><!--city/-->
     <div class="head-lab fr">
