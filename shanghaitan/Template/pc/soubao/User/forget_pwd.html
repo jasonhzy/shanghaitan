@@ -1,344 +1,55 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=8">
-	<link rel="stylesheet" href="__STATIC__/css/security_set.css">
-<title>安全中心</title>
-	<style>
-		.forgetpasswd-top{
-			padding: 100px 0 !important;
-		}
-		.form table{
-			width: 603px;
-			margin: 0 auto;
-		}
-		.form table td{
-			padding: 10px 0;
-		}
-		.form table td:first-child{
-			text-align: right;
-			width: 119px;
-		}
-		.form table td:nth-child(2){
-			width: 264px;
-		}
-		.form table td:nth-child(3){
-			text-align: center;
-		}
-		.form table td:nth-child(3) input{
-			border-style: none;
-
-			padding: 6px 35px;
-			border-radius: 5px;
-			color: #fff;
-			background: #9c9c9c;
-		}
-		.form table td:first-child span{
-			color: #f00;
-		}
-		#phone_queren,#setmima_queren{
-			width: 100%;
-		}
-		.form2{
-			border: 1px solid #000;
-		}
-		.form2 table{
-			border: 1px solid #000;
-		}
-		.form2 table td:nth-child(3){
-			color: #E30004;
-		}
-		.form2 table tr:first-child td{padding-bottom: 0 ;}
-		.form2 table tr:nth-child(2) td{padding: 0;}
-		.form2 table tr:nth-child(3) td{padding-top: 0;}
-		.changesuccess{
-			width: 373px;
-			margin: 0 auto !important;
-		}
-		.changesuccess .col-md-2 .bhimg{
-			margin-top: 20px;
-			width: 45px;
-			padding: 2px;
-			height: 0;
-			margin-right: 10px;
-			overflow: hidden;
-		}
-		.changesuccess .col-md-2 .bhimg img{
-			width: 100%;
-		}
-		.changesuccess .col-md-10{
-			padding: 0;
-		}
-		.changesuccess .col-md-10 h3{
-			font-size: 20px;
-		}
-		.changesuccess .col-md-10 p a{
-			color: #E30004;
-			padding: 2px 5px;
-		}
-	</style>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="Author" contect="http://www.6665.com">
+	<title>上海滩网</title>
 </head>
-<body> 
-<!-- 头部-s -->
-<include file="Public/header" />
-<div class="registerbody">
-	<div class="currentloaction">
-		<a href="{:U('Home/Index/index')}"><i class="icon iconfont">&#x348d;</i></a>
-		<span>当前位置：</span>
-		<a href="{:U('Home/User/index')}">个人中心</a>
-		>
-		<a href="">验证身份</a>
-	</div>
-	<div class="registercontent">
-		<div class="rctop forgetpasswd-top">
-			<span class="regusterline"></span>
-					<span class="forgetpwd">
-						验证身份
-					</span>
-			<span class="regusterline"></span>
-		</div>
-		<div class="rcbody">
-			<form action="" method="post" name="forgetpwd_form1" class="form">
-				<table>
-					<tr>
-						<td><span>*</span>手机号：</td>
-						<td><input type="text" class="form-control"  placeholder="请输入手机号" name="phone" id="username" onblur="chkuser()" /></td>
-						<td><input type="button" value="免费获取验证码" id="sendSms" onclick="sendcode(this)"/></td>
-					</tr>
-					<tr style="display:none;" data-tips-for="username"><td colspan="3" text-align="center"><b style="color:red;" class="txt"></b></td></tr>
-					<tr>
-						<td><span>*</span>输入验证码：</td>
-						<td><input type="text" class="form-control" placeholder="请输入验证码" onblur="checkcode()" id="code" /></td>
-						<td data-tips-for="tpcode"><b style="color:red;" class="txt"></b></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><input type="button" name="" class="btnred" id="phone_queren" value="确认" /></td>
-						<td ></td>
-					</tr>
-				</table>
-			</form>
-			<form action="" method="post" name="forgetpwd_form2" class="form  me-hidden">
-				<table>
-					<tr>
-						<td><span>*</span>新密码：</td>
-						<td><input type="password" id="pwd" class="form-control" name="password" placeholder="请输入密码(至少6位字符)" onkeyup="checkPwdStrong(this.value)"/></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>
-							<div class="ruodaoqiang">
-								<label id="pwdstrength" class="strengthA">
-									<b></b>
-								</label>
-							</div>
-						</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td><span>*</span>确认密码：</td>
-						<td><input type="password" class="form-control" placeholder="请确认密码" id="repwd" name="password2" value=""/></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><input type="button" name="" class="btnred" id="setmima_queren" value="确认" /></td>
-						<td></td>
-					</tr>
-				</table>
-			</form>
-			<div class="changesuccess row me-hidden">
-				<div class="col-md-2">
-					<div class="bhimg">
-						<img src="__STATIC__/images/img/changepwd.png" />
-					</div>
-				</div>
-				<div class="col-md-10">
-					<h3>恭喜你，你的密码已经修改成功！</h3>
-					<p><span class="second">4</span>s后自动返回登录页面</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 
-<include file="Public/footer" />
-
+<body id="content">
+<include file="Public/p_header"/>
+<div class="repwd">
+	<div class="web-width">
+		<div class="repwd-bg">
+			<h3 class="repwd-title">请输入您要找回密码的帐号</h3>
+			<div class="repwd-form">
+				<div class="repwd-input">
+					<label><i class="iconfont">&#xe6c9;</i></label>
+					<input type="text" name="zhanghao" placeholder="请输入账号" style="width:388px;" />
+				</div>
+				<div class="repwd-sub"><a id="next">下一步</a></div>
+			</div><!--repwd-form/-->
+		</div><!--repwd-bg/-->
+	</div><!--web-width/-->
+</div><!--repwd/-->
+<include file="Public/footer"/>
 </body>
 <script>
-	function chkuser(){
-		$('span[data-tips-for="username"]').find('.txt').empty();
-		var username = $('#username').val();
-		if(username == ''){
-			//alert('11');
-			show_error('username','手机号不能为空');
-			return false;
-		}else{
-			$.ajax({
-				url:'/index.php?m=Home&c=User&a=check_username&t='+Math.random(),
-				type:'post',
-				dataType:'json',
-				data:{username:username},
-				success:function(t){
-					if(t==1){
-						$('tr[data-tips-for="username"]').css('display','inline');
-						$('tr[data-tips-for="username"]').find('.txt').empty();
-						$('tr[data-tips-for="username"]').css('display','none');
-						uflag = true;
-					}else{
-						show_error('username','用户名错误');
-						return false;
-					}
-				}
-			})
-		}
-	}
-	function show_error(type,msg){
-		$('tr[data-tips-for="'+type+'"]').css('display','inline');
-		$('tr[data-tips-for="'+type+'"]').find('.txt').empty().html(msg);
-	}
 	$(function(){
-
-		//新密码验证至少6位并且不能为空
-		$("#pwd").blur(function(){
-			var pwd = $.trim($(this).val());
-			var pwdreg =  /^.{6,}$/;
-			if(!pwdreg.test(pwd)){
-				$(this).parent().next('td').text('密码至少为6位');
-				$(this).addClass('borderred');
-			}else{
-				$(this).parent().next('td').empty();
+		$("#next").click(function(){
+            var zhanghao = $("input[name='zhanghao']").val();
+            if(zhanghao == ''){
+                alert('账号不能为空！');
+                return false;
+            }else{
+                $.ajax({
+                    url:'/index.php?m=Home&c=User&a=check_username&t='+Math.random(),
+                    type:'post',
+                    dataType:'json',
+                    data:{username:zhanghao},
+                    success:function(t){
+                        if(t==1){
+							location.href="/index.php?m=Home&c=User&a=repwd&zhanghao="+zhanghao;
+                        }else{
+                            alert("没有找到这个账号，请核对账号信息！");
+                            return false;
+                        }
+                    }
+                })
 			}
-		});
-		//确认密码按钮
-		$("#repwd").blur(function(){
-			var pwd = $.trim($("#pwd").val());
-			var repwd = $.trim($(this).val());
-			if(pwd==''|| repwd==''){
-				$(this).parent().next('td').text('密码不能为空');
-				return false;
-			}else{
-				$(this).parent().next('td').empty();
-			}
-			if(pwd!=repwd){
-				$(this).parent().next('td').text('两次密码不一致');
-				return false;
-			}else{
-				$(this).parent().next('td').empty();
-			}
-		});
-		$("#setmima_queren").click(function(){
-			var pwd = $.trim($("#pwd").val());
-			var repwd = $.trim($("#repwd").val());
-			$.ajax({
-				type:'post',
-				url:'/index.php?m=Home&c=User&a=set_pwd',
-				data:{password:pwd,repassword:repwd},
-				dataType:"json",
-				success:function(re){
-					if(re == 1){
-						$('form[name="forgetpwd_form2"]').addClass('me-hidden');
-						$('.changesuccess').removeClass('me-hidden');
-						$(".forgetpwd").text('修改完成');
-						settime();
-						//location.href="/index.php?m=Home&c=User&a=login";
-					}else{
-						alert('新密码与原密码不能相同');
-					}
-				}
-			})
-		});
-
-		//手机号确认按钮
-		$("#phone_queren").click(function(){
-			chkuser();
-			checkcode();
-			if(uflag && flag){
-				$('form[name="forgetpwd_form1"]').addClass('me-hidden');
-				$('form[name="forgetpwd_form2"]').removeClass('me-hidden');
-				$(".forgetpwd").text('设置新密码');
-			}
-		});
-
-		var countdown=4;
-		function settime() {
-			$('.second').text(countdown);
-			if (countdown == 0) {
-				location.href="/index.php?m=Home&c=User&a=login";
-				return false;//#设定跳转的链接地址
-			} else {
-				countdown--;
-			}
-			setTimeout(function() {
-				settime();
-			},1000)
-		}
+		})
 	})
-	//点击获取验证码
-	function sendcode(o){
-		$.ajax({
-			url:'/index.php?m=Home&c=User&a=send_forget_code&t='+Math.random(),
-			type:'post',
-			dataType:'json',
-			data:{username:$('#username').val()},
-			success:function(res){
-				if(res.status==1){
-					alert(res.msg);
-					timer(o);
-				}else{
-					alert(res.msg);
-				}
-			}
-		})
-		//timer(o);
-	}
-
-	var wait=120;
-	function timer(o) {
-		if (wait == 0) {
-			o.removeAttribute("disabled");
-			o.value="免费获取验证码";
-			wait = 120;
-		} else {
-			o.setAttribute("disabled", true);
-			o.value="重新发送(" + wait + ")";
-			wait--;
-			setTimeout(function() {
-				timer(o)
-			}, 1000)
-		}
-	}
-	//核实验证码
-	function checkcode(){
-		var tpcode = $("#code").val();
-		if(tpcode == ''){
-			$('td[data-tips-for="tpcode"]').find('.txt').empty().html('验证码不能为空');
-			flag = false;
-			return false;
-		}
-		if(tpcode.length != 6){
-			$('td[data-tips-for="tpcode"]').find('.txt').empty().html('验证码不正确');
-			flag = false;
-			return false;
-		}
-		//flag = true;
-		$.ajax({
-			url:'/index.php?m=Home&c=User&a=check_forget_code&t='+Math.random(),
-			type:'post',
-			dataType:'json',
-			data:{code:tpcode},
-			success:function(res){
-				if(res.status==1){
-					$('td[data-tips-for="tpcode"]').find('.txt').empty();
-					flag = true;
-				}else{
-					$('td[data-tips-for="tpcode"]').find('.txt').empty().html(res.msg);
-				}
-			}
-		})
-
-	}
 </script>
-</html>	
+</html>
