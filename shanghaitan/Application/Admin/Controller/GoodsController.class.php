@@ -124,15 +124,6 @@ class GoodsController extends BaseController {
     public function delGoods()
     {
 
-        // 判断此商品是否有订单
-        $goods_count = M('OrderGoods')->where("goods_id = {$_GET['id']}")->count('1');
-        if($goods_count)
-        {
-            $return_arr = array('status' => -1,'msg' => '此商品有订单,不得删除!','data'  =>'',);   //$return_arr = array('status' => -1,'msg' => '删除失败','data'  =>'',);
-            $this->ajaxReturn(json_encode($return_arr));
-        }
-
-        // 删除此商品
         M("Goods")->where('goods_id ='.$_GET['id'])->delete();
         $return_arr = array('status' => 1,'msg' => '操作成功','data'  =>'',);   //$return_arr = array('status' => -1,'msg' => '删除失败','data'  =>'',);
         $this->ajaxReturn(json_encode($return_arr));
@@ -160,6 +151,41 @@ class GoodsController extends BaseController {
         $data['is_check'] = 1;
         $r = D('goods')->where('goods_id='.$goods_id)->save($data);
         if($r) exit(json_encode(1));
+    }
+    /*
+     * 申请设计列表
+     * */
+    public function designList(){
+        $tal =  M('Apply');
+        $check = trim($_POST['keywords']);
+        if($check){
+            if(substr($check,0,1)==1){
+                $where ="sid = 2 and mobile=".$check;
+            }else{
+                $where= "sid = 2 and area like '%$check%'or name like '%$check%'";
+            }
+            $count = $tal->where($where)->count();// 查询满足要求的总记录数
+            $pager = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
+            $page = $pager->show();//分页显示输出
+            $list = $tal->where($where)->order('time desc')->limit($page->firstRow.','.$page->listRows)->select();
+        }else{
+            $count = $tal->count();// 查询满足要求的总记录数
+            $pager = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
+            $page = $pager->show();//分页显示输出
+            $list = $tal->where('sid=2')->order('time desc')->limit($page->firstRow.','.$page->listRows)->select();
+        }
+        $this->assign('list',$list);
+        $this->assign('page',$page);
+        $this->display();
+    }
+    /**
+     * 删除申请
+     */
+    public function delApp()
+    {
+        // 删除此报名用户
+        $re = M("Apply")->where('id ='.$_POST['id'])->delete();
+        $this->ajaxReturn(json_encode($re));
     }
    /**
      * 商品类型  用于设置商品的属性
