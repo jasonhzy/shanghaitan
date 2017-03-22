@@ -51,7 +51,7 @@
                      'goodsTypeList'=>'商品类型',
                      'addEditGoodsType'=>'编辑商品类型',
                      'checkList'=>'商户审核',
-                     'addEditSpec'=>'添加修改规格',
+                     'minge'=>'设计名额',
                      'goodsAttributeList'=>'商品属性',
                      'addEditGoodsAttribute'=>'添加修改属性',
                      'brandList'=>'商品品牌',
