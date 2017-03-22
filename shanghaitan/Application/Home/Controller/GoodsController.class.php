@@ -8,9 +8,26 @@ class GoodsController extends BaseController {
      * 家居装修首页
      */
     public function index(){
+        $lunbo = M('lunbo')->where(array('is_show'=>1,'type'=>2))->select();
+        $this->assign('lunbo',$lunbo);
         $this->display();
     }
     /**
+     * 免费设计数据存表
+     */
+    public function ajaxApply(){
+        if($_POST){
+            if( $_SESSION['submit'] == 1){
+                $this->ajaxReturn(json_encode(0));
+            }else{
+                $_SESSION['submit'] = 1;
+                $_POST['time'] = time();
+                $_POST['sid'] = 2;
+                $re = M('apply')->add($_POST);
+                exit(json_encode($re));
+            }
+        }
+    }    /**
      * 装修公司列表
      */
     public function companyList(){
