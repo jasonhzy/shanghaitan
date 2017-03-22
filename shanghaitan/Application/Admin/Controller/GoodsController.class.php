@@ -15,7 +15,7 @@ class GoodsController extends BaseController {
     }
     
     /**
-     * 报名列表
+     * 报名列表 免费设计
      *
      */
     public function applyList(){
@@ -37,6 +37,8 @@ class GoodsController extends BaseController {
             $page = $pager->show();//分页显示输出
             $list = $tal->where('sid=0')->order('time desc')->limit($page->firstRow.','.$page->listRows)->select();
         }
+        $minge = M('minge')->where('id=1')->find();
+        $this->assign('minge',$minge);
         $this->assign('list',$list);
         $this->assign('page',$page);
         $this->display();
@@ -153,7 +155,7 @@ class GoodsController extends BaseController {
         if($r) exit(json_encode(1));
     }
     /*
-     * 申请设计列表
+     * 免费报价列表
      * */
     public function designList(){
         $tal =  M('Apply');
@@ -186,6 +188,21 @@ class GoodsController extends BaseController {
         // 删除此报名用户
         $re = M("Apply")->where('id ='.$_POST['id'])->delete();
         $this->ajaxReturn(json_encode($re));
+    }
+    /**
+     * 名额
+     */
+    public function minge(){
+        if($_POST){
+            $arr = M('minge')->where('id=1')->find();
+            $data['num'] = $_POST['num'];
+            $data['sum'] = ($_POST['num']-$arr['num'])+$arr['sum'];
+            M('minge')->where('id=1')->save($data);
+            $this->redirect('Admin/Goods/applyList');
+        }
+        $minge = M('minge')->where('id=1')->find();
+        $this->assign('minge',$minge);
+        $this->display();
     }
    /**
      * 商品类型  用于设置商品的属性
