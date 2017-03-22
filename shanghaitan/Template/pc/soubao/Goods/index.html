@@ -17,14 +17,14 @@
                 <h3 class="qmf-title"><span></span><strong>抢免费设计名额</strong></h3>
                 <div class="haisheng">今日还剩 <strong>6</strong><strong>6</strong><strong>5</strong> 个免费名额</div>
                 <div class="zmf-mess">
-                    <div class="zmf-list"><input type="text" placeholder="您的称呼" /></div>
+                    <div class="zmf-list"><input type="text" name="name" placeholder="您的称呼" /></div>
                     <div class="zmf-select distpicker1">
                             <select name="province" id="province" class="fl"></select>
                             <select name="city" id="city" class="fr"></select>
                     </div>
-                    <div class="zmf-list"><input type="text" placeholder="填写手机号码，获取免费设计名额" /></div>
-                    <div class="zmf-check"><input type="checkbox" /> 我已阅读并接受<a href="javascript:;" class="green">《装修常见问题条款》</a></div>
-                    <div class="zmf-sub"><a href="javascript:;" class="sheji-click">立即申请</a></div>
+                    <div class="zmf-list"><input type="text" placeholder="填写手机号码，获取免费设计名额" name="mobile"/></div>
+                    <div class="zmf-check"><input type="checkbox" checked="checked" disabled/> 我已阅读并接受<a href="javascript:;" class="green">《装修常见问题条款》</a></div>
+                    <div class="zmf-sub"><a  class="sheji-click">立即申请</a></div>
                 </div><!--zmf-mess/-->
             </div><!--zmf-show/-->
             <div class="zmf-show">
@@ -79,7 +79,7 @@
                         </select>
                     </div>
                     <div class="zmf-list"><input type="text" placeholder="请填写手机号码，报价结果将发送到您的手机" /></div>
-                    <div class="zmf-check"><input type="checkbox" /> 我已阅读并接受<a href="javascript:;" class="green">《装修常见问题条款》</a></div>
+                    <div class="zmf-check"><input type="checkbox" checked="checked" disabled/> 我已阅读并接受<a href="javascript:;" class="green">《装修常见问题条款》</a></div>
                     <div class="zmf-sub"><a href="javascript:;" class="zhuangxiu-click">立即计算</a></div>
                 </div><!--zmf-mess/-->
             </div><!--zmf-show/-->
@@ -87,11 +87,9 @@
         <div class="ban fr">
             <div class="focus">
                 <ul class="rslides f426x240">
-                    <li><a href="javascript:;"><img src="__STATIC__/images/ban5.jpg" /></a><h3>这里是装修房子的标题啊——标题</h3></li>
-                    <li><a href="javascript:;"><img src="__STATIC__/images/ban3.jpg" /></a><h3>这里是装修房子的标题啊——标题</h3></li>
-                    <li><a href="javascript:;"><img src="__STATIC__/images/ban4.jpg" /></a><h3>这里是装修房子的标题啊——标题</h3></li>
-                    <li><a href="javascript:;"><img src="__STATIC__/images/ban2.jpg" /></a><h3>这里是装修房子的标题啊——标题</h3></li>
-                    <li><a href="javascript:;"><img src="__STATIC__/images/ban1.jpg" /></a><h3>这里是装修房子的标题啊——标题</h3></li>
+                    <foreach name="lunbo" item="v">
+                    <li><a href="javascript:;"><img src="{$v.p_url}" /></a><h3>{$v.title}</h3></li>
+                    </foreach>
                 </ul>
             </div>
         </div><!--ban/-->
@@ -589,6 +587,52 @@
         $(".distpicker1").distpicker();
         autoSelect: true ;
     });
+</script>
+<script>
+    $(function(){
+        $(".sheji-click").click(function(){
+            var name = $("input[name='name']").val();
+            var province = $("select[name='province']").val();
+            var city = $("select[name='city']").val();
+            var mobile = $("input[name='mobile']").val();
+            if(name==''||province==''||city==''||mobile==''){
+                alert('信息不全，不可以提交！');
+                return false;
+            }else if(!is_mobile(mobile)){
+                alert('手机格式不正确！');
+                return false;
+            }else{
+                $.ajax({
+                    type:"post",
+                    url:"/index.php?m=Home&c=Goods&a=ajaxApply",
+                    dateType:"json",
+                    data:{name:name,area:province+city,mobile:mobile},
+                    success:function(re){
+                        if(re > 0){
+                            /*免费设计弹框*/
+                            $(".sheji-click").click(function(){
+                                $(".eject").hide();
+                                $(".eject-sheji").fadeIn();
+                                $(".bg100").show();
+                            })
+                        }else{
+                            alert('您已经提交过了！');
+                            return false;
+                        }
+                    }
+                })
+
+            }
+
+        })
+    })
+    /**
+     * 验证是否手机
+     */
+    function is_mobile(text){
+        var isMobile=/^(?:13\d|15\d|18\d|17\d|14\d)\d{5}(\d{3}|\*{3})$/; //手机号码验证规则
+        return (isMobile.test(text));
+    }
 </script>
 </body>
 </html>
