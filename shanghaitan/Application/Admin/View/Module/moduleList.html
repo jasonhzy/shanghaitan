@@ -21,7 +21,9 @@
                         <table class="table table-bordered table-hover">
                             <thead>
                             <tr>
+                                <th class="sorting text-left">图片标题</th>
                                 <th class="sorting text-left">图片路径</th>
+                                <th class="sorting text-left">类型</th>
                                 <th class="sorting text-left">链接地址</th>
                                 <th class="sorting text-center">所属城市</th>
                                 <th class="sorting text-center">是否显示</th>
@@ -31,7 +33,9 @@
                             <tbody>
                             <volist name="navigationList" id="list">
                                 <tr>
+                                    <td class="text-left">{$list.title}</td>
                                     <td class="text-left">{$list.p_url}</td>
+                                    <td class="text-left"><if condition="$list.type eq 0">首页<elseif condition="$list.type eq 1"/>婚礼管家<else/>家居装修</if></td>
                                     <td class="text-left">{$list.url}</td>
                                     <td class="text-center">
                                         <tpshop sql="SELECT * FROM `__PREFIX__city` where id = $list[cityid]" key="k" item='v'>

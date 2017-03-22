@@ -1,5 +1,4 @@
 <include file="Public/min-header"/>
-<link type="text/css" href="__ROOT__/Template/pc/soubao/Static/css/style.css" rel="stylesheet" />
 <style>
     .nav {
         width: 100%;
@@ -8,10 +7,22 @@
     }
     * {
         box-sizing: content-box;
+
     }
+    .city{width:126px; position:relative; height:30px;}
+    .city.citycur{padding-left:5px;background:#fff;border-left:#ddd 1px solid;border-right:#ddd 1px solid;border-bottom:#fff 1px solid;}
+    .citylist{ position:absolute;left:-1px;top:29px;width:350px;padding:0px 20px; background:#fff;border:#ddd 1px solid; z-index:9992;border-top:0; display:none;}
+    .citylist .citytitle{color:#999;}
+    .citylist dl{margin-bottom:8px;}
+    .citylist dt{float:left; width:50px; height:20px; line-height:20px;color:#888; font-weight:bold;}
+    .citylist dd{float:left;width:300px; line-height:20px;}
+    .citylist dd a{ display:inline-block;margin-right:6px;}
+    .city strong{font-size:15px;color:#ed1d00;}
+    .city a{color:#585858; font-size:12px;}
+    .city a:hover{color:#f00;}
 </style>
 <div class="wrapper">
-  <include file="Public/breadcrumb"/>
+    <include file="Public/breadcrumb"/>
     <section class="content">
         <!-- Main content -->
         <div class="container-fluid">
@@ -28,70 +39,85 @@
                     <!--表单数据-->
                     <form method="post" id="addEditNavForm" onsubmit="return checkName();">
                         <!--通用信息-->
-                    <div class="tab-content">                 	  
-                        <div class="tab-pane active" id="tab_tongyong">
-                           
-                            <table class="table table-bordered">
-                                <tbody>
-                                <tr>
-                                    <td>所属城市:</td>
-                                    <td>
-                                         <!--<select id="system_nav" name="module_id" class="form-control" style="width:250px;">
-                                                <foreach name="system_nav"  key='k' item="v" >
-                                                    <option value="{$k}" <if condition="$k eq $navigation[module_id]"> selected </if> >{$v}</option>
-                                                </foreach>                                                
-                                         </select>-->
-                                        <input type="hidden" value="" name="cityid" />
-                                        <div class="city fl">
-                                            <strong class="cityname"><if condition="!$city">上海<else/>{$city}</if></strong> <a href="javascript:;" class="tab-city">[切换城市]</a>
-                                            <div class="citylist">
-                                                <foreach name="quyu" item="v">
-                                                    <dl>
-                                                        <dt>{$v['name']}</dt>
-                                                        <dd>
-                                                            <tpshop sql="SELECT * FROM `__PREFIX__city` where parent_id = $v[id]" key="k" item='v0'>
-                                                                <a class="chengshi" data="{$v0.id}">{$v0['name']}</a>
-                                                            </tpshop>
-                                                        </dd>
-                                                        <div class="clears"></div>
-                                                    </dl>
-                                                </foreach>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_tongyong">
+
+                                <table class="table table-bordered">
+                                    <tbody>
+                                    <tr>
+                                        <td>所属城市:</td>
+                                        <td>
+                                            <!--<select id="system_nav" name="module_id" class="form-control" style="width:250px;">
+                                                   <foreach name="system_nav"  key='k' item="v" >
+                                                       <option value="{$k}" <if condition="$k eq $navigation[module_id]"> selected </if> >{$v}</option>
+                                                   </foreach>
+                                            </select>-->
+                                            <input type="hidden" value="13" name="cityid" />
+                                            <div class="city fl">
+                                                <strong class="cityname"><if condition="!$city">上海<else/>{$city}</if></strong> <a href="javascript:;" class="tab-city">[切换城市]</a>
+                                                <div class="citylist">
+                                                    <foreach name="quyu" item="v">
+                                                        <dl>
+                                                            <dt>{$v['name']}</dt>
+                                                            <dd>
+                                                                <tpshop sql="SELECT * FROM `__PREFIX__city` where parent_id = $v[id]" key="k" item='v0'>
+                                                                    <a class="chengshi" data="{$v0.id}">{$v0['name']}</a>
+                                                                </tpshop>
+                                                            </dd>
+                                                            <div class="clears"></div>
+                                                        </dl>
+                                                    </foreach>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>                                
-                                <tr>
-                                    <td>图片路径:</td>
-                                    <td>
-                                        <input type="button" value="上传图片"  onclick="GetUploadify(1,'','lunbo','call_back');"/>
-                                        <input type="text" class="input-sm"  name="p_url" id="original_img"  value="{$navigation.p_url}"/>
-                                        <span id="err_p_url" style="color:#F00; display:none;">路径不能为空!!</span>
-                                    </td>
-                                </tr> 
-   
-                                <tr>
-                                    <td>链接:</td>
-                                    <td>
-                                        <input type="text" value="{$navigation.url}" name="url" class="form-control" />
-                                        <span id="err_url" style="color:#F00; display:none;"></span>
-                                    </td>
-                                </tr>
-                                </tbody>                                
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>图片路径:</td>
+                                        <td>
+                                            <input type="button" value="上传图片"  onclick="GetUploadify(1,'','lunbo','call_back');"/>
+                                            <input type="text" class="input-sm"  name="p_url" id="original_img"  value="{$navigation.p_url}"/>
+                                            <span id="err_p_url" style="color:#F00; display:none;">路径不能为空!!</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>标题:</td>
+                                        <td>
+                                            <input type="text" value="{$navigation.title}" name="title" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>类型:</td>
+                                        <td>
+                                            <select name="type" id="" class="input-sm">
+                                                <option value="0" <if condition="$navigation.type eq 0">selected</if>>首页</option>
+                                                <option value="1" <if condition="$navigation.type eq 1">selected</if>>婚礼管家</option>
+                                                <option value="2" <if condition="$navigation.type eq 2">selected</if>>家居装修</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>链接:</td>
+                                        <td>
+                                            <input type="text" value="{$navigation.url}" name="url" class="form-control" />
+                                            <span id="err_url" style="color:#F00; display:none;"></span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
                                 </table>
-                        </div>                           
-                    </div>              
-                    <div class="pull-right">
-                        <input type="hidden" name="id" value="{$navigation.id}">
-                        <button class="btn btn-primary" title=""  data-toggle="tooltip" type="submit" data-original-title="保存">保存</button>
-                    </div>
-			    </form><!--表单数据-->
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <input type="hidden" name="id" value="{$navigation.id}">
+                            <button class="btn btn-primary" title=""  data-toggle="tooltip" type="submit" data-original-title="保存">保存</button>
+                        </div>
+                    </form><!--表单数据-->
                 </div>
             </div>
         </div>    <!-- /.content -->
     </section>
 </div>
 <script>
-$(function(){
+    $(function(){
         //城市选择
         $(".tab-city").click(function(){
             $(".city").toggleClass("citycur");
@@ -103,35 +129,35 @@ $(function(){
             $(".citylist").hide();
             $(".city").removeClass("citycur")
         })
-    $('.chengshi').click(function(){
-        var cityid = $(this).attr('data');
-        $("input[name='cityid']").val(cityid);
+        $('.chengshi').click(function(){
+            var cityid = $(this).attr('data');
+            $("input[name='cityid']").val(cityid);
+        })
     })
-})
-function checkName(){
-	var name = $("#addEditNavForm").find("input[name='p_url']").val();
-    if($.trim(name) == '')
-	{
-        $("#err_p_url").show();
-		return false;
-	}else{
-        $("#err_p_url").hide();
-        return true;
-    }
+    function checkName(){
+        var name = $("#addEditNavForm").find("input[name='p_url']").val();
+        if($.trim(name) == '')
+        {
+            $("#err_p_url").show();
+            return false;
+        }else{
+            $("#err_p_url").hide();
+            return true;
+        }
 
-}
-// 上传商品图片成功回调函数
-function call_back(fileurl_tmp){
-    $("#original_img").val(fileurl_tmp);
-}
-// 更改系统内容
-/*$("#system_nav").change(function(){
-	var text = $(this).find("option:selected").text();
-	text = text.replace(/-/ig,""); 
-	var val  = $(this).find("option:selected").val();	
-	$("input[name='name']").val(text);
-	$("input[name='url']").val(val);	
-});*/
+    }
+    // 上传商品图片成功回调函数
+    function call_back(fileurl_tmp){
+        $("#original_img").val(fileurl_tmp);
+    }
+    // 更改系统内容
+    /*$("#system_nav").change(function(){
+     var text = $(this).find("option:selected").text();
+     text = text.replace(/-/ig,"");
+     var val  = $(this).find("option:selected").val();
+     $("input[name='name']").val(text);
+     $("input[name='url']").val(val);
+     });*/
 </script>
 
 </body>
