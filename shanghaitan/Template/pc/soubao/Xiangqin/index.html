@@ -656,7 +656,15 @@
      </div><!---->
      <div class="myscroll">
     <ul>
-    <li> <span>吕先生 158****9585 预约成功</span><span>唐小姐 131****4788 预约成功</span></li>
+    <foreach name="phoneinfo" item="phv" key="i">
+    <li><span>{$phv.name} {$phv.mobile} 预约成功</span><li>
+    </foreach>
+  
+
+
+
+
+       <!--  <span>吕先生 158****9585 预约成功</span><span>唐小姐 131****4788 预约成功</span></li>
         <li><span>薛先生 189****6845 预约成功</span><span>朱先生 158****1318 预约成功</span></li>
         <li><span>吴小姐 136****4899 预约成功</span><span>顾小姐 159****8817 预约成功</span></li>
         <li><span>吕先生 158****9585 预约成功</span><span>唐小姐 131****4788 预约成功</span></li>
@@ -664,7 +672,7 @@
         <li><span>吕先生 158****9585 预约成功</span><span>唐小姐 131****4788 预约成功</span></li>
         <li><span>薛先生 189****6845 预约成功</span><span>朱先生 158****1318 预约成功</span></li>
         <li><span>吴小姐 136****4899 预约成功</span><span>顾小姐 159****8817 预约成功</span></li>
-        <li><span>吴小姐 136****4899 预约成功</span><span>顾小姐 159****8817 预约成功</span></li>
+        <li><span>吴小姐 136****4899 预约成功</span><span>顾小姐 159****8817 预约成功</span></li> -->
     </ul>
      </div><!--myscroll/-->
     </div><!--hunli-left/-->
