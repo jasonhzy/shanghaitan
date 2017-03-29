@@ -19,9 +19,9 @@ class AjaxPage{
     public $rollPage   = 11;// 分页栏每页显示的页数
 	public $lastSuffix = true; // 最后一页是否显示总页数
 
-    private $p       = 'p'; //分页参数名
-    private $url     = ''; //当前链接URL
-    private $nowPage = 1;
+    public $p       = 'p'; //分页参数名
+    public $url     = ''; //当前链接URL
+    public $nowPage = 1;
 
 	// 分页显示定制
     private $config  = array(
@@ -72,7 +72,7 @@ class AjaxPage{
      * @param  integer $page 页码
      * @return string
      */
-    private function url($page){
+    public function url($page){
         return str_replace(urlencode('[PAGE]'), $page, $this->url);
     }
 
