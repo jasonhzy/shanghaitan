@@ -35,7 +35,7 @@
                                 <tr>
                                     <td class="text-left">{$list.title}</td>
                                     <td class="text-left">{$list.p_url}</td>
-                                    <td class="text-left"><if condition="$list.type eq 0">首页<elseif condition="$list.type eq 1"/>婚礼管家<else/>家居装修</if></td>
+                                    <td class="text-left"><if condition="$list.type eq 0">首页<elseif condition="$list.type eq 1"/>婚礼管家<elseif condition="$list.type eq 3"/>效果图<elseif condition="$list.type eq 4"/>家居建材<elseif condition="$list.type eq 5"/>展会专题<else/>家居装修</if></td>
                                     <td class="text-left">{$list.url}</td>
                                     <td class="text-center">
                                         <tpshop sql="SELECT * FROM `__PREFIX__city` where id = $list[cityid]" key="k" item='v'>

@@ -34,7 +34,7 @@ class ArticleController extends BaseController {
         $Article =  M('Article'); 
         $res = $list = array();
         $p = empty($_REQUEST['p']) ? 1 : $_REQUEST['p'];
-        $size = empty($_REQUEST['size']) ? 20 : $_REQUEST['size'];
+        $size = empty($_REQUEST['size']) ? 15 : $_REQUEST['size'];
         
         $where = " 1 = 1 ";
         $keywords = trim(I('keywords'));
@@ -67,7 +67,9 @@ class ArticleController extends BaseController {
            $info = D('article')->where('article_id='.$article_id)->find();
         }
         $cats = $ArticleCat->article_cat_list(0,$info['cat_id']);
+        $now = date("Y-m-d",time());
         $this->assign('cat_select',$cats);
+        $this->assign('now',$now);
         $this->assign('act',$act);
         $this->assign('info',$info);
         $this->initEditor();
@@ -136,7 +138,7 @@ class ArticleController extends BaseController {
     
     public function aticleHandle(){
         $data = I('post.');
-        $data['publish_time'] = strtotime($data['publish_time']);
+        //$data['publish_time'] = strtotime($data['publish_time']);
         //$data['content'] = htmlspecialchars(stripslashes($_POST['content']));
         if($data['act'] == 'add'){
         	$data['add_time'] = time(); 

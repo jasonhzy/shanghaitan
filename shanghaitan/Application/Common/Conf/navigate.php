@@ -44,7 +44,7 @@
                 'action'=>array(
                      'companyList'=>'商户列表',
 					 'applyList'=>'报名列表',
-					 'activity'=>'编辑活动',
+					 'activity'=>'编辑专题',
                      'addEditCategory'=>'添加修改分类',
                      'designList'=>'申请列表',
                      'addEditGoods'=>'添加修改商户',
@@ -52,8 +52,8 @@
                      'addEditGoodsType'=>'编辑商品类型',
                      'checkList'=>'商户审核',
                      'minge'=>'设计名额',
-                     'goodsAttributeList'=>'商品属性',
-                     'addEditGoodsAttribute'=>'添加修改属性',
+                     'goodsList'=>'商品列表',
+                     'addEditList'=>'添加修改商品',
                      'brandList'=>'商品品牌',
                      'addEditBrand'=>'添加修改品牌',                    
          	       )
@@ -145,12 +145,12 @@
          	      )
                ),
         'admin/activity'=>array(
-            'name' =>'热门活动',
+            'name' =>'专题管理',
             'action'=>array(
-                'catlist'=>'活动分类',
+                'catlist'=>'专题分类',
                 'category'=>'编辑分类',
-                'activitylist'=>'活动列表',
-                'activity'=>'编辑活动',
+                'activitylist'=>'专题列表',
+                'activity'=>'编辑专题',
             )
         ),
         'admin/admin'=>array(

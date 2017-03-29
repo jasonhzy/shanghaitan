@@ -4,7 +4,6 @@ use Think\Page;
 use Think\Verify;
 class IndexController extends BaseController {
     public function index(){
-        clear_cart(); // 清空购物车垃圾数据
        /* $arr = M("music")->select();
         $i_arr = array();
         foreach($arr as $k=>$v){
@@ -13,11 +12,11 @@ class IndexController extends BaseController {
         $tarr = M("music")->where(array('id'=>max($i_arr)))->find();
         $this->assign('arr',$tarr);*/
         $nav = M('navigation')->where(array('parent_id'=>0))->order('id desc')->select();
-        $lunbo = M('lunbo')->where(array('is_show'=>1))->order('id desc')->select();
+        $lunbo = M('lunbo')->where(array('is_show'=>1,'type'=>0))->order('id desc')->select();
         $ad = M('ad')->where(array('enabled'=>1))->select();
         $cat = M('activity')->where(array('parent_id'=>0))->select();
         $cat2 = M('activity_cat')->where(array('parent_id'=>2,'show_in_nav'=>1))->order('cat_id asc')->select();
-        $cat3 = M('activity_cat')->where(array('parent_id'=>2,'show_in_nav'=>0))->order('cat_id asc')->select();
+        $cat3 = M('activity_cat')->where(array('parent_id'=>2,'show_in_nav'=>0))->limit(3)->order('cat_id asc')->select();
         $cat4 = M('activity_cat')->where(array('parent_id'=>3,'show_in_nav'=>1))->order('cat_id asc')->select();
         $cat5 = M('activity_cat')->where(array('parent_id'=>3,'show_in_nav'=>0))->order('cat_id asc')->select();
         $users = M('users')->where(array('is_check'=>1))->select();

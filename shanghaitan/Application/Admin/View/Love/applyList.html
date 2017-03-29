@@ -29,6 +29,7 @@
                                         <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Platform(s): activate to sort column ascending">性别</th>
                                         <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Platform(s): activate to sort column ascending">年龄区间</th>
                                         <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Engine version: activate to sort column ascending">报名时间</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Engine version: activate to sort column ascending">状态</th>
                                         <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="CSS grade: activate to sort column ascending">操作</th>
                                     </tr>
                                     </thead>
@@ -40,6 +41,8 @@
                                             <td><if condition="$vo.sex eq 1">男<elseif condition="$vo.sex eq 2"/>女<else/>保密</if></td>
                                             <td>{$vo.ages}</td>
                                             <td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+                                            <td data-id="{$vo.id}"> <if condition='$vo[checked] eq 0'><a href="javascript:void(0)" class="static">等待联系</a></if>
+                                                <if condition='$vo[checked] eq 1'><span  class="static">已联系</span></if></td>
                                             <td>
                                                 <a class="btn btn-danger" href="javascript:void(0)" data-url="{:U('Love/delApply')}" data-id="{$vo.id}" onclick="delfun(this)"><i class="fa fa-trash-o"></i></a>
                                             </td>
@@ -81,6 +84,20 @@
         }
         return false;
     }
+</script>
+<script>
+    $(".static").click(function(){
+        var con = confirm("确定改变状态吗?");
+        var  obj = $(this);
+        var goods_id = obj.parent("td").attr("data-id");
+        if(con == true){
+            $.get("{:U('Admin/Goods/ajaxLink')}",{goods_id:goods_id},function(data){
+                if(data == "1"){
+                    location.reload();
+                }
+            })
+        }
+    })
 </script>
 </body>
 </html>

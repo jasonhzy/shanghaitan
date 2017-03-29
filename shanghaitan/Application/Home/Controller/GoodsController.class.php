@@ -9,7 +9,20 @@ class GoodsController extends BaseController {
      */
     public function index(){
         $lunbo = M('lunbo')->where(array('is_show'=>1,'type'=>2))->select();
+        $xiaoguo = M('lunbo')->where(array('is_show'=>1,'type'=>3))->select();
+        $jiancai = M('lunbo')->where(array('is_show'=>1,'type'=>4))->select();
+        $x_cat = M('activity_cat')->where('parent_id=21')->select();
+        $brand = M('brand')->where('is_hot=1')->select();
+        $total =M('minge')->where('id=1')->find();
+        $hot =M('article_cat')->where('cat_id = 54')->find();
+        $this->assign('user_id',$this->user_id);
+        $this->assign('total',$total['total']);
+        $this->assign('x_cat',$x_cat);
         $this->assign('lunbo',$lunbo);
+        $this->assign('hot',$hot['thumb']);
+        $this->assign('xiaoguo',$xiaoguo);
+        $this->assign('jiancai',$jiancai);
+        $this->assign('brand',$brand);
         $this->display();
     }
     /**
@@ -17,29 +30,151 @@ class GoodsController extends BaseController {
      */
     public function ajaxApply(){
         if($_POST){
-            if( $_SESSION['submit'] == 1){
-                $this->ajaxReturn(json_encode(0));
-            }else{
-                $_SESSION['submit'] = 1;
+            $arr = M('apply')->where(array('sid'=>0,'mobile'=>$_POST['mobile'],'name'=>$_POST['name']))->find();
+            if($arr){
                 $_POST['time'] = time();
-                $_POST['sid'] = 2;
+                $re = M('apply')->where(array('id' => $arr['id']))->save($_POST);
+                exit(json_encode($re));
+            }else{
+                $_POST['time'] = time();
                 $re = M('apply')->add($_POST);
                 exit(json_encode($re));
             }
         }
-    }    /**
+    }
+    /**
+     * 免费报价数据存表
+     */
+    public function ajaxApp(){
+        if($_POST){
+            $square = trim($_POST['square']);
+            if($square>=30&&$square<=50){
+                $baojia = 11275 + 235.5*$square;
+            }else if($square>=51&&$square<=75){
+                $baojia = 14217.5 + 230.5*$square;
+            }else if($square>=76&&$square<=100){
+                $baojia = 13375 + 266*$square;
+            }else if($square>=100&&$square<=130){
+                $baojia = 18180 + 166*$square;
+            }else{
+                exit(json_encode(0));
+            }
+            $arr = M('apply')->where(array('sid'=>2,'mobile'=>$_POST['mobile']))->find();
+            if( $arr) {
+                $_POST['time'] = time();
+                $re = M('apply')->where(array('id' => $arr['id']))->save($_POST);
+                if ($re) {
+                    exit(json_encode($baojia));
+                }
+            }else{
+                $_POST['sid'] =2;
+                $_POST['time'] = time();
+                $re = M('apply')->add($_POST);
+                if($re){
+                    exit(json_encode($baojia));
+                }
+            }
+        }
+    }
+    /**
      * 装修公司列表
      */
     public function companyList(){
-        $gongsi = M('goods')->where(array('is_check'=>1))->order('reg_time desc')->select();
+        $count = M('shanghu')->where(array('is_check'=>1))->count();
+        $page = new Page($count,5);
+        $show = $page->show();
+        if($_GET['pid']== 1){
+            $gongsi = M('shanghu')->where(array('is_check'=>1))->order('sum desc')->limit($page->firstRow.','.$page->listRows)->select();
+        }elseif($_GET['pid']== 2){
+            $gongsi = M('shanghu')->where(array('is_check'=>1))->order('koubei desc')->limit($page->firstRow.','.$page->listRows)->select();
+        }else{
+            $gongsi = M('shanghu')->where(array('is_check'=>1))->order('reg_time desc')->limit($page->firstRow.','.$page->listRows)->select();
+        }
+        $this->assign('gongsi',$gongsi);
+        $this->assign('total',$page->totalPages);
+        $now = $page->nowPage;
+        $this->assign('now',$now );
+        $this->assign('next',$page->url($now+1) );
+        $this->assign('prev',$page->url($now-1) );
+        $this->assign('page',$show);
+        $this->display();
+    }
+    /**
+     * 帮我选公司
+     */
+    public function ajaxSelect(){
+        if($_POST){
+            $arr = M('apply')->where(array('sid'=>3,'mobile'=>$_POST['mobile'],'name'=>$_POST['name']))->find();
+            if($arr){
+                $_POST['time'] = time();
+                $re = M('apply')->where(array('id' => $arr['id']))->save($_POST);
+                $this->ajaxReturn(json_encode($re));
+            }else{
+                $_POST['time'] = time();
+                $_POST['sid'] = 3;
+                $re = M('apply')->add($_POST);
+                $this->ajaxReturn(json_encode($re));
+            }
+        }
+    }
+    /**
+     * 公司详情
+     */
+    public function shanghu(){
+        $id = $_GET['id'];
+        $gongsi = M('shanghu')->where(array('goods_id'=>$id))->find();
+        $ad = M('ad')->where(array('ad_name'=>$gongsi['goods_name']))->find();
+        $this->assign('gongsi',$gongsi);
+        $this->assign('ad',$ad);
+        $this->display();
+    }
+    /**
+     * 加载商品
+     */
+    public function ajaxPage(){
+        $id = $_GET['id'];
+        $gongsi = M('shanghu')->where(array('goods_id'=>$id))->find();
+        $count = M('goods')->where(array('s_id'=>$gongsi['goods_id']))->count();
+        $page  = new AjaxPage($count,8);
+        $show = $page->show();
+        $goods = M('goods')->where(array('s_id'=>$gongsi['goods_id']))->order('on_time desc')->limit($page->firstRow.','.$page->listRows)->select();
+        $now = $page->nowPage;
+        $this->assign('prev',$now-1 );
+        $this->assign('next',$now+1 );
+        $this->assign('arr',$goods);
+        $this->display();
+    }
+    /**
+     * 计算访问量
+     */
+    public function ajaxTotal(){
+        //因不知数据存哪  就在名额表加了个字段total 暂用名额表
+         M('minge')->where('id=1')->setInc('total',1);
+        $arr = M('minge')->where('id=1')->find();
+        $total = $arr['total'];
+        exit(json_encode($total));
+    }
+    /**
+ * 效果图
+ */
+    public function effect(){
+        $gongsi = M('shanghu')->where(array('is_check'=>1))->order('reg_time desc')->select();
         $this->assign('gongsi',$gongsi);
         $this->display();
     }
     /**
-     * 效果图
+     * 展会专题
      */
-    public function effect(){
-        $gongsi = M('goods')->where(array('is_check'=>1))->order('reg_time desc')->select();
+    public function zhuanti(){
+        $lunbo = M('lunbo')->where(array('type'=>5))->order('id desc')->select();
+        $this->assign('lunbo',$lunbo);
+        $this->display();
+    }
+    /**
+     * 装修论坛
+     */
+    public function luntan(){
+        $gongsi = M('shanghu')->where(array('is_check'=>1))->order('reg_time desc')->select();
         $this->assign('gongsi',$gongsi);
         $this->display();
     }

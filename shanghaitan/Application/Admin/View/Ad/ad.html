@@ -25,7 +25,7 @@
                                 <tr>
                                     <td class="col-sm-2">广告名称：</td>
                                     <td class="col-sm-8">
-                                        <input type="text" class="form-control" name="ad_name" value="{$info.ad_name|default="自定义广告名称"}" >
+                                        <input type="text" class="form-control" name="ad_name" value="{$info.ad_name|default='如为商户页面直接写公司名称'}" >
                                         <span id="err_attr_name" style="color:#F00; display:none;"></span>                                        
                                     </td>
                                 </tr>           
@@ -48,7 +48,7 @@
                                         </select>      
                                     </td>
                                 </tr>  -->
-                               <!-- <tr>
+                                <tr>
                                     <td>开始日期：</td>
                                     <td>
                                         <fieldset>
@@ -59,7 +59,7 @@
                                                                         <i class="glyphicon glyphicon-calendar fa fa-calendar">
                                                                         </i>
                                                                 </span>
-                                                                <input type="text" style="width: 300px" name="begin" id="start_time" class="form-control" value='{$info.start_time|default="2016-01-01"}'>
+                                                                <input type="text" style="width: 300px" name="begin" id="start_time" class="form-control" value='{$info.start_time|default="$now"}'>
                                                         </div>
                                                 </div>
                                         </div>
@@ -77,13 +77,19 @@
                                                                             <i class="glyphicon glyphicon-calendar fa fa-calendar">
                                                                             </i>
                                                                     </span>
-                                                                    <input type="text" style="width: 300px" name="end" id="end_time" class="form-control" value='{$info.end_time|default="2019-01-01"}'>
+                                                                    <input type="text" style="width: 300px" name="end" id="end_time" class="form-control" value='{$info.end_time|default="$now  "}'>
                                                             </div>
                                                     </div>
                                             </div>
                                             </fieldset>
                                     </td>
-                                </tr>-->
+                                </tr>
+                                <tr>
+                                    <td>地址：</td>
+                                    <td>
+                                        <input type="text" class="form-control" name="adress" value="{$info.adress}" >
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>广告链接：</td>
                                     <td>
@@ -134,14 +140,14 @@ function adsubmit(){
 }
 
 $(document).ready(function() {
-
+    var now = "{$now}";
 	$('#start_time').daterangepicker({
 		format:"YYYY-MM-DD",
 		singleDatePicker: true,
 		showDropdowns: true,
-		minDate:'2016-01-01',
-		maxDate:'2030-01-01',
-		startDate:'2016-01-01',
+		minDate:now,
+		maxDate:'2080-01-01',
+		startDate:now,
 	    locale : {
             applyLabel : '确定',
             cancelLabel : '取消',
@@ -158,9 +164,9 @@ $(document).ready(function() {
 		format:"YYYY-MM-DD",
 		singleDatePicker: true,
 		showDropdowns: true,
-		minDate:'2016-01-01',
-		maxDate:'2030-01-01',
-		startDate:'2016-01-01',
+		minDate:now,
+		maxDate:'2080-01-01',
+		startDate:now,
 	    locale : {
             applyLabel : '确定',
             cancelLabel : '取消',

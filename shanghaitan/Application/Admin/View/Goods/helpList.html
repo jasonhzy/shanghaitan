@@ -8,7 +8,7 @@
 	           	<div class="box-header">
 	                <nav class="navbar navbar-default">	     
 				        <div class="collapse navbar-collapse">
-				          <form class="navbar-form form-inline" action="{:U('Admin/Goods/designList')}" method="post">
+				          <form class="navbar-form form-inline" action="{:U('Admin/Goods/helpList')}" method="post">
 				            <div class="form-group">
 				              	<input type="text" name="keywords" class="form-control" placeholder="筛选名字、区域或手机号">
 				            </div>
@@ -42,7 +42,7 @@
 								<td data-id="{$vo.id}"> <if condition='$vo[checked] eq 0'><a href="javascript:void(0)" class="static">等待联系</a></if>
 									<if condition='$vo[checked] eq 1'><span  class="static">已联系</span></if></td>
 		                     <td>
-		                      <a class="btn btn-danger" href="javascript:void(0)" data-url="{:U('Goods/delApp')}" data-id="{$vo.id}" onclick="delfun(this)"><i class="fa fa-trash-o"></i></a>
+		                      <a class="btn btn-danger" href="javascript:void(0)" data-url="{:U('Goods/delHelp')}" data-id="{$vo.id}" onclick="delfun(this)"><i class="fa fa-trash-o"></i></a>
 							</td>
 		                   </tr>
 		                  </volist>

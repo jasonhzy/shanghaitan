@@ -36,7 +36,7 @@
                                             <td>{$vo.faren}</td>
                                             <td>{$vo.mobile}</td>
                                             <td>{$vo.city}</td>
-                                            <td data-id="{$vo.user_id}">
+                                            <td data-id="{$vo.goods_id}">
                                                 <!-- <img class="static" width="20" height="20" src="__PUBLIC__/images/<if condition='$vo[checked] eq 1'>cancel.png</if>"/> -->
                                                 <if condition='$vo[is_check] eq 0'><a href="javascript:void(0)" class="static">等待审核</a></if>
                                                 <if condition='$vo[is_check] eq 1'><span  class="static">已审核</span></if>
@@ -70,9 +70,9 @@
     $(".static").click(function(){
         var con = confirm("确定通过审核吗?");
         var  obj = $(this);
-        var user_id = obj.parent("td").attr("data-id");
+        var goods_id = obj.parent("td").attr("data-id");
         if(con == true){
-            $.get("{:U('Admin/Goods/ajaxCheck')}",{user_id:user_id},function(data){
+            $.get("{:U('Admin/Goods/ajaxCheck')}",{goods_id:goods_id},function(data){
                 if(data == "1"){
                     location.reload();
                 }

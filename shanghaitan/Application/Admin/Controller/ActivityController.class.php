@@ -99,7 +99,8 @@ class ActivityController extends BaseController {
     
     
     public function categoryHandle(){
-    	$data = I('post.');   
+    	$data = I('post.');
+        $data['tubiao'] = trim($_POST['tubiao']);
         if($data['act'] == 'add'){           
             $d = D('activity_cat')->add($data);
         }

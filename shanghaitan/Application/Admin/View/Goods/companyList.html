@@ -72,7 +72,7 @@
             if(!confirm('确定要删除吗?'))
                 return false;
 		$.ajax({
-			url:"/index.php?m=Admin&c=Goods&a=delGoods&id="+id,
+			url:"/index.php?m=Admin&c=Goods&a=delShanghu&id="+id,
 			success: function(v){	
                                 var v =  eval('('+v+')');                                 
                                 if(v.hasOwnProperty('status') && (v.status == 1))

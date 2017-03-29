@@ -34,7 +34,7 @@
                                 <th class="sorting text-left">ID</th>
                                 <th class="sorting text-left">品牌名称</th>
                                 <th class="sorting text-left">Logo</th>
-                                <th class="sorting text-left">品牌分类</th>
+                                <!--<th class="sorting text-left">品牌分类</th>-->
                                 <th valign="middle">是否推荐</th>
                                 <th class="sorting text-left">排序</th>
                                 <th class="sorting text-left">操作</th>
@@ -48,7 +48,7 @@
                                     <td class="text-left">
                                         <a href="{$list.logo}" target="_blank"><img onmouseover="$(this).attr('width','80').attr('height','45');" onmouseout="$(this).attr('width','40').attr('height','30');" width="40" height="30" src="{$list.logo}"/></a>                                    
                                     </td>
-                                    <td class="text-left">{$cat_list[$list[parent_cat_id]]} {$cat_list[$list[cat_id]]}</td>                                   
+                                    <!--<td class="text-left">{$cat_list[$list[parent_cat_id]]} {$cat_list[$list[cat_id]]}</td>  -->
                                     <td>
                                          <img width="20" height="20" src="__PUBLIC__/images/<if condition='$list[is_hot] eq 1'>yes.png<else />cancel.png</if>" onclick="changeTableVal('brand','id','{$list.id}','is_hot',this)"/>			                             
 			            </td>

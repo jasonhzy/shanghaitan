@@ -14,6 +14,8 @@ class AdController extends BaseController{
         if($act == 'add')          
            $ad_info['pid'] = $_GET['pid'];                
         $position = D('ad_position')->where('1=1')->select();
+        $now = date("Y-m-d",time());
+        $this->assign('now',$now);
         $this->assign('info',$ad_info);
         $this->assign('act',$act);
         $this->assign('position',$position);

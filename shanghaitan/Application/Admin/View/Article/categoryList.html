@@ -22,7 +22,7 @@
 	                 <thead>
 	                   <tr role="row">
 		                   <th  style="width: 350px;">分类名称</th>
-		                   <th>描述</th>
+		                   <th>路径</th>
 		                   <th>是否显示</th>
 		                   <th>排序</th>
 		                   <th>操作</th>
@@ -36,7 +36,7 @@
 		                      <span class="glyphicon glyphicon-minus btn-warning"  id="icon_{$vo.level}_{$vo.id}" aria-hidden="true" onclick="rowClicked(this)" ></span>&nbsp;				    
 					      </if><span>{$vo.name}</span>
 					     </td>
-					     <td>{$vo.cat_desc}</td>
+					     <td>{$vo.thumb}</td>
 	                     <td>
                              <if condition="$vo[show_in_nav] eq 1"> 显示    
                              <else /> 隐藏</if>

@@ -30,6 +30,7 @@
 			                   <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Platform(s): activate to sort column ascending">电话</th>
 							   <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Platform(s): activate to sort column ascending">区域</th>
 			                   <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Engine version: activate to sort column ascending">报名时间</th>
+							   <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Engine version: activate to sort column ascending">状态</th>
 			                   <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="CSS grade: activate to sort column ascending">操作</th>
 		                   </tr>
 		                 </thead>
@@ -40,6 +41,8 @@
 		                     <td>{$vo.mobile}</td>
 		                     <td>{$vo.area}</td>
 		                     <td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+								<td data-id="{$vo.id}"> <if condition='$vo[checked] eq 0'><a href="javascript:void(0)" class="static">等待联系</a></if>
+									<if condition='$vo[checked] eq 1'><span  class="static">已联系</span></if></td>
 		                     <td>
 		                      <a class="btn btn-danger" href="javascript:void(0)" data-url="{:U('Goods/delApply')}" data-id="{$vo.id}" onclick="delfun(this)"><i class="fa fa-trash-o"></i></a>
 							</td>
@@ -81,6 +84,20 @@ function delfun(obj){
 	}
 	return false;
 }
-</script>  
+</script>
+<script>
+    $(".static").click(function(){
+        var con = confirm("确定改变状态吗?");
+        var  obj = $(this);
+        var goods_id = obj.parent("td").attr("data-id");
+        if(con == true){
+            $.get("{:U('Admin/Goods/ajaxLink')}",{goods_id:goods_id},function(data){
+                if(data == "1"){
+                    location.reload();
+                }
+            })
+        }
+    })
+</script>
 </body>
 </html>
