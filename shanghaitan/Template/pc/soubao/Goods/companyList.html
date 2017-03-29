@@ -6,198 +6,70 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="Author" contect="http://www.6665.com">
   <title>上海滩网</title>
-  <!--[if lt IE 9]>
-  <script>
-    (function() {     if (!
-                    /*@cc_on!@*/
-                    0) return;     var e = "abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');     var i= e.length;     while (i--){
-      document.createElement(e[i])
-    }
-    })()
-  </script>
-  <![endif]-->
 </head>
 <body id="content">
 <include file="Public/min-header"/>
 <section>
   <div class="web-width">
-    <div class="posi"><a href="index.html">首页</a> &gt; <a href="javascript:;">装修效果图</a> &gt; 卧室</div>
+    <div class="posi"><a href="{:U('Home/Index/index')}">首页</a> &gt; <a href="{:U('Home/Goods/index')}">家居装修</a> &gt;装修公司</div>
     <div class="gongsi-left">
       <table class="table-list">
         <tr>
           <th>全部区域</th>
           <td>
             <div class="gl-list">
-              <a href="javascript:;" class="gl-list-cur">不限</a><a href="javascript:;">浦东新区</a><a href="javascript:;">徐汇</a><a href="javascript:;">长宁</a><a href="javascript:;">普陀</a><a href="javascript:;">闸北</a><a href="javascript:;">虹口</a><a href="javascript:;">杨浦</a><a href="javascript:;">黄浦</a><a href="javascript:;">卢湾</a><a href="javascript:;">静山</a><a href="javascript:;">宝山</a><a href="javascript:;">闵行</a>
-              <span class="gl-mores"><i class="iconfont">&#xe61a;</i></span>
+              <!--<a href="javascript:;" class="gl-list-cur">不限</a>-->
+              <div class=" distpicker1">
+              <select name="province"></select>
+              <select name="city" value="" ></select>
+              <select name="area"></select>
+              </div>
+              <!--<a href="javascript:;">闵行</a>-->
+              <!--<span class="gl-mores"><i class="iconfont">&#xe61a;</i></span>-->
             </div>
           </td>
         </tr>
       </table>
       <div class="shaixuan">
         <ul>
-          <li class="sx-cur"><a href="javascript:;">综合排序</a></li>
-          <li><a href="javascript:;">优惠最多</a></li>
-          <li><a href="javascript:;">热门榜</a></li>
-
-          <div class="shaixuan-lr"><a href="javascript:;">&lt;</a><span>1/53</span><a href="javascript:;">&gt;</a></div>
+          <li <if condition="!$_GET[pid]">class="sx-cur"</if>><a href="{:U('Home/Goods/companyList/cid/19')}">综合排序</a></li>
+          <li <if condition="$_GET[pid] eq 1">class="sx-cur"</if> ><a href="{:U('Home/Goods/companyList/cid/19/pid/1')}">咨询数</a></li>
+          <li <if condition="$_GET[pid] eq 2">class="sx-cur"</if> ><a href="{:U('Home/Goods/companyList/cid/19/pid/2')}">口碑值</a></li>
+          <div class="shaixuan-lr"><a href="{$prev}"> <</a><span>{$now}/{$total}</span><a href="{$next}"> ></a></div>
         </ul>
       </div>
       <div class="gongsi-list">
+  <foreach name="gongsi" item="v">
         <dl>
-          <dt><a href="javascript:;"><img src="__STATIC__/images/tongshuai.jpg" /></a><h3>已有 <span class="orange">44936</span> 人咨询</h3></dt>
+          <dt><a href="{:U('Home/Goods/shanghu/cid/19',array('id'=>$v[goods_id]))}"><img src="{$v.original_img}" /></a><h3>已有 <span class="orange">{$v.sum}</span> 人咨询</h3></dt>
           <dd>
-            <h3>上海统帅建筑装潢有限公司</h3>
+            <h3><a href="{:U('Home/Goods/shanghu/cid/19',array('id'=>$v[goods_id]))}">{$v.goods_name}</a></h3>
             <div class="gongsi-text">
               <div class="gongsi-text-left">
                 <div class="gtl-text">
-                  <span class="lab-s lab-ying">营</span><span class="lab-s lab-ren">认</span><span class="lab-s lab-hui">惠</span><span class="lab-s lab-jin">金</span>100000元 <span class="lab-s lab-she">设</span> 1483套 <span class="lab-s lab-gong">工</span> 2288个 <span class="lab-s lab-ping">评</span> 4669次
+                  <span class="lab-s lab-ying">营</span><span class="lab-s lab-ren">认</span><span class="lab-s lab-hui">惠</span><span class="lab-s lab-jin">金</span>{$v.reg_money}元 <span class="lab-s lab-she">设</span> {$v.taoshu}套 <span class="lab-s lab-gong">工</span> {$v.gong}个 <span class="lab-s lab-ping">评</span> {$v.comment_count}次
                 </div>
                 <div class="gtl-map">
-                  <i class="iconfont">&#xe618;</i> 上海市浦东新区崂山路288号2楼（二号线东昌路站）
+                  <i class="iconfont">&#xe618;</i> {$v.address}
                 </div>
                 <div class="gtl-she-bao">
-                  <a href="javascript:;" class="gtl-she">免费帮我出报价</a><a href="javascript:;" class="gtl-bao">免费帮我出报价</a>
+                  <a href="javascript:;" class="gtl-she">免费帮我出报价</a>
                 </div>
               </div><!--gongsi-text-left/-->
               <div class="gongsi-text-right">
-                <div class="gtr-text">认证级别</div>
-                <div class="gtr-text">口碑值 <strong style="color:#f60; font-size:18px;">10670</strong></div>
-                <div class="gtr-text">好评率 <span style="color:#f60;font-size:16px">95.52%</span></div>
+                <div class="gtr-text"><if condition="$v.is_check eq 1">已认证<else/>未认证</if></div>
+                <div class="gtr-text">口碑值 <strong style="color:#f60; font-size:18px;">{$v.koubei}</strong></div>
               </div><!--gongsi-text-right/-->
               <div class="clears"></div>
             </div><!--gongsi-text/-->
-            <div class="gl-jingli">
+           <!-- <div class="gl-jingli">
               <strong><i class="iconfont">&#xe612;</i>业主真实经历</strong>
               <span>《合同签订》已经更新至8篇：墙都刷完，都芳漆果然一点味道也没人，宝宝大粉了一些，我几乎有点辣眼睛，但是她自己...</span>
-            </div>
+            </div>-->
           </dd>
           <div class="clears"></div>
         </dl>
-
-        <dl>
-          <dt><a href="javascript:;"><img src="__STATIC__/images/tongshuai.jpg" /></a><h3>已有 <span class="orange">44936</span> 人咨询</h3></dt>
-          <dd>
-            <h3>上海统帅建筑装潢有限公司</h3>
-            <div class="gongsi-text">
-              <div class="gongsi-text-left">
-                <div class="gtl-text">
-                  <span class="lab-s lab-ying">营</span><span class="lab-s lab-ren">认</span><span class="lab-s lab-hui">惠</span><span class="lab-s lab-jin">金</span>100000元 <span class="lab-s lab-she">设</span> 1483套 <span class="lab-s lab-gong">工</span> 2288个 <span class="lab-s lab-ping">评</span> 4669次
-                </div>
-                <div class="gtl-map">
-                  <i class="iconfont">&#xe618;</i> 上海市浦东新区崂山路288号2楼（二号线东昌路站）
-                </div>
-                <div class="gtl-she-bao">
-                  <a href="javascript:;" class="gtl-she">免费帮我出报价</a><a href="javascript:;" class="gtl-bao">免费帮我出报价</a>
-                </div>
-              </div><!--gongsi-text-left/-->
-              <div class="gongsi-text-right">
-                <div class="gtr-text">认证级别</div>
-                <div class="gtr-text">口碑值 <strong style="color:#f60; font-size:18px;">10670</strong></div>
-                <div class="gtr-text">好评率 <span style="color:#f60;font-size:16px">95.52%</span></div>
-              </div><!--gongsi-text-right/-->
-              <div class="clears"></div>
-            </div><!--gongsi-text/-->
-            <div class="gl-jingli">
-              <strong><i class="iconfont">&#xe612;</i>业主真实经历</strong>
-              <span>《合同签订》已经更新至8篇：墙都刷完，都芳漆果然一点味道也没人，宝宝大粉了一些，我几乎有点辣眼睛，但是她自己...</span>
-            </div>
-          </dd>
-          <div class="clears"></div>
-        </dl>
-
-        <dl>
-          <dt><a href="javascript:;"><img src="__STATIC__/images/tongshuai.jpg" /></a><h3>已有 <span class="orange">44936</span> 人咨询</h3></dt>
-          <dd>
-            <h3>上海统帅建筑装潢有限公司</h3>
-            <div class="gongsi-text">
-              <div class="gongsi-text-left">
-                <div class="gtl-text">
-                  <span class="lab-s lab-ying">营</span><span class="lab-s lab-ren">认</span><span class="lab-s lab-hui">惠</span><span class="lab-s lab-jin">金</span>100000元 <span class="lab-s lab-she">设</span> 1483套 <span class="lab-s lab-gong">工</span> 2288个 <span class="lab-s lab-ping">评</span> 4669次
-                </div>
-                <div class="gtl-map">
-                  <i class="iconfont">&#xe618;</i> 上海市浦东新区崂山路288号2楼（二号线东昌路站）
-                </div>
-                <div class="gtl-she-bao">
-                  <a href="javascript:;" class="gtl-she">免费帮我出报价</a><a href="javascript:;" class="gtl-bao">免费帮我出报价</a>
-                </div>
-              </div><!--gongsi-text-left/-->
-              <div class="gongsi-text-right">
-                <div class="gtr-text">认证级别</div>
-                <div class="gtr-text">口碑值 <strong style="color:#f60; font-size:18px;">10670</strong></div>
-                <div class="gtr-text">好评率 <span style="color:#f60;font-size:16px">95.52%</span></div>
-              </div><!--gongsi-text-right/-->
-              <div class="clears"></div>
-            </div><!--gongsi-text/-->
-            <div class="gl-jingli">
-              <strong><i class="iconfont">&#xe612;</i>业主真实经历</strong>
-              <span>《合同签订》已经更新至8篇：墙都刷完，都芳漆果然一点味道也没人，宝宝大粉了一些，我几乎有点辣眼睛，但是她自己...</span>
-            </div>
-          </dd>
-          <div class="clears"></div>
-        </dl>
-
-        <dl>
-          <dt><a href="javascript:;"><img src="__STATIC__/images/tongshuai.jpg" /></a><h3>已有 <span class="orange">44936</span> 人咨询</h3></dt>
-          <dd>
-            <h3>上海统帅建筑装潢有限公司</h3>
-            <div class="gongsi-text">
-              <div class="gongsi-text-left">
-                <div class="gtl-text">
-                  <span class="lab-s lab-ying">营</span><span class="lab-s lab-ren">认</span><span class="lab-s lab-hui">惠</span><span class="lab-s lab-jin">金</span>100000元 <span class="lab-s lab-she">设</span> 1483套 <span class="lab-s lab-gong">工</span> 2288个 <span class="lab-s lab-ping">评</span> 4669次
-                </div>
-                <div class="gtl-map">
-                  <i class="iconfont">&#xe618;</i> 上海市浦东新区崂山路288号2楼（二号线东昌路站）
-                </div>
-                <div class="gtl-she-bao">
-                  <a href="javascript:;" class="gtl-she">免费帮我出报价</a><a href="javascript:;" class="gtl-bao">免费帮我出报价</a>
-                </div>
-              </div><!--gongsi-text-left/-->
-              <div class="gongsi-text-right">
-                <div class="gtr-text">认证级别</div>
-                <div class="gtr-text">口碑值 <strong style="color:#f60; font-size:18px;">10670</strong></div>
-                <div class="gtr-text">好评率 <span style="color:#f60;font-size:16px">95.52%</span></div>
-              </div><!--gongsi-text-right/-->
-              <div class="clears"></div>
-            </div><!--gongsi-text/-->
-            <div class="gl-jingli">
-              <strong><i class="iconfont">&#xe612;</i>业主真实经历</strong>
-              <span>《合同签订》已经更新至8篇：墙都刷完，都芳漆果然一点味道也没人，宝宝大粉了一些，我几乎有点辣眼睛，但是她自己...</span>
-            </div>
-          </dd>
-          <div class="clears"></div>
-        </dl>
-
-        <dl>
-          <dt><a href="javascript:;"><img src="__STATIC__/images/tongshuai.jpg" /></a><h3>已有 <span class="orange">44936</span> 人咨询</h3></dt>
-          <dd>
-            <h3>上海统帅建筑装潢有限公司</h3>
-            <div class="gongsi-text">
-              <div class="gongsi-text-left">
-                <div class="gtl-text">
-                  <span class="lab-s lab-ying">营</span><span class="lab-s lab-ren">认</span><span class="lab-s lab-hui">惠</span><span class="lab-s lab-jin">金</span>100000元 <span class="lab-s lab-she">设</span> 1483套 <span class="lab-s lab-gong">工</span> 2288个 <span class="lab-s lab-ping">评</span> 4669次
-                </div>
-                <div class="gtl-map">
-                  <i class="iconfont">&#xe618;</i> 上海市浦东新区崂山路288号2楼（二号线东昌路站）
-                </div>
-                <div class="gtl-she-bao">
-                  <a href="javascript:;" class="gtl-she">免费帮我出报价</a><a href="javascript:;" class="gtl-bao">免费帮我出报价</a>
-                </div>
-              </div><!--gongsi-text-left/-->
-              <div class="gongsi-text-right">
-                <div class="gtr-text">认证级别</div>
-                <div class="gtr-text">口碑值 <strong style="color:#f60; font-size:18px;">10670</strong></div>
-                <div class="gtr-text">好评率 <span style="color:#f60;font-size:16px">95.52%</span></div>
-              </div><!--gongsi-text-right/-->
-              <div class="clears"></div>
-            </div><!--gongsi-text/-->
-            <div class="gl-jingli">
-              <strong><i class="iconfont">&#xe612;</i>业主真实经历</strong>
-              <span>《合同签订》已经更新至8篇：墙都刷完，都芳漆果然一点味道也没人，宝宝大粉了一些，我几乎有点辣眼睛，但是她自己...</span>
-            </div>
-          </dd>
-          <div class="clears"></div>
-        </dl>
+</foreach>
       </div><!--gongsi-list/-->
     </div><!--gongsi-left/-->
     <div class="gongsi-right">
@@ -207,9 +79,9 @@
           <select name="province" id="province" class="fl"></select>
           <select name="city" id="city" class="fr"></select>
         </div>
-        <div class="gr-from-list"><input type="text" placeholder="姓名" /></div>
-        <div class="gr-from-list"><input type="text" placeholder="手机号码" /></div>
-        <div class="gr-from-sub"><a href="javascript:;">帮我选公司</a></div>
+        <div class="gr-from-list"><input type="text" placeholder="姓名"  name="name"/></div>
+        <div class="gr-from-list"><input type="text" placeholder="手机号码" name="mobile"/></div>
+        <div class="gr-from-sub"><a id="help">帮我选公司</a></div>
       </div><!--gr-form/-->
       <div class="gr-img"><a href="javascript:;"><img src="__STATIC__/images/gl1.jpg" /></a></div>
       <div class="gr-img"><a href="javascript:;"><img src="__STATIC__/images/gl2.jpg" /></a></div>
@@ -229,12 +101,40 @@
 <!--图片预加载-->
 <script src="__STATIC__/js/distpicker.data.js"></script>
 <script src="__STATIC__/js/distpicker.js"></script>
+<script src="__PUBLIC__/js/common.js"></script>
 <script type="text/javascript" charset="utf-8">
     $(function() {
         $("img.lazy").lazyload({effect: "fadeIn"});
         var $obj = $('.province');
         $(".distpicker1").distpicker();
         autoSelect: true ;
+        $("#help").click(function(){
+            var name = $("input[name='name']").val();
+            var province = $("select[name='province']").val();
+            var city = $("select[name='city']").val();
+            var mobile = $("input[name='mobile']").val();
+            if(name==''||mobile==''){
+                alert('信息不全，不可以提交！');
+                return false;
+            }else if(!checkMobile(mobile)){
+                alert('手机格式不正确！');
+                return false;
+            }else{
+                $.ajax({
+                    type:"post",
+                    url:"/index.php?m=Home&c=Goods&a=ajaxSelect",
+                    dateType:"json",
+                    data:{name:name,area:province+city,mobile:mobile},
+                    success:function(re){
+                        if(re){
+                            alert('提交成功');
+                            location.reload();
+                        }
+                    }
+                })
+
+            }
+        })
     });
 </script>
 </body>

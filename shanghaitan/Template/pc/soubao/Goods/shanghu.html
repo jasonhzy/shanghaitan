@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="Author" contect="http://www.6665.com">
+    <title>{$gongsi.goods_name}</title>
+</head>
+
+<body class="zx-gs-indexbg">
+<include file="Public/min-header"/>
+<div class="hengfu2"></div>
+
+<section class="zx-gs-logo-bg">
+    <div class="web-width-1070">
+        <dl class="zx-gx-logo fl">
+            <dt><img src="{$gongsi.original_img}" height="100%" /></dt>
+            <dd>
+                <h3>{$gongsi.goods_name}</h3>
+                <div class="zx-gs-text">
+                    {$gongsi.goods_remark}
+                </div>
+            </dd>
+        </dl>
+        <div class="zx-gx-yy fr">
+            <div class="zx-gx-yy-kb">口碑值 <strong>{$gongsi.koubei}</strong></div>
+            <a href="javascript:;" class="zx-gx-mfyy">免费预约</a>
+            <div class="zx-gx-yy-text">预约专享，凭短信到展会购买！</div>
+        </div><!--zx-gx-yy/-->
+        <div class="clears"></div>
+    </div><!--web-width/-->
+</section>
+
+<section>
+    <div class="web-width-1070">
+        <ul class="zx-gs-list-eq">
+            <li class="zx-gs-list-eqcur"><a href="javascript:;" onClick="tao0();">店铺首页</a></li>
+            <li><a href="javascript:;" onClick="tao1();">全部商品</a></li>
+            <li><a href="javascript:;" onClick="tao2();">品牌故事</a></li>
+        </ul>
+        <div class="zx-gx-list-img"><img src="{$gongsi.index_img}" width="1070" height="475" /></div>
+        <h3 class="zx-gs-list-title rmtj"><strong>热品推荐</strong></h3>
+        <div class="scrolllist" id="zx-index-pro">
+            <a class="abtn aleft" ><i class="iconfont">&#xe61b;</i></a>
+            <div class="imglist_w" >
+                <ul class="imglist" id="ajax_return">
+                </ul>
+            </div>
+            <a class="abtn aright"  ><i class="iconfont">&#xe620;</i></a>
+        </div><!--scrolllist end-->
+        <div class="hengfu3"><a href="javascript:;"><img src="{$ad.ad_code}" width="1070" height="118" /></a></div>
+        <h3 class="zx-gs-list-title ppgs"><strong>品牌故事</strong></h3>
+        <div class="zx-gs-jieshao">
+            <div class="zx-gs-js-left fl"><img src="{$gongsi.index_img}" width="439" height="282" /></div>
+            <div class="zx-gs-js-right fr">
+                <h3 class="zx-js-title"><strong>公司介绍</strong></h3>
+                <div class="zx-js-text">
+                   {$gongsi.goods_content|htmlspecialchars_decode}
+                </div>
+            </div>
+            <div class="clears"></div>
+        </div><!--zx-gs-jieshao/-->
+    </div><!--web-width-1070/-->
+</section>
+<include file="Public/footer"/>
+<script type="text/javascript" charset="utf-8">
+    $(function() {
+        $("img.lazy").lazyload({effect: "fadeIn"});
+    });
+</script>
+<script type="text/javascript" src="__STATIC__/js/slider3.js"></script>
+<script type="text/javascript">
+    /*  $(function(){
+        //默认状态下左右滚动
+       $("#zx-index-pro").xslider({
+            unitdisplayed:1,
+            movelength:1,
+            unitlen:1070,
+            autoscroll:30000
+        });
+    })*/
+    $(function(){
+        ajax_get_table(1);
+    });
+    function ajax_get_table(page) {
+        cur_page = page;
+        var id = "{$_GET['id']}";
+        $.ajax({
+            type: "get",
+            url: "/index.php?m=Home&c=Goods&a=ajaxPage&p=" + page,
+            data:{id:id},
+            dataType: 'html',
+            success: function (data) {
+                if ($.trim(data) == '') {
+                    $('#ajax_return').text('没有更多数据了');
+                } else {
+                    $("#ajax_return").html('');
+                    $("#ajax_return").append(data);
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

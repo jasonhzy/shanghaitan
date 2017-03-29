@@ -11,6 +11,8 @@ a{color:#333;}
 a:hover{color:#F00;}
 img{ max-width:100%; height:auto;}
 .web-width{width:1205px;margin:0 auto;}
+.web-width-1100{width:1100px;margin:0 auto;}
+.web-width-1070{width:1070px;margin:0 auto;}
 .fl{float:left;}
 .fr{float:right;}
 .red{color:#f00;}
@@ -25,6 +27,7 @@ img{ max-width:100%; height:auto;}
 .green{color:#7ABD54;}
 .orange{color:#f60;}
 .hui{color:#999;}
+.blue{color:#09f;}
 
 /*旋转*/
 .xuanzhuan i{
@@ -103,3 +106,12 @@ img{ max-width:100%; height:auto;}
 /*弹框*/
 .bg100{ position:fixed;left:0;top:0; z-index:8; background:url(../images/black60.png); width:100%; height:100%; display:none;}
 .eject{ position:fixed;left:50%;top:50%; z-index:9;display:none;}
+
+/*此样式在窗口小于1700的时候生效*/
+@media screen and (max-width:1700px) {/*768*1024*/
+.web-width .zx-gl-form{top:100px;}
+}
+/*此样式在窗口小于1280的时候生效*/
+@media screen and (max-width:1280px) {/*768*1024*/
+body{width:1280px;margin:0 auto;}
+}

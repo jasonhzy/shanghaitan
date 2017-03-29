@@ -35,9 +35,9 @@
             </div>
         </div><!--city/-->
         <div class="head-lab fr">
-            <a href="javascript:;">登录</a><span>|</span>
-            <a href="javascript:;">注册</a><span>|</span>
-            <a href="javascript:;">vip中心</a>
+            <a href="{:U('Home/User/login')}">登录</a><span>|</span>
+            <a href="{:U('Home/User/reg')}">注册</a><span>|</span>
+            <a href="{:U('Home/User/index')}">vip中心</a>
             <a href="javascript:;">帮助</a>
             <div class="head-xiala xuanzhuan">
                 <i class="iconfont icon-liebiao">&#xe610;</i>
@@ -54,24 +54,24 @@
     <div class="web-width">
         <h1 class="logo fl"><a href="index.html"><img src="{$tpshop_config['shop_info_store_logo']}" alt="上海滩网" /></a></h1>
         <ul class="nav fl">
-            <li <if condition="$_GET[cid] eq ''"> class="navcur"</if> ><a href="javascript:;">
-                <span class="navicon1"><i class="iconfont">&#xe601;</i></span><strong>家居装修</strong></a></li>
+            <!--<li <if condition="$_GET[cid] eq ''"> class="navcur"</if> ><a href="{:U('Home/Goods/index')}">
+                <span class="navicon1"><i class="iconfont">&#xe601;</i></span><strong>家居装修</strong></a></li>-->
             <foreach name="cat" item="v">
                 <li <if condition="$_GET[cid] eq $v[cat_id]"> class="navcur" </if> >
-                <a href="{$v.url}"><span class="navicon1"><i class="iconfont">&#xe929;</i></span><strong>{$v.cat_name}</strong></a>
+                <a href="{$v.url}"><span class="navicon1"><i class="iconfont">{$v.tubiao}</i></span><strong>{$v.cat_name}</strong></a>
                 <div class="chilNav">
                     <if condition="$v[cat_name] eq '装修攻略' ">
                     <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v[cat_id]" key="k" item='v0'>
                     <div class="chilNavbg">
-                        <tpshop sql="SELECT * FROM `__PREFIX__activity` where cat_id = $v0[cat_id]" key="k" item='v1'>
-                        <a href="javascript:;">{$v1.title}</a>
+                        <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v0[cat_id]" key="k" item='v1'>
+                        <a href="{$v1.url}">{$v1.cat_name}</a>
                         </tpshop>
                     </div>
                     </tpshop>
                     <else/>
                         <div class="chilNavbg">
-                            <tpshop sql="SELECT * FROM `__PREFIX__activity` where cat_id = $v[cat_id]" key="k" item='v1'>
-                                <a href="javascript:;">{$v1.title}</a>
+                            <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id= $v[cat_id]" key="k" item='v1'>
+                                <a href="{$v1.url}">{$v1.cat_name}</a>
                             </tpshop>
                         </div>
                     </if>

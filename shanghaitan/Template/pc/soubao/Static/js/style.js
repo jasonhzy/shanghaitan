@@ -30,6 +30,23 @@ $(function(){
 	 $(tablist).eq(index).fadeIn().siblings(tablist).hide();
 	})
  })	
+ //个人资料禁止编辑
+ $(".disable-editor input,.disable-editor textarea").attr("readonly","readonly")
+ $(".disable-editor select").attr("disabled","disabled")
+ //编辑
+ $(".mate-bianji").click(function(){
+  $(this).hide();
+  $(this).next(".mate-baocun").fadeIn();	
+  $(this).parents("h3").next(".mate-r-mess").find("table").removeClass("disable-editor");
+  $(this).parents("h3").next(".mate-r-mess").find("table select").removeAttr("disabled");
+ })
+ //保存
+ $(".mate-baocun").click(function(){
+  $(this).hide();
+  $(this).prev(".mate-bianji").fadeIn();	
+  $(this).parents("h3").next(".mate-r-mess").find("table").addClass("disable-editor");
+  $(this).parents("h3").next(".mate-r-mess").find("table select").attr("disabled","disabled");
+ })
 })
 	
 	

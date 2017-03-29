@@ -1,0 +1,21 @@
+<li>
+        <foreach name="arr" item="v" key="k">
+            <dl <if condition="$k eq 3 || $k eq 7">style="margin-right:0;"</if> >
+                <dt><a href="javascript:;"><img src="{$v.original_img}" width="245" height="155" /></a></dt>
+                <dd>
+                    <h3><a href="javascript:;">{$v.goods_name}</a></h3>
+                    <div class="zx-gs-scj"><span>市场价：￥{$v.shop_price}</span></div>
+                </dd>
+            </dl>
+        </foreach>
+</li>
+<script>
+    var prev = "{$prev}";
+    var next = "{$next}";
+    $(".aleft").click(function(){
+        ajax_get_table(prev);
+    })
+    $(".aright").click(function(){
+        ajax_get_table(next);
+    })
+</script>

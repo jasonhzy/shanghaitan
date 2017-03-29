@@ -36,8 +36,8 @@ $(function(){
 		
 		var changenow = $(this).index();
 		
-		$('#slides li').eq(nownow).css('z-index','900');
-		$('#slides li').eq(changenow).css({'z-index':'800'}).show();
+		$('#slides li').eq(nownow).css('z-index','8');
+		$('#slides li').eq(changenow).css({'z-index':'7'}).show();
 		pagination.eq(changenow).addClass('current').siblings('li').removeClass('current');
 		$('#slides li').eq(nownow).fadeOut(400,function(){$('#slides li').eq(changenow).fadeIn(500);});
 		nownow = changenow;
@@ -58,16 +58,16 @@ $(function(){
 		if( inout == 1 ){
 			} else {
 			if(nownow < numpic){
-			$('#slides li').eq(nownow).css('z-index','900');
-			$('#slides li').eq(NN).css({'z-index':'800'}).show();
+			$('#slides li').eq(nownow).css('z-index','8');
+			$('#slides li').eq(NN).css({'z-index':'7'}).show();
 			pagination.eq(NN).addClass('current').siblings('li').removeClass('current');
 			$('#slides li').eq(nownow).fadeOut(400,function(){$('#slides li').eq(NN).fadeIn(500);});
 			nownow += 1;
 
 		}else{
 			NN = 0;
-			$('#slides li').eq(nownow).css('z-index','900');
-			$('#slides li').eq(NN).stop(true,true).css({'z-index':'800'}).show();
+			$('#slides li').eq(nownow).css('z-index','8');
+			$('#slides li').eq(NN).stop(true,true).css({'z-index':'7'}).show();
 			$('#slides li').eq(nownow).fadeOut(400,function(){$('#slides li').eq(0).fadeIn(500);});
 			pagination.eq(NN).addClass('current').siblings('li').removeClass('current');
 

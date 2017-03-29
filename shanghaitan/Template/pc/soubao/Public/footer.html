@@ -1,6 +1,6 @@
 <div class="footer">
     <div class="web-width">
-        <tpshop sql="select * from `__PREFIX__article_cat` where parent_id = 0" key="k" item='v'>
+        <tpshop sql="select * from `__PREFIX__article_cat` where parent_id = 0 and show_in_nav=1" key="k" item='v'>
         <ul>
             <li class="ftNav-title">{$v.cat_name}</li>
             <tpshop sql="select * from `__PREFIX__article` where cat_id = $v[cat_id]" key="k" item='v0'>
