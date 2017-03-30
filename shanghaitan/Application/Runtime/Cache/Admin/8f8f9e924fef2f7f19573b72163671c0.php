@@ -64,9 +64,9 @@
 		              <table id="list-table" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
 		                 <thead>
 		                   <tr role="row">
+							   <th class="sorting_asc" tabindex="0" aria-controls="example1" aria-label="Browser: activate to sort column ascending">ID</th>
 			                   <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 294px;">文章标题</th>
 			                   <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Browser: activate to sort column ascending">文章类别</th>
-			                   <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Platform(s): activate to sort column ascending">描述</th>
 			                   <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Platform(s): activate to sort column ascending">显示</th>
 			                   <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Engine version: activate to sort column ascending">发布时间</th>
 			                   <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="CSS grade: activate to sort column ascending">操作</th>
@@ -74,9 +74,9 @@
 		                 </thead>
 						<tbody>
 						  <?php if(is_array($list)): foreach($list as $k=>$vo): ?><tr role="row" align="center">
+								<td><?php echo ($vo["article_id"]); ?></td>
 		                     <td><?php echo (getSubstr($vo["title"],0,33)); ?></td>
 		                     <td><?php echo ($vo["category"]); ?></td>
-		                     <td><?php echo ($vo["kewords"]); ?></td>
 		                     <td>
                                          <img width="20" height="20" src="/Public/images/<?php if($vo[is_open] == 1): ?>yes.png<?php else: ?>cancel.png<?php endif; ?>" onclick="changeTableVal('Article','article_id','<?php echo ($vo["article_id"]); ?>','is_open',this)"/>                                        
                                      </td>

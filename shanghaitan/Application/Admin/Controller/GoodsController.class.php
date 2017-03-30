@@ -13,22 +13,23 @@ class GoodsController extends BaseController {
     public function applyList(){
         $tal =  M('Apply');
         $check = trim($_POST['keywords']);
+        $where = "sid = 0 ";
+        if($_POST){
+            $ckd = $_POST['checked'];
+            $where .= "and checked = ".$ckd ;
+        }
+
         if($check){
             if(substr($check,0,1)==1){
-                $where ="sid = 0 and mobile=".$check;
+                $where .=" and mobile=".$check ;
             }else{
-                $where= "sid = 0 and area like '%$check%'or name like '%$check%'";
+                $where .= " and area like '%$check%'or name like '%$check%' or c_name like '%$check%'";
             }
-            $count = $tal->where($where)->count();// 查询满足要求的总记录数
-            $page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
-            $list = $tal->where($where)->order('time desc')->limit($page->firstRow.','.$page->listRows)->select();
-            $page = $page->show();//分页显示输出
-        }else{
-            $count = $tal->where('sid=3')->count();// 查询满足要求的总记录数
-            $page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
-            $list = $tal->where('sid=0')->order('time desc')->limit($page->firstRow.','.$page->listRows)->select();
-            $page = $page->show();//分页显示输出
         }
+        $count = $tal->where($where)->count();// 查询满足要求的总记录数
+        $page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
+        $list = $tal->where($where)->order('time desc')->limit($page->firstRow.','.$page->listRows)->select();
+        $page = $page->show();//分页显示输出
         $minge = M('minge')->where('id=1')->find();
         $this->assign('minge',$minge);
         $this->assign('list',$list);
@@ -171,22 +172,25 @@ class GoodsController extends BaseController {
     public function designList(){
         $tal =  M('Apply');
         $check = trim($_POST['keywords']);
+        $where = "sid = 2 ";
+        if($_POST){
+            $ckd = $_POST['checked'];
+            $where .= "and checked = ".$ckd ;
+        }
+
         if($check){
             if(substr($check,0,1)==1){
-                $where ="sid = 2 and mobile=".$check;
+                $where .=" and mobile=".$check ;
             }else{
-                $where= "sid = 2 and area like '%$check%'or name like '%$check%'";
+                $where .= " and area like '%$check%'or name like '%$check%'";
             }
-            $count = $tal->where($where)->count();// 查询满足要求的总记录数
-            $page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
-            $list = $tal->where($where)->order('time desc')->limit($page->firstRow.','.$page->listRows)->select();
-            $page = $page->show();//分页显示输出
-        }else{
-            $count = $tal->where('sid=3')->count();// 查询满足要求的总记录数
-            $page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
-            $list = $tal->where('sid=2')->order('time desc')->limit($page->firstRow.','.$page->listRows)->select();
-            $page = $page->show();//分页显示输出
         }
+        $count = $tal->where($where)->count();// 查询满足要求的总记录数
+        $page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
+        $list = $tal->where($where)->order('time desc')->limit($page->firstRow.','.$page->listRows)->select();
+        $page = $page->show();//分页显示输出
+        $minge = M('minge')->where('id=1')->find();
+        $this->assign('minge',$minge);
         $this->assign('list',$list);
         $this->assign('page',$page);
         $this->display();
@@ -221,22 +225,25 @@ class GoodsController extends BaseController {
     public function helpList(){
         $tal =  M('Apply');
         $check = trim($_POST['keywords']);
+        $where = "sid = 3 ";
+        if($_POST){
+            $ckd = $_POST['checked'];
+            $where .= "and checked = ".$ckd ;
+        }
+
         if($check){
             if(substr($check,0,1)==1){
-                $where ="sid = 3 and mobile=".$check;
+                $where .=" and mobile=".$check ;
             }else{
-                $where= "sid = 3 and area like '%$check%'or name like '%$check%'";
+                $where .= " and area like '%$check%'or name like '%$check%' ";
             }
-            $count = $tal->where($where)->count();// 查询满足要求的总记录数
-            $page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
-            $list = $tal->where($where)->order('time desc')->limit($page->firstRow.','.$page->listRows)->select();
-            $page = $page->show();//分页显示输出
-        }else{
-            $count = $tal->where('sid=3')->count();// 查询满足要求的总记录数
-            $page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
-            $list = $tal->where('sid=3')->order('time desc')->limit($page->firstRow.','.$page->listRows)->select();
-            $page = $page->show();//分页显示输出
         }
+        $count = $tal->where($where)->count();// 查询满足要求的总记录数
+        $page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
+        $list = $tal->where($where)->order('time desc')->limit($page->firstRow.','.$page->listRows)->select();
+        $page = $page->show();//分页显示输出
+        $minge = M('minge')->where('id=1')->find();
+        $this->assign('minge',$minge);
         $this->assign('list',$list);
         $this->assign('page',$page);
         $this->display();
@@ -353,83 +360,87 @@ class GoodsController extends BaseController {
         $return_arr = array('status' => 1,'msg' => '操作成功','data'  =>'',);   //$return_arr = array('status' => -1,'msg' => '删除失败','data'  =>'',);
         $this->ajaxReturn(json_encode($return_arr));
     }
-   /**
-     * 商品类型  用于设置商品的属性
-     */
-    public function goodsTypeList(){
-        $model = M("GoodsType");                
-        $count = $model->count();        
-        $Page  = new Page($count,100);
-        $show  = $Page->show();
-        $goodsTypeList = $model->order("id desc")->limit($Page->firstRow.','.$Page->listRows)->select();
-        $this->assign('show',$show);
-        $this->assign('goodsTypeList',$goodsTypeList);
-        $this->display('goodsTypeList');
-    }
-    
-    
     /**
-     * 添加修改编辑  商品属性类型
+     *  效果图
      */
-    public  function addEditGoodsType(){        
-            $_GET['id'] = $_GET['id'] ? $_GET['id'] : 0;            
-            $model = M("GoodsType");           
-            if(IS_POST)
-            {
-                    $model->create();
-                    if($_GET['id'])
-                        $model->save();
-                    else
-                        $model->add();
-                    
-                    $this->success("操作成功!!!",U('Admin/Goods/goodsTypeList'));               
-                    exit;
-            }           
-           $goodsType = $model->find($_GET['id']);
-           $this->assign('goodsType',$goodsType);
-           $this->display('_goodsType');           
+    public function effectList(){
+        $this->display();
     }
-    
 
     /**
-     * 更改指定表的指定字段
+     *  效果图列表
      */
-    public function updateField(){
-        $primary = array(
-                'goods' => 'goods_id',
-                'goods_category' => 'id',
-                'brand' => 'id',            
-                'goods_attribute' => 'attr_id',
-        		'ad' =>'ad_id',            
-        );        
-        $model = D($_POST['table']);
-        $model->$primary[$_POST['table']] = $_POST['id'];
-        $model->$_POST['field'] = $_POST['value'];        
-        $model->save();   
-        $return_arr = array(
-            'status' => 1,
-            'msg'   => '操作成功',                        
-            'data'  => array('url'=>U('Admin/Goods/goodsAttributeList')),
-        );
+    public function ajaxEffect(){
+
+        $where = ' 1 = 1 '; // 搜索条件
+        // 关键词搜索
+        $key_word = I('key_word') ? trim(I('key_word')) : '';
+        if($key_word)
+        {
+            $where = "$where and (x_title like '%$key_word%' or x_keywords like '%$key_word%')" ;
+        }
+        $model = M('xiaoguo');
+        $count = $model->where($where)->count();
+        $Page  = new AjaxPage($count,10);
+        $show = $Page->show();
+        $order_str = "`{$_POST['orderby1']}` {$_POST['orderby2']}";
+        $effectList = $model->where($where)->order($order_str)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('effectList',$effectList);
+        $this->assign('page',$show);// 赋值分页输出
+        $this->display();
+    }
+
+    /**
+     * 添加修改效果图
+     */
+    public function addEditEffect(){
+        $effect = D('xiaoguo'); //
+        $type = $_POST['x_id'] > 0 ? 2 : 1; // 标识自动验证时的 场景 1 表示插入 2 表示更新
+        //ajax提交验证
+        if (($_GET['is_ajax'] == 1) && IS_POST) {
+            C('TOKEN_ON', false);
+            if (!$effect->create(NULL, $type))// 根据表单提交的POST数据创建数据对象
+            {
+                //  编辑
+                $return_arr = array(
+                    'status' => -1,
+                    'msg'   => '操作失败',
+                    'data'  => $effect->getError(),
+                );
+                $this->ajaxReturn(json_encode($return_arr));
+            }else {
+                //  form表单提交
+                $effect->x_time = time(); // 上架时间
+                if ($type == 2) {
+                    $x_id = $_POST['x_id'];
+                    $effect->where(array('x_id'=>$x_id))->save(); // 写入数据到数据库
+                } else {
+                    $effect->add(); // 写入数据到数据库
+                }
+                $return_arr = array(
+                    'status' => 1,
+                    'msg' => '操作成功',
+                    'data' => array('url' => U('Admin/Goods/effectList')),
+                );
+                $this->ajaxReturn(json_encode($return_arr));
+            }
+        }
+        $effectInfo = M('xiaoguo')->where('x_id=' . I('GET.id', 0))->find();
+        $xiaoguo =  M('xiaoguo')->where('x_parent_id = 0')->select();
+        $this->assign('xiaoguo', $xiaoguo);
+        $this->assign('effectInfo', $effectInfo);
+        $this->display('_effect');
+    }
+    /**
+     * 删除商品
+     */
+    public function delEffect()
+    {
+
+        M("xiaoguo")->where('x_id ='.$_GET['x_id'])->delete();
+        $return_arr = array('status' => 1,'msg' => '操作成功','data'  =>'',);
         $this->ajaxReturn(json_encode($return_arr));
     }
-    
-    /**
-     * 删除商品类型 
-     */
-    public function delGoodsType()
-    {
-        // 判断 商品规格        
-        $count = M("Spec")->where("type_id = {$_GET['id']}")->count("1");   
-        $count > 0 && $this->error('该类型下有商品规格不得删除!',U('Admin/Goods/goodsTypeList'));
-        // 判断 商品属性        
-        $count = M("GoodsAttribute")->where("type_id = {$_GET['id']}")->count("1");   
-        $count > 0 && $this->error('该类型下有商品属性不得删除!',U('Admin/Goods/goodsTypeList'));        
-        // 删除分类
-        M('GoodsType')->where("id = {$_GET['id']}")->delete();   
-        $this->success("操作成功!!!",U('Admin/Goods/goodsTypeList'));
-    }    
-
     
     /**
      * 品牌列表

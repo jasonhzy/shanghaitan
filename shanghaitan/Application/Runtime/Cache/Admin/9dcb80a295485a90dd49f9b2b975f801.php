@@ -92,7 +92,8 @@
 							   <!--<th>广告位置</th>-->
 			                   <th>广告名称</th>	
 			                   <th>广告图片</th>	                   
-			                   <th>广告链接</th>
+			                   <th>pc端链接</th>
+							   <th>手机端链接</th>
 							   <th>新窗口</th>
 			                   <th>是否显示</th>
 		                  	   <th>排序</th>
@@ -106,6 +107,7 @@
 		                     <td><?php echo ($vo["ad_name"]); ?></td>	                    
 		                     <td><img alt="" src="<?php echo ($vo["ad_code"]); ?>" width="80px" height="50px"></td>
 		                     <td><?php echo ($vo["ad_link"]); ?></td>
+							<td><?php echo ($vo["m_link"]); ?></td>
 		                     <td>
                                          <img width="20" height="20" src="/Public/images/<?php if($vo[target] == 1): ?>yes.png<?php else: ?>cancel.png<?php endif; ?>" onclick="changeTableVal('ad','ad_id','<?php echo ($vo["ad_id"]); ?>','target',this)"/>
 		                     </td>                                     

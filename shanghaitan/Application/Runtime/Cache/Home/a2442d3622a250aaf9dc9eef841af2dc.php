@@ -30,20 +30,21 @@
       <strong class="cityname">上海</strong> <a href="javascript:;" class="tab-city">[切换城市]</a>
       <div class="citylist">
         <div class="citytitle">可选城市列表</div>
-        <?php if(is_array($quyu)): foreach($quyu as $key=>$v): ?><dl>
+        <?php
+ $md5_key = md5("SELECT * FROM `__PREFIX__area`"); $sql_result_v = S("sql_".$md5_key); if(empty($sql_result_v)) { $Model = new \Think\Model(); $result_name = $sql_result_v = $Model->query("SELECT * FROM `__PREFIX__area`"); S("sql_".$md5_key,$sql_result_v,TPSHOP_CACHE_TIME); } foreach($sql_result_v as $k=>$v): ?><dl>
           <dt><?php echo ($v['name']); ?></dt>
           <dd>
             <?php
  $md5_key = md5("SELECT * FROM `__PREFIX__city` where parent_id = $v[id]"); $sql_result_v0 = S("sql_".$md5_key); if(empty($sql_result_v0)) { $Model = new \Think\Model(); $result_name = $sql_result_v0 = $Model->query("SELECT * FROM `__PREFIX__city` where parent_id = $v[id]"); S("sql_".$md5_key,$sql_result_v0,TPSHOP_CACHE_TIME); } foreach($sql_result_v0 as $k=>$v0): ?><a class="chengshi" data="<?php echo ($v0["id"]); ?>"><?php echo ($v0['name']); ?></a><?php endforeach; ?>
           </dd>
           <div class="clears"></div>
-        </dl><?php endforeach; endif; ?>
+        </dl><?php endforeach; ?>
       </div>
     </div><!--city/-->
     <div class="head-lab fr">
-      <a href="javascript:;">登录</a><span>|</span>
-      <a href="javascript:;">注册</a><span>|</span>
-      <a href="javascript:;">vip中心</a>
+      <a href="<?php echo U('Home/User/login');?>">登录</a><span>|</span>
+      <a href="<?php echo U('Home/User/reg');?>">注册</a><span>|</span>
+      <a href="<?php echo U('Home/User/index');?>">vip中心</a>
       <a href="javascript:;">帮助</a>
       <div class="head-xiala xuanzhuan">
         <i class="iconfont icon-liebiao">&#xe610;</i>
@@ -119,7 +120,12 @@
 <div id="menu">
     <ul>
         <?php
- $md5_key = md5("SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0"); $sql_result_v = S("sql_".$md5_key); if(empty($sql_result_v)) { $Model = new \Think\Model(); $result_name = $sql_result_v = $Model->query("SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0"); S("sql_".$md5_key,$sql_result_v,TPSHOP_CACHE_TIME); } foreach($sql_result_v as $k=>$v): ?><li><a href="#item1"><em></em><?php echo ($v["cat_name"]); ?></a></li><?php endforeach; ?>
+ $md5_key = md5("SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0"); $sql_result_v = S("sql_".$md5_key); if(empty($sql_result_v)) { $Model = new \Think\Model(); $result_name = $sql_result_v = $Model->query("SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0"); S("sql_".$md5_key,$sql_result_v,TPSHOP_CACHE_TIME); } foreach($sql_result_v as $k=>$v): ?><li><a <?php if($v["cat_id"] == 1): ?>href="#item1"<?php elseif($v["cat_id"] == 2): ?>href="#item2"<?php else: ?>href="#item3"<?php endif; ?>><em></em><?php echo ($v["cat_name"]); ?></a></li><?php endforeach; ?>
+      <!--  <ul>
+            <li><a href="#item1" class="current"><em></em>热门活动</a></li>
+            <li><a href="#item2"><em></em>家居装修</a></li>
+            <li><a href="#item3"><em></em>恋爱婚姻</a></li>
+        </ul>-->
     </ul>
 </div>
 <section id="item1" class="item">
@@ -130,7 +136,7 @@
             <ul class="tab">
                 <?php if(is_array($ad)): foreach($ad as $key=>$v): ?><li><?php echo ($v["ad_name"]); ?> <i class="iconfont posj">&#xe608;</i></li><?php endforeach; endif; ?>
             </ul>
-            <a href="javascript:;" class="mores">更多活动&gt;</a>
+            <a href="<?php echo U('Home/Goods/zhuanti/cid/70');?>" class="mores">更多活动&gt;</a>
         </div><!--active-top/-->
         <div class="active-down">
             <div class="active-down-left-jbh fl">
@@ -154,7 +160,7 @@
     <div class="web-width">
         <div class="active-top bor">
             <?php
- $md5_key = md5("SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0 limit 1,1"); $sql_result_v = S("sql_".$md5_key); if(empty($sql_result_v)) { $Model = new \Think\Model(); $result_name = $sql_result_v = $Model->query("SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0 limit 1,1"); S("sql_".$md5_key,$sql_result_v,TPSHOP_CACHE_TIME); } foreach($sql_result_v as $k=>$v): ?><h3><?php echo ($v["cat_name"]); ?></h3><?php endforeach; ?>
+ $md5_key = md5("SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0 limit 1,1"); $sql_result_v = S("sql_".$md5_key); if(empty($sql_result_v)) { $Model = new \Think\Model(); $result_name = $sql_result_v = $Model->query("SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0 limit 1,1"); S("sql_".$md5_key,$sql_result_v,TPSHOP_CACHE_TIME); } foreach($sql_result_v as $k=>$v): ?><h3><a href="<?php echo U('Home/Goods/index');?>"><?php echo ($v["cat_name"]); ?></a></h3><?php endforeach; ?>
             <ul class="tab tab2">
                 <?php if(is_array($cat2)): foreach($cat2 as $key=>$v): ?><li><?php if($v[cat_name] == '手机专享'): ?><i class="iconfont tab-phone">&#xe6ce;</i><?php endif; echo ($v["cat_name"]); ?><img src="/Template/pc/soubao/Static/images/sanjiao.png" class="posj2"/></li><?php endforeach; endif; ?>
             </ul>
@@ -163,18 +169,17 @@
         <div class="active-down">
             <div class="active-down-left fl" style="height:665px;">
                 <div class="active-list">
-                    <?php if(is_array($cat3)): foreach($cat3 as $key=>$v): ?><h3><span><?php echo ($v["cat_name"]); ?></span></h3>
-
-                        <?php
- $md5_key = md5("SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v[cat_id]"); $sql_result_v0 = S("sql_".$md5_key); if(empty($sql_result_v0)) { $Model = new \Think\Model(); $result_name = $sql_result_v0 = $Model->query("SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v[cat_id]"); S("sql_".$md5_key,$sql_result_v0,TPSHOP_CACHE_TIME); } foreach($sql_result_v0 as $k=>$v0): if($v0[cat_name]): ?><div class="active-lab1"><span><?php echo ($v0["cat_name"]); ?></span></div>
+                    <?php if(is_array($cat3)): foreach($cat3 as $key=>$v): ?><h3><a href="<?php echo ($v["url"]); ?>"><span><?php echo ($v["cat_name"]); ?></span></a></h3>
+                          <?php if($v[cat_name] == '装修攻略'): $md5_key = md5("SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v[cat_id]"); $sql_result_v0 = S("sql_".$md5_key); if(empty($sql_result_v0)) { $Model = new \Think\Model(); $result_name = $sql_result_v0 = $Model->query("SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v[cat_id]"); S("sql_".$md5_key,$sql_result_v0,TPSHOP_CACHE_TIME); } foreach($sql_result_v0 as $k=>$v0): ?><div class="active-lab1"><span><?php echo ($v0["cat_name"]); ?></span></div>
                             <ul>
                                 <?php
- $md5_key = md5("SELECT * FROM `__PREFIX__activity` where cat_id = $v0[cat_id]"); $sql_result_v1 = S("sql_".$md5_key); if(empty($sql_result_v1)) { $Model = new \Think\Model(); $result_name = $sql_result_v1 = $Model->query("SELECT * FROM `__PREFIX__activity` where cat_id = $v0[cat_id]"); S("sql_".$md5_key,$sql_result_v1,TPSHOP_CACHE_TIME); } foreach($sql_result_v1 as $k=>$v1): ?><li <?php if($k%2 == 0): ?>style="display:inline;"<?php endif; ?>>  <?php if($k%2 == 0): ?><a href="javascript:;" class="fl"><?php echo ($v1["title"]); ?></a><?php else: ?><a href="javascript:;" class="fr"><?php echo ($v1["title"]); ?></a><?php endif; ?></li><?php endforeach; ?>
-                            </ul><?php endif; endforeach; ?>
-                            <ul>
-                                <?php
- $md5_key = md5("SELECT * FROM `__PREFIX__activity` where cat_id = $v[cat_id]"); $sql_result_v2 = S("sql_".$md5_key); if(empty($sql_result_v2)) { $Model = new \Think\Model(); $result_name = $sql_result_v2 = $Model->query("SELECT * FROM `__PREFIX__activity` where cat_id = $v[cat_id]"); S("sql_".$md5_key,$sql_result_v2,TPSHOP_CACHE_TIME); } foreach($sql_result_v2 as $k=>$v2): ?><li <?php if(($k%2 == 0) ): ?>style="display:inline;"<?php endif; ?> ><?php if($k%2 == 0): ?><a href="javascript:;" class="fl"><?php echo ($v2["title"]); ?></a><?php else: ?><a href="javascript:;" class="fr"><?php echo ($v2["title"]); ?></a><?php endif; ?></li><?php endforeach; ?>
-                            </ul><?php endforeach; endif; ?>
+ $md5_key = md5("SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v0[cat_id]"); $sql_result_v1 = S("sql_".$md5_key); if(empty($sql_result_v1)) { $Model = new \Think\Model(); $result_name = $sql_result_v1 = $Model->query("SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v0[cat_id]"); S("sql_".$md5_key,$sql_result_v1,TPSHOP_CACHE_TIME); } foreach($sql_result_v1 as $k=>$v1): ?><li <?php if($k%2 == 0): ?>style="display:inline;"<?php endif; ?>>  <?php if($k%2 == 0): ?><a href="<?php echo ($v1["url"]); ?>" class="fl"><?php echo ($v1["cat_name"]); ?></a><?php else: ?><a href="javascript:;" class="fr"><?php echo ($v1["cat_name"]); ?></a><?php endif; ?></li><?php endforeach; ?>
+                            </ul><?php endforeach; ?>
+                          <?php else: ?>
+                              <ul>
+                                  <?php
+ $md5_key = md5("SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v[cat_id]"); $sql_result_v1 = S("sql_".$md5_key); if(empty($sql_result_v1)) { $Model = new \Think\Model(); $result_name = $sql_result_v1 = $Model->query("SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v[cat_id]"); S("sql_".$md5_key,$sql_result_v1,TPSHOP_CACHE_TIME); } foreach($sql_result_v1 as $k=>$v1): ?><li <?php if($k%2 == 0): ?>style="display:inline;"<?php endif; ?>>  <?php if($k%2 == 0): ?><a href="<?php echo ($v1["url"]); ?>" class="fl"><?php echo ($v1["cat_name"]); ?></a><?php else: ?><a href="javascript:;" class="fr"><?php echo ($v1["cat_name"]); ?></a><?php endif; ?></li><?php endforeach; ?>
+                              </ul><?php endif; endforeach; endif; ?>
                 </div>
             </div>
             <div class="active-down-right fl" style="height:650px;">
@@ -215,7 +220,7 @@
     <div class="web-width">
         <div class="active-top bor">
             <?php
- $md5_key = md5("SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0 limit 2,1"); $sql_result_v = S("sql_".$md5_key); if(empty($sql_result_v)) { $Model = new \Think\Model(); $result_name = $sql_result_v = $Model->query("SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0 limit 2,1"); S("sql_".$md5_key,$sql_result_v,TPSHOP_CACHE_TIME); } foreach($sql_result_v as $k=>$v): ?><h3><?php echo ($v["cat_name"]); ?></h3><?php endforeach; ?>
+ $md5_key = md5("SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0 limit 2,1"); $sql_result_v = S("sql_".$md5_key); if(empty($sql_result_v)) { $Model = new \Think\Model(); $result_name = $sql_result_v = $Model->query("SELECT * FROM `__PREFIX__activity_cat` where parent_id = 0 limit 2,1"); S("sql_".$md5_key,$sql_result_v,TPSHOP_CACHE_TIME); } foreach($sql_result_v as $k=>$v): ?><h3><a href=""><?php echo ($v["cat_name"]); ?></a></h3><?php endforeach; ?>
             <ul class="tab tab2 tab3">
                 <?php if(is_array($cat4)): foreach($cat4 as $key=>$v): ?><li><?php if($v[cat_name] == '手机专享'): ?><i class="iconfont tab-phone">&#xe6ce;</i><?php endif; echo ($v["cat_name"]); ?><img src="/Template/pc/soubao/Static/images/sanjiao.png" class="posj2"/></li><?php endforeach; endif; ?>
             </ul>
@@ -227,7 +232,7 @@
                     <?php if(is_array($cat5)): foreach($cat5 as $key=>$v): ?><h3><span><?php echo ($v["cat_name"]); ?></span></h3>
                     <ul>
                         <?php
- $md5_key = md5("SELECT * FROM `__PREFIX__activity` where cat_id = $v[cat_id]"); $sql_result_v2 = S("sql_".$md5_key); if(empty($sql_result_v2)) { $Model = new \Think\Model(); $result_name = $sql_result_v2 = $Model->query("SELECT * FROM `__PREFIX__activity` where cat_id = $v[cat_id]"); S("sql_".$md5_key,$sql_result_v2,TPSHOP_CACHE_TIME); } foreach($sql_result_v2 as $k=>$v2): ?><li <?php if(($k%2 == 0) ): ?>style="display:inline;"<?php endif; ?> ><?php if($k%2 == 0): ?><a href="javascript:;" class="fl"><?php echo ($v2["title"]); ?></a><?php else: ?><a href="javascript:;" class="fr"><?php echo ($v2["title"]); ?></a><?php endif; ?></li><?php endforeach; ?>
+ $md5_key = md5("SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v[cat_id]"); $sql_result_v2 = S("sql_".$md5_key); if(empty($sql_result_v2)) { $Model = new \Think\Model(); $result_name = $sql_result_v2 = $Model->query("SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v[cat_id]"); S("sql_".$md5_key,$sql_result_v2,TPSHOP_CACHE_TIME); } foreach($sql_result_v2 as $k=>$v2): ?><li <?php if(($k%2 == 0) ): ?>style="display:inline;"<?php endif; ?> ><?php if($k%2 == 0): ?><a href="javascript:;" class="fl"><?php echo ($v2["cat_name"]); ?></a><?php else: ?><a href="<?php echo ($v2["url"]); ?>" class="fr"><?php echo ($v2["cat_name"]); ?></a><?php endif; ?></li><?php endforeach; ?>
                     </ul><?php endforeach; endif; ?>
                 </div><!--active-list/-->
             </div><!--active-down-left/-->
@@ -268,7 +273,7 @@
 <div class="footer">
     <div class="web-width">
         <?php
- $md5_key = md5("select * from `__PREFIX__article_cat` where parent_id = 0"); $sql_result_v = S("sql_".$md5_key); if(empty($sql_result_v)) { $Model = new \Think\Model(); $result_name = $sql_result_v = $Model->query("select * from `__PREFIX__article_cat` where parent_id = 0"); S("sql_".$md5_key,$sql_result_v,TPSHOP_CACHE_TIME); } foreach($sql_result_v as $k=>$v): ?><ul>
+ $md5_key = md5("select * from `__PREFIX__article_cat` where parent_id = 0 and show_in_nav=1"); $sql_result_v = S("sql_".$md5_key); if(empty($sql_result_v)) { $Model = new \Think\Model(); $result_name = $sql_result_v = $Model->query("select * from `__PREFIX__article_cat` where parent_id = 0 and show_in_nav=1"); S("sql_".$md5_key,$sql_result_v,TPSHOP_CACHE_TIME); } foreach($sql_result_v as $k=>$v): ?><ul>
             <li class="ftNav-title"><?php echo ($v["cat_name"]); ?></li>
             <?php
  $md5_key = md5("select * from `__PREFIX__article` where cat_id = $v[cat_id]"); $sql_result_v0 = S("sql_".$md5_key); if(empty($sql_result_v0)) { $Model = new \Think\Model(); $result_name = $sql_result_v0 = $Model->query("select * from `__PREFIX__article` where cat_id = $v[cat_id]"); S("sql_".$md5_key,$sql_result_v0,TPSHOP_CACHE_TIME); } foreach($sql_result_v0 as $k=>$v0): ?><li><a href="javascript:;"><?php echo ($v0["title"]); ?></a></li><?php endforeach; ?>

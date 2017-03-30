@@ -14,9 +14,17 @@ class GoodsController extends BaseController {
         $x_cat = M('activity_cat')->where('parent_id=21')->select();
         $brand = M('brand')->where('is_hot=1')->select();
         $total =M('minge')->where('id=1')->find();
+  /*      if(!empty($total['sum'])){
+            $sum_arr = array();
+            (int)$number = $_POST['number'];
+            for($i=strlen($number);$i>0;$i--){
+                $sum_arr[] = substr($number,$i-1,1);
+            }
+            print_r($sum_arr);
+        }*/
         $hot =M('article_cat')->where('cat_id = 54')->find();
         $this->assign('user_id',$this->user_id);
-        $this->assign('total',$total['total']);
+        $this->assign('total',$total);
         $this->assign('x_cat',$x_cat);
         $this->assign('lunbo',$lunbo);
         $this->assign('hot',$hot['thumb']);
@@ -38,6 +46,9 @@ class GoodsController extends BaseController {
             }else{
                 $_POST['time'] = time();
                 $re = M('apply')->add($_POST);
+                if($re){
+                    M('minge')->where('id=1')->setDec('sum');
+                }
                 exit(json_encode($re));
             }
         }
@@ -100,6 +111,26 @@ class GoodsController extends BaseController {
         $this->display();
     }
     /**
+     * 免费设计（装修公司）
+     */
+    public function ajaxDesign(){
+        if($_POST){
+            $arr = M('apply')->where(array('sid'=>0,'mobile'=>$_POST['mobile'],'name'=>$_POST['name'],'c_id'=>$_POST['c_id']))->find();
+            if($arr){
+                $_POST['time'] = time();
+                $re = M('apply')->where(array('id' => $arr['id']))->save($_POST);
+                exit(json_encode($re));
+            }else{
+                $_POST['time'] = time();
+                $re = M('apply')->add($_POST);
+                if($re){
+                    M('shanghu')->where(array('goods_id' => $_POST['c_id']))->setInc('taoshu');
+                }
+                exit(json_encode($re));
+            }
+        }
+    }
+    /**
      * 帮我选公司
      */
     public function ajaxSelect(){
@@ -155,11 +186,34 @@ class GoodsController extends BaseController {
         exit(json_encode($total));
     }
     /**
- * 效果图
- */
+     * 攻略
+     */
+    public function gonglue(){
+        $this->display();
+    }
+    /**
+     * 效果图
+     */
     public function effect(){
-        $gongsi = M('shanghu')->where(array('is_check'=>1))->order('reg_time desc')->select();
-        $this->assign('gongsi',$gongsi);
+        $effect = M('xiaoguo')->where(array('x_parent_id'=>0,'is_new'=>1))->order('x_time desc')->select();
+        foreach($effect as $k=>$v){
+            $count = M('xiaoguo')->where(array('x_parent_id'=>$v['x_id']))->count();
+            if($count){
+                $effect[$k]['total'] = $count;
+            }else{
+                $effect[$k]['total'] = 0;
+            }
+        }
+        $this->assign('effect',$effect);
+        $this->display();
+    }
+    /**
+     * 加载效果图
+     */
+    public function ajaxEffect(){
+        $x_id = $_POST['x_id'];
+        $effect = M('xiaoguo')->where(array('x_parent_id'=>$x_id))->select();
+        $this->assign('effect',$effect);
         $this->display();
     }
     /**

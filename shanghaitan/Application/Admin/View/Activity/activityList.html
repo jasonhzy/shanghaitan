@@ -27,6 +27,7 @@
 		              <table id="list-table" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
 		                 <thead>
 		                   <tr role="row">
+							   <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Platform(s): activate to sort column ascending">ID</th>
 			                   <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 294px;">标题</th>
 			                   <!--<th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Browser: activate to sort column ascending">文章类别</th>-->
 			                   <th class="sorting" tabindex="0" aria-controls="example1"  aria-label="Platform(s): activate to sort column ascending">专题类型</th>
@@ -38,6 +39,7 @@
 						<tbody>
 						  <foreach name="list" item="vo" key="k" >
 						  	<tr role="row" align="center">
+								<td>{$vo.activity_id}</td>
 		                     <td>{$vo.title|getSubstr=0,33}</td>
 		                     <td>{$vo.category}</td>
 		                     <td>

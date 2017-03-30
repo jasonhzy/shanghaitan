@@ -48,7 +48,6 @@
                                     <td class="col-sm-2">网站名称：</td>
                                     <td class="col-sm-8">
                                         <input type="text" class="form-control" name="store_name" value="{$config.store_name}" >
-                                        <span id="err_attr_name" style="color:#F00; display:none;"></span>                                        
                                     </td>
                                 </tr> 
                                 <tr>
@@ -57,7 +56,14 @@
                          		 		<input type="text" id="store_logo" class="input-sm" name="store_logo" value="{$config.store_logo}" >
                          		 		<input type="button" class="button" onClick="GetUploadify(1,'store_logo','logo','')"  value="上传logo"/>                                
                                     </td>
-                                </tr>   
+                                </tr>
+                                <tr>
+                                    <td>公众号：</td>
+                                    <td>
+                                        <input type="text" id="gongzhong" class="input-sm" name="gongzhong" value="{$config.gongzhong}" >
+                                        <input type="button" class="button" onClick="GetUploadify(1,'gongzhong','logo','')"  value="上传图片"/>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>网站标题：</td>
                                     <td >

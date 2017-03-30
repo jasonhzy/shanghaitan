@@ -93,7 +93,7 @@
                         <input type="text" class="form-control" name="keywords"  value="<?php echo ($info["keywords"]); ?>">
                       </div>
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                       <label for="text" class="col-sm-2 control-label">发布时间</label>
                       <div class="col-sm-8">
                           
@@ -102,10 +102,10 @@
                                                     <i class="glyphicon glyphicon-calendar fa fa-calendar">
                                                     </i>
                                             </span>
-                                        <input type="text" class="form-control" id ="publish_time" name="publish_time"  value="<?php echo (date("Y-m-d",$info["publish_time"])); ?>">                                            
+                                        <input type="text" class="form-control" id ="publish_time" name="publish_time"  value='<?php echo ((isset($info["publish_time"]) && ($info["publish_time"] !== ""))?($info["publish_time"]):"$now"); ?>'>
                                     </div>                        
                       </div>
-                    </div>                      
+                    </div> -->
                     <div class="form-group">
                       <label for="text" class="col-sm-2 control-label">是否显示</label>
                       <div class="col-sm-5">
@@ -270,7 +270,7 @@
 		singleDatePicker: true,
 		showDropdowns: true,
 		minDate:'2016-01-01',
-		maxDate:'2030-01-01',
+		maxDate:'2080-01-01',
 		startDate:'2016-01-01',
 	    locale : {
             applyLabel : '确定',

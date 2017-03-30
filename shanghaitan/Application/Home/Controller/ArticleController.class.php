@@ -26,10 +26,9 @@ class ArticleController extends BaseController {
      * 文章内容页
      */
     public function detail(){
-    	$article_id = $_GET['id'];
+    	$article_id = $_GET['a_id'];
     	$article = D('article')->where("article_id=$article_id")->find();
-        $article_cat = M('article_cat')->where(array('parent_id'=> 36))->select();
-        $cat_arr = array();
+       /* $cat_arr = array();
         foreach($article_cat as $k=>$v){
             $cat_arr[] = $v['cat_id'];
         }
@@ -63,12 +62,10 @@ class ArticleController extends BaseController {
                 $this->assign('next', $next);
                 break;
             }
-        }
+        }*/
     	if($article){
     		$parent = D('article_cat')->where("cat_id=".$article['cat_id'])->find();
     		$this->assign('cat_name',$parent['cat_name']);
-            $this->assign('pre',$pre);
-            $this->assign('next',$next);
     		$this->assign('article',$article);
     	}
         $this->display();
