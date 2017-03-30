@@ -42,7 +42,7 @@
                     <li>{$v.ad_name} <i class="iconfont posj">&#xe608;</i></li>
                 </foreach>
             </ul>
-            <a href="javascript:;" class="mores">更多活动&gt;</a>
+            <a href="{:U('Home/Goods/zhuanti/cid/70')}" class="mores">更多活动&gt;</a>
         </div><!--active-top/-->
         <div class="active-down">
             <div class="active-down-left-jbh fl">
@@ -81,20 +81,20 @@
             <div class="active-down-left fl" style="height:665px;">
                 <div class="active-list">
                     <foreach name="cat3" item="v">
-                    <h3><span>{$v.cat_name}</span></h3>
+                    <h3><a href="{$v.url}"><span>{$v.cat_name}</span></a></h3>
                           <if condition="$v[cat_name] eq '装修攻略'">
                               <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v[cat_id]" key="k" item='v0'>
                          <div class="active-lab1"><span>{$v0.cat_name}</span></div>
                             <ul>
                                 <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v0[cat_id]" key="k" item='v1'>
-                                    <li <if condition="$k%2 eq 0">style="display:inline;"</if>>  <if condition="$k%2 eq 0"><a href="javascript:;" class="fl">{$v1.cat_name}</a><else/><a href="javascript:;" class="fr">{$v1.cat_name}</a></if></li>
+                                    <li <if condition="$k%2 eq 0">style="display:inline;"</if>>  <if condition="$k%2 eq 0"><a href="{$v1.url}" class="fl">{$v1.cat_name}</a><else/><a href="javascript:;" class="fr">{$v1.cat_name}</a></if></li>
                                 </tpshop>
                             </ul>
                             </tpshop>
                           <else/>
                               <ul>
                                   <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v[cat_id]" key="k" item='v1'>
-                                      <li <if condition="$k%2 eq 0">style="display:inline;"</if>>  <if condition="$k%2 eq 0"><a href="javascript:;" class="fl">{$v1.cat_name}</a><else/><a href="javascript:;" class="fr">{$v1.cat_name}</a></if></li>
+                                      <li <if condition="$k%2 eq 0">style="display:inline;"</if>>  <if condition="$k%2 eq 0"><a href="{$v1.url}" class="fl">{$v1.cat_name}</a><else/><a href="javascript:;" class="fr">{$v1.cat_name}</a></if></li>
                                   </tpshop>
                               </ul>
                           </if>
@@ -161,8 +161,8 @@
                     <foreach name="cat5" item="v">
                     <h3><span>{$v.cat_name}</span></h3>
                     <ul>
-                        <tpshop sql="SELECT * FROM `__PREFIX__activity` where cat_id = $v[cat_id]" key="k" item='v2'>
-                            <li <if condition="($k%2 eq 0) ">style="display:inline;"</if> ><if condition="$k%2 eq 0"><a href="javascript:;" class="fl">{$v2.title}</a><else/><a href="javascript:;" class="fr">{$v2.title}</a></if></li>
+                        <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = $v[cat_id]" key="k" item='v2'>
+                            <li <if condition="($k%2 eq 0) ">style="display:inline;"</if> ><if condition="$k%2 eq 0"><a href="javascript:;" class="fl">{$v2.cat_name}</a><else/><a href="{$v2.url}" class="fr">{$v2.cat_name}</a></if></li>
                         </tpshop>
                     </ul>
                     </foreach>

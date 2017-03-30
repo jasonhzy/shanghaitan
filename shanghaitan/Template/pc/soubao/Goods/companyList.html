@@ -47,13 +47,13 @@
             <div class="gongsi-text">
               <div class="gongsi-text-left">
                 <div class="gtl-text">
-                  <span class="lab-s lab-ying">营</span><span class="lab-s lab-ren">认</span><span class="lab-s lab-hui">惠</span><span class="lab-s lab-jin">金</span>{$v.reg_money}元 <span class="lab-s lab-she">设</span> {$v.taoshu}套 <span class="lab-s lab-gong">工</span> {$v.gong}个 <span class="lab-s lab-ping">评</span> {$v.comment_count}次
+                  <span class="lab-s lab-ying">营</span><span class="lab-s lab-ren">认</span><span class="lab-s lab-hui">惠</span><span class="lab-s lab-jin">金</span>{$v.reg_money}元 <span class="lab-s lab-she">设</span> {$v.taoshu}套 <!--<span class="lab-s lab-gong">工</span> {$v.gong}个--> <span class="lab-s lab-ping">评</span> {$v.comment_count}次
                 </div>
                 <div class="gtl-map">
                   <i class="iconfont">&#xe618;</i> {$v.address}
                 </div>
                 <div class="gtl-she-bao">
-                  <a href="javascript:;" class="gtl-she">免费帮我出报价</a>
+                  <a href="javascript:;" class="gtl-she" data1="{$v.goods_id}" data2="{$v.goods_name}">免费帮我设计</a>
                 </div>
               </div><!--gongsi-text-left/-->
               <div class="gongsi-text-right">
@@ -76,11 +76,11 @@
       <div class="gr-title">公司大多挑不过来？<br />我们帮您选！</div>
       <div class="gr-form">
         <div class="gr-from-list distpicker1">
-          <select name="province" id="province" class="fl"></select>
-          <select name="city" id="city" class="fr"></select>
+          <select name="provinces" id="province" class="fl"></select>
+          <select name="citys" id="city" class="fr"></select>
         </div>
-        <div class="gr-from-list"><input type="text" placeholder="姓名"  name="name"/></div>
-        <div class="gr-from-list"><input type="text" placeholder="手机号码" name="mobile"/></div>
+        <div class="gr-from-list"><input type="text" placeholder="姓名"  name="names"/></div>
+        <div class="gr-from-list"><input type="text" placeholder="手机号码" name="mobiles"/></div>
         <div class="gr-from-sub"><a id="help">帮我选公司</a></div>
       </div><!--gr-form/-->
       <div class="gr-img"><a href="javascript:;"><img src="__STATIC__/images/gl1.jpg" /></a></div>
@@ -90,6 +90,20 @@
   </div><!--web-width/-->
 </section>
 <include file="Public/footer"/>
+<div class="eject eject-sheji" style="height:300px;">
+  <div class="zmf-mess" style="margin-top:30px;">
+    <h2 style="text-align: center;">免费设计</h2>
+    <div class="zmf-list" ><input type="text" name="name" placeholder="您的称呼" />
+      <input type="hidden" name="c_id" value="" /><input type="hidden" name="c_name" value="" /></div>
+    <div class="zmf-select distpicker1">
+      <select name="province"  class="fl"></select>
+      <select name="city"  class="fr"></select>
+    </div>
+    <div class="zmf-list"><input type="text" placeholder="填写手机号码，获取免费设计名额" name="mobile"/></div>
+    <div class="zmf-check"><input type="checkbox" checked="checked" disabled/> 我已阅读并接受<a href="javascript:;" class="green">《装修常见问题条款》</a></div>
+    <div class="zmf-sub"><a  class="sheji">立即申请</a></div>
+  </div>
+</div>
 <div class="bg100"></div>
 <!--提示-->
 <div class="tip-success-bg tip-tip-box">
@@ -108,11 +122,49 @@
         var $obj = $('.province');
         $(".distpicker1").distpicker();
         autoSelect: true ;
-        $("#help").click(function(){
+        $(".gtl-she").click(function(){
+            var c_id = $(this).attr('data1');
+            var c_name = $(this).attr('data2');
+            $("input[name='c_id']").val(c_id);
+            $("input[name='c_name']").val(c_name);
+            $(".eject").hide();
+            $(".eject-sheji").fadeIn();
+            $(".bg100").show();
+        })
+        $(".sheji").click(function(){
             var name = $("input[name='name']").val();
             var province = $("select[name='province']").val();
             var city = $("select[name='city']").val();
             var mobile = $("input[name='mobile']").val();
+            var c_id = $("input[name='c_id']").val();
+            var c_name = $("input[name='c_name']").val();
+            if(name==''||mobile==''){
+                alert('信息不全，不可以提交！');
+                return false;
+            }else if(!checkMobile(mobile)){
+                alert('手机格式不正确！');
+                return false;
+            }else{
+                $.ajax({
+                    type:"post",
+                    url:"/index.php?m=Home&c=Goods&a=ajaxDesign",
+                    dateType:"json",
+                    data:{name:name,area:province+city,mobile:mobile,c_id:c_id,c_name:c_name},
+                    success:function(re){
+                        if(re){
+                            alert('申请成功');
+                            location.reload();
+                        }
+                    }
+                })
+
+            }
+        })
+        $("#help").click(function(){
+            var name = $("input[name='names']").val();
+            var province = $("select[name='provinces']").val();
+            var city = $("select[name='citys']").val();
+            var mobile = $("input[name='mobiles']").val();
             if(name==''||mobile==''){
                 alert('信息不全，不可以提交！');
                 return false;

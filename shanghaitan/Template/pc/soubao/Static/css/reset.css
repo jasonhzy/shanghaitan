@@ -2,7 +2,7 @@
 /* CSS Document */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, select,input,textarea{margin: 0;padding: 0;border: 0;font-family:"Microsoft Yahei";}
 table{ border-collapse:collapse;}
-body{font-size:12px;color:#333; font-family:"Microsoft Yahei"; overflow-x:hidden;}
+body{font-size:12px;color:#333; font-family:"Microsoft Yahei";}
 .bodybg{ background:url(../images/bodybg.jpg) right 160px no-repeat;}
 img,a{border:0; text-decoration:none;}
 ol, ul {list-style: none; }
@@ -13,6 +13,8 @@ img{ max-width:100%; height:auto;}
 .web-width{width:1205px;margin:0 auto;}
 .web-width-1100{width:1100px;margin:0 auto;}
 .web-width-1070{width:1070px;margin:0 auto;}
+.web-width-1170{width:1170px;margin:0 auto;}
+.web-width-800{width:800px;margin:0 auto;}
 .fl{float:left;}
 .fr{float:right;}
 .red{color:#f00;}
@@ -107,10 +109,6 @@ img{ max-width:100%; height:auto;}
 .bg100{ position:fixed;left:0;top:0; z-index:8; background:url(../images/black60.png); width:100%; height:100%; display:none;}
 .eject{ position:fixed;left:50%;top:50%; z-index:9;display:none;}
 
-/*此样式在窗口小于1700的时候生效*/
-@media screen and (max-width:1700px) {/*768*1024*/
-.web-width .zx-gl-form{top:100px;}
-}
 /*此样式在窗口小于1280的时候生效*/
 @media screen and (max-width:1280px) {/*768*1024*/
 body{width:1280px;margin:0 auto;}

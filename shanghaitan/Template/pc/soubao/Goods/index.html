@@ -15,7 +15,7 @@
             <ul class="zmf-eq"><li class="zmf-eq-cur"><i class="iconfont">&#xe686;</i> 免费设计</li><li><i class="iconfont">&#xe612;</i> 免费报价</li></ul>
             <div class="zmf-show">
                 <h3 class="qmf-title"><span></span><strong>抢免费设计名额</strong></h3>
-                <div class="haisheng">今日还剩 <strong>6</strong><strong>6</strong><strong>5</strong> 个免费名额</div>
+                <div class="haisheng">今日还剩 <strong>{$total.sum}</strong> 个免费名额</div>
                 <div class="zmf-mess">
                     <div class="zmf-list"><input type="text" name="name" placeholder="您的称呼" /></div>
                     <div class="zmf-select distpicker1">
@@ -144,7 +144,7 @@
 
 <section>
     <div class="web-width">
-        <h3 class="zxtitle">装修攻略<span>已有<b id="total">{$total}</b>位业主学习到装修知识</span></h3>
+        <h3 class="zxtitle">装修攻略<span>已有<b id="total">{$total.total}</b>位业主学习到装修知识</span></h3>
         <dl class="zcriji">
             <dt><h3><i class="iconfont">&#xe612;</i></h3><p>装修日记</p><img src="__STATIC__/images/sanjiao2.png" class="zxsanjiao" /></dt>
             <tpshop sql="SELECT * FROM `__PREFIX__activity_cat` where parent_id = 32 and show_in_nav=1 " key="k" item='v'>
@@ -333,14 +333,14 @@
                 <div class="zx-new-rw-box">
                     <h3><img src="{$v.thumb}" width="97" height="40" /></h3>
                     <h4>{$v.title}</h4>
-                    <a href="javascript:;" class="zx-new-text">{$v.description}</a>
+                    <a href="{:U('Home/Article/detail/cid/19',array('a_id'=>$v[article_id]))}" class="zx-new-text">{$v.description}</a>
                 </div>
                 </tpshop>
             </div>
             <div class="zx-new-wz fl">
                 <tpshop sql="SELECT * FROM `__PREFIX__article` where cat_id = 54  limit 1,4" key="k" item='v'>
                 <dl>
-                    <dt><a href="javascript:;">{$v.title}</a></dt>
+                    <dt><a href="{:U('Home/Article/detail/cid/19',array('a_id'=>$v[article_id]))}">{$v.title}</a></dt>
                     <dd>{$v.description}</dd>
                 </dl>
                 </tpshop>
@@ -353,12 +353,12 @@
                 <div class="zx-new-list" style="display:block;">
                     <ul>
                         <tpshop sql="SELECT * FROM `__PREFIX__article` where cat_id = 55  limit 6" key="k" item='v'>
-                        <li><a href="javascript:;"><i>&middot;</i>{$v.title}</a></li>
+                        <li><a href="{:U('Home/Article/detail/cid/19',array('a_id'=>$v[article_id]))}"><i>&middot;</i>{$v.title}</a></li>
                         </tpshop>
                     </ul>
                 </div>
 
-                <div class="zx-new-list">
+                <!--<div class="zx-new-list">
                     <table class="zx-zhaobiao">
                         <tr>
                             <th>区域</th>
@@ -396,7 +396,7 @@
                             <td>华莱士他</td>
                         </tr>
                     </table>
-                </div>
+                </div>-->
             </div><!--zx-new-right/-->
             <div class="clears"></div>
         </div><!--zx-new/-->
@@ -445,7 +445,6 @@
     <script src="__STATIC__/js/distpicker.data.js"></script>
     <script src="__STATIC__/js/distpicker.js"></script>
 <!--图片预加载-->
-<script src="__STATIC__/js/jquery.lazyload.js"></script>
 <script type="text/javascript" charset="utf-8">
     $(function() {
             $("img.lazy").lazyload({effect: "fadeIn"});
@@ -455,104 +454,27 @@
     });
 </script>
 <script>
-    $(function(){
-        $(".sheji-click").click(function(){
-            var name = $("input[name='name']").val();
-            var province = $("select[name='province']").val();
-            var city = $("select[name='city']").val();
-            var mobile = $("input[name='mobile']").val();
-            if(name==''||mobile==''){
-                alert('信息不全，不可以提交！');
-                return false;
-            }else if(!is_mobile(mobile)){
-                alert('手机格式不正确！');
-                return false;
-            }else{
+    $(function() {
+        /**
+         * 计算访问量
+         */
+        $(".visit").click(function () {
+            var user_id = "{$user_id}";
+            var total = $("#total").text();
+            if (user_id > 0) {
                 $.ajax({
-                    type:"post",
-                    url:"/index.php?m=Home&c=Goods&a=ajaxApply",
-                    dateType:"json",
-                    data:{name:name,area:province+city,mobile:mobile},
-                    success:function(re){
-                        if(re){
-                            /*免费设计弹框*/
-                            $(".eject").hide();
-                            $(".eject-sheji").fadeIn();
-                            $(".bg100").show();
+                    url: "/index.php?m=Home&c=Goods&a=ajaxTotal",
+                    type: "post",
+                    data: {total: total},
+                    dataType: "json",
+                    success: function (re) {
+                        if (re) {
+                            $("#total").text(re);
                         }
                     }
                 })
-
-            }
-
-        })
-        /*免费装修弹框*/
-        $(".zhuangxiu-click").click(function(){
-            var province = $("select[name='provinces']").val();
-            var city = $("select[name='citys']").val();
-            var square = $("input[name='square']").val();
-            var mobile = $("input[name='tel']").val();
-            var shi = $("select[name='shi']").val();
-            var ting = $("select[name='ting']").val();
-            var chu = $("select[name='chu']").val();
-            var wei = $("select[name='wei']").val();
-            var yang = $("select[name='yang']").val();
-            if(mobile==''||square==''){
-                alert('信息不全，不可以提交！');
-                return false;
-            }else if(!is_mobile(mobile)){
-                alert('手机格式不正确！');
-                return false;
-            }else{
-                $.ajax({
-                    type:"post",
-                    url:"/index.php?m=Home&c=Goods&a=ajaxApp",
-                    dateType:"json",
-                    data:{square:square,area:province+city,mobile:mobile,shi:shi,ting:ting,chu:chu,wei:wei,yang:yang},
-                    success:function(re){
-                        if(re > 0){
-                            /*免费设计弹框*/
-                            $(".orange").text(re);
-                            $("#baojia").text(re);
-                            $(".eject").hide();
-                            $(".eject-zhuangxiu").fadeIn();
-                            $(".bg100").show();
-                        }else{
-                            alert('对不起，暂不提供该面积报价！');
-                            return false;
-                        }
-                    }
-                })
-
             }
         })
-    })
-    /**
-     * 验证是否手机
-     */
-    function is_mobile(text){
-        var isMobile=/^(?:13\d|15\d|18\d|17\d|14\d)\d{5}(\d{3}|\*{3})$/; //手机号码验证规则
-        return (isMobile.test(text));
-    }
-    /**
-     * 计算访问量
-     */
-    $(".visit").click(function(){
-        var user_id = "{$user_id}";
-        var total = $("#total").text();
-         if(user_id>0){
-            $.ajax({
-                url:"/index.php?m=Home&c=Goods&a=ajaxTotal",
-                type:"post",
-                data:{total:total},
-                dataType:"json",
-                success:function(re){
-                    if(re){
-                        $("#total").text(re);
-                    }
-                }
-            })
-            }
     })
 </script>
 </body>

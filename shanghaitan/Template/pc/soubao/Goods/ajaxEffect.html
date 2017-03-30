@@ -1,0 +1,25 @@
+<div class="slide-hd">
+    <h2 class="title">
+        <foreach name="effect" item='v0'>
+            <a <if condition="$k neq 0">style="display:none"</if>>{$v0.x_title}</a>
+        </foreach>
+    </h2>
+    <div class="thumb" id="slidePagination">
+        <ul class="gclearfix">
+            <foreach name="effect" item='v0'>
+                <li <if condition="$k eq 0">class="selected"</if>><a><img src="{$v0.x_thumb}" alt="" /><span class="mask"></span></a></li>
+            </foreach>
+        </ul>
+    </div>
+
+    <div class="slide-hd-bg"></div>
+</div>
+<div class="slide-bd" id="slideWrapper">
+    <div class="pic-list">
+        <foreach name="effect" item='v0'>
+            <a  class="J-pic-node"><img src="{$v0.x_thumb}" lazysrc="{$v0.x_thumb}" alt="" /></a>
+        </foreach>
+    </div>
+</div>
+
+
